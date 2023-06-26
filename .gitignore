@@ -1,14 +1,44 @@
 .idea/
-.vscode/
+
 docker/
 
 main/
 Content_Management_System/
 
-env/
 env_gita/
 cms_gita/
 c++/
 Go_language/
 
+# Visual Studio Code #
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+
+
+
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
 
