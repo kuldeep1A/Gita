@@ -1,0 +1,14 @@
+.idea/
+.vscode/
+docker/
+
+main/
+Content_Management_System/
+
+env/
+env_gita/
+cms_gita/
+c++/
+Go_language/
+
+
