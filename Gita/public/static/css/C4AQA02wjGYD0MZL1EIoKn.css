@@ -1,0 +1,277 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+}
+
+.inner_header_wrapper {
+  z-index: 99;
+  margin: 0 auto;
+  margin-top: -30px !important;
+  position: relative;
+  background-color: white;
+}
+
+#header {
+  max-width: 1024px;
+  margin: 3% auto 1%;
+}
+
+#logo img {
+  display: block;
+  height: 75px !important;
+}
+
+#logo {
+  float: left;
+  margin: 8px 10px 8px 0px;
+}
+
+.top_left {
+  float: left;
+  width: 30%;
+}
+
+.top_right {
+  float: right;
+  width: 70%;
+}
+
+.top_right .region-search {
+  float: right;
+  margin: 1% 0;
+}
+
+#block-search-form {
+  overflow: hidden;
+  position: relative;
+  width: 227px;
+  margin: 0 auto;
+}
+
+#block-search-form .content {
+  margin-top: 0;
+}
+
+#block-search-form .form-text {
+  float: left;
+  margin-right: 5px;
+  padding: 10px;
+  border-radius: 3px;
+  width: 200px;
+  border: 1px solid #c7c7c7;
+}
+
+#block-search-form input:focus {
+  outline: navy;
+  border: 1px solid navy;
+}
+
+#block-search-form .form-submit {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  height: 27px;
+  width: 29px;
+  padding: 0;
+  text-indent: -9999px;
+  /* background: url(/sites/default/files/img/search-icon.png)
+    no-repeat center top; */
+  background: url("../images/search-icon.png") no-repeat center top;
+  border-color: #e4e4e4 #d2d2d2 #b4b4b4;
+  overflow: hidden;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+
+#block-search-form .form-submit:hover {
+  opacity: 0.8;
+}
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clear:after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.menu_wrapper {
+  width: 100%;
+}
+
+#main-menu {
+  max-width: 1024px;
+  margin: 0 auto;
+  position: relative;
+  background-color: #214467 !important;
+  border-radius: 8px !important;
+}
+
+#main-menu .nav-toggle {
+  display: none;
+}
+.field-items {
+  --font-sans: Karla, Arial, sans-serif;
+  font-family: var(--font-sans);
+}
+
+#main-menu li {
+  position: relative;
+  display: inline-block;
+  border-right: 1px solid #34c9ab;
+  margin-right: -3px !important;
+}
+
+#main-menu li:hover > a {
+  background-color: #01152a;
+  border-radius: 8px !important;
+}
+
+ul.menu {
+  padding: 0;
+  margin: 5px 0 5px 0;
+}
+
+#main-menu a {
+  padding: 11px 20px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#main-menu ul li:first-child {
+  padding-left: 0;
+}
+#main-menu li ul {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  padding: 0;
+  margin: 0;
+  background: #2e3d4a;
+  overflow: visible !important;
+}
+
+#main-menu li:hover > ul,
+#main-menu li li:hover > ul,
+#main-menu li li li:hover > ul {
+  display: block;
+}
+
+#main-menu li li {
+  float: none;
+  min-width: 150px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+#main-menu li ul ul {
+  left: 151px;
+  top: 0;
+}
+
+#main-menu li li a {
+  background: none repeat scroll 0 0 #214467 !important;
+  min-width: 150px;
+  padding: 8px 11px;
+  color: white;
+  border-width: 1px 0 0 0;
+}
+
+#main-menu li li:hover > a {
+  background: #01152a !important;
+  border-radius: 8px !important;
+  border-top: 1px solid #17b495;
+  border-bottom: 1px solid #17b495;
+}
+
+#main-menu li.expanded,
+#main-menu li.leaf {
+  margin: 0;
+  padding: 0;
+}
+
+.region-front-welcome {
+  margin: 2% auto;
+  max-width: 1024px;
+  text-align: center;
+}
+
+.container {
+  clear: both;
+  overflow: hidden;
+}
+
+.container-wrap {
+  max-width: 1024px;
+  margin: 1% auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.content-sidebar-wrap {
+  float: left;
+  width: 100%;
+}
+
+.content-sidebar-wrap #cotent {
+  display: inline;
+  margin-bottom: 10px;
+  float: right;
+  width: 100%;
+}
+
+.page-title {
+  color: #214467;
+  font-size: 28px !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 15px;
+  width: 100%;
+  background: #ececec;
+  border: 1px solid #bbbbbb;
+}
+
+table.homepage td {
+  width: 50% !important;
+  font-size: 15px;
+  background: #fff;
+  color: #747474;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #dbdbdb;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+}
+
+body #footer {
+  overflow: auto;
+  padding: 1% 2% 2% 3%;
+  max-width: 1024px;
+  margin: 0 auto;
+  border-top: 4px solid #01152a;
+  background: none repeat scroll 0 0 #214467;
+}
