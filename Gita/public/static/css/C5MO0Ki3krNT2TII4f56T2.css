@@ -5,6 +5,11 @@
   .region-front-welcome {
     margin: 1% 2%;
   }
+
+  .content_display {
+    float: none;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 820px) {
@@ -27,7 +32,7 @@
     display: inline-block;
   }
 
-  .menu_wrapper { 
+  .menu_wrapper {
     margin: 0;
   }
   .expanded ul.menu {
@@ -36,12 +41,12 @@
   #main-menu ul {
     display: none;
     transform: translateY(-320px);
-    transition: transform 0.30s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
   .open {
     display: block !important;
     transform: translateY(0px) !important;
-    transition: transform 0.30s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
 
   #main-menu a {

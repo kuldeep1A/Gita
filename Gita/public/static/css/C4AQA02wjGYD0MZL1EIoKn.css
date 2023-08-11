@@ -242,7 +242,29 @@ ul.menu {
   font-weight: bold;
   margin-bottom: 20px;
 }
-
+.views-exposed-widget {
+  float: left;
+  padding: 0.5em 1em 0 0;
+}
+.views-exposed-widgets {
+  margin-bottom: 1em;
+}
+.content_display {
+  float: none;
+  width: 50%;
+}
+.view-field {
+  width: 100%;
+  border: 1px solid #4c4c4c !important;
+  padding: 10px
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 
 table {
   border-collapse: collapse;
