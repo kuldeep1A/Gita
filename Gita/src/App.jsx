@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Team from "./pages/Team";
 import QuickLinks from "./pages/QuickLinks";
 import SrimadIntro from "./pages/SrimadIntro";
+import Srimad from "./pages/Srimad";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/Team" element={<Team />} />
             <Route path="/quicklinks" element={<QuickLinks />} />
             <Route path="/srimad/intro" element={<SrimadIntro />} />
+            <Route path="/srimad/content" element={<Srimad />} />
             <Route path="/books" element={<Books />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />

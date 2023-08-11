@@ -97,7 +97,7 @@ const Navigation = () => {
                   </Link>
                   <ul className="menu">
                     <li className="first expanded">
-                      <Link to="" title="">
+                      <Link to="/srimad/content" title="">
                         Srimad BhagavadGita
                       </Link>
                       <ul className="menu">
@@ -107,7 +107,7 @@ const Navigation = () => {
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="/srimad/content" title="">
                             Content
                           </Link>
                         </li>
