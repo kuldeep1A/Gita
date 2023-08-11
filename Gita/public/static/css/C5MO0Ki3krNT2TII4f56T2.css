@@ -27,11 +27,12 @@
     display: inline-block;
   }
 
-  .menu_wrapper {
+  .menu_wrapper { 
     margin: 0;
   }
-
-
+  .expanded ul.menu {
+    display: none !important;
+  }
   #main-menu ul {
     display: none;
     transform: translateY(-320px);
