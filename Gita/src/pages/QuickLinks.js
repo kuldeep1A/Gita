@@ -18,7 +18,7 @@ export default function QuickLinks() {
                     <tbody>
                       <tr>
                         <td>
-                          <Link href="">
+                          <Link to="/srimad/content">
                             <strong>Srimad BhagavadGita</strong>
                           </Link>
                           <br />
@@ -34,14 +34,14 @@ export default function QuickLinks() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="" >
+                          <Link to="">
                             <strong>Ramcharitmanas</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="" >
+                          <Link to="">
                             <strong>Valmiki Ramayanam</strong>
                           </Link>
                           <br />
@@ -66,14 +66,14 @@ export default function QuickLinks() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="" >
+                          <Link to="">
                             <strong>Shri Ram Mangal Dasji</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="" >
+                          <Link to="">
                             <strong>Nepali Site</strong>
                           </Link>
                           <br />
@@ -82,7 +82,7 @@ export default function QuickLinks() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="" >
+                          <Link to="">
                             <strong>
                               Upanishads
                               <span style={colorgreen}>
@@ -94,7 +94,7 @@ export default function QuickLinks() {
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="" >
+                          <Link to="">
                             <strong>Sankara Site</strong>
                           </Link>
                           <br />
@@ -103,7 +103,7 @@ export default function QuickLinks() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="" >
+                          <Link to="">
                             <strong>Concept Maps</strong>
                           </Link>
                           <br />
