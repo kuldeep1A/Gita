@@ -8,7 +8,9 @@ export default function Login() {
               <section id="post-content" role="main">
                 <h1 className="page-title">Admin Account</h1>
                 <div className="field-items">
-                  <p>about</p>
+                  <div>
+                    
+                  </div>
                 </div>
               </section>
             </div>
