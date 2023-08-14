@@ -207,33 +207,7 @@ const Navigation = () => {
                     </li>
                   </ul>
                 </li>
-                <li className="expanded">
-                  <Link
-                    to="/books"
-                    title=""
-                    className="active"
-                    onClick={handleToggleMenu}
-                  >
-                    2 Book View
-                  </Link>
-                  <ul className="menu">
-                    <li className="first leaf">
-                      <Link to="" title="">
-                        Srimad BhagavadGita
-                      </Link>
-                    </li>
-                    <li className="leaf">
-                      <Link to="" title="">
-                        BrahmaSutra
-                      </Link>
-                    </li>
-                    <li className="last leaf">
-                      <Link to="" title="">
-                        YogaSutra
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
+
                 <li className="leaf" onClick={handleToggleMenu}>
                   <Link to="/contact">Contact</Link>
                 </li>

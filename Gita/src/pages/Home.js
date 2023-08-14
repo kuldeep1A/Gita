@@ -37,7 +37,7 @@ export default function Home() {
                     <tbody>
                       <tr>
                         <td>
-                          <Link to="">
+                          <Link to="/srimad/content">
                             <strong>Srimad BhagavadGita</strong>
                           </Link>
                           <br />

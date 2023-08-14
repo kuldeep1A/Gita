@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
 import ScrollRestoration from "./componets/ScrollRestoration";
 import Navigation from "./componets/Navigation";
 import Footer from "./componets/Footer";
@@ -8,7 +8,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import History from "./pages/History";
 import Login from "./pages/Login";
-import Books from "./pages/Books";
 import Contact from "./pages/Contact";
 import Team from "./pages/Team";
 import QuickLinks from "./pages/QuickLinks";
@@ -29,7 +28,6 @@ function App() {
             <Route path="/quicklinks" element={<QuickLinks />} />
             <Route path="/srimad/intro" element={<SrimadIntro />} />
             <Route path="/srimad/content" element={<Srimad />} />
-            <Route path="/books" element={<Books />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
           </Route>
