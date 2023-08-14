@@ -69,7 +69,7 @@ export default function Home() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="/bramasutra/intro">
+                          <Link to="/brahmasutra/welcome">
                             <strong>Brahma Sutra</strong>
                           </Link>
                           <br />

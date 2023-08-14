@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function SriIntro() {
   return (
     <>
@@ -6,9 +7,16 @@ export default function SriIntro() {
           <div className="content-sidebar-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">श्रीमद् भगवद्गीता </h1>
+                <h1 className="page-title">
+                  श्रीमद् भगवद्गीता{" "}
+                  <h1>
+                    <Link to="/srimad/content">View Shloka</Link>
+                  </h1>{" "}
+                </h1>
                 <div className="field-items">
-                  <h1 className="size-6 color-dark-aubergine color-light-blue">INTRODUCTION TO THE BHAGAVADGITA</h1>
+                  <h1 className="size-6 color-dark-aubergine color-light-blue">
+                    INTRODUCTION TO THE BHAGAVADGITA
+                  </h1>
 
                   <p className="size-7 fw-normal">
                     The Bhagavadgita, or the Song of the Lord, is a dialogue
@@ -160,7 +168,9 @@ export default function SriIntro() {
                     Liberation By Renunciation
                   </p>
 
-                  <h1 className="size-6 color-dark-aubergine color-light-blue">INTRODUCTION TO THE SUPERSITE</h1>
+                  <h1 className="size-6 color-dark-aubergine color-light-blue">
+                    INTRODUCTION TO THE SUPERSITE
+                  </h1>
 
                   <p className="size-7 fw-normal">
                     This is an effort to bring the heritage of Indian Scriptures
@@ -178,7 +188,9 @@ export default function SriIntro() {
                     English, and many more texts are on the anvil.
                   </p>
 
-                  <h1 className="size-6 color-dark-aubergine color-light-blue">MULTILINGUAL BHAGAVADGITA</h1>
+                  <h1 className="size-6 color-dark-aubergine color-light-blue">
+                    MULTILINGUAL BHAGAVADGITA
+                  </h1>
 
                   <p className="size-7 fw-normal">
                     This Supersite allows you to view the Sanskrit slokas

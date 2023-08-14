@@ -253,9 +253,18 @@ ul.menu {
   float: none;
   width: 50%;
 }
+.content_display_sutra {
+  float: none;
+  width: 100%;
+}
+.view-field_sutra{
+  
+  border: 1px solid black !important;
+  padding: 10px;
+}
 .view-field {
   width: 100%;
-  border: 1px solid #4c4c4c !important;
+  border: 1px solid black !important;
   padding: 10px
 }
 .clearfix::after {

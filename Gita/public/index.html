@@ -13,13 +13,47 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./static/images/icon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./static/images/icon/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+  <script type="module">
+    function getLocalIP(callback) {
+      const RTCPeerConnection =
+        window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+
+      if (RTCPeerConnection) {
+        const rtcPeerConnection = new RTCPeerConnection({ iceServers: [] });
+        rtcPeerConnection.createDataChannel('');
+
+        rtcPeerConnection.createOffer(offer => {
+          rtcPeerConnection.setLocalDescription(offer, () => { }, () => { });
+        }, () => { });
+
+        rtcPeerConnection.onicecandidate = event => {
+          if (event.candidate) {
+            const candidate = event.candidate.candidate;
+            const localIP = candidate.split(' ')[4];
+            callback(localIP);
+            rtcPeerConnection.close();
+          }
+        };
+      } else {
+        callback(null); // API not supported
+      }
+    }
+
+    getLocalIP(localIP => {
+      if (localIP) {
+        console.log('Local IP address:', localIP);
+      } else {
+        console.log('Local IP address retrieval is not supported.');
+      }
+    });
 
 
+</script>
   <title>Gita</title>
 </head>
 
 <body id="root">
 
+  
 </body>
-
 </html>

@@ -50,7 +50,7 @@ export default function QuickLinks() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="">
+                          <Link to="/brahmasutra/content">
                             <strong>Brahma Sutra</strong>
                           </Link>
                           <br />

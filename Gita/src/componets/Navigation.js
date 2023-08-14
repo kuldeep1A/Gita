@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -6,7 +6,16 @@ const Navigation = () => {
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  useEffect(() => {
+    const sfj = document.querySelector("#edit-search-block-form");
+    sfj.addEventListener("click", (e) => {
+      console.log("Search not working on the server");
+    });
+    const sfjd = document.querySelector("#edit-submit");
+    sfjd.addEventListener("click", (e) => {
+      console.log("Search not working on the server");
+    });
+  });
 
   return (
     <>
@@ -30,7 +39,7 @@ const Navigation = () => {
                         <div className="container-inline">
                           <div className="form-item form-type-textfield form-item-search-block-form">
                             <input
-                              title="Enter the terms you wish to search for."
+                              title="Search are not working on the server"
                               type="text"
                               className="form-text"
                               id="edit-search-block-form"
