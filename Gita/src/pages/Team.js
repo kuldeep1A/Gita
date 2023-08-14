@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
 export default function Team() {
+  const imageStyle = {
+    width: "150px",
+    height: "150px",
+    borderRadius: "50%",
+  };
   return (
     <>
       <div className="container">
@@ -21,6 +26,12 @@ export default function Team() {
                     </p>
 
                     <div className="team-member">
+                      <img
+                        src="./static/images/img/profile.jpg"
+                        alt="Profile"
+                        draggable="false"
+                        style={imageStyle}
+                      />
                       <h2 className="size-6">
                         <Link
                           to="https://linkedin.com/in/kuldeep1a"

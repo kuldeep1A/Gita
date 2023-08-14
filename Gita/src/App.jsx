@@ -13,6 +13,9 @@ import Team from "./pages/Team";
 import QuickLinks from "./pages/QuickLinks";
 import SrimadIntro from "./pages/SrimadIntro";
 import Srimad from "./pages/Srimad";
+import Brahmasutra from "./pages/Brahmasutra";
+import BrahmasutraWelcome from "./pages/BrahmasutraWelcome";
+import BrahmasutraAbout from "./pages/BrahmasutraAbout";
 
 function App() {
   return (
@@ -28,6 +31,12 @@ function App() {
             <Route path="/quicklinks" element={<QuickLinks />} />
             <Route path="/srimad/intro" element={<SrimadIntro />} />
             <Route path="/srimad/content" element={<Srimad />} />
+            <Route
+              path="/brahmasutra/welcome"
+              element={<BrahmasutraWelcome />}
+            />
+            <Route path="/brahmasutra/about" element={<BrahmasutraAbout />} />
+            <Route path="/brahmasutra/content" element={<Brahmasutra />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
           </Route>

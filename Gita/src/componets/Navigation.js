@@ -176,18 +176,20 @@ const Navigation = () => {
                       </ul>
                     </li>
                     <li className="expanded">
-                      <Link to="/bramasutra/intro" title="">
+                      <Link to="/brahmasutra/content" title="">
                         BrahmaSutra (ब्रह्मसूत्र)
                       </Link>
                       <ul className="menu">
                         <li className="first leaf">
-                          <Link to="">Welcome</Link>
+                          <Link to="/brahmasutra/welcome">Welcome</Link>
                         </li>
                         <li className="leaf">
-                          <Link to="">About Brahma Sutra</Link>
+                          <Link to="/brahmasutra/about">
+                            About Brahma Sutra
+                          </Link>
                         </li>
                         <li className="last leaf">
-                          <Link to="" title="">
+                          <Link to="/brahmasutra/content" title="">
                             Content
                           </Link>
                         </li>
