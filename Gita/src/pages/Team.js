@@ -1,27 +1,6 @@
-function TeamMember({ name, role }) {
-  return (
-    <div className="team-member">
-      <h2 className="size-6">
-        {name} <h1 className="size-10">{role}</h1>
-      </h2>
-      <br />
-    </div>
-  );
-}
+import { Link } from "react-router-dom";
 
 export default function Team() {
-  const teamMembers = [
-    {
-      imgSrc: "team-member-1.jpg",
-      name: "Kuldeep Dhagnar",
-      role: "Project Lead",
-    },
-    {
-      imgSrc: "team-member-3.jpg",
-      name: "Internet",
-      role: "Helper",
-    },
-  ];
   return (
     <>
       <div className="container">
@@ -41,13 +20,22 @@ export default function Team() {
                       what it is today.
                     </p>
 
-                    {teamMembers.map((member, index) => (
-                      <TeamMember
-                        key={index}
-                        name={member.name}
-                        role={member.role}
-                      />
-                    ))}
+                    <div className="team-member">
+                      <h2 className="size-6">
+                        <Link
+                          to="https://linkedin.com/in/kuldeep1a"
+                          target="_blank"
+                        >
+                          Kuldeep Dhagnar
+                        </Link>
+                        <h1 className="size-10">Project Lead</h1>
+                      </h2>
+                      <br />
+                      <h2 className="size-6">
+                        Internet <h1 className="size-10">Helper</h1>
+                      </h2>
+                      <br />
+                    </div>
                   </div>
                 </div>
               </section>

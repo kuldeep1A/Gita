@@ -176,7 +176,7 @@ const Navigation = () => {
                       </ul>
                     </li>
                     <li className="expanded">
-                      <Link to="" title="">
+                      <Link to="/bramasutra/intro" title="">
                         BrahmaSutra (ब्रह्मसूत्र)
                       </Link>
                       <ul className="menu">
