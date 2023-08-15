@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
+import ReactGA from "react-ga";
 import ScrollRestoration from "./componets/ScrollRestoration";
 import Navigation from "./componets/Navigation";
 import Footer from "./componets/Footer";
@@ -49,3 +50,7 @@ function App() {
 }
 
 export default App;
+
+const slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa = "G-VXSDXFRQS7";
+ReactGA.initialize(slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa);
+ReactGA.pageview(window.location.pathname + window.location.search);
