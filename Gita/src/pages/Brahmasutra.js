@@ -209,7 +209,7 @@ export default function Brahmasutra() {
                                 </font>
                               </p>
                               <p className="text-center">
-                                <font className="fw-normal size-8">
+                                <font className="fw-normal size-7">
                                   {sutraContent || "Sutra not found"}
                                 </font>
                               </p>

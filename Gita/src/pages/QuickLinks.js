@@ -1,10 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 
 export default function QuickLinks() {
-  const colorgreen = {
-    color: "green",
-  };
-
   return (
     <>
       <div className="container">
@@ -35,14 +31,14 @@ export default function QuickLinks() {
                       <tr>
                         <td>
                           <Link to="">
-                            <strong>Ramcharitmanas</strong>
+                            <strong>Ramcharitmanas x</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
                           <Link to="">
-                            <strong>Valmiki Ramayanam</strong>
+                            <strong>Valmiki Ramayanam x</strong>
                           </Link>
                           <br />
                           &nbsp;
@@ -57,59 +53,9 @@ export default function QuickLinks() {
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="">
+                          <Link to="yogasutra/content">
                             <strong>Yoga Sutra</strong>
                           </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <Link to="">
-                            <strong>Shri Ram Mangal Dasji</strong>
-                          </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                        <td>
-                          <Link to="">
-                            <strong>Nepali Site</strong>
-                          </Link>
-                          <br />
-                          (Contains Bhanubhakta's Ramayana)
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <Link to="">
-                            <strong>
-                              Upanishads
-                              <span style={colorgreen}>
-                                <sup>NEW</sup>
-                              </span>
-                            </strong>
-                          </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                        <td>
-                          <Link to="">
-                            <strong>Sankara Site</strong>
-                          </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <Link to="">
-                            <strong>Concept Maps</strong>
-                          </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                        <td>
                           <br />
                           &nbsp;
                         </td>

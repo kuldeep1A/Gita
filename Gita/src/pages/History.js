@@ -9,7 +9,7 @@ export default function History() {
                 <h1 className="page-title">History </h1>
                 <div className="field-items">
                   <div>
-                    <h1 className="size-6 color-dark-aubergine fw-normal">
+                    <h1 className="size-6 color-dark-blue fw-normal">
                       History of Our College CMS Project
                     </h1>
                     <p className="size-7">
@@ -20,7 +20,7 @@ export default function History() {
                       institution's legacy. Here's a glimpse into our story:
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Genesis of the Idea:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Genesis of the Idea:</h2>
                     <p className="size-7">
                       Our project was born from the vision of creating a digital
                       repository that preserves the history and accomplishments
@@ -29,7 +29,7 @@ export default function History() {
                       engage with the institution's heritage.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">
+                    <h2 className="size-6 color-dark-blue fw-normal">
                       Development and Collaborative Efforts:
                     </h2>
                     <p className="size-7">
@@ -40,7 +40,7 @@ export default function History() {
                       seamless and enriching user experience.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Evolution of Features:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Evolution of Features:</h2>
                     <p className="size-7">
                       As our project took shape, we incorporated features that
                       allow users to explore a variety of historical content.
@@ -49,7 +49,7 @@ export default function History() {
                       forms of media.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Capturing Milestones:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Capturing Milestones:</h2>
                     <p className="size-7">
                       Throughout the development process, we celebrated
                       significant milestones. From the first line of code to the
@@ -58,7 +58,7 @@ export default function History() {
                       essence of our college.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Unveiling and Future Directions:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Unveiling and Future Directions:</h2>
                     <p className="size-7">
                       Today, we proudly unveil our CMS project to the college
                       community and the world. However, this is just the
@@ -67,7 +67,7 @@ export default function History() {
                       repository that continues to tell our college's story.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Join the Journey:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Join the Journey:</h2>
                     <p className="size-7">
                       We invite all students, alumni, faculty, and friends of
                       our college to explore, engage, and contribute to our CMS

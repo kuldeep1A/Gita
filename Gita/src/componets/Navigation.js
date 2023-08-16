@@ -106,86 +106,79 @@ const Navigation = () => {
                   </Link>
                   <ul className="menu">
                     <li className="first expanded">
-                      <Link to="/srimad/content" title="">
+                      <Link to="/srimad/content" title="Srimad BhagavadGita">
                         Srimad BhagavadGita
                       </Link>
                       <ul className="menu">
                         <li className="first leaf">
-                          <Link to="/srimad/intro" title="">
+                          <Link to="/srimad/intro" title="Introduction">
                             Introduction
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/srimad/content" title="">
+                          <Link to="/srimad/content" title="Srimadn Content">
                             Content
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="" title="Chapterwise Shlokas">
                             Chapterwise Shlokas
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
-                            Related Links
-                          </Link>
-                        </li>
-                        <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="/srimad/textdetails" title="Text Details">
                             Text Details
-                          </Link>
-                        </li>
-                        <li className="last leaf">
-                          <Link to="" title="">
-                            Acknowledgement
                           </Link>
                         </li>
                       </ul>
                     </li>
                     <li className="expanded">
-                      <Link to="/othergitas/list" title="Other Gitas list">
+                      <Link to="/othergitas/list" title="Other Gitas">
                         Other Gitas
                       </Link>
                       <ul className="menu">
                         <li className="first leaf">
-                          <Link to="" title="">
+                          <Link to="" title="Ashtavakra Gita">
                             Ashtavakra Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="" title="Avadhuta Gita">
                             Avadhuta Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="" title="Kapila Gita">
                             Kapila Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="" title="Sriram Gita">
                             Sriram Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="" title="Sruti Gita">
                             Sruti Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="" title="Uddhava Gita">
                             Uddhava Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="">
+                          <Link to="" title="Vibhishana Gita">
                             Vibhishana Gita
                           </Link>
                         </li>
                       </ul>
                     </li>
                     <li className="expanded">
-                      <Link to="/brahmasutra/content" title="">
+                      <Link
+                        to="/brahmasutra/content"
+                        title="Brahmasutra content"
+                      >
                         BrahmaSutra (ब्रह्मसूत्र)
                       </Link>
                       <ul className="menu">
@@ -198,23 +191,19 @@ const Navigation = () => {
                           </Link>
                         </li>
                         <li className="last leaf">
-                          <Link to="/brahmasutra/content" title="">
+                          <Link
+                            to="/brahmasutra/content"
+                            title="Brahmasutra content"
+                          >
                             Content
                           </Link>
                         </li>
                       </ul>
                     </li>
                     <li className="last expanded">
-                      <Link to="" title="">
+                      <Link to="yogasutra/content" title="Yogasutra content">
                         YogaSutra
                       </Link>
-                      <ul className="menu">
-                        <li className="first last leaf">
-                          <Link to="" title="">
-                            Content
-                          </Link>
-                        </li>
-                      </ul>
                     </li>
                   </ul>
                 </li>

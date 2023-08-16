@@ -1,4 +1,4 @@
-export default function Contact() {
+export default function Kapila() {
   return (
     <>
       <div className="container">
@@ -6,12 +6,8 @@ export default function Contact() {
           <div className="content-sidebar-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">Contact</h1>
-                <div className="field-items">
-                  <p className="size-5">
-                    <b>kuldeepdhangarkd@gmail.com</b> <h1>Kuldeep Dhangar</h1>
-                  </p>
-                </div>
+                <h1 className="page-title">Kapila</h1>
+                <div className="field-items"></div>
               </section>
             </div>
           </div>

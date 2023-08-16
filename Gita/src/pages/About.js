@@ -11,7 +11,7 @@ export default function About() {
                 </h1>
                 <div className="field-items">
                   <div>
-                    <h1 className="size-6 color-dark-aubergine fw-normal">
+                    <h1 className="size-6 color-dark-blue fw-normal">
                       About Our Project: Religious Texts Repository
                     </h1>
                     <p className="size-7">
@@ -23,7 +23,7 @@ export default function About() {
                       from different traditions. Here's what you can expect:
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Srimad Bhagavad Gita and More:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Srimad Bhagavad Gita and More:</h2>
                     <p className="size-7">
                       Discover the timeless wisdom of texts like the Srimad
                       Bhagavad Gita, Ramcharitmanas, Brahma Sutra, and more.
@@ -32,7 +32,7 @@ export default function About() {
                       generations.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Exploring Other Gitas:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Exploring Other Gitas:</h2>
                     <p className="size-7">
                       Beyond the Bhagavad Gita, delve into other Gitas that
                       offer unique insights into various aspects of life and
@@ -40,7 +40,7 @@ export default function About() {
                       and expand your understanding.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">
+                    <h2 className="size-6 color-dark-blue fw-normal">
                       Ramcharitmanas and Valmiki Ramayanam:
                     </h2>
                     <p className="size-7">
@@ -50,7 +50,7 @@ export default function About() {
                       continue to resonate across cultures.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Brahma Sutra and Yoga Sutra:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Brahma Sutra and Yoga Sutra:</h2>
                     <p className="size-7">
                       Dive into the intricate philosophical explorations of the
                       Brahma Sutra and the profound wisdom of the Yoga Sutra.
@@ -58,7 +58,7 @@ export default function About() {
                       guidance for living a balanced and purposeful life.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">Multilingual and Accessible:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">Multilingual and Accessible:</h2>
                     <p className="size-7">
                       Our platform offers content in multiple languages,
                       ensuring that these invaluable texts are accessible to a
@@ -67,7 +67,7 @@ export default function About() {
                       your needs.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">
+                    <h2 className="size-6 color-dark-blue fw-normal">
                       Shri Ram Mangal Dasji and Nepali Site:
                     </h2>
                     <p className="size-7">
@@ -77,7 +77,7 @@ export default function About() {
                       celebrates the richness of spiritual diversity.
                     </p>
 
-                    <h2 className="size-6 color-dark-aubergine fw-normal">
+                    <h2 className="size-6 color-dark-blue fw-normal">
                       A Space for Learning and Reflection:
                     </h2>
                     <p className="size-7">

@@ -236,6 +236,9 @@ ul.menu {
   clear: both;
   visibility: hidden;
 }
+.list {
+  margin-bottom: auto;
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -256,6 +259,9 @@ table.homepage td {
 }
 a {
   text-decoration: none;
+}
+b {
+  color: #c100ff !important;
 }
 body #footer {
   overflow: auto;

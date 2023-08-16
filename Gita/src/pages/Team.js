@@ -16,7 +16,7 @@ export default function Team() {
                 <h1 className="page-title">Our Team</h1>
                 <div className="field-items">
                   <div>
-                    <h1 className="size-6">Meet Our Team</h1>
+                    <h1 className="size-6 color-dark-blue">Meet Our Team</h1>
                     <p className="size-7">
                       We're a dedicated group of individuals who have come
                       together to create and manage the content management

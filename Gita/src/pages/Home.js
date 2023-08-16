@@ -4,9 +4,6 @@ export default function Home() {
   const colorx = {
     color: "#a52a2a",
   };
-  const colorgreen = {
-    color: "green",
-  };
   const background = {
     backgroundColor: "#ffffe0",
   };
@@ -54,14 +51,14 @@ export default function Home() {
                       <tr>
                         <td>
                           <Link to="">
-                            <strong>Ramcharitmanas</strong>
+                            <strong>Ramcharitmanas x</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
                           <Link to="">
-                            <strong>Valmiki Ramayanam</strong>
+                            <strong>Valmiki Ramayanam x</strong>
                           </Link>
                           <br />
                           &nbsp;
@@ -83,56 +80,7 @@ export default function Home() {
                           &nbsp;
                         </td>
                       </tr>
-                      <tr>
-                        <td>
-                          <Link to="">
-                            <strong>Shri Ram Mangal Dasji</strong>
-                          </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                        <td>
-                          <Link to="">
-                            <strong>Nepali Site</strong>
-                          </Link>
-                          <br />
-                          (Contains Bhanubhakta's Ramayana)
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <Link to="">
-                            <strong>
-                              Upanishads
-                              <span style={colorgreen}>
-                                <sup>NEW</sup>
-                              </span>
-                            </strong>
-                          </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                        <td>
-                          <Link to="">
-                            <strong>Sankara Site</strong>
-                          </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <Link to="">
-                            <strong>Concept Maps</strong>
-                          </Link>
-                          <br />
-                          &nbsp;
-                        </td>
-                        <td>
-                          <br />
-                          &nbsp;
-                        </td>
-                      </tr>
+                      
                     </tbody>
                   </table>
                 </div>

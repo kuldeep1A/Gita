@@ -17,7 +17,9 @@ import Srimad from "./pages/Srimad";
 import Brahmasutra from "./pages/Brahmasutra";
 import BrahmasutraWelcome from "./pages/BrahmasutraWelcome";
 import BrahmasutraAbout from "./pages/BrahmasutraAbout";
-import Othergitas from "./pages/Othergitas"
+import TextDetails from "./pages/TextDetails";
+import Othergitas from "./pages/Othergitas";
+import Yogasutra from "./pages/Yogasutra";
 
 function App() {
   return (
@@ -34,12 +36,14 @@ function App() {
             <Route path="/othergitas/list" element={<Othergitas />} />
             <Route path="/srimad/intro" element={<SrimadIntro />} />
             <Route path="/srimad/content" element={<Srimad />} />
+            <Route path="/srimad/textdetails" element={<TextDetails />} />
             <Route
               path="/brahmasutra/welcome"
               element={<BrahmasutraWelcome />}
             />
             <Route path="/brahmasutra/about" element={<BrahmasutraAbout />} />
             <Route path="/brahmasutra/content" element={<Brahmasutra />} />
+            <Route path="/yogasutra/content" element={<Yogasutra />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
           </Route>
