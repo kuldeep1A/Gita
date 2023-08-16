@@ -138,37 +138,37 @@ const Navigation = () => {
                       </Link>
                       <ul className="menu">
                         <li className="first leaf">
-                          <Link to="" title="Ashtavakra Gita">
+                          <Link to="/ashtavakra/content" title="Ashtavakra Gita">
                             Ashtavakra Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="Avadhuta Gita">
+                          <Link to="/avadhuta/content" title="Avadhuta Gita">
                             Avadhuta Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="Kapila Gita">
+                          <Link to="/kapila/content" title="Kapila Gita">
                             Kapila Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="Sriram Gita">
+                          <Link to="/sriram/content" title="Sriram Gita">
                             Sriram Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="Sruti Gita">
+                          <Link to="/sruti/content" title="Sruti Gita">
                             Sruti Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="Uddhava Gita">
+                          <Link to="/uddhava/content" title="Uddhava Gita">
                             Uddhava Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="" title="Vibhishana Gita">
+                          <Link to="/vibhishana/content" title="Vibhishana Gita">
                             Vibhishana Gita
                           </Link>
                         </li>

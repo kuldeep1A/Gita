@@ -6,7 +6,7 @@ export default function Avadhuta() {
           <div className="content-sidebar-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">Avadhuta</h1>
+                <h1 className="page-title">Avadhuta Gita</h1>
                 <div className="field-items"></div>
               </section>
             </div>

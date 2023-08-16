@@ -20,6 +20,13 @@ import BrahmasutraAbout from "./pages/BrahmasutraAbout";
 import TextDetails from "./pages/TextDetails";
 import Othergitas from "./pages/Othergitas";
 import Yogasutra from "./pages/Yogasutra";
+import Ashtavakra from "./pages/Ashtavakra";
+import Avadhuta from "./pages/Avadhuta";
+import Kapila from "./pages/Kapila";
+import Sriram from "./pages/Sriram";
+import Sruti from "./pages/Sruti";
+import Uddhava from "./pages/Uddhava";
+import Vibhishana from "./pages/Vibhishana";
 
 function App() {
   return (
@@ -34,6 +41,13 @@ function App() {
             <Route path="/Team" element={<Team />} />
             <Route path="/quicklinks" element={<QuickLinks />} />
             <Route path="/othergitas/list" element={<Othergitas />} />
+            <Route path="/ashtavakra/content" element={<Ashtavakra />} />
+            <Route path="/avadhuta/content" element={<Avadhuta />} />
+            <Route path="/kapila/content" element={<Kapila />} />
+            <Route path="/sriram/content" element={<Sriram />} />
+            <Route path="/sruti/content" element={<Sruti />} />
+            <Route path="/uddhava/content" element={<Uddhava />} />
+            <Route path="/vibhishana/content" element={<Vibhishana />} />
             <Route path="/srimad/intro" element={<SrimadIntro />} />
             <Route path="/srimad/content" element={<Srimad />} />
             <Route path="/srimad/textdetails" element={<TextDetails />} />

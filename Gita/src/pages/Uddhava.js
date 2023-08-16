@@ -6,7 +6,7 @@ export default function Uddhava() {
           <div className="content-sidebar-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">Uddhava</h1>
+                <h1 className="page-title">Uddhava Gita</h1>
                 <div className="field-items"></div>
               </section>
             </div>
