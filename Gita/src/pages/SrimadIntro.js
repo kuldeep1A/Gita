@@ -14,7 +14,7 @@ export default function SriIntro() {
                   </h1>{" "}
                 </h1>
                 <div className="field-items">
-                  <h1 className="size-6 color-dark-aubergine color-light-blue">
+                  <h1 className="size-6 color-dark-blue">
                     INTRODUCTION TO THE BHAGAVADGITA
                   </h1>
 
@@ -168,7 +168,7 @@ export default function SriIntro() {
                     Liberation By Renunciation
                   </p>
 
-                  <h1 className="size-6 color-dark-aubergine color-light-blue">
+                  <h1 className="size-6 color-dark-blue">
                     INTRODUCTION TO THE SUPERSITE
                   </h1>
 
@@ -188,7 +188,7 @@ export default function SriIntro() {
                     English, and many more texts are on the anvil.
                   </p>
 
-                  <h1 className="size-6 color-dark-aubergine color-light-blue">
+                  <h1 className="size-6 color-dark-blue">
                     MULTILINGUAL BHAGAVADGITA
                   </h1>
 

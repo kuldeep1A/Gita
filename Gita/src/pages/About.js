@@ -58,25 +58,6 @@ export default function About() {
                       guidance for living a balanced and purposeful life.
                     </p>
 
-                    <h2 className="size-6 color-dark-blue fw-normal">Multilingual and Accessible:</h2>
-                    <p className="size-7">
-                      Our platform offers content in multiple languages,
-                      ensuring that these invaluable texts are accessible to a
-                      global audience. Whether you're a native speaker or
-                      learning a new language, our diverse collection caters to
-                      your needs.
-                    </p>
-
-                    <h2 className="size-6 color-dark-blue fw-normal">
-                      Shri Ram Mangal Dasji and Nepali Site:
-                    </h2>
-                    <p className="size-7">
-                      Experience the spiritual essence of texts like Shri Ram
-                      Mangal Dasji and explore the Nepali Site for a unique
-                      perspective on religious teachings. Our platform
-                      celebrates the richness of spiritual diversity.
-                    </p>
-
                     <h2 className="size-6 color-dark-blue fw-normal">
                       A Space for Learning and Reflection:
                     </h2>

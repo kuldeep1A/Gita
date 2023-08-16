@@ -101,7 +101,7 @@ export default function Brahmasutra() {
           <div className="content-sidebar-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title"> </h1>
+                <h1 className="page-title">BrahmaSutra </h1>
                 <div className="region region-content">
                   <div className="content">
                     <div>

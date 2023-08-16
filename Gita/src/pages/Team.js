@@ -5,6 +5,7 @@ export default function Team() {
     width: "150px",
     height: "150px",
     borderRadius: "50%",
+    boxShadow: "0px 0px 20px 1px",
   };
   return (
     <>

@@ -138,7 +138,10 @@ const Navigation = () => {
                       </Link>
                       <ul className="menu">
                         <li className="first leaf">
-                          <Link to="/ashtavakra/content" title="Ashtavakra Gita">
+                          <Link
+                            to="/ashtavakra/content"
+                            title="Ashtavakra Gita"
+                          >
                             Ashtavakra Gita
                           </Link>
                         </li>
@@ -168,7 +171,10 @@ const Navigation = () => {
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/vibhishana/content" title="Vibhishana Gita">
+                          <Link
+                            to="/vibhishana/content"
+                            title="Vibhishana Gita"
+                          >
                             Vibhishana Gita
                           </Link>
                         </li>
@@ -183,7 +189,9 @@ const Navigation = () => {
                       </Link>
                       <ul className="menu">
                         <li className="first leaf">
-                          <Link to="/brahmasutra/welcome">Welcome</Link>
+                          <Link title="Welcome" to="/brahmasutra/welcome">
+                            Welcome
+                          </Link>
                         </li>
                         <li className="leaf">
                           <Link to="/brahmasutra/about">
@@ -212,7 +220,7 @@ const Navigation = () => {
                   <Link to="/contact">Contact</Link>
                 </li>
                 <li className="last leaf" onClick={handleToggleMenu}>
-                  <Link to="/login" title="">
+                  <Link to="/login" title="Admin Server">
                     Login
                   </Link>
                 </li>
