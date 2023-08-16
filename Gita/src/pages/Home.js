@@ -44,7 +44,7 @@ export default function Home() {
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="">
+                          <Link to="/othergitas/list">
                             <strong>Other Gitas</strong>
                           </Link>
                           <br />

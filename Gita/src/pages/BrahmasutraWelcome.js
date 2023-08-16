@@ -19,11 +19,7 @@ export default function BrahmasutraWelcome() {
                     systematically expounds Vedanta philosophy. Also read Adi
                     Sankara’s monumental commentary on this work. These Sanskrit
                     texts can be viewed on this website in any of 11 Indian
-                    language scripts, including Roman. Other features of this
-                    website include an easy-to-use navigation bar, 2-book view
-                    for comparative study, PDF files for downloading the texts
-                    and an annotated list of related websites. Welcome to the
-                    Brahma Sutra website!{" "}
+                    language scripts, including Roman.
                   </p>
                   <div style={imageStyle}>
                     <img

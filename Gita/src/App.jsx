@@ -17,6 +17,7 @@ import Srimad from "./pages/Srimad";
 import Brahmasutra from "./pages/Brahmasutra";
 import BrahmasutraWelcome from "./pages/BrahmasutraWelcome";
 import BrahmasutraAbout from "./pages/BrahmasutraAbout";
+import Othergitas from "./pages/Othergitas"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/history" element={<History />} />
             <Route path="/Team" element={<Team />} />
             <Route path="/quicklinks" element={<QuickLinks />} />
+            <Route path="/othergitas/list" element={<Othergitas />} />
             <Route path="/srimad/intro" element={<SrimadIntro />} />
             <Route path="/srimad/content" element={<Srimad />} />
             <Route

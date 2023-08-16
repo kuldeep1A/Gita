@@ -143,7 +143,7 @@ const Navigation = () => {
                       </ul>
                     </li>
                     <li className="expanded">
-                      <Link to="" title="">
+                      <Link to="/othergitas/list" title="Other Gitas list">
                         Other Gitas
                       </Link>
                       <ul className="menu">
