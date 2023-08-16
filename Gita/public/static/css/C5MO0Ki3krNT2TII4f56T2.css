@@ -53,12 +53,12 @@
     width: 100%;
     padding: 3% 2%;
     border-radius: 0;
-    border-bottom: 1px solid #16a085;
   }
   #main-menu ul.menu li {
     margin: 0;
     width: 100%;
     text-align: center;
+    border-bottom: 1px solid #16a085;
   }
   #main-menu .nav-toggle {
     display: block;

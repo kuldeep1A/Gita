@@ -94,6 +94,7 @@ body {
 }
 #main-menu {
   max-width: 1024px;
+  
   margin: 0 auto;
   position: relative;
   background-color: #214467 !important;

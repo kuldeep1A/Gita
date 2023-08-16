@@ -48,10 +48,8 @@ export default function Brahmasutra() {
   };
 
   useEffect(() => {
-    console.log(sutraContent);
     const fetchSutraContent = async () => {
       try {
-        console.log("start");
         const pathC = `/brahmasutra/yvDcZdIZ7ZCTA2ptHSoj/Chapter${selectedChapter}`;
         const refC = collection(firestore, pathC);
 
@@ -71,7 +69,6 @@ export default function Brahmasutra() {
         });
 
         var documentPath = `/brahmasutra/yvDcZdIZ7ZCTA2ptHSoj/Chapter${selectedChapter}/${idC}/Quarter${selectedQuarter}/${idQ}`;
-        console.log(documentPath);
 
         const docRef = doc(firestore, documentPath);
         const docSnapshot = await getDoc(docRef);
