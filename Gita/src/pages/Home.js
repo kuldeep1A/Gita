@@ -34,14 +34,14 @@ export default function Home() {
                     <tbody>
                       <tr>
                         <td>
-                          <Link to="/srimad/intro">
+                          <Link to="/srimadIntro">
                             <strong>Srimad BhagavadGita</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="/othergitas/list">
+                          <Link to="/othergitas">
                             <strong>Other Gitas</strong>
                           </Link>
                           <br />
@@ -66,7 +66,7 @@ export default function Home() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="/brahmasutra/welcome">
+                          <Link to="/brahmasutraWelcome">
                             <strong>Brahma Sutra</strong>
                           </Link>
                           <br />
@@ -80,7 +80,6 @@ export default function Home() {
                           &nbsp;
                         </td>
                       </tr>
-                      
                     </tbody>
                   </table>
                 </div>

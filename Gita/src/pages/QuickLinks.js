@@ -14,14 +14,14 @@ export default function QuickLinks() {
                     <tbody>
                       <tr>
                         <td>
-                          <Link to="/srimad/content">
+                          <Link to="/srimadContent">
                             <strong>Srimad BhagavadGita</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="/othergitas/list">
+                          <Link to="/othergitas">
                             <strong>Other Gitas</strong>
                           </Link>
                           <br />
@@ -46,7 +46,7 @@ export default function QuickLinks() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="/brahmasutra/content">
+                          <Link to="/brahmasutraContent">
                             <strong>Brahma Sutra</strong>
                           </Link>
                           <br />

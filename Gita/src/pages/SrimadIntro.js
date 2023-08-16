@@ -10,7 +10,7 @@ export default function SriIntro() {
                 <h1 className="page-title">
                   श्रीमद् भगवद्गीता{" "}
                   <h1>
-                    <Link to="/srimad/content">View Shloka</Link>
+                    <Link to="/srimadContent">View Shloka</Link>
                   </h1>{" "}
                 </h1>
                 <div className="field-items">

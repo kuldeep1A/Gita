@@ -12,25 +12,25 @@ export default function Othergitas() {
                 <div className="field-items">
                   <div className="list size-5">
                     <div className="mb-15">
-                      <Link to="/ashtavakra/content">Ashtavakra Gita</Link>
+                      <Link to="/ashtavakraContent">Ashtavakra Gita</Link>
                     </div>
                     <div className="mb-15">
-                      <Link to="/avadhuta/content">Avadhuta Gita</Link>
+                      <Link to="/avadhutaContent">Avadhuta Gita</Link>
                     </div>
                     <div className="mb-15">
-                      <Link to="/kapila/content">Kapila Gita</Link>
+                      <Link to="/kapilaContent">Kapila Gita</Link>
                     </div>
                     <div className="mb-15">
-                      <Link to="/sriram/content">Sriram Gita</Link>
+                      <Link to="/sriramContent">Sriram Gita</Link>
                     </div>
                     <div className="mb-15">
-                      <Link to="/sruti/content">Sruti Gita</Link>
+                      <Link to="/srutiContent">Sruti Gita</Link>
                     </div>
                     <div className="mb-15">
-                      <Link to="/uddhava/content">Uddhava Gita</Link>
+                      <Link to="/uddhavaContent">Uddhava Gita</Link>
                     </div>
                     <div className="mb-15">
-                      <Link to="/vibhishana/content">Vibhishana Gita</Link>
+                      <Link to="/vibhishanaContent">Vibhishana Gita</Link>
                     </div>
                     <Outlet />
                   </div>

@@ -40,24 +40,24 @@ function App() {
             <Route path="/history" element={<History />} />
             <Route path="/Team" element={<Team />} />
             <Route path="/quicklinks" element={<QuickLinks />} />
-            <Route path="/othergitas/list" element={<Othergitas />} />
-            <Route path="/ashtavakra/content" element={<Ashtavakra />} />
-            <Route path="/avadhuta/content" element={<Avadhuta />} />
-            <Route path="/kapila/content" element={<Kapila />} />
-            <Route path="/sriram/content" element={<Sriram />} />
-            <Route path="/sruti/content" element={<Sruti />} />
-            <Route path="/uddhava/content" element={<Uddhava />} />
-            <Route path="/vibhishana/content" element={<Vibhishana />} />
-            <Route path="/srimad/intro" element={<SrimadIntro />} />
-            <Route path="/srimad/content" element={<Srimad />} />
-            <Route path="/srimad/textdetails" element={<TextDetails />} />
+            <Route path="/othergitas" element={<Othergitas />} />
+            <Route path="/ashtavakraContent" element={<Ashtavakra />} />
+            <Route path="/avadhutaContent" element={<Avadhuta />} />
+            <Route path="/kapilaContent" element={<Kapila />} />
+            <Route path="/sriramContent" element={<Sriram />} />
+            <Route path="/srutiContent" element={<Sruti />} />
+            <Route path="/uddhavaContent" element={<Uddhava />} />
+            <Route path="/vibhishanaContent" element={<Vibhishana />} />
+            <Route path="/srimadIntro" element={<SrimadIntro />} />
+            <Route path="/srimadContent" element={<Srimad />} />
+            <Route path="/srimadTextdetails" element={<TextDetails />} />
             <Route
-              path="/brahmasutra/welcome"
+              path="/brahmasutraWelcome"
               element={<BrahmasutraWelcome />}
             />
-            <Route path="/brahmasutra/about" element={<BrahmasutraAbout />} />
-            <Route path="/brahmasutra/content" element={<Brahmasutra />} />
-            <Route path="/yogasutra/content" element={<Yogasutra />} />
+            <Route path="/brahmasutraAbout" element={<BrahmasutraAbout />} />
+            <Route path="/brahmasutraContent" element={<Brahmasutra />} />
+            <Route path="/yogasutraContent" element={<Yogasutra />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
           </Route>
