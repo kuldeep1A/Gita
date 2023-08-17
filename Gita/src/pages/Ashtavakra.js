@@ -173,10 +173,10 @@ export default function Ashtavakra() {
                                     <React.Fragment key={index}>
                                       {array.length >= 4
                                         ? index === 3
-                                          ? `।।${line}।।`
+                                          ? ` ।। ${line} ।।`
                                           : line.trim()
                                         : index === 2
-                                        ? `।।${line}।।`
+                                        ? ` ।। ${line} ।।`
                                         : line.trim()}
 
                                       {array.length >= 4

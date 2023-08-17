@@ -117,11 +117,14 @@ export default function Kapila() {
                                   value={selectedChapter}
                                   onChange={handleChapterChange}
                                 >
-                                  {Array.from({ length: 3 }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                  {Array.from(
+                                    { length: OptionLength },
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    )
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -175,10 +178,10 @@ export default function Kapila() {
                                     <React.Fragment key={index}>
                                       {array.length >= 4
                                         ? index === 3
-                                          ? `।।${line}।।`
+                                          ? ` ।। ${line} ।।`
                                           : line.trim()
                                         : index === 2
-                                        ? `।।${line}।।`
+                                        ? ` ।। ${line} ।।`
                                         : line.trim()}
 
                                       {array.length >= 4
