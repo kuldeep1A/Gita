@@ -64,7 +64,7 @@ export default function Ashtavakra() {
           setShlokaContent(shloka);
         }
       } catch (error) {
-        console.error("Error fetching shloka contetn: ", error);
+        console.error("Error fetching shloka content: ", error);
       }
     };
     fetchShlokaContent();
@@ -171,7 +171,6 @@ export default function Ashtavakra() {
                                   .filter((line) => line.trim() !== "")
                                   .map((line, index, array) => (
                                     <React.Fragment key={index}>
-                                      {console.log(array)}
                                       {array.length >= 4
                                         ? index === 3
                                           ? `।।${line}।।`

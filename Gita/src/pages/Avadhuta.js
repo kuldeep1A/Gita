@@ -1,4 +1,76 @@
+import React, { useState, useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  getDoc,
+} from "firebase/firestore";
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementid: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+};
+initializeApp(firebaseConfig);
+const firestore = getFirestore();
+
 export default function Avadhuta() {
+  const [idC, setidC] = useState("");
+  const [OptionLength, setOptionLength] = useState(1);
+  const [selectedChapter, setSelectedChapter] = useState(1);
+  const [selectShloka, setSelectedShloka] = useState(1);
+  const [ShlokaContent, setShlokaContent] = useState("");
+
+  const handleChapterChange = (event) => {
+    const newChapter = parseInt(event.target.value, 10);
+    setSelectedChapter(newChapter);
+    setSelectedShloka(1);
+  };
+
+  const handleShlokaChange = (event) => {
+    const newShloka = parseInt(event.target.value, 10);
+    setSelectedShloka(newShloka);
+  };
+
+  useEffect(() => {
+    const fetchShlokaContent = async () => {
+      try {
+        const pathC = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}`;
+        const refC = collection(firestore, pathC);
+
+        getDocs(refC).then((sanpshot) => {
+          sanpshot.docs.forEach((doc) => {
+            setidC(`${doc.id}`);
+          });
+        });
+
+        const documentPath = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}/${idC}`;
+        const docRef = doc(firestore, documentPath);
+        const docSanpshot = await getDoc(docRef);
+
+        if (docSanpshot.exists) {
+          const ShlokaData = docSanpshot.data();
+          const ShlokaArray = Object.entries(ShlokaData).map(
+            ([shlokaNumber, Shloka]) => ({ shlokaNumber, Shloka })
+          );
+          setOptionLength(ShlokaArray.length);
+          const shloka = ShlokaData[`Shloka${selectShloka}`];
+          setShlokaContent(shloka);
+        }
+      } catch (error) {
+        console.error("Error fetching shloka content: ", error);
+      }
+    };
+
+    fetchShlokaContent();
+  }, [idC, selectShloka, selectedChapter]);
+
   return (
     <>
       <div className="container">
@@ -42,8 +114,10 @@ export default function Avadhuta() {
                                 <select
                                   id="edit-language"
                                   className="form-select required"
+                                  value={selectedChapter}
+                                  onChange={handleChapterChange}
                                 >
-                                  {Array.from({ length: 20 }, (_, index) => (
+                                  {Array.from({ length: 8 }, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
                                     </option>
@@ -56,18 +130,23 @@ export default function Avadhuta() {
                             id="edit-field-shloka"
                             className="views-exposed-widget"
                           >
-                            <label className="fw-normal">Sutra</label>
+                            <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
                                 <select
                                   id="edit-language"
                                   className="form-select required"
+                                  value={selectShloka}
+                                  onChange={handleShlokaChange}
                                 >
-                                  {Array.from({ length: 10 }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                  {Array.from(
+                                    { length: OptionLength },
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    )
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -89,7 +168,45 @@ export default function Avadhuta() {
                         </p>
                         <p className="text-center">
                           <font className="fw-normal size-7">
-                            "Sutra not found"
+                            {ShlokaContent
+                              ? ShlokaContent.split("।")
+                                  .filter((line) => line.trim() !== "")
+                                  .map((line, index, array) => (
+                                    <React.Fragment key={index}>
+                                      {array.length >= 4
+                                        ? index === 3
+                                          ? `।।${line}।।`
+                                          : line.trim()
+                                        : index === 2
+                                        ? `।।${line}।।`
+                                        : line.trim()}
+
+                                      {array.length >= 4
+                                        ? index === 1
+                                          ? "।"
+                                          : ""
+                                        : index === 0
+                                        ? "।"
+                                        : ""}
+                                      {index === 0 && selectedChapter <= 20 && (
+                                        <>
+                                          <br />
+                                          <br />
+                                        </>
+                                      )}
+
+                                      {array.length >= 4
+                                        ? index === 1 &&
+                                          selectedChapter <= 20 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )
+                                        : ""}
+                                    </React.Fragment>
+                                  ))
+                              : "Shloka not found."}
                           </font>
                         </p>
                       </div>
