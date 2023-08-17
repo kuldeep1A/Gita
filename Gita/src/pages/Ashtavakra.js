@@ -21,8 +21,11 @@ initializeApp(firebaseConfig);
 const firestore = getFirestore();
 
 export default function Ashtavakra() {
+  const [idC, setidC] = useState("");
+  const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
   const [selectShloka, setSelectedShloka] = useState(1);
+  const [ShlokaContent, setShlokaContent] = useState("");
 
   const handleChapterChange = (event) => {
     const newChapter = parseInt(event.target.value, 10);
@@ -34,6 +37,38 @@ export default function Ashtavakra() {
     const newShloka = parseInt(event.target.value, 10);
     setSelectedShloka(newShloka);
   };
+
+  useEffect(() => {
+    const fetchShlokaContent = async () => {
+      try {
+        const pathC = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}`;
+        const refC = collection(firestore, pathC);
+
+        getDocs(refC).then((sanpshot) => {
+          sanpshot.docs.forEach((doc) => {
+            setidC(`${doc.id}`);
+          });
+        });
+
+        const documentPath = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}/${idC}`;
+        const docRef = doc(firestore, documentPath);
+        const docSanpshot = await getDoc(docRef);
+
+        if (docSanpshot.exists) {
+          const ShlokaData = docSanpshot.data();
+          const ShlokaArray = Object.entries(ShlokaData).map(
+            ([shlokaNumber, Shloka]) => ({ shlokaNumber, Shloka })
+          );
+          setOptionLength(ShlokaArray.length);
+          const shloka = ShlokaData[`Shloka${selectShloka}`];
+          setShlokaContent(shloka);
+        }
+      } catch (error) {
+        console.error("Error fetching shloka contetn: ", error);
+      }
+    };
+    fetchShlokaContent();
+  }, [idC, selectShloka, selectedChapter]);
   return (
     <>
       <div className="container">
@@ -93,7 +128,7 @@ export default function Ashtavakra() {
                             id="edit-field-shloka"
                             className="views-exposed-widget"
                           >
-                            <label className="fw-normal">Sutra</label>
+                            <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
                                 <select
@@ -102,11 +137,14 @@ export default function Ashtavakra() {
                                   value={selectShloka}
                                   onChange={handleShlokaChange}
                                 >
-                                  {Array.from({ length: 10 }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                  {Array.from(
+                                    { length: OptionLength },
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    )
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -128,7 +166,46 @@ export default function Ashtavakra() {
                         </p>
                         <p className="text-center">
                           <font className="fw-normal size-7">
-                            "Sutra not found"
+                            {ShlokaContent
+                              ? ShlokaContent.split("।")
+                                  .filter((line) => line.trim() !== "")
+                                  .map((line, index, array) => (
+                                    <React.Fragment key={index}>
+                                      {console.log(array)}
+                                      {array.length >= 4
+                                        ? index === 3
+                                          ? `।।${line}।।`
+                                          : line.trim()
+                                        : index === 2
+                                        ? `।।${line}।।`
+                                        : line.trim()}
+
+                                      {array.length >= 4
+                                        ? index === 1
+                                          ? "।"
+                                          : ""
+                                        : index === 0
+                                        ? "।"
+                                        : ""}
+                                      {index === 0 && selectedChapter <= 20 && (
+                                        <>
+                                          <br />
+                                          <br />
+                                        </>
+                                      )}
+
+                                      {array.length >= 4
+                                        ? index === 1 &&
+                                          selectedChapter <= 20 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )
+                                        : ""}
+                                    </React.Fragment>
+                                  ))
+                              : "Shloka not found."}
                           </font>
                         </p>
                       </div>
