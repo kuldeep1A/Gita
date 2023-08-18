@@ -53,7 +53,7 @@ export default function QuickLinks() {
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="yogasutra/content">
+                          <Link to="/yogasutraContent">
                             <strong>Yoga Sutra</strong>
                           </Link>
                           <br />

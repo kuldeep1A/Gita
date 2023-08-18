@@ -1,5 +1,8 @@
 /* Normalize css | MIT License | kuldeep1a(Addition) | Github */
 html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   --font-sans: karla, Arial, sans-serif;
@@ -23,16 +26,12 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
+  user-select: none;
 }
 
-main {
-  display: block;
-}
 
-.main {
-  display: flex;
-  flex-direction: column;
-}
+
 
 h1 {
   font-size: 2em;
@@ -1988,40 +1987,7 @@ body.bg-white-400 .main {
   position: relative;
 }
 
-body .main {
-  background-color: #fff;
-  -webkit-transition: background-color 0.45s;
-  transition: background-color 0.45s;
-  border-bottom: 2px solid #006450;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-}
 
-body .bg-main {
-  background-color: #fff;
-  -webkit-transition: background-color 0.45s, color 0.45s;
-  transition: background-color 0.45s, color 0.45s;
-}
-
-@media only screen and (max-width: 1024px) {
-  body .main {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
-
-  .page {
-    outline: 10px solid #ff0;
-  }
-}
-
-html.noScroll {
-  height: 100%;
-}
-
-html.noScroll,
-html.noScroll body {
-  overflow-y: hidden;
-}
 
 body {
   user-select: none;

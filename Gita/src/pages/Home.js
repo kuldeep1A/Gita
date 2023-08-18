@@ -73,7 +73,7 @@ export default function Home() {
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="">
+                          <Link to="yogasutraContent">
                             <strong>Yoga Sutra</strong>
                           </Link>
                           <br />

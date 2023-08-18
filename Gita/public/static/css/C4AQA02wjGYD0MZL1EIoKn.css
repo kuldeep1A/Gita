@@ -94,7 +94,6 @@ body {
 }
 #main-menu {
   max-width: 1024px;
-  
   margin: 0 auto;
   position: relative;
   background-color: #214467 !important;
@@ -109,7 +108,7 @@ body {
 }
 #main-menu li:hover > a {
   background-color: #01152a;
-  border-radius: 8px !important;
+  border-radius: 13px !important;
 }
 ul.menu {
   padding: 0;
@@ -223,7 +222,6 @@ ul.menu {
   width: 100%;
 }
 .view-field_sutra{
-  
   border: 1px solid black !important;
   padding: 10px;
 }
@@ -241,6 +239,25 @@ ul.menu {
 }
 .list {
   margin-bottom: auto;
+}
+.team-member {
+  padding: 19px !important;
+}
+.choice {
+  float: none;
+}
+.choice-view {
+  float: left;
+  padding: 0.5em 1em 0 0;
+}
+.content-y {
+  margin-bottom: 100px;
+}
+.choice-box {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  border-radius: 0.4rem;
 }
 table {
   border-collapse: collapse;

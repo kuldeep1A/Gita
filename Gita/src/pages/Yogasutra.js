@@ -1,4 +1,73 @@
+import React, { useState, useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+} from "firebase/firestore";
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementid: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+};
+initializeApp(firebaseConfig);
+const firestore = getFirestore();
+
 export default function Yogasutra() {
+  const [idC, setidC] = useState("");
+  const [selectedChapter, setSelectedChapter] = useState(1);
+  const [selectedSutra, setSelectedSutra] = useState(1);
+  const [SutraContent, setSutraContent] = useState("");
+  const [BhasyaContent, setBhasyaContent] = useState("");
+  const [VrittiContent, setVrittiContent] = useState("");
+
+  const handleChapterChange = (event) => {
+    const newChapter = parseInt(event.target.value, 10);
+    setSelectedChapter(newChapter);
+    setSelectedSutra(1);
+  };
+  const handleSutraChange = (event) => {
+    const newSutra = parseInt(event.target.value, 10);
+    setSelectedSutra(newSutra);
+  };
+
+  useEffect(() => {
+    const fetching = async () => {
+      try {
+        const pathC = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}`;
+        const refC = collection(firestore, pathC);
+        getDocs(refC).then((snapshot) => {
+          snapshot.docs.forEach((doc) => {
+            setidC(`${doc.id}`);
+          });
+        });
+        const documentPath = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}/${idC}`;
+        const docRef = doc(firestore, documentPath);
+        const docSanpshot = await getDoc(docRef);
+
+        if (docSanpshot.exists) {
+          const SutraData = docSanpshot.data();
+          const Sutra = SutraData[`Sutra${selectedSutra}`];
+          const Bhasya = SutraData[`Bhashya${selectedSutra}`];
+          const Vritti = SutraData[`Vritti${selectedSutra}`];
+          setSutraContent(Sutra);
+          setBhasyaContent(Bhasya);
+          setVrittiContent(Vritti);
+        }
+      } catch (error) {
+        console.error("Error fetching sutras content: ", error);
+      }
+    };
+    fetching();
+  }, [idC, selectedChapter, selectedSutra]);
+
   return (
     <>
       <div className="container">
@@ -8,7 +77,7 @@ export default function Yogasutra() {
               <section id="post-content" role="main">
                 <h1 className="page-title">YogaSutra</h1>
                 <div className="region region-content">
-                  <div className="content">
+                  <div className="content-y">
                     <div>
                       <div className="filter">
                         <div className="views-exposed-widgets clearfix">
@@ -42,8 +111,10 @@ export default function Yogasutra() {
                                 <select
                                   id="edit-language"
                                   className="form-select required"
+                                  value={selectedChapter}
+                                  onChange={handleChapterChange}
                                 >
-                                  {Array.from({ length: 20 }, (_, index) => (
+                                  {Array.from({ length: 4 }, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
                                     </option>
@@ -62,8 +133,10 @@ export default function Yogasutra() {
                                 <select
                                   id="edit-language"
                                   className="form-select required"
+                                  value={selectedSutra}
+                                  onChange={handleSutraChange}
                                 >
-                                  {Array.from({ length: 10 }, (_, index) => (
+                                  {Array.from({ length: 51 }, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
                                     </option>
@@ -75,21 +148,224 @@ export default function Yogasutra() {
                         </div>
                       </div>
                     </div>
+                    <div className="choice">
+                      <div className="choice-view">
+                        <label for="_sutra">Sutra</label>
+                        <div>
+                          <input
+                            type="checkbox"
+                            id="_sutra"
+                            className="choice-box"
+                            defaultChecked
+                          ></input>
+                        </div>
+                      </div>
+                      <div className="choice-view">
+                        <label for="_Bhasya">Bhasya</label>
+                        <div>
+                          <input
+                            type="checkbox"
+                            id="_Bhasya"
+                            className="choice-box"
+                            defaultChecked
+                          ></input>
+                        </div>
+                      </div>
+                      <div className="choice-view">
+                        <label for="_vritti">Vritti</label>
+                        <div>
+                          <input
+                            type="checkbox"
+                            id="_vritti"
+                            className="choice-box"
+                            defaultChecked
+                          ></input>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="view-content">
                   <div className="content_display_sutra">
-                    <div>
+                    <div className="_sutra">
                       <div className="view-field_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
-                            <b>YogaSutra</b>
+                            <b>सूत्र</b>
                             <br />
                           </font>
                         </p>
                         <p className="text-center">
                           <font className="fw-normal size-7">
-                            "Sutra not found"
+                            {SutraContent
+                              ? SutraContent.split("।")
+                                  .filter((line) => line.trim() !== "")
+                                  .map((line, index, array) => (
+                                    <React.Fragment key={index}>
+                                      {array.length === 2
+                                        ? index === 1
+                                          ? ` ।। ${line} ।।`
+                                          : line.trim()
+                                        : array.length >= 4
+                                        ? index === 3
+                                          ? ` ।। ${line} ।।`
+                                          : line.trim()
+                                        : index === 2
+                                        ? ` ।। ${line} ।।`
+                                        : line.trim()}
+
+                                      {array.length >= 4
+                                        ? index === 1
+                                          ? "।"
+                                          : ""
+                                        : array.length === 2
+                                        ? ""
+                                        : index === 0
+                                        ? "।"
+                                        : ""}
+
+                                      {array.length === 2
+                                        ? ""
+                                        : index === 0 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )}
+
+                                      {array.length >= 4
+                                        ? index === 1 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )
+                                        : ""}
+                                    </React.Fragment>
+                                  ))
+                              : "Sutra not found."}
+                          </font>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="_bhasya">
+                      <div className="view-field_sutra">
+                        <p className="text-center">
+                          <font className="color-dark-aubergine fw-normal size-6">
+                            <b>भाष्य</b>
+                            <br />
+                          </font>
+                        </p>
+                        <p className="text-center">
+                          <font className="fw-normal size-7">
+                            {BhasyaContent
+                              ? BhasyaContent.split("।")
+                                  .filter((line) => line.trim() !== "")
+                                  .map((line, index, array) => (
+                                    <React.Fragment key={index}>
+                                      {array.length === 2
+                                        ? index === 1
+                                          ? ` ।। ${line} ।।`
+                                          : line.trim()
+                                        : array.length >= 4
+                                        ? index === 3
+                                          ? ` ।। ${line} ।।`
+                                          : line.trim()
+                                        : index === 2
+                                        ? ` ।। ${line} ।।`
+                                        : line.trim()}
+
+                                      {array.length >= 4
+                                        ? index === 1
+                                          ? "।"
+                                          : ""
+                                        : array.length === 2
+                                        ? ""
+                                        : index === 0
+                                        ? "।"
+                                        : ""}
+
+                                      {array.length === 2
+                                        ? ""
+                                        : index === 0 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )}
+
+                                      {array.length >= 4
+                                        ? index === 1 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )
+                                        : ""}
+                                    </React.Fragment>
+                                  ))
+                              : "Bhasya not found."}
+                          </font>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="_vritti">
+                      <div className="view-field_sutra">
+                        <p className="text-center">
+                          <font className="color-dark-aubergine fw-normal size-6">
+                            <b>भोजवृत्ति</b>
+                            <br />
+                          </font>
+                        </p>
+                        <p className="text-center">
+                          <font className="fw-normal size-7">
+                            {VrittiContent
+                              ? VrittiContent.split("।")
+                                  .filter((line) => line.trim() !== "")
+                                  .map((line, index, array) => (
+                                    <React.Fragment key={index}>
+                                      {array.length === 2
+                                        ? index === 1
+                                          ? ` ।। ${line} ।।`
+                                          : line.trim()
+                                        : array.length >= 4
+                                        ? index === 3
+                                          ? ` ।। ${line} ।।`
+                                          : line.trim()
+                                        : index === 2
+                                        ? ` ।। ${line} ।।`
+                                        : line.trim()}
+
+                                      {array.length >= 4
+                                        ? index === 1
+                                          ? "।"
+                                          : ""
+                                        : array.length === 2
+                                        ? ""
+                                        : index === 0
+                                        ? "।"
+                                        : ""}
+
+                                      {array.length === 2
+                                        ? ""
+                                        : index === 0 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )}
+
+                                      {array.length >= 4
+                                        ? index === 1 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )
+                                        : ""}
+                                    </React.Fragment>
+                                  ))
+                              : "Vritti not found."}
                           </font>
                         </p>
                       </div>

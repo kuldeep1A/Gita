@@ -201,7 +201,7 @@ const Navigation = () => {
                       </ul>
                     </li>
                     <li className="last expanded">
-                      <Link to="yogasutra/content" title="Yogasutra content">
+                      <Link to="yogasutraContent" title="Yogasutra content">
                         YogaSutra
                       </Link>
                     </li>
