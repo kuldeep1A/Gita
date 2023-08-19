@@ -22,11 +22,15 @@ const firestore = getFirestore();
 
 export default function Yogasutra() {
   const [idC, setidC] = useState("");
+  const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
   const [selectedSutra, setSelectedSutra] = useState(1);
   const [SutraContent, setSutraContent] = useState("");
   const [BhasyaContent, setBhasyaContent] = useState("");
   const [VrittiContent, setVrittiContent] = useState("");
+  const [isViewSutra, setIsViewSutra] = useState(false);
+  const [isViewBhasya, setIsViewBhasya] = useState(false);
+  const [isViewVritti, setIsViewVritti] = useState(false);
 
   const handleChapterChange = (event) => {
     const newChapter = parseInt(event.target.value, 10);
@@ -38,6 +42,22 @@ export default function Yogasutra() {
     setSelectedSutra(newSutra);
   };
 
+  const handleCheckboxChange = (checkboxNumber) => {
+    switch (checkboxNumber) {
+      case 1:
+        setIsViewSutra(!isViewSutra);
+        break;
+      case 2:
+        setIsViewBhasya(!isViewBhasya);
+        break;
+      case 3:
+        setIsViewVritti(!isViewVritti);
+        break;
+      default:
+        break;
+    }
+  };
+  const areAnyCheckboxesChecked = isViewBhasya && isViewSutra && isViewVritti;
   useEffect(() => {
     const fetching = async () => {
       try {
@@ -54,6 +74,11 @@ export default function Yogasutra() {
 
         if (docSanpshot.exists) {
           const SutraData = docSanpshot.data();
+          const SutraArrays = Object.entries(SutraData).map(([key, value]) => ({
+            key,
+            value,
+          }));
+          setOptionLength(SutraArrays.length / 3);
           const Sutra = SutraData[`Sutra${selectedSutra}`];
           const Bhasya = SutraData[`Bhashya${selectedSutra}`];
           const Vritti = SutraData[`Vritti${selectedSutra}`];
@@ -136,11 +161,14 @@ export default function Yogasutra() {
                                   value={selectedSutra}
                                   onChange={handleSutraChange}
                                 >
-                                  {Array.from({ length: 51 }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                  {Array.from(
+                                    { length: OptionLength },
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    )
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -157,6 +185,7 @@ export default function Yogasutra() {
                             id="_sutra"
                             className="choice-box"
                             defaultChecked
+                            onClick={() => handleCheckboxChange(1)}
                           ></input>
                         </div>
                       </div>
@@ -168,6 +197,7 @@ export default function Yogasutra() {
                             id="_Bhasya"
                             className="choice-box"
                             defaultChecked
+                            onClick={() => handleCheckboxChange(2)}
                           ></input>
                         </div>
                       </div>
@@ -179,6 +209,7 @@ export default function Yogasutra() {
                             id="_vritti"
                             className="choice-box"
                             defaultChecked
+                            onClick={() => handleCheckboxChange(3)}
                           ></input>
                         </div>
                       </div>
@@ -187,7 +218,13 @@ export default function Yogasutra() {
                 </div>
                 <div className="view-content">
                   <div className="content_display_sutra">
-                    <div className="_sutra">
+                    <div
+                      className={`_sutra ${
+                        isViewSutra
+                          ? "view_sutra is-hidden-mobile is-hidden-desktop "
+                          : ""
+                      }`}
+                    >
                       <div className="view-field_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
@@ -248,7 +285,13 @@ export default function Yogasutra() {
                         </p>
                       </div>
                     </div>
-                    <div className="_bhasya">
+                    <div
+                      className={`_bhasya ${
+                        isViewBhasya
+                          ? "view_bhasya is-hidden-mobile is-hidden-desktop"
+                          : ""
+                      }`}
+                    >
                       <div className="view-field_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
@@ -309,7 +352,13 @@ export default function Yogasutra() {
                         </p>
                       </div>
                     </div>
-                    <div className="_vritti">
+                    <div
+                      className={`_vritti ${
+                        isViewVritti
+                          ? "view_vritti is-hidden-mobile is-hidden-desktop"
+                          : ""
+                      }`}
+                    >
                       <div className="view-field_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
@@ -372,6 +421,9 @@ export default function Yogasutra() {
                     </div>
                   </div>
                 </div>
+                {areAnyCheckboxesChecked && (
+                  <p>At least one Sutra's is checked.</p>
+                )}
               </section>
             </div>
           </div>
