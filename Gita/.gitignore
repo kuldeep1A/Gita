@@ -25,3 +25,9 @@ yarn-error.log*
 
 .vs-code/
 .idea/
+.firebaserc
+.firebase/
+database.rules.json
+firebase.json
+firestore.indexes.json
+firestore.rules
