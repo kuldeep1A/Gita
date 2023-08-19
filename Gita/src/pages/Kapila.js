@@ -117,14 +117,11 @@ export default function Kapila() {
                                   value={selectedChapter}
                                   onChange={handleChapterChange}
                                 >
-                                  {Array.from(
-                                    { length: OptionLength },
-                                    (_, index) => (
-                                      <option key={index + 1} value={index + 1}>
-                                        {index + 1}
-                                      </option>
-                                    )
-                                  )}
+                                  {Array.from({ length: 3 }, (_, index) => (
+                                    <option key={index + 1} value={index + 1}>
+                                      {index + 1}
+                                    </option>
+                                  ))}
                                 </select>
                               </div>
                             </div>
@@ -163,13 +160,13 @@ export default function Kapila() {
                   <div className="content_display">
                     <div>
                       <div className="view-field_sutra">
-                        <p className="text-center h-fonts">
+                        <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
                             <b>Kapila Gita</b>
                             <br />
                           </font>
                         </p>
-                        <p className="text-center">
+                        <p className="text-center h-fonts">
                           <font className="fw-normal size-6">
                             {ShlokaContent
                               ? ShlokaContent.split("।")
@@ -191,7 +188,7 @@ export default function Kapila() {
                                         : index === 0
                                         ? "।"
                                         : ""}
-                                      {index === 0 && selectedChapter <= 20 && (
+                                      {index === 0 && selectedChapter <= 3 && (
                                         <>
                                           <br />
                                           <br />
@@ -200,7 +197,7 @@ export default function Kapila() {
 
                                       {array.length >= 4
                                         ? index === 1 &&
-                                          selectedChapter <= 20 && (
+                                          selectedChapter <= 3 && (
                                             <>
                                               <br />
                                               <br />
