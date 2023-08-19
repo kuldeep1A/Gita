@@ -232,8 +232,8 @@ export default function Yogasutra() {
                             <br />
                           </font>
                         </p>
-                        <p className="text-center">
-                          <font className="fw-normal size-7">
+                        <p className="text-center h-fonts">
+                          <font className="fw-normal size-6 line-150">
                             {SutraContent
                               ? SutraContent.split("।")
                                   .filter((line) => line.trim() !== "")
@@ -299,8 +299,8 @@ export default function Yogasutra() {
                             <br />
                           </font>
                         </p>
-                        <p className="text-center">
-                          <font className="fw-normal size-7">
+                        <p className="text-center h-fonts">
+                          <font className="fw-normal size-6 line-150">
                             {BhasyaContent
                               ? BhasyaContent.split("।")
                                   .filter((line) => line.trim() !== "")
@@ -366,8 +366,8 @@ export default function Yogasutra() {
                             <br />
                           </font>
                         </p>
-                        <p className="text-center">
-                          <font className="fw-normal size-7">
+                        <p className="text-center h-fonts">
+                          <font className="fw-normal size-6 line-150">
                             {VrittiContent
                               ? VrittiContent.split("।")
                                   .filter((line) => line.trim() !== "")

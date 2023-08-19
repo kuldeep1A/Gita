@@ -201,13 +201,21 @@ export default function Brahmasutra() {
                             <div className="view-field_sutra">
                               <p className="text-center">
                                 <font className="color-dark-aubergine fw-normal size-6">
-                                  <b>Main</b>
+                                  <b>BrahmaSutra</b>
                                   <br />
                                 </font>
                               </p>
-                              <p className="text-center">
-                                <font className="fw-normal size-7">
-                                  {sutraContent || "Sutra not found"}
+                              <p className="h-fonts">
+                                <font className="fw-normal size-6 line-150">
+                                  {sutraContent
+                                    ? sutraContent
+                                        .split(" ")
+                                        .map((line, index, array) => (
+                                          <React.Fragment key={index}>
+                                            {line + " "}
+                                          </React.Fragment>
+                                        ))
+                                    : `Sutra not found.`}
                                 </font>
                               </p>
                             </div>

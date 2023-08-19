@@ -213,6 +213,9 @@ ul.menu {
 .views-exposed-widgets {
   margin-bottom: 1em;
 }
+.sd {
+  word-spacing: 10px;
+}
 .content_display {
   float: none;
   width: 50%;
@@ -229,6 +232,10 @@ ul.menu {
   width: 100%;
   border: 1px solid black !important;
   padding: 10px
+}
+.h-fonts {
+  font-family: 'Libre Baskerville', serif;
+  font-family: 'Tiro Devanagari Hindi', serif;
 }
 .clearfix::after {
   content: "";

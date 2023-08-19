@@ -2,10 +2,10 @@
   .region-front-welcome {
     margin: 1% 2%;
   }
-
   .content_display {
     float: none;
-    width: 100%;
+    width: 90%;
+    margin: auto;
   }
 }
 
@@ -76,6 +76,11 @@
 
 @media screen and (max-width: 420px) {
   #main-menu {
-    width: 349px  !important;
+    width: 349px !important;
+  }
+  .content_display {
+    float: none;
+    width: 100%;
+    margin: auto;
   }
 }

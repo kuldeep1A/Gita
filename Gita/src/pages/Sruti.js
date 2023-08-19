@@ -156,7 +156,7 @@ export default function Sruti() {
                   </div>
                 </div>
                 <div className="view-content">
-                  <div className="content_display_sutra">
+                  <div className="content_display">
                     <div>
                       <div className="view-field_sutra">
                         <p className="text-center">
@@ -165,8 +165,8 @@ export default function Sruti() {
                             <br />
                           </font>
                         </p>
-                        <p className="text-center">
-                          <font className="fw-normal size-7">
+                        <p className="text-center h-fonts">
+                          <font className="fw-normal size-6">
                             {ShlokaContent
                               ? ShlokaContent.split("।")
                                   .filter((line) => line.trim() !== "")
