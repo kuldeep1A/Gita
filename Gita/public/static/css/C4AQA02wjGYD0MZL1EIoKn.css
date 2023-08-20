@@ -218,7 +218,7 @@ ul.menu {
 }
 .content_display {
   float: none;
-  width: 50%;
+  width: 63%;
 }
 .content_display_sutra {
   float: none;
@@ -235,7 +235,7 @@ ul.menu {
 }
 .h-fonts {
   font-family: 'Libre Baskerville', serif;
-  font-family: 'Tiro Devanagari Hindi', serif;
+  font-family: 'Tiro Devanagari Hindi', serif !important;
 }
 .clearfix::after {
   content: "";
