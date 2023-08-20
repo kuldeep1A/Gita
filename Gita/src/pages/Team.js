@@ -19,11 +19,11 @@ export default function Team() {
                   <div>
                     <h1 className="size-6 color-dark-blue">Meet Our Team</h1>
                     <p className="size-7">
-                      We're a dedicated group of individuals who have come
-                      together to create and manage the content management
-                      system that powers our college's digital repository. Our
-                      diverse skills and expertise have shaped the project into
-                      what it is today.
+                      We're a dedicated group of individuals who have united to
+                      conceive and administer the content management system that
+                      empowers our digital repository. Our diverse skills and
+                      expertise have played an integral role in molding the
+                      project into its current form.
                     </p>
 
                     <div className="team-member">
