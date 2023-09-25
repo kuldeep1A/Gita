@@ -1,24 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDocs,
-  getDoc,
-} from "firebase/firestore";
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementid: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-};
-initializeApp(firebaseConfig);
-const firestore = getFirestore();
+import { collection, doc, getDocs, getDoc } from "firebase/firestore";
+import { database } from "../firebase";
 
 export default function Avadhuta() {
   const [idC, setidC] = useState("");
@@ -26,48 +8,43 @@ export default function Avadhuta() {
   const [selectedChapter, setSelectedChapter] = useState(1);
   const [selectShloka, setSelectedShloka] = useState(1);
   const [ShlokaContent, setShlokaContent] = useState("");
-
   const handleChapterChange = (event) => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
     setSelectedShloka(1);
   };
-
   const handleShlokaChange = (event) => {
     const newShloka = parseInt(event.target.value, 10);
     setSelectedShloka(newShloka);
   };
-
   useEffect(() => {
     const fetchShlokaContent = async () => {
       try {
         const pathC = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}`;
-        const refC = collection(firestore, pathC);
-
+        const refC = collection(database, pathC);
         getDocs(refC).then((sanpshot) => {
           sanpshot.docs.forEach((doc) => {
             setidC(`${doc.id}`);
           });
         });
-
-        const documentPath = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}/${idC}`;
-        const docRef = doc(firestore, documentPath);
-        const docSanpshot = await getDoc(docRef);
-
-        if (docSanpshot.exists) {
-          const ShlokaData = docSanpshot.data();
-          const ShlokaArray = Object.entries(ShlokaData).map(
-            ([shlokaNumber, Shloka]) => ({ shlokaNumber, Shloka })
-          );
-          setOptionLength(ShlokaArray.length);
-          const shloka = ShlokaData[`Shloka${selectShloka}`];
-          setShlokaContent(shloka);
+        if (idC) {
+          const documentPath = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}/${idC}`;
+          const docRef = doc(database, documentPath);
+          const docSanpshot = await getDoc(docRef);
+          if (docSanpshot.exists) {
+            const ShlokaData = docSanpshot.data();
+            const ShlokaArray = Object.entries(ShlokaData).map(
+              ([shlokaNumber, Shloka]) => ({ shlokaNumber, Shloka })
+            );
+            setOptionLength(ShlokaArray.length);
+            const shloka = ShlokaData[`Shloka${selectShloka}`];
+            setShlokaContent(shloka);
+          }
         }
       } catch (error) {
         console.error("Error fetching shloka content: ", error);
       }
     };
-
     fetchShlokaContent();
   }, [idC, selectShloka, selectedChapter]);
 
@@ -88,7 +65,10 @@ export default function Avadhuta() {
                             id="edit-language-wrapper"
                             className="views-exposed-widget"
                           >
-                            <label for="edit-language" className="fw-normal">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal"
+                            >
                               Script
                             </label>
                             <div>
@@ -96,10 +76,9 @@ export default function Avadhuta() {
                                 <select
                                   id="edit-language"
                                   className="form-select required"
+                                  defaultValue={"dv"}
                                 >
-                                  <option value={"dv"} selected="selected">
-                                    Devanagari
-                                  </option>
+                                  <option value={"dv"}>Devanagari</option>
                                 </select>
                               </div>
                             </div>

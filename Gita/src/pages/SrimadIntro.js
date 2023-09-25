@@ -7,12 +7,12 @@ export default function SriIntro() {
           <div className="content-sidebar-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">
+                <div className="page-title">
                   श्रीमद् भगवद्गीता{" "}
                   <h1>
                     <Link to="/srimadContent">View Shloka</Link>
                   </h1>{" "}
-                </h1>
+                </div>
                 <div className="field-items">
                   <h1 className="size-6 color-dark-blue">
                     INTRODUCTION TO THE BHAGAVADGITA

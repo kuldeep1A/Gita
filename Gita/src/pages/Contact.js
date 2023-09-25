@@ -8,7 +8,7 @@ export default function Contact() {
         <div className="content-sidebar-wrap">
           <div id="content">
             <section id="post-content" role="main">
-              <h1 className="page-title">Contact</h1>
+              <div className="page-title">Contact</div>
               <div className="field-items">
                 <p className="size-5">
                   <EmailLink
@@ -18,7 +18,7 @@ export default function Contact() {
                     Kuldeepdhagnarkd@gmail.com
                   </EmailLink>
                 </p>
-                <h1>Kuldeep Dhangar</h1>
+                <div>Kuldeep Dhangar</div>
               </div>
             </section>
           </div>

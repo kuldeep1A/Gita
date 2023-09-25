@@ -2,6 +2,7 @@
   .region-front-welcome {
     margin: 1% 2%;
   }
+
   .content_display {
     float: none;
     width: 90%;
@@ -10,55 +11,67 @@
 }
 
 @media screen and (max-width: 720px) {
+
   .top_left,
   .top_right {
     width: 100%;
   }
+
   .top_right .region-search {
     width: 100%;
     padding: 0;
   }
+
   #logo {
     text-align: center;
     width: 100%;
     margin: 8px 0 0 0;
   }
+
   #logo img {
     height: 100px !important;
     text-align: center;
     display: inline-block;
   }
+
   .menu_wrapper {
     margin: 0;
   }
+
   .expanded ul.menu {
     display: none !important;
   }
+
   #main-menu ul {
     display: none;
     transform: translateY(-320px);
     transition: transform 0.3s ease-in-out;
   }
+
   .open {
     display: block !important;
     transform: translateY(0px) !important;
     transition: transform 0.3s ease-in-out;
   }
+
   #main-menu {
     min-width: 349px !important;
     max-width: 700px;
   }
-  #main-menu > a {
+
+  #main-menu>a {
     width: 100%;
     padding: 3% 2%;
     border-radius: 0;
   }
+
   #main-menu ul.menu li {
     margin: 0;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #16a085;
   }
+
   #main-menu .nav-toggle {
     display: block;
     font-size: 15px;
@@ -78,6 +91,7 @@
   #main-menu {
     width: 349px !important;
   }
+
   .content_display {
     float: none;
     width: 100%;

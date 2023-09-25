@@ -1,24 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-} from "firebase/firestore";
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementid: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-};
-initializeApp(firebaseConfig);
-const firestore = getFirestore();
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { database } from "../firebase";
 
 export default function Yogasutra() {
   const [idC, setidC] = useState("");
@@ -31,7 +13,6 @@ export default function Yogasutra() {
   const [isViewSutra, setIsViewSutra] = useState(false);
   const [isViewBhasya, setIsViewBhasya] = useState(false);
   const [isViewVritti, setIsViewVritti] = useState(false);
-
   const handleChapterChange = (event) => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
@@ -41,7 +22,6 @@ export default function Yogasutra() {
     const newSutra = parseInt(event.target.value, 10);
     setSelectedSutra(newSutra);
   };
-
   const handleCheckboxChange = (checkboxNumber) => {
     switch (checkboxNumber) {
       case 1:
@@ -62,29 +42,30 @@ export default function Yogasutra() {
     const fetching = async () => {
       try {
         const pathC = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}`;
-        const refC = collection(firestore, pathC);
+        const refC = collection(database, pathC);
         getDocs(refC).then((snapshot) => {
           snapshot.docs.forEach((doc) => {
             setidC(`${doc.id}`);
           });
         });
-        const documentPath = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}/${idC}`;
-        const docRef = doc(firestore, documentPath);
-        const docSanpshot = await getDoc(docRef);
-
-        if (docSanpshot.exists) {
-          const SutraData = docSanpshot.data();
-          const SutraArrays = Object.entries(SutraData).map(([key, value]) => ({
-            key,
-            value,
-          }));
-          setOptionLength(SutraArrays.length / 3);
-          const Sutra = SutraData[`Sutra${selectedSutra}`];
-          const Bhasya = SutraData[`Bhashya${selectedSutra}`];
-          const Vritti = SutraData[`Vritti${selectedSutra}`];
-          setSutraContent(Sutra);
-          setBhasyaContent(Bhasya);
-          setVrittiContent(Vritti);
+        if (idC) {
+          const documentPath = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}/${idC}`;
+          const docRef = doc(database, documentPath);
+          const docSanpshot = await getDoc(docRef);
+          if (docSanpshot.exists) {
+            const SutraData = docSanpshot.data();
+            const SutraArrays = Object.entries(SutraData).map(([key, value]) => ({
+              key,
+              value,
+            }));
+            setOptionLength(SutraArrays.length / 3);
+            const Sutra = SutraData[`Sutra${selectedSutra}`];
+            const Bhasya = SutraData[`Bhashya${selectedSutra}`];
+            const Vritti = SutraData[`Vritti${selectedSutra}`];
+            setSutraContent(Sutra);
+            setBhasyaContent(Bhasya);
+            setVrittiContent(Vritti);
+          }
         }
       } catch (error) {
         console.error("Error fetching sutras content: ", error);
@@ -110,7 +91,10 @@ export default function Yogasutra() {
                             id="edit-language-wrapper"
                             className="views-exposed-widget"
                           >
-                            <label for="edit-language" className="fw-normal">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal"
+                            >
                               Script
                             </label>
                             <div>
@@ -118,10 +102,9 @@ export default function Yogasutra() {
                                 <select
                                   id="edit-language"
                                   className="form-select required"
+                                  defaultValue={"dv"}
                                 >
-                                  <option value={"dv"} selected="selected">
-                                    Devanagari
-                                  </option>
+                                  <option value={"dv"}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
@@ -178,7 +161,7 @@ export default function Yogasutra() {
                     </div>
                     <div className="choice">
                       <div className="choice-view">
-                        <label for="_sutra">Sutra</label>
+                        <label htmlFor="_sutra">Sutra</label>
                         <div>
                           <input
                             type="checkbox"
@@ -190,7 +173,7 @@ export default function Yogasutra() {
                         </div>
                       </div>
                       <div className="choice-view">
-                        <label for="_Bhasya">Bhasya</label>
+                        <label htmlFor="_Bhasya">Bhasya</label>
                         <div>
                           <input
                             type="checkbox"
@@ -202,7 +185,7 @@ export default function Yogasutra() {
                         </div>
                       </div>
                       <div className="choice-view">
-                        <label for="_vritti">Vritti</label>
+                        <label htmlFor="_vritti">Vritti</label>
                         <div>
                           <input
                             type="checkbox"

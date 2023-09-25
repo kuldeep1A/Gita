@@ -6,9 +6,11 @@ export default function About() {
           <div className="content-sidebar-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">
-                  About Website: <h1>Based On Content Management System</h1>
-                </h1>
+                <div>
+                  <div className="page-title">
+                    About Website: <h1>Based On Content Management System</h1>
+                  </div>
+                </div>
                 <div className="field-items">
                   <div>
                     <h1 className="size-6 color-dark-blue fw-normal">
@@ -23,7 +25,9 @@ export default function About() {
                       from different traditions. Here's what you can expect:
                     </p>
 
-                    <h2 className="size-6 color-dark-blue fw-normal">Srimad Bhagavad Gita and More:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">
+                      Srimad Bhagavad Gita and More:
+                    </h2>
                     <p className="size-7">
                       Discover the timeless wisdom of texts like the Srimad
                       Bhagavad Gita, Ramcharitmanas, Brahma Sutra, and more.
@@ -32,7 +36,9 @@ export default function About() {
                       generations.
                     </p>
 
-                    <h2 className="size-6 color-dark-blue fw-normal">Exploring Other Gitas:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">
+                      Exploring Other Gitas:
+                    </h2>
                     <p className="size-7">
                       Beyond the Bhagavad Gita, delve into other Gitas that
                       offer unique insights into various aspects of life and
@@ -50,7 +56,9 @@ export default function About() {
                       continue to resonate across cultures.
                     </p>
 
-                    <h2 className="size-6 color-dark-blue fw-normal">Brahma Sutra and Yoga Sutra:</h2>
+                    <h2 className="size-6 color-dark-blue fw-normal">
+                      Brahma Sutra and Yoga Sutra:
+                    </h2>
                     <p className="size-7">
                       Dive into the intricate philosophical explorations of the
                       Brahma Sutra and the profound wisdom of the Yoga Sutra.

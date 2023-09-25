@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementid: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-};
-initializeApp(firebaseConfig);
-const firestore = getFirestore();
+import { doc, getDoc } from "firebase/firestore";
+import { database } from "../firebase";
 
 export default function Vibhishana() {
   const [OptionLength, setOptionLength] = useState(1);
@@ -28,9 +16,8 @@ export default function Vibhishana() {
     const fetchShlokaContent = async () => {
       try {
         const documentPath = `/vibhishana/sJ26lCYr7IwNrElxjTd9`;
-        const docRef = doc(firestore, documentPath);
+        const docRef = doc(database, documentPath);
         const docSanpshot = await getDoc(docRef);
-
         if (docSanpshot.exists) {
           const ShlokaData = docSanpshot.data();
           const ShlokaArray = Object.entries(ShlokaData).map(
@@ -64,7 +51,10 @@ export default function Vibhishana() {
                             id="edit-language-wrapper"
                             className="views-exposed-widget"
                           >
-                            <label for="edit-language" className="fw-normal">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal"
+                            >
                               Script
                             </label>
                             <div>
@@ -72,10 +62,9 @@ export default function Vibhishana() {
                                 <select
                                   id="edit-language"
                                   className="form-select required"
+                                  defaultValue={"dv"}
                                 >
-                                  <option value={"dv"} selected="selected">
-                                    Devanagari
-                                  </option>
+                                  <option value={"dv"}>Devanagari</option>
                                 </select>
                               </div>
                             </div>

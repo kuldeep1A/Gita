@@ -40,11 +40,11 @@ export default function Team() {
                         >
                           Kuldeep Dhagnar
                         </Link>
-                        <h1 className="size-10">Project Lead</h1>
+                        <div className="size-10">Project Lead</div>
                       </h2>
                       <br />
                       <h2 className="size-6">
-                        Internet <h1 className="size-10">Helper</h1>
+                        Internet <span className="size-10">Helper</span>
                       </h2>
                       <br />
                     </div>

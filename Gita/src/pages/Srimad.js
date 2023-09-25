@@ -1,26 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDocs,
-  getDoc,
-} from "firebase/firestore";
-
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementid: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-};
-
-initializeApp(firebaseConfig);
-const firestore = getFirestore();
+import { collection, doc, getDocs, getDoc } from "firebase/firestore";
+import { database } from "../firebase";
 
 export default function Srimad() {
   const [selectedChapter, setSelectedChapter] = useState(1);
@@ -28,13 +8,11 @@ export default function Srimad() {
   const [OptionLength, setOptionLength] = useState(1);
   const [shlokaContent, setsholaContent] = useState("");
   const [idx, setidx] = useState("");
-
   const handleChapterChange = (event) => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
     setSelectedSholka(1);
   };
-
   const handleSholkaChange = (event) => {
     const newSholka = parseInt(event.target.value, 10);
     setSelectedSholka(newSholka);
@@ -43,40 +21,35 @@ export default function Srimad() {
     const fetchShlokaContent = async () => {
       try {
         const path = `bhagavadgita/3T3Q1BxO62exEMBlREJR/Chapter${selectedChapter}`;
-
-        const ref = collection(firestore, path);
-
+        const ref = collection(database, path);
         getDocs(ref).then((sanpshot) => {
           sanpshot.docs.forEach((doc) => {
             setidx(`${doc.id}`);
           });
         });
-
-        var documentPath = `bhagavadgita/3T3Q1BxO62exEMBlREJR/Chapter${selectedChapter}/${idx}`;
-
-        const docRef = doc(firestore, documentPath);
-        const docSnapshot = await getDoc(docRef);
-
-        if (docSnapshot.exists) {
-          const shlokaData = docSnapshot.data();
-          const shlokaArray = Object.entries(shlokaData).map(
-            ([shlokaNumber, shloka]) => ({
-              shlokaNumber,
-              shloka,
-            })
-          );
-          setOptionLength(shlokaArray.length);
-          const shloka = shlokaData[`shloka${selectedSholka}`];
-
-          setsholaContent(shloka);
-        } else {
-          setsholaContent("");
+        if (idx) {
+          var documentPath = `bhagavadgita/3T3Q1BxO62exEMBlREJR/Chapter${selectedChapter}/${idx}`;
+          const docRef = doc(database, documentPath);
+          const docSnapshot = await getDoc(docRef);
+          if (docSnapshot.exists) {
+            const shlokaData = docSnapshot.data();
+            const shlokaArray = Object.entries(shlokaData).map(
+              ([shlokaNumber, shloka]) => ({
+                shlokaNumber,
+                shloka,
+              })
+            );
+            setOptionLength(shlokaArray.length);
+            const shloka = shlokaData[`shloka${selectedSholka}`];
+            setsholaContent(shloka);
+          } else {
+            setsholaContent("");
+          }
         }
       } catch (error) {
         console.error("Error fetching shloka content:", error);
       }
     };
-
     fetchShlokaContent();
   }, [selectedChapter, selectedSholka, idx]);
 
@@ -97,7 +70,10 @@ export default function Srimad() {
                             id="edit-language-wrapper"
                             className="views-exposed-widget"
                           >
-                            <label for="edit-language" className="fw-normal">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal"
+                            >
                               Script
                             </label>
                             <div>
@@ -105,10 +81,9 @@ export default function Srimad() {
                                 <select
                                   id="edit-language"
                                   className="form-select required"
+                                  defaultValue={"dv"}
                                 >
-                                  <option value={"dv"} selected="selected">
-                                    Devanagari
-                                  </option>
+                                  <option value={"dv"}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
