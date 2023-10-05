@@ -1,9 +1,9 @@
 import React from "react";
 
-const EmailLink = ({ email, subject, children }) => {
-  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+const EmailLink = ({ email, subject }) => {
+  const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}`;
 
-  return <a href={mailtoLink}>{children}</a>;
+  return <a target="_blank" href={mailtoLink} rel="noreferrer">{email}</a>;
 };
 
 export default EmailLink;
