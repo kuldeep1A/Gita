@@ -57,8 +57,8 @@ export default function Home() {
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="">
-                            <strong>Valmiki Ramayanam x</strong>
+                          <Link to="/valmikiramayana">
+                            <strong>Valmiki Ramayana</strong>
                           </Link>
                           <br />
                           &nbsp;

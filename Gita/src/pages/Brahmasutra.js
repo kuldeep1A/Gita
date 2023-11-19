@@ -35,27 +35,31 @@ export default function Brahmasutra() {
             setidC(`${doc.id}`);
           });
         });
-        const pathQ = `/brahmasutra/yvDcZdIZ7ZCTA2ptHSoj/Chapter${selectedChapter}/${idC}/Quarter${selectedQuarter}/`;
-        const refQ = collection(database, pathQ);
-        getDocs(refQ).then((sanpshot) => {
-          sanpshot.docs.forEach((doc) => {
-            setidQ(`${doc.id}`);
+        if (idC) {
+          const pathQ = `/brahmasutra/yvDcZdIZ7ZCTA2ptHSoj/Chapter${selectedChapter}/${idC}/Quarter${selectedQuarter}/`;
+          const refQ = collection(database, pathQ);
+          getDocs(refQ).then((sanpshot) => {
+            sanpshot.docs.forEach((doc) => {
+              setidQ(`${doc.id}`);
+            });
           });
-        });
-        var documentPath = `/brahmasutra/yvDcZdIZ7ZCTA2ptHSoj/Chapter${selectedChapter}/${idC}/Quarter${selectedQuarter}/${idQ}`;
-        const docRef = doc(database, documentPath);
-        const docSnapshot = await getDoc(docRef);
-        if (docSnapshot.exists) {
-          const sutraData = docSnapshot.data();
-          const sutraArray = Object.entries(sutraData).map(
-            ([sutraNumber, sutra]) => ({
-              sutraNumber,
-              sutra,
-            })
-          );
-          setOptionLength(sutraArray.length);
-          const sutra = sutraData[`Sutra${selectedSutra}`];
-          setSutraContent(sutra);
+        }
+        if (idC && idQ) {
+          var documentPath = `/brahmasutra/yvDcZdIZ7ZCTA2ptHSoj/Chapter${selectedChapter}/${idC}/Quarter${selectedQuarter}/${idQ}`;
+          const docRef = doc(database, documentPath);
+          const docSnapshot = await getDoc(docRef);
+          if (docSnapshot.exists) {
+            const sutraData = docSnapshot.data();
+            const sutraArray = Object.entries(sutraData).map(
+              ([sutraNumber, sutra]) => ({
+                sutraNumber,
+                sutra,
+              })
+            );
+            setOptionLength(sutraArray.length);
+            const sutra = sutraData[`Sutra${selectedSutra}`];
+            setSutraContent(sutra);
+          }
         }
       } catch (error) {
         console.error("Error fetching shloka content:", error);

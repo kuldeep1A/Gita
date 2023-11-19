@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function Team() {
   const imageStyle = {
-    width: "150px",
-    height: "150px",
+    width: "200px",
+    height: "200px",
     borderRadius: "50%",
     boxShadow: "0px 0px 20px 1px",
   };
@@ -43,9 +43,6 @@ export default function Team() {
                         <div className="size-10">Project Lead</div>
                       </h2>
                       <br />
-                      <h2 className="size-6">
-                        Internet <span className="size-10">Helper</span>
-                      </h2>
                       <br />
                     </div>
                   </div>

@@ -27,6 +27,7 @@ import Sriram from "./pages/Sriram";
 import Sruti from "./pages/Sruti";
 import Uddhava from "./pages/Uddhava";
 import Vibhishana from "./pages/Vibhishana";
+import Valmikiramayana from "./pages/valmikiramayana";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
               path="/brahmasutraWelcome"
               element={<BrahmasutraWelcome />}
             />
+            <Route path="/valmikiramayana" element={<Valmikiramayana />} />
             <Route path="/brahmasutraAbout" element={<BrahmasutraAbout />} />
             <Route path="/brahmasutraContent" element={<Brahmasutra />} />
             <Route path="/yogasutraContent" element={<Yogasutra />} />
