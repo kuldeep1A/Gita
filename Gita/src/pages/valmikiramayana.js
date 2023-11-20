@@ -2,18 +2,42 @@ import React, { useState, useEffect } from "react";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
 import { optionData } from "./OptionData";
+import { kandaNo } from "./OptionData";
 
 export default function Valmikiramayana() {
   const [selectedKanda, setSelectedKanda] = useState("BALAKANDA");
   const [selectedSarga, setSelectedSarga] = useState(1);
   const [selectedShloka, setSelectedShloka] = useState(1);
-  const balakandaLen = Object.keys(optionData.BALAKNADA).length;
+  const balakandaLen = Object.keys(optionData.BALAKANDA).length;
   const ayodhyaLen = Object.keys(optionData.AYODHYAKANDA).length;
   const aranyadaLen = Object.keys(optionData.ARANYAKANDA).length;
   const kishkindaLen = Object.keys(optionData.KISHKINDAKANDA).length;
   const sundaraLen = Object.keys(optionData.SUNDARAKANDA).length;
   const yuddhadaLen = Object.keys(optionData.YUDDHAKANDA).length;
   const [shlokaData, setShlokaData] = useState({});
+  const sanEng = (shloka, c, isSans) => {
+    var engs = [];
+    var all = {};
+    if (shloka && c === 0) {
+      all = shloka
+        .split("'")
+        .filter((line) => line.trim() !== "," && line.trim() !== "");
+      c = c + 1;
+    }
+    var ed = "";
+    var sd = all.filter((e) => {
+      if (/[a-zA-Z]/.test(e) && !engs.includes(e)) {
+        ed = `${ed}${e}`;
+      }
+      return !/[a-zA-Z]/.test(e);
+    });
+    engs.push(ed);
+    if (isSans) {
+      return sd;
+    } else {
+      return engs;
+    }
+  };
   const handleKandaChange = (event) => {
     setSelectedKanda(event.target.value);
     setSelectedSarga(1);
@@ -46,7 +70,7 @@ export default function Valmikiramayana() {
   const handleShlokaLen = () => {
     var l = 1;
     if (selectedKanda === "BALAKANDA") {
-      l = optionData.BALAKNADA[selectedSarga];
+      l = optionData.BALAKANDA[selectedSarga];
       return l;
     } else if (selectedKanda === "AYODHYAKANDA") {
       l = optionData.AYODHYAKANDA[selectedSarga];
@@ -218,10 +242,45 @@ export default function Valmikiramayana() {
                         <div>
                           <div className="view-field_sutra">
                             <p className="text-center h-fonts">
-                              <font className="fw-normal size-6 line-150">
+                              <font className="fw-normal size-6 line-100">
+                                {selectedShloka === 1 && shlokaData.content ? (
+                                  <React.Fragment>
+                                    <>
+                                      <span className="d-block">
+                                        <span className="d-block eng-title size-8 line-50">
+                                          {`[${
+                                            sanEng(
+                                              shlokaData.content,
+                                              0,
+                                              false
+                                            )[0]
+                                          }]`}
+                                        </span>
+                                      </span>
+                                    </>
+                                  </React.Fragment>
+                                ) : (
+                                  ""
+                                )}
                                 {selectedShloka === 1 && shlokaData.content
-                                  ? shlokaData.content
-                                  : shlokaData.content
+                                  ? sanEng(shlokaData.content, 0, true).map(
+                                      (line, index) => (
+                                        <React.Fragment key={index}>
+                                          {line.split("'")}
+                                          <>
+                                            <br />
+                                            <br />
+                                          </>
+                                        </React.Fragment>
+                                      )
+                                    )
+                                  : shlokaData.content &&
+                                    selectedShloka >= 2 &&
+                                    shlokaData.content
+                                      .trim()
+                                      .includes(
+                                        `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`
+                                      )
                                   ? shlokaData.content
                                       .split(",")
                                       .filter((line) => line.trim() !== "")
