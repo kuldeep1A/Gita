@@ -7,7 +7,7 @@ export default function Login() {
             <div id="content">
               <section id="post-content" role="main">
                 <div className="page-title">
-                  Admin Account <span>(only for admin server)</span>{" "}
+                  Admin Account <span>(only for admin server)</span>
                   <h1>IP Not Match...</h1>
                 </div>
                 <div className="field-items">

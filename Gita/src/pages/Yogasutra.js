@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+import React, { useState, useEffect, useRef } from "react";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
+import SharePop from "../componets/SharePop";
 
 export default function Yogasutra() {
   const [idC, setidC] = useState("");
@@ -13,6 +15,72 @@ export default function Yogasutra() {
   const [isViewSutra, setIsViewSutra] = useState(false);
   const [isViewBhasya, setIsViewBhasya] = useState(false);
   const [isViewVritti, setIsViewVritti] = useState(false);
+  const [shareTC, setShareTC] = useState("sutra");
+  const [isSharePopVisible, setSharePopVisible] = useState(false);
+  const [clickEvent, setClickEvent] = useState(null);
+  const shareRefS = useRef(null);
+  const shareRefB = useRef(null);
+  const shareRefV = useRef(null);
+  var site = "surti";
+  var shsId = `sh-${site}-sutra-${selectedChapter}-${selectedSutra}`;
+  var shbId = `sh-${site}-bhasya-${selectedChapter}-${selectedSutra}`;
+  var shvId = `sh-${site}-vritti-${selectedChapter}-${selectedSutra}`;
+  var shId = `sh-${site}-${shareTC}-${selectedChapter}-${selectedSutra}`;
+  var shareTitle = `Sruti Gita, Content: ${shareTC}, Chapter: ${selectedChapter}, shloka: ${selectedSutra}.`;
+  const handleClick = (event) => {
+    if (!isSharePopVisible) {
+      setClickEvent(event);
+      setSharePopVisible(true);
+    } else {
+      closeSharePop();
+    }
+  };
+  const closeSharePop = () => {
+    setSharePopVisible(false);
+  };
+  useEffect(() => {
+    const handleClickOutside = (event, shareRef) => {
+      const target = event.target || event.srcElement;
+      if (target && shareRef !== null) {
+        const share_b = !shareRef.current.contains(target);
+        const tippy_s = document.getElementById(`tippy-${shId}`)
+          ? !document.getElementById(`tippy-${shId}`).contains(target)
+          : true;
+        if (share_b && tippy_s) {
+          closeSharePop();
+        }
+      }
+    };
+
+    const handleRef = (event) => {
+      if (event) {
+        const isShareS = event.target.hasAttribute("data-share-s");
+        const isShareB = event.target.hasAttribute("data-share-b");
+        const isShareV = event.target.hasAttribute("data-share-v");
+        if (isShareS) {
+          handleClickOutside(event, shareRefS);
+        } else if (isShareB) {
+          handleClickOutside(event, shareRefB);
+        } else if (isShareV) {
+          handleClickOutside(event, shareRefV);
+        } else {
+          closeSharePop();
+        }
+      }
+    };
+
+    document.body.addEventListener("click", handleRef);
+    window.addEventListener("scroll", () => closeSharePop(), { capture: true });
+    window.addEventListener("resize", () => closeSharePop());
+
+    return () => {
+      document.body.removeEventListener("click", handleRef);
+      window.removeEventListener("scroll", () => closeSharePop(), {
+        capture: true,
+      });
+      window.removeEventListener("resize", () => closeSharePop());
+    };
+  }, [shId, shareRefB, shareRefS, shareRefV]);
   const handleChapterChange = (event) => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
@@ -54,10 +122,12 @@ export default function Yogasutra() {
           const docSanpshot = await getDoc(docRef);
           if (docSanpshot.exists) {
             const SutraData = docSanpshot.data();
-            const SutraArrays = Object.entries(SutraData).map(([key, value]) => ({
-              key,
-              value,
-            }));
+            const SutraArrays = Object.entries(SutraData).map(
+              ([key, value]) => ({
+                key,
+                value,
+              })
+            );
             setOptionLength(SutraArrays.length / 3);
             const Sutra = SutraData[`Sutra${selectedSutra}`];
             const Bhasya = SutraData[`Bhashya${selectedSutra}`];
@@ -215,57 +285,87 @@ export default function Yogasutra() {
                             <br />
                           </font>
                         </p>
-                        <p className="text-center h-fonts">
-                          <font className="fw-normal size-6 line-150">
-                            {SutraContent
-                              ? SutraContent.split("।")
-                                  .filter((line) => line.trim() !== "")
-                                  .map((line, index, array) => (
-                                    <React.Fragment key={index}>
-                                      {array.length === 2
-                                        ? index === 1
+                        <div className="hover-parent">
+                          <p className="text-center h-fonts">
+                            <font
+                              id={shsId}
+                              className="fw-normal size-6 line-150"
+                            >
+                              {SutraContent
+                                ? SutraContent.split("।")
+                                    .filter((line) => line.trim() !== "")
+                                    .map((line, index, array) => (
+                                      <React.Fragment key={index}>
+                                        {array.length === 2
+                                          ? index === 1
+                                            ? ` ।। ${line} ।।`
+                                            : line.trim()
+                                          : array.length >= 4
+                                          ? index === 3
+                                            ? ` ।। ${line} ।।`
+                                            : line.trim()
+                                          : index === 2
                                           ? ` ।। ${line} ।।`
-                                          : line.trim()
-                                        : array.length >= 4
-                                        ? index === 3
-                                          ? ` ।। ${line} ।।`
-                                          : line.trim()
-                                        : index === 2
-                                        ? ` ।। ${line} ।।`
-                                        : line.trim()}
+                                          : line.trim()}
 
-                                      {array.length >= 4
-                                        ? index === 1
+                                        {array.length >= 4
+                                          ? index === 1
+                                            ? "।"
+                                            : ""
+                                          : array.length === 2
+                                          ? ""
+                                          : index === 0
                                           ? "।"
-                                          : ""
-                                        : array.length === 2
-                                        ? ""
-                                        : index === 0
-                                        ? "।"
-                                        : ""}
+                                          : ""}
 
-                                      {array.length === 2
-                                        ? ""
-                                        : index === 0 && (
-                                            <>
-                                              <br />
-                                              <br />
-                                            </>
-                                          )}
+                                        {array.length === 2
+                                          ? ""
+                                          : index === 0 && (
+                                              <>
+                                                <br />
+                                                <br />
+                                              </>
+                                            )}
 
-                                      {array.length >= 4
-                                        ? index === 1 && (
-                                            <>
-                                              <br />
-                                              <br />
-                                            </>
-                                          )
-                                        : ""}
-                                    </React.Fragment>
-                                  ))
-                              : "Sutra not found."}
-                          </font>
-                        </p>
+                                        {array.length >= 4
+                                          ? index === 1 && (
+                                              <>
+                                                <br />
+                                                <br />
+                                              </>
+                                            )
+                                          : ""}
+                                      </React.Fragment>
+                                    ))
+                                : "Sutra not found."}
+                            </font>
+                          </p>
+                          <div
+                            id="shareTop"
+                            className="hover-child ml-auto mr-1 p-absolute"
+                          >
+                            <div className="d-flex flex-row">
+                              <div className="">
+                                <button
+                                  className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
+                                  aria-expanded="false"
+                                  onClick={(event) => {
+                                    handleClick(event);
+                                    setShareTC("sutra");
+                                  }}
+                                >
+                                  <i
+                                    ref={shareRefS}
+                                    data-share-s
+                                    className="sdf material-symbols-outlined"
+                                  >
+                                    share
+                                  </i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -282,57 +382,87 @@ export default function Yogasutra() {
                             <br />
                           </font>
                         </p>
-                        <p className="text-center h-fonts">
-                          <font className="fw-normal size-6 line-150">
-                            {BhasyaContent
-                              ? BhasyaContent.split("।")
-                                  .filter((line) => line.trim() !== "")
-                                  .map((line, index, array) => (
-                                    <React.Fragment key={index}>
-                                      {array.length === 2
-                                        ? index === 1
+                        <div className="hover-parent">
+                          <p className="text-center h-fonts">
+                            <font
+                              id={shbId}
+                              className="fw-normal size-6 line-150"
+                            >
+                              {BhasyaContent
+                                ? BhasyaContent.split("।")
+                                    .filter((line) => line.trim() !== "")
+                                    .map((line, index, array) => (
+                                      <React.Fragment key={index}>
+                                        {array.length === 2
+                                          ? index === 1
+                                            ? ` ।। ${line} ।।`
+                                            : line.trim()
+                                          : array.length >= 4
+                                          ? index === 3
+                                            ? ` ।। ${line} ।।`
+                                            : line.trim()
+                                          : index === 2
                                           ? ` ।। ${line} ।।`
-                                          : line.trim()
-                                        : array.length >= 4
-                                        ? index === 3
-                                          ? ` ।। ${line} ।।`
-                                          : line.trim()
-                                        : index === 2
-                                        ? ` ।। ${line} ।।`
-                                        : line.trim()}
+                                          : line.trim()}
 
-                                      {array.length >= 4
-                                        ? index === 1
+                                        {array.length >= 4
+                                          ? index === 1
+                                            ? "।"
+                                            : ""
+                                          : array.length === 2
+                                          ? ""
+                                          : index === 0
                                           ? "।"
-                                          : ""
-                                        : array.length === 2
-                                        ? ""
-                                        : index === 0
-                                        ? "।"
-                                        : ""}
+                                          : ""}
 
-                                      {array.length === 2
-                                        ? ""
-                                        : index === 0 && (
-                                            <>
-                                              <br />
-                                              <br />
-                                            </>
-                                          )}
+                                        {array.length === 2
+                                          ? ""
+                                          : index === 0 && (
+                                              <>
+                                                <br />
+                                                <br />
+                                              </>
+                                            )}
 
-                                      {array.length >= 4
-                                        ? index === 1 && (
-                                            <>
-                                              <br />
-                                              <br />
-                                            </>
-                                          )
-                                        : ""}
-                                    </React.Fragment>
-                                  ))
-                              : "Bhasya not found."}
-                          </font>
-                        </p>
+                                        {array.length >= 4
+                                          ? index === 1 && (
+                                              <>
+                                                <br />
+                                                <br />
+                                              </>
+                                            )
+                                          : ""}
+                                      </React.Fragment>
+                                    ))
+                                : "Bhasya not found."}
+                            </font>
+                          </p>
+                          <div
+                            id="shareTop"
+                            className="hover-child ml-auto mr-1 p-absolute"
+                          >
+                            <div className="d-flex flex-row">
+                              <div className="">
+                                <button
+                                  className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
+                                  aria-expanded="false"
+                                  onClick={(event) => {
+                                    handleClick(event);
+                                    setShareTC("bhasya");
+                                  }}
+                                >
+                                  <i
+                                    ref={shareRefB}
+                                    data-share-b
+                                    className="sdf material-symbols-outlined"
+                                  >
+                                    share
+                                  </i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -349,57 +479,87 @@ export default function Yogasutra() {
                             <br />
                           </font>
                         </p>
-                        <p className="text-center h-fonts">
-                          <font className="fw-normal size-6 line-150">
-                            {VrittiContent
-                              ? VrittiContent.split("।")
-                                  .filter((line) => line.trim() !== "")
-                                  .map((line, index, array) => (
-                                    <React.Fragment key={index}>
-                                      {array.length === 2
-                                        ? index === 1
+                        <div className="hover-parent">
+                          <p className="text-center h-fonts">
+                            <font
+                              id={shvId}
+                              className="fw-normal size-6 line-150"
+                            >
+                              {VrittiContent
+                                ? VrittiContent.split("।")
+                                    .filter((line) => line.trim() !== "")
+                                    .map((line, index, array) => (
+                                      <React.Fragment key={index}>
+                                        {array.length === 2
+                                          ? index === 1
+                                            ? ` ।। ${line} ।।`
+                                            : line.trim()
+                                          : array.length >= 4
+                                          ? index === 3
+                                            ? ` ।। ${line} ।।`
+                                            : line.trim()
+                                          : index === 2
                                           ? ` ।। ${line} ।।`
-                                          : line.trim()
-                                        : array.length >= 4
-                                        ? index === 3
-                                          ? ` ।। ${line} ।।`
-                                          : line.trim()
-                                        : index === 2
-                                        ? ` ।। ${line} ।।`
-                                        : line.trim()}
+                                          : line.trim()}
 
-                                      {array.length >= 4
-                                        ? index === 1
+                                        {array.length >= 4
+                                          ? index === 1
+                                            ? "।"
+                                            : ""
+                                          : array.length === 2
+                                          ? ""
+                                          : index === 0
                                           ? "।"
-                                          : ""
-                                        : array.length === 2
-                                        ? ""
-                                        : index === 0
-                                        ? "।"
-                                        : ""}
+                                          : ""}
 
-                                      {array.length === 2
-                                        ? ""
-                                        : index === 0 && (
-                                            <>
-                                              <br />
-                                              <br />
-                                            </>
-                                          )}
+                                        {array.length === 2
+                                          ? ""
+                                          : index === 0 && (
+                                              <>
+                                                <br />
+                                                <br />
+                                              </>
+                                            )}
 
-                                      {array.length >= 4
-                                        ? index === 1 && (
-                                            <>
-                                              <br />
-                                              <br />
-                                            </>
-                                          )
-                                        : ""}
-                                    </React.Fragment>
-                                  ))
-                              : "Vritti not found."}
-                          </font>
-                        </p>
+                                        {array.length >= 4
+                                          ? index === 1 && (
+                                              <>
+                                                <br />
+                                                <br />
+                                              </>
+                                            )
+                                          : ""}
+                                      </React.Fragment>
+                                    ))
+                                : "Vritti not found."}
+                            </font>
+                          </p>
+                          <div
+                            id="shareTop"
+                            className="hover-child ml-auto mr-1 p-absolute"
+                          >
+                            <div className="d-flex flex-row">
+                              <div className="">
+                                <button
+                                  className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
+                                  aria-expanded="false"
+                                  onClick={(event) => {
+                                    handleClick(event);
+                                    setShareTC("vritti");
+                                  }}
+                                >
+                                  <i
+                                    ref={shareRefV}
+                                    data-share-v
+                                    className="sdf material-symbols-outlined"
+                                  >
+                                    share
+                                  </i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -411,6 +571,17 @@ export default function Yogasutra() {
             </div>
           </div>
         </div>
+        {isSharePopVisible &&
+          createPortal(
+            <SharePop
+              e={clickEvent}
+              Idx={shId}
+              site={site}
+              title={shareTitle}
+              isLargeLength={false}
+            />,
+            document.body
+          )}
       </div>
     </>
   );

@@ -106,7 +106,7 @@ const Navigation = () => {
                   </Link>
                   <ul className="menu">
                     <li className="first expanded">
-                      <Link to="/srimadContent" title="Srimad BhagavadGita">
+                      <Link to="/srimad" title="Srimad BhagavadGita">
                         Srimad BhagavadGita
                       </Link>
                       <ul className="menu">
@@ -116,7 +116,7 @@ const Navigation = () => {
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/srimadContent" title="Srimadn Content">
+                          <Link to="/srimad" title="Srimadn Content">
                             Content
                           </Link>
                         </li>
@@ -138,37 +138,37 @@ const Navigation = () => {
                       </Link>
                       <ul className="menu">
                         <li className="first leaf">
-                          <Link to="/ashtavakraContent" title="Ashtavakra Gita">
+                          <Link to="/ashtavakra" title="Ashtavakra Gita">
                             Ashtavakra Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/avadhutaContent" title="Avadhuta Gita">
+                          <Link to="/avadhuta" title="Avadhuta Gita">
                             Avadhuta Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/kapilaContent" title="Kapila Gita">
+                          <Link to="/kapila" title="Kapila Gita">
                             Kapila Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/sriramContent" title="Sriram Gita">
+                          <Link to="/sriram" title="Sriram Gita">
                             Sriram Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/srutiContent" title="Sruti Gita">
+                          <Link to="/sruti" title="Sruti Gita">
                             Sruti Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/uddhavaContent" title="Uddhava Gita">
+                          <Link to="/uddhava" title="Uddhava Gita">
                             Uddhava Gita
                           </Link>
                         </li>
                         <li className="leaf">
-                          <Link to="/vibhishanaContent" title="Vibhishana Gita">
+                          <Link to="/vibhishana" title="Vibhishana Gita">
                             Vibhishana Gita
                           </Link>
                         </li>
@@ -176,7 +176,7 @@ const Navigation = () => {
                     </li>
                     <li className="expanded">
                       <Link
-                        to="/brahmasutraContent"
+                        to="/brahmasutra"
                         title="Brahmasutra content"
                       >
                         BrahmaSutra (ब्रह्मसूत्र)
@@ -192,7 +192,7 @@ const Navigation = () => {
                         </li>
                         <li className="last leaf">
                           <Link
-                            to="/brahmasutraContent"
+                            to="/brahmasutra"
                             title="Brahmasutra content"
                           >
                             Content
@@ -201,7 +201,7 @@ const Navigation = () => {
                       </ul>
                     </li>
                     <li className="last expanded">
-                      <Link to="yogasutraContent" title="Yogasutra content">
+                      <Link to="yogasutra" title="Yogasutra content">
                         YogaSutra
                       </Link>
                     </li>

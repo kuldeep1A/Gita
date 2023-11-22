@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+import React, { useState, useEffect, useRef } from "react";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
-import { optionData } from "./OptionData";
-import { kandaNo } from "./OptionData";
-
+import { optionData, kandaNo } from "../DATA/OptionData";
+import SharePop from "../componets/SharePop";
 export default function Valmikiramayana() {
   const [selectedKanda, setSelectedKanda] = useState("BALAKANDA");
   const [selectedSarga, setSelectedSarga] = useState(1);
@@ -15,6 +15,49 @@ export default function Valmikiramayana() {
   const sundaraLen = Object.keys(optionData.SUNDARAKANDA).length;
   const yuddhadaLen = Object.keys(optionData.YUDDHAKANDA).length;
   const [shlokaData, setShlokaData] = useState({});
+  const [isSharePopVisible, setSharePopVisible] = useState(false);
+  const [clickEvent, setClickEvent] = useState(null);
+  const shareRef = useRef(null);
+  var site = "valmikiramayana";
+  var shId = `sh-${selectedKanda}-${selectedSarga}-${selectedShloka}`;
+  var shareTitle = `Valmiki Ramayana, Kanda: ${selectedKanda}, Sarga: ${selectedSarga}, Shloka: ${selectedShloka}.`;
+  const handleClick = (event) => {
+    if (!isSharePopVisible) {
+      setClickEvent(event);
+      setSharePopVisible(true);
+    } else {
+      closeSharePop();
+    }
+  };
+  const closeSharePop = () => {
+    setSharePopVisible(false);
+  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const target = event.target || event.srcElement;
+      if (target && shareRef !== null){
+        const share_b = !shareRef.current.contains(target);
+        const tippy_s = document.getElementById(`tippy-${shId}`)
+          ? !document.getElementById(`tippy-${shId}`).contains(target)
+          : true;
+        if (share_b && tippy_s) {
+          closeSharePop();
+        }
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+    window.addEventListener("scroll", () => closeSharePop(), { capture: true });
+    window.addEventListener("resize", () => closeSharePop());
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+      window.removeEventListener("scroll", () => closeSharePop(), {
+        capture: true,
+      });
+      window.removeEventListener("resize", () => closeSharePop());
+    };
+  }, [shId]);
   const sanEng = (shloka, c, isSans) => {
     var engs = [];
     var all = {};
@@ -241,65 +284,96 @@ export default function Valmikiramayana() {
                       <div className="content_display_sutra">
                         <div>
                           <div className="view-field_sutra">
-                            <p className="text-center h-fonts">
-                              <font className="fw-normal size-6 line-100">
-                                {selectedShloka === 1 && shlokaData.content ? (
-                                  <React.Fragment>
-                                    <>
-                                      <span className="d-block">
-                                        <span className="d-block eng-title size-8 line-50">
-                                          {`[${
-                                            sanEng(
-                                              shlokaData.content,
-                                              0,
-                                              false
-                                            )[0]
-                                          }]`}
-                                        </span>
-                                      </span>
-                                    </>
-                                  </React.Fragment>
-                                ) : (
-                                  ""
-                                )}
-                                {selectedShloka === 1 && shlokaData.content
-                                  ? sanEng(shlokaData.content, 0, true).map(
-                                      (line, index) => (
-                                        <React.Fragment key={index}>
-                                          {line.split("'")}
-                                          <>
-                                            <br />
-                                            <br />
-                                          </>
-                                        </React.Fragment>
-                                      )
-                                    )
-                                  : shlokaData.content &&
-                                    selectedShloka >= 2 &&
-                                    shlokaData.content
-                                      .trim()
-                                      .includes(
-                                        `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`
-                                      )
-                                  ? shlokaData.content
-                                      .split(",")
-                                      .filter((line) => line.trim() !== "")
-                                      .map((line, index, array) => (
-                                        <React.Fragment key={index}>
-                                          {line.split("'")}
-                                          <>
-                                            <br />
-                                            <br />
-                                          </>
-                                        </React.Fragment>
-                                      ))
-                                  : "Shloka not found."}
-                              </font>
-
-                              <font className="fw-normal size-6 line-150">
-                                {}
+                            <p className="text-center">
+                              <font className="color-dark-aubergine fw-normal size-6">
+                                <b>Shloka</b>
+                                <br />
                               </font>
                             </p>
+                            <div className="hover-parent">
+                              <p className="text-center h-fonts">
+                                <font
+                                  id={shId}
+                                  className="fw-normal size-6 line-100"
+                                >
+                                  {selectedShloka === 1 &&
+                                  shlokaData.content ? (
+                                    <React.Fragment>
+                                      <>
+                                        <span className="d-block">
+                                          <span className="d-block eng-title size-8 line-50">
+                                            {`[${
+                                              sanEng(
+                                                shlokaData.content,
+                                                0,
+                                                false
+                                              )[0]
+                                            }]`}
+                                          </span>
+                                        </span>
+                                      </>
+                                    </React.Fragment>
+                                  ) : (
+                                    ""
+                                  )}
+                                  {selectedShloka === 1 && shlokaData.content
+                                    ? sanEng(shlokaData.content, 0, true).map(
+                                        (line, index) => (
+                                          <React.Fragment key={index}>
+                                            {line.split("'")}
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          </React.Fragment>
+                                        )
+                                      )
+                                    : shlokaData.content &&
+                                      selectedShloka >= 2 &&
+                                      shlokaData.content
+                                        .trim()
+                                        .includes(
+                                          `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`
+                                        )
+                                    ? shlokaData.content
+                                        .split(",")
+                                        .filter((line) => line.trim() !== "")
+                                        .map((line, index, array) => (
+                                          <React.Fragment key={index}>
+                                            {line.split("'")}
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          </React.Fragment>
+                                        ))
+                                    : "Shloka not found."}
+                                </font>
+                              </p>
+                              <div
+                                id="shareBottom"
+                                className="hover-child ml-auto mr-1 p-absolute"
+                              >
+                                <div className="d-flex flex-row">
+                                  <div className="">
+                                    <button
+                                      className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
+                                      aria-expanded="false"
+                                      onClick={(event) => {
+                                        handleClick(event);
+                                      }}
+                                    >
+                                      <i
+                                        ref={shareRef}
+                                        className="sdf material-symbols-outlined"
+                                      >
+                                        share
+                                      </i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div>
@@ -331,6 +405,17 @@ export default function Valmikiramayana() {
             </div>
           </div>
         </div>
+        {isSharePopVisible &&
+          createPortal(
+            <SharePop
+              e={clickEvent}
+              Idx={shId}
+              site={site}
+              title={shareTitle}
+              isLargeLength={false}
+            />,
+            document.body
+          )}
       </div>
     </>
   );

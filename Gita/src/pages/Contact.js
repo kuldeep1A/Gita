@@ -1,5 +1,5 @@
 import React from "react";
-import EmailLink from "./EmailLink";
+import { EmailLinkD, EmailLinkM } from "../componets/EmailLink";
 
 export default function Contact() {
   return (
@@ -11,12 +11,21 @@ export default function Contact() {
               <div className="page-title">Contact</div>
               <div className="field-items">
                 <p className="size-5">
-                  <EmailLink
-                    email="kuldeepdhangarkd@gmail.com"
-                    subject="Hello, Kuldeep"
-                  >
-                    Kuldeepdhagnarkd@gmail.com
-                  </EmailLink>
+                  {window.innerWidth < 680 ? (
+                    <EmailLinkM
+                      email="kuldeepdhangarkd@gmail.com"
+                      subject="Hello, Kuldeep"
+                    >
+                      Kuldeepdhagnarkd@gmail.com
+                    </EmailLinkM>
+                  ) : (
+                    <EmailLinkD
+                      email="kuldeepdhangarkd@gmail.com"
+                      subject="Hello, Kuldeep"
+                    >
+                      Kuldeepdhagnarkd@gmail.com
+                    </EmailLinkD>
+                  )}
                 </p>
                 <div>Kuldeep Dhangar</div>
               </div>

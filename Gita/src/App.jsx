@@ -42,15 +42,15 @@ function App() {
             <Route path="/Team" element={<Team />} />
             <Route path="/quicklinks" element={<QuickLinks />} />
             <Route path="/othergitas" element={<Othergitas />} />
-            <Route path="/ashtavakraContent" element={<Ashtavakra />} />
-            <Route path="/avadhutaContent" element={<Avadhuta />} />
-            <Route path="/kapilaContent" element={<Kapila />} />
-            <Route path="/sriramContent" element={<Sriram />} />
-            <Route path="/srutiContent" element={<Sruti />} />
-            <Route path="/uddhavaContent" element={<Uddhava />} />
-            <Route path="/vibhishanaContent" element={<Vibhishana />} />
+            <Route path="/ashtavakra" element={<Ashtavakra />} />
+            <Route path="/avadhuta" element={<Avadhuta />} />
+            <Route path="/kapila" element={<Kapila />} />
+            <Route path="/sriram" element={<Sriram />} />
+            <Route path="/sruti" element={<Sruti />} />
+            <Route path="/uddhava" element={<Uddhava />} />
+            <Route path="/vibhishana" element={<Vibhishana />} />
             <Route path="/srimadIntro" element={<SrimadIntro />} />
-            <Route path="/srimadContent" element={<Srimad />} />
+            <Route path="/srimad" element={<Srimad />} />
             <Route path="/srimadTextdetails" element={<TextDetails />} />
             <Route
               path="/brahmasutraWelcome"
@@ -58,8 +58,8 @@ function App() {
             />
             <Route path="/valmikiramayana" element={<Valmikiramayana />} />
             <Route path="/brahmasutraAbout" element={<BrahmasutraAbout />} />
-            <Route path="/brahmasutraContent" element={<Brahmasutra />} />
-            <Route path="/yogasutraContent" element={<Yogasutra />} />
+            <Route path="/brahmasutra" element={<Brahmasutra />} />
+            <Route path="/yogasutra" element={<Yogasutra />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
           </Route>

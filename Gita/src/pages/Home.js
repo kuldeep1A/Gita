@@ -50,8 +50,11 @@ export default function Home() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="">
-                            <strong>Ramcharitmanas x</strong>
+                          <Link className="user-none pointer-event-none" to="">
+                            <strong>
+                              Ramcharitmanas
+                              <span className="not-available"></span>
+                            </strong>
                           </Link>
                           <br />
                           &nbsp;
@@ -73,7 +76,7 @@ export default function Home() {
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="yogasutraContent">
+                          <Link to="yogasutra">
                             <strong>Yoga Sutra</strong>
                           </Link>
                           <br />
@@ -85,6 +88,13 @@ export default function Home() {
                 </div>
               </section>
             </div>
+          </div>
+          <div className="fse-describe user-none pointer-event-none">
+            <h1>
+              <strong className="size-9">
+                <span className="not-available"></span> : Not Available
+              </strong>
+            </h1>
           </div>
         </div>
       </div>

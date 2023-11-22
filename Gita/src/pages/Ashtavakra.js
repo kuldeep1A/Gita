@@ -1,13 +1,58 @@
-import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+import React, { useState, useEffect, useRef } from "react";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
+import SharePop from "../componets/SharePop";
 
 export default function Ashtavakra() {
   const [idC, setidC] = useState("");
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
-  const [selectShloka, setSelectedShloka] = useState(1);
+  const [selectedShloka, setSelectedShloka] = useState(1);
   const [ShlokaContent, setShlokaContent] = useState("");
+  const [isSharePopVisible, setSharePopVisible] = useState(false);
+  const [clickEvent, setClickEvent] = useState(null);
+  const shareRef = useRef(null);
+  var site = "ashtavakra";
+  var shId = `sh-${site}-${selectedChapter}-${selectedShloka}`;
+  var shareTitle = `Ashtavakra Gita, Chapter: ${selectedChapter}, shloka: ${selectedShloka}.`;
+  const handleClick = (event) => {
+    if (!isSharePopVisible) {
+      setClickEvent(event);
+      setSharePopVisible(true);
+    } else {
+      closeSharePop();
+    }
+  };
+  const closeSharePop = () => {
+    setSharePopVisible(false);
+  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const target = event.target || event.srcElement;
+      if (target && shareRef !== null){
+        const share_b = !shareRef.current.contains(target);
+        const tippy_s = document.getElementById(`tippy-${shId}`)
+          ? !document.getElementById(`tippy-${shId}`).contains(target)
+          : true;
+        if (share_b && tippy_s) {
+          closeSharePop();
+        }
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+    window.addEventListener("scroll", () => closeSharePop(), { capture: true });
+    window.addEventListener("resize", () => closeSharePop());
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+      window.removeEventListener("scroll", () => closeSharePop(), {
+        capture: true,
+      });
+      window.removeEventListener("resize", () => closeSharePop());
+    };
+  }, [shId]);
   const handleChapterChange = (event) => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
@@ -37,7 +82,7 @@ export default function Ashtavakra() {
               ([shlokaNumber, Shloka]) => ({ shlokaNumber, Shloka })
             );
             setOptionLength(ShlokaArray.length);
-            const shloka = ShlokaData[`Shloka${selectShloka}`];
+            const shloka = ShlokaData[`Shloka${selectedShloka}`];
             setShlokaContent(shloka);
           }
         }
@@ -46,7 +91,7 @@ export default function Ashtavakra() {
       }
     };
     fetchShlokaContent();
-  }, [idC, selectShloka, selectedChapter]);
+  }, [idC, selectedShloka, selectedChapter]);
   return (
     <>
       <div className="container">
@@ -114,7 +159,7 @@ export default function Ashtavakra() {
                                 <select
                                   id="edit-language"
                                   className="form-select required"
-                                  value={selectShloka}
+                                  value={selectedShloka}
                                   onChange={handleShlokaChange}
                                 >
                                   {Array.from(
@@ -144,49 +189,75 @@ export default function Ashtavakra() {
                             <br />
                           </font>
                         </p>
-                        <p className="text-center h-fonts">
-                          <font className="fw-normal size-6">
-                            {ShlokaContent
-                              ? ShlokaContent.split("।")
-                                  .filter((line) => line.trim() !== "")
-                                  .map((line, index, array) => (
-                                    <React.Fragment key={index}>
-                                      {array.length >= 4
-                                        ? index === 3
+                        <div className="hover-parent">
+                          <p className="text-center h-fonts">
+                            <font id={shId} className="fw-normal size-6">
+                              {ShlokaContent
+                                ? ShlokaContent.split("।")
+                                    .filter((line) => line.trim() !== "")
+                                    .map((line, index, array) => (
+                                      <React.Fragment key={index}>
+                                        {array.length >= 4
+                                          ? index === 3
+                                            ? ` ।। ${line} ।।`
+                                            : line.trim()
+                                          : index === 2
                                           ? ` ।। ${line} ।।`
-                                          : line.trim()
-                                        : index === 2
-                                        ? ` ।। ${line} ।।`
-                                        : line.trim()}
+                                          : line.trim()}
 
-                                      {array.length >= 4
-                                        ? index === 1
+                                        {array.length >= 4
+                                          ? index === 1
+                                            ? "।"
+                                            : ""
+                                          : index === 0
                                           ? "।"
-                                          : ""
-                                        : index === 0
-                                        ? "।"
-                                        : ""}
-                                      {index === 0 && selectedChapter <= 20 && (
-                                        <>
-                                          <br />
-                                          <br />
-                                        </>
-                                      )}
-
-                                      {array.length >= 4
-                                        ? index === 1 &&
+                                          : ""}
+                                        {index === 0 &&
                                           selectedChapter <= 20 && (
                                             <>
                                               <br />
                                               <br />
                                             </>
-                                          )
-                                        : ""}
-                                    </React.Fragment>
-                                  ))
-                              : "Shloka not found."}
-                          </font>
-                        </p>
+                                          )}
+
+                                        {array.length >= 4
+                                          ? index === 1 &&
+                                            selectedChapter <= 20 && (
+                                              <>
+                                                <br />
+                                                <br />
+                                              </>
+                                            )
+                                          : ""}
+                                      </React.Fragment>
+                                    ))
+                                : "Shloka not found."}
+                            </font>
+                          </p>
+                          <div
+                            id="shareBottom"
+                            className="hover-child ml-auto mr-1 p-absolute"
+                          >
+                            <div className="d-flex flex-row">
+                              <div className="">
+                                <button
+                                  className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
+                                  aria-expanded="false"
+                                  onClick={(event) => {
+                                    handleClick(event);
+                                  }}
+                                >
+                                  <i
+                                    ref={shareRef}
+                                    className="sdf material-symbols-outlined"
+                                  >
+                                    share
+                                  </i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -195,6 +266,17 @@ export default function Ashtavakra() {
             </div>
           </div>
         </div>
+        {isSharePopVisible &&
+          createPortal(
+            <SharePop
+              e={clickEvent}
+              Idx={shId}
+              site={site}
+              title={shareTitle}
+              isLargeLength={false}
+            />,
+            document.body
+          )}
       </div>
     </>
   );

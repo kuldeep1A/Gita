@@ -29,8 +29,17 @@ body {
   user-select: none;
 }
 
+.user-none {
+  user-select: none !important;
+}
 
+.pointer-event-none {
+  pointer-events: none !important;
+}
 
+.w-full {
+  width: 100%;
+}
 
 h1 {
   font-size: 2em;
@@ -136,6 +145,10 @@ ul {
   display: flex;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -152,7 +165,7 @@ ul {
   position: absolute;
 }
 
-.image-fluid {
+.fw- .image-fluid {
   width: 100%;
   height: auto;
   display: block;

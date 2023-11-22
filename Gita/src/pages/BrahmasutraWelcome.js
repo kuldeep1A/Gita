@@ -29,7 +29,7 @@ export default function BrahmasutraWelcome() {
                     />
                   </div>
                   <h1>
-                    <Link to="/brahmasutraContent">View Sutras</Link>
+                    <Link to="/brahmasutra">View Sutras</Link>
                   </h1>
                 </div>
               </section>

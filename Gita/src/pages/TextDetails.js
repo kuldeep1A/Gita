@@ -25,14 +25,14 @@ export default function TextDetails() {
                     <br />
                     <b>
                       Srimadbhagavadgita translated by Swami Tejomayananda
-                    </b>{" "}
+                    </b>
                     (1993, Central Chinmaya Mission Trust, Bombay) [Hindi
                     translation of The Holy Geeta by Swami Chinmayananda]
                     <br />
                     <b>
                       Srimadbhagavadgita with Gitarthasangraha of Abhinavagupta
                       Part 1 &amp; 2: Translation by Dr. S Sankaranarayan
-                    </b>{" "}
+                    </b>
                     (1985, Sri Venkateswara University, Tirupati)
                     <br />
                     <b>Srimadbhagavadgita: Sadhaka Sanjivani </b>(Hindi
@@ -42,7 +42,7 @@ export default function TextDetails() {
                     <b>
                       Srimadbhagavadgita: with Hindi translation of
                       Sankarabhashya translated by Sri Harikrishandas Goenka
-                    </b>{" "}
+                    </b>
                     (1998, Gita Press, Gorakhpur)
                     <br />
                     <b>The Bhagavad Gita by Swami Sivananda</b> (1995, The

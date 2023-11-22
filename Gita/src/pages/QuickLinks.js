@@ -14,7 +14,7 @@ export default function QuickLinks() {
                     <tbody>
                       <tr>
                         <td>
-                          <Link to="/srimadContent">
+                          <Link to="/srimad">
                             <strong>Srimad BhagavadGita</strong>
                           </Link>
                           <br />
@@ -30,15 +30,18 @@ export default function QuickLinks() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="">
-                            <strong>Ramcharitmanas x</strong>
+                          <Link className="user-none pointer-event-none" to="">
+                            <strong>
+                              Ramcharitmanas
+                              <span className="not-available"></span>
+                            </strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="">
-                            <strong>Valmiki Ramayanam x</strong>
+                          <Link to="/valmikiramayana">
+                            <strong>Valmiki Ramayana</strong>
                           </Link>
                           <br />
                           &nbsp;
@@ -46,14 +49,14 @@ export default function QuickLinks() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="/brahmasutraContent">
+                          <Link to="/brahmasutra">
                             <strong>Brahma Sutra</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="/yogasutraContent">
+                          <Link to="/yogasutra">
                             <strong>Yoga Sutra</strong>
                           </Link>
                           <br />
@@ -65,6 +68,13 @@ export default function QuickLinks() {
                 </div>
               </section>
             </div>
+          </div>
+          <div className="fse-describe user-none pointer-event-none">
+            <h1>
+              <strong className="size-9">
+                <span className="not-available"></span> : Not Available
+              </strong>
+            </h1>
           </div>
         </div>
       </div>
