@@ -30,11 +30,10 @@ export default function Sriram() {
       const target = event.target || event.srcElement;
       if (target && shareRef !== null) {
         const share_b = !shareRef.current.contains(target);
-        const tippy_s = document.getElementById(`tippy-${shId}`)
-          ? !document.getElementById(`tippy-${shId}`).contains(target)
-          : true;
-        if (share_b && tippy_s) {
-          closeSharePop();
+        if (share_b) {
+          setTimeout(() => {
+            closeSharePop();
+          }, 100);
         }
       }
     };

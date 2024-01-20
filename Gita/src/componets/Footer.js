@@ -3,7 +3,7 @@ const Footer = () => {
     <>
       <div id="footer">
         <h1 className="is-hidden-desktop size-6 text-center color-white">
-          Content Management System (Admin)
+          Content Management System (Admin) - 2022
         </h1>
       </div>
     </>

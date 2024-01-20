@@ -2,20 +2,106 @@ import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  useEffect(() => {
-    const sfj = document.querySelector("#edit-search-block-form");
-    sfj.addEventListener("click", (e) => {
-      console.log("Search not working on the server");
-    });
-    const sfjd = document.querySelector("#edit-submit");
-    sfjd.addEventListener("click", (e) => {
-      console.log("Search not working on the server");
-    });
-  });
+
+  const valuesMatching = () => {
+    let link = "";
+    switch (searchValue.toLocaleLowerCase()) {
+      case "about":
+        link = "https://gita1a.web.app/about";
+        break;
+      case "history":
+        link = "https://gita1a.web.app/history";
+        break;
+      case "team":
+        link = "https://gita1a.web.app/Team";
+        break;
+      case "quick":
+        link = "https://gita1a.web.app/quicklinks";
+        break;
+      case "ashtavakra":
+        link = "https://gita1a.web.app/ashtavakra";
+        break;
+      case "avadhuta":
+        link = "https://gita1a.web.app/avadhuta";
+        break;
+      case "kapila":
+        link = "https://gita1a.web.app/kapila";
+        break;
+      case "sriram":
+        link = "https://gita1a.web.app/sriram";
+        break;
+      case "sruti":
+        link = "https://gita1a.web.app/sruti";
+        break;
+      case "uddhava":
+        link = "https://gita1a.web.app/uddhava";
+        break;
+      case "vibhishana":
+        link = "https://gita1a.web.app/vibhishana";
+        break;
+      case "intro":
+        link = "https://gita1a.web.app/srimadIntro";
+        break;
+      case "srimad":
+        link = "https://gita1a.web.app/srimad";
+        break;
+      case "text":
+        link = "https://gita1a.web.app/srimadTextdetails";
+        break;
+      case "brahmasutrawelcome":
+        link = "https://gita1a.web.app/brahmasutraWelcome";
+        break;
+      case "welcome":
+        link = "https://gita1a.web.app/brahmasutraWelcome";
+        break;
+      case "brahmasutra":
+        link = "https://gita1a.web.app/brahmasutra";
+        break;
+      case "brahma":
+        link = "https://gita1a.web.app/brahmasutra";
+        break;
+      case "valmiki":
+        link = "https://gita1a.web.app/valmikiramayana";
+        break;
+      case "valmikiramayana":
+        link = "https://gita1a.web.app/valmikiramayana";
+        break;
+      case "yoga":
+        link = "https://gita1a.web.app/yogasutra";
+        break;
+      case "yogasutra":
+        link = "https://gita1a.web.app/yogasutra";
+        break;
+      case "contact":
+        link = "https://gita1a.web.app/contact";
+        break;
+      case "login":
+        link = "https://gita1a.web.app/login";
+        break;
+      case "other":
+        link = "https://gita1a.web.app/othergitas";
+        break;
+      default:
+        link = "./NotFound";
+        break;
+    }
+
+    setSearchValue("");
+    return link;
+  };
+
+  const redirectSearchPage = () => {
+    const link = valuesMatching();
+    console.log(searchValue);
+    window.open(link, "_self");
+  };
+
+  useEffect(() => {});
 
   return (
     <>
@@ -34,32 +120,35 @@ const Navigation = () => {
               <div className="region region-search">
                 <div id="block-search-form" className="block block-search">
                   <div className="content">
-                    <form action="" id="search-block-form">
-                      <div>
-                        <div className="container-inline">
-                          <div className="form-item form-type-textfield form-item-search-block-form">
-                            <input
-                              title="Search are not working on the server"
-                              type="text"
-                              className="form-text"
-                              id="edit-search-block-form"
-                            />
-                          </div>
-                          <div
-                            className="form-actions form-wrapper"
-                            id="edit-actions"
-                          >
-                            <input
-                              type="submit"
-                              id="edit-submit"
-                              name="op"
-                              value="Search"
-                              className="form-submit"
-                            />
-                          </div>
+                    <div>
+                      <div className="container-inline">
+                        <div className="form-item form-type-textfield form-item-search-block-form">
+                          <input
+                            type="text"
+                            className="form-text"
+                            value={searchValue}
+                            onChange={(e) => setSearchValue(e.target.value)}
+                            onKeyUp={(event) => {
+                              if (event.key === "Enter") {
+                                event.preventDefault();
+                                redirectSearchPage();
+                              }
+                            }}
+                          />
+                        </div>
+                        <div
+                          className="form-actions form-wrapper"
+                          id="edit-actions"
+                        >
+                          <button
+                            onClick={redirectSearchPage}
+                            type="button"
+                            name="Search Button"
+                            className="form-submit"
+                          />
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -175,10 +264,7 @@ const Navigation = () => {
                       </ul>
                     </li>
                     <li className="expanded">
-                      <Link
-                        to="/brahmasutra"
-                        title="Brahmasutra content"
-                      >
+                      <Link to="/brahmasutra" title="Brahmasutra content">
                         BrahmaSutra (ब्रह्मसूत्र)
                       </Link>
                       <ul className="menu">
@@ -191,10 +277,7 @@ const Navigation = () => {
                           <Link to="/brahmasutraAbout">About Brahma Sutra</Link>
                         </li>
                         <li className="last leaf">
-                          <Link
-                            to="/brahmasutra"
-                            title="Brahmasutra content"
-                          >
+                          <Link to="/brahmasutra" title="Brahmasutra content">
                             Content
                           </Link>
                         </li>

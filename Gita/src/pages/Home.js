@@ -15,8 +15,9 @@ export default function Home() {
             <strong>
               <span style={background}>
                 NOTICE: Users can edit content now. If you want to be an editor,
-                please send your credentials with offical Website Maintained by
-                IIT Kanpur.
+                please send your credentials with offical{" "}
+                <em style={{color: "black", fontWeight: "bold"}}>GitaSuperSite</em> Website
+                Maintained by IIT Kanpur.
               </span>
             </strong>
           </span>

@@ -73,7 +73,7 @@ export default function SharePop({ e, Idx, site, title, isLargeLength }) {
                         style={{ fontSize: "24px" }}
                       ></i>
                     </span>
-                    <span className="grow">Copy Comment</span>
+                    <span className="grow">Copy</span>
                   </div>
                 </li>
                 {isLargeLength ? (
