@@ -4,12 +4,12 @@ export default function Othergitas() {
   return (
     <>
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">Other Gitas</h1>
-                <div className="field-items">
+                <h1 className="pa-title">Other Gitas</h1>
+                <div className="fi-items">
                   <div className="list size-5">
                     <div className="mb-15">
                       <Link to="/ashtavakra">Ashtavakra Gita</Link>

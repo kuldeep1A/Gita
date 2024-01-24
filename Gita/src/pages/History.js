@@ -2,12 +2,12 @@ export default function History() {
   return (
     <>
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">History </h1>
-                <div className="field-items">
+                <h1 className="pa-title">History </h1>
+                <div className="fi-items">
                   <div>
                     <h1 className="size-6 color-dark-blue fw-normal">
                       History of Our CMS Project
@@ -49,9 +49,13 @@ export default function History() {
                     <p className="size-7">
                       As our project unfolded, we integrated a number of
                       features designed to facilitate users in exploring a wide
-                      range of historical content. The important thing is all
-                      the data of the sutra is captured by the original site on
-                      gitaSupersite.
+                      range of historical content.{" "}
+                      <em
+                        style={{ fontSize: "20px", backgroundColor: "whitesmoke" }}
+                      >
+                        The important thing is all the data of the sutra is
+                        captured by the original site on gitaSupersite.
+                      </em>
                     </p>
 
                     <h2 className="size-6 color-dark-blue fw-normal">

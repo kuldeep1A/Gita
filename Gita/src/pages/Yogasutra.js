@@ -146,19 +146,19 @@ export default function Yogasutra() {
   return (
     <>
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">YogaSutra</h1>
+                <h1 className="pa-title">YogaSutra</h1>
                 <div className="region region-content">
                   <div className="content-y">
                     <div>
                       <div className="filter">
-                        <div className="views-exposed-widgets clearfix">
+                        <div className="v-ex-widgets clearfix">
                           <div
                             id="edit-language-wrapper"
-                            className="views-exposed-widget"
+                            className="v-ex-widget"
                           >
                             <label
                               htmlFor="edit-language"
@@ -180,7 +180,7 @@ export default function Yogasutra() {
                           </div>
                           <div
                             id="edit-field-chapter"
-                            className="views-exposed-widget"
+                            className="v-ex-widget"
                           >
                             <label className="fw-normal">Chapter</label>
                             <div>
@@ -202,7 +202,7 @@ export default function Yogasutra() {
                           </div>
                           <div
                             id="edit-field-shloka"
-                            className="views-exposed-widget"
+                            className="v-ex-widget"
                           >
                             <label className="fw-normal">Sutra</label>
                             <div>
@@ -269,7 +269,7 @@ export default function Yogasutra() {
                   </div>
                 </div>
                 <div className="view-content">
-                  <div className="content_display_sutra">
+                  <div className="c_dis_sutra">
                     <div
                       className={`_sutra ${
                         isViewSutra
@@ -277,14 +277,14 @@ export default function Yogasutra() {
                           : ""
                       }`}
                     >
-                      <div className="view-field_sutra">
+                      <div className="v-fi_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
                             <b>सूत्र</b>
                             <br />
                           </font>
                         </p>
-                        <div className="hover-parent">
+                        <div className="hov-parent">
                           <p className="text-center h-fonts">
                             <font
                               id={shsId}
@@ -341,7 +341,7 @@ export default function Yogasutra() {
                           </p>
                           <div
                             id="shareTop"
-                            className="hover-child ml-auto mr-1 p-absolute"
+                            className="hov-child ml-auto mr-1 p-absolute"
                           >
                             <div className="d-flex flex-row">
                               <div className="">
@@ -374,14 +374,14 @@ export default function Yogasutra() {
                           : ""
                       }`}
                     >
-                      <div className="view-field_sutra">
+                      <div className="v-fi_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
                             <b>भाष्य</b>
                             <br />
                           </font>
                         </p>
-                        <div className="hover-parent">
+                        <div className="hov-parent">
                           <p className="text-center h-fonts">
                             <font
                               id={shbId}
@@ -438,7 +438,7 @@ export default function Yogasutra() {
                           </p>
                           <div
                             id="shareTop"
-                            className="hover-child ml-auto mr-1 p-absolute"
+                            className="hov-child ml-auto mr-1 p-absolute"
                           >
                             <div className="d-flex flex-row">
                               <div className="">
@@ -471,14 +471,14 @@ export default function Yogasutra() {
                           : ""
                       }`}
                     >
-                      <div className="view-field_sutra">
+                      <div className="v-fi_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
                             <b>भोजवृत्ति</b>
                             <br />
                           </font>
                         </p>
-                        <div className="hover-parent">
+                        <div className="hov-parent">
                           <p className="text-center h-fonts">
                             <font
                               id={shvId}
@@ -535,7 +535,7 @@ export default function Yogasutra() {
                           </p>
                           <div
                             id="shareTop"
-                            className="hover-child ml-auto mr-1 p-absolute"
+                            className="hov-child ml-auto mr-1 p-absolute"
                           >
                             <div className="d-flex flex-row">
                               <div className="">

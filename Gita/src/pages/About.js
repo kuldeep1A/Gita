@@ -2,16 +2,16 @@ export default function About() {
   return (
     <>
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
                 <div>
-                  <div className="page-title">
+                  <div className="pa-title">
                     About Website: <h1>Based On Content Management System</h1>
                   </div>
                 </div>
-                <div className="field-items">
+                <div className="fi-items">
                   <div>
                     <h1 className="size-6 color-dark-blue fw-normal">
                       About Our Project: Religious Texts Repository

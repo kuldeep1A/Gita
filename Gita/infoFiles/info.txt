@@ -1,0 +1,25 @@
+region-front-welcome - r-f-welcome
+content_display - c_dis
+region-search - re-search
+menu_wrapper - me_wrap
+main-menu - main-me
+
+===========================================
+
+inner_header_wrapper = in_he_wrap
+block-search-form = b-s-form
+form-text = f-text
+form-submit = f-submit
+content-sidebar-wrap = c-si-wrap
+field-items = fi-items
+page-title = pa-title
+views-exposed-widget = v-ex-widget
+views-exposed-widgets = v-ex-widgets
+content_display_sutra = c-dis-sutra
+view-field_sutra = v-fi_sutra
+hover-parent = hov-parent
+hover-child = hov-child
+container-wrap = con-wrap
+top_left = top_l
+top_right = top_r
+header = h

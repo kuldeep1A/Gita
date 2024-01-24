@@ -2,12 +2,12 @@ export default function BrahmasutraAbout() {
   return (
     <>
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">About Brahma Sutra</h1>
-                <div className="field-items">
+                <h1 className="pa-title">About Brahma Sutra</h1>
+                <div className="fi-items">
                   <p className="size-7">
                     Vedanta philosophy acknowledges the Prasthana Trayi as its
                     three authoritative primary sources. The texts comprising

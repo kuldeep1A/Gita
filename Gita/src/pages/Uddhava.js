@@ -96,19 +96,19 @@ export default function Uddhava() {
   return (
     <>
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">Uddhava Gita</h1>
+                <h1 className="pa-title">Uddhava Gita</h1>
                 <div className="region region-content">
                   <div className="content">
                     <div>
                       <div className="filter">
-                        <div className="views-exposed-widgets clearfix">
+                        <div className="v-ex-widgets clearfix">
                           <div
                             id="edit-language-wrapper"
-                            className="views-exposed-widget"
+                            className="v-ex-widget"
                           >
                             <label
                               htmlFor="edit-language"
@@ -130,7 +130,7 @@ export default function Uddhava() {
                           </div>
                           <div
                             id="edit-field-chapter"
-                            className="views-exposed-widget"
+                            className="v-ex-widget"
                           >
                             <label className="fw-normal">Chapter</label>
                             <div>
@@ -152,7 +152,7 @@ export default function Uddhava() {
                           </div>
                           <div
                             id="edit-field-shloka"
-                            className="views-exposed-widget"
+                            className="v-ex-widget"
                           >
                             <label className="fw-normal">Sutra</label>
                             <div>
@@ -181,16 +181,16 @@ export default function Uddhava() {
                   </div>
                 </div>
                 <div className="view-content">
-                  <div className="content_display">
+                  <div className="c_dis">
                     <div>
-                      <div className="view-field_sutra">
+                      <div className="v-fi_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
                             <b>Uddhava Gita</b>
                             <br />
                           </font>
                         </p>
-                        <div className="hover-parent">
+                        <div className="hov-parent">
                           <p className="text-center h-fonts">
                             <font id={shId} className="fw-normal size-6">
                               {ShlokaContent
@@ -244,7 +244,7 @@ export default function Uddhava() {
                           </p>
                           <div
                             id="shareBottom"
-                            className="hover-child ml-auto mr-1 p-absolute"
+                            className="hov-child ml-auto mr-1 p-absolute"
                           >
                             <div className="d-flex flex-row">
                               <div className="">

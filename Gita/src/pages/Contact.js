@@ -4,12 +4,12 @@ import { EmailLinkD, EmailLinkM } from "../componets/EmailLink";
 export default function Contact() {
   return (
     <div className="container">
-      <div className="container-wrap">
-        <div className="content-sidebar-wrap">
+      <div className="con-wrap">
+        <div className="c-si-wrap">
           <div id="content">
             <section id="post-content" role="main">
-              <div className="page-title">Contact</div>
-              <div className="field-items">
+              <div className="pa-title">Contact</div>
+              <div className="fi-items">
                 <p className="size-5">
                   {window.innerWidth < 680 ? (
                     <EmailLinkM

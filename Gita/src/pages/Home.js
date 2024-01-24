@@ -9,7 +9,7 @@ export default function Home() {
   };
   return (
     <>
-      <div className="region-front-welcome">
+      <div className="r-f-welcome">
         <div className="content">
           <span style={colorx}>
             <strong>
@@ -25,12 +25,12 @@ export default function Home() {
       </div>
 
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">Welcome to Gita Site!</h1>
-                <div className="field-items">
+                <h1 className="pa-title">Welcome to Gita Site!</h1>
+                <div className="fi-items">
                   <table className="homepage">
                     <tbody>
                       <tr>

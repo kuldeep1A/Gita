@@ -86,6 +86,12 @@ const Navigation = () => {
       case "other":
         link = "https://gita1a.web.app/othergitas";
         break;
+      case "gita":
+        link = "https://gita1a.web.app/othergitas";
+        break;
+      case "gitas":
+        link = "https://gita1a.web.app/othergitas";
+        break;
       default:
         link = "./NotFound";
         break;
@@ -105,10 +111,10 @@ const Navigation = () => {
 
   return (
     <>
-      <div className="header_wrapper">
-        <div className="inner_header_wrapper">
-          <header id="header" role="banner">
-            <div className="top_left">
+      <div>
+        <div className="in_he_wrap">
+          <header id="h" role="banner">
+            <div className="top_l">
               <div id="logo">
                 <Link to="/" title="Home">
                   <img src="./static/images/gita.jpg" alt="Gita" />
@@ -116,16 +122,16 @@ const Navigation = () => {
               </div>
             </div>
 
-            <div className="top_right">
-              <div className="region region-search">
-                <div id="block-search-form" className="block block-search">
+            <div className="top_r">
+              <div className="region re-search">
+                <div id="b-s-form">
                   <div className="content">
                     <div>
-                      <div className="container-inline">
-                        <div className="form-item form-type-textfield form-item-search-block-form">
+                      <div>
+                        <div>
                           <input
                             type="text"
-                            className="form-text"
+                            className="f-text"
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
                             onKeyUp={(event) => {
@@ -136,15 +142,12 @@ const Navigation = () => {
                             }}
                           />
                         </div>
-                        <div
-                          className="form-actions form-wrapper"
-                          id="edit-actions"
-                        >
+                        <div id="edit-actions">
                           <button
                             onClick={redirectSearchPage}
                             type="button"
                             name="Search Button"
-                            className="form-submit"
+                            className="f-submit"
                           />
                         </div>
                       </div>
@@ -158,14 +161,14 @@ const Navigation = () => {
           </header>
         </div>
 
-        <div className="menu_wrapper">
-          <nav id="main-menu" role="navigation">
+        <div className="me_wrap">
+          <nav id="main-me" role="navigation">
             <Link to="#" className="nav-toggle" onClick={handleToggleMenu}>
               Navigation
             </Link>
             <div className="menu-navigation-container">
               <ul className={`menu ${isMenuOpen ? "open" : ""}`}>
-                <li className="first leaf">
+                <li className="first leaf m">
                   <Link
                     to="/"
                     title=""
@@ -175,13 +178,13 @@ const Navigation = () => {
                     Home
                   </Link>
                 </li>
-                <li className="leaf" onClick={handleToggleMenu}>
+                <li className="leaf m" onClick={handleToggleMenu}>
                   <Link to="/about">About Website</Link>
                 </li>
-                <li className="leaf" onClick={handleToggleMenu}>
+                <li className="leaf m" onClick={handleToggleMenu}>
                   <Link to="/history">History</Link>
                 </li>
-                <li className="leaf" onClick={handleToggleMenu}>
+                <li className="leaf m" onClick={handleToggleMenu}>
                   <Link to="/team">Our Team</Link>
                 </li>
                 <li className="expanded">
@@ -291,10 +294,10 @@ const Navigation = () => {
                   </ul>
                 </li>
 
-                <li className="leaf" onClick={handleToggleMenu}>
+                <li className="leaf m" onClick={handleToggleMenu}>
                   <Link to="/contact">Contact</Link>
                 </li>
-                <li className="last leaf" onClick={handleToggleMenu}>
+                <li className="last leaf m" onClick={handleToggleMenu}>
                   <Link to="/login" title="Admin Server">
                     Login
                   </Link>

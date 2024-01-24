@@ -13,7 +13,7 @@ export default function SharePop({ e, Idx, site, title, isLargeLength }) {
       useX = clientX - 210;
       useY = clientY - 70;
     }
-    const hoverParent = e.target.closest(".hover-parent");
+    const hoverParent = e.target.closest(".hov-parent");
     if (hoverParent) {
       const fontEl = hoverParent.querySelector(`#${Idx}`);
       if (fontEl) {

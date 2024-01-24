@@ -10,12 +10,12 @@ export default function Team() {
   return (
     <>
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="page-title">Our Team</h1>
-                <div className="field-items">
+                <h1 className="pa-title">Our Team</h1>
+                <div className="fi-items">
                   <div>
                     <h1 className="size-6 color-dark-blue">Meet Our Team</h1>
                     <p className="size-7">

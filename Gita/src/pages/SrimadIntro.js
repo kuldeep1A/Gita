@@ -3,17 +3,17 @@ export default function SriIntro() {
   return (
     <>
       <div className="container">
-        <div className="container-wrap">
-          <div className="content-sidebar-wrap">
+        <div className="con-wrap">
+          <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <div className="page-title">
+                <div className="pa-title">
                   श्रीमद् भगवद्गीता
                   <h1>
                     <Link to="/srimad">View Shloka</Link>
                   </h1>
                 </div>
-                <div className="field-items">
+                <div className="fi-items">
                   <h1 className="size-6 color-dark-blue">
                     INTRODUCTION TO THE BHAGAVADGITA
                   </h1>
