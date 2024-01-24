@@ -34,7 +34,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                LICENSE-©
+                LICENSE-℗
               </a>
             </h1>
           </span>

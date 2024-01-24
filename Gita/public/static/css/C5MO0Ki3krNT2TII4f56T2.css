@@ -18,6 +18,9 @@
 }
 
 @media screen and (max-width: 720px) {
+  body #footer {
+    padding: 4% 5% 4% 5%;
+  }
 
   .top_l,
   .top_r {
