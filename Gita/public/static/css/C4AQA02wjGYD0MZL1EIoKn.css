@@ -206,6 +206,7 @@ ul.menu {
 
 #main-me li.m {
   margin-top: 5px;
+  margin-left: 5px;
 }
 
 .r-f-welcome {
@@ -233,7 +234,7 @@ ul.menu {
 
 .c-si-wrap #content {
   width: 90%;
-  margin: 10px;
+  margin: 10px 50px 10px 10px;
   display: inline;
   margin-bottom: 10px;
   float: right;

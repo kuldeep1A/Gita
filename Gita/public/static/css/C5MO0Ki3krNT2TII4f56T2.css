@@ -22,6 +22,10 @@
     padding: 4% 5% 4% 5%;
   }
 
+  .c-si-wrap #content {
+    margin: 20px !important;
+  }
+
   .top_l,
   .top_r {
     width: 100%;

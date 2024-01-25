@@ -6,7 +6,7 @@ export default function TextDetails() {
           <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="pa-title">Other Gitas</h1>
+                <h1 className="pa-title">Srimad Bhagavadgita Details</h1>
                 <div className="fi-items">
                   <p>
                     <b>Bhagavadgita </b>

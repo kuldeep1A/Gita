@@ -4,7 +4,9 @@ const Footer = () => {
 
   useEffect(() => {
     const _y = new Date().getFullYear();
-    setCurrentYear(_y);
+    const _sY = `${_y}`.split("");
+    const _Y = `${_sY[2]}${_sY[3]}`;
+    setCurrentYear(_Y);
   }, []);
   return (
     <>
@@ -23,7 +25,7 @@ const Footer = () => {
               >
                 Copyright-©
               </a>
-              {` 22-${currentYear}`}
+              {` 2022-${currentYear}`}
             </h1>
           </span>
           <span>

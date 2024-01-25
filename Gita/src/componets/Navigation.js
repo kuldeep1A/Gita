@@ -53,6 +53,9 @@ const Navigation = () => {
       case "text":
         link = "https://gita1a.web.app/srimadTextdetails";
         break;
+      case "details":
+        link = "https://gita1a.web.app/srimadTextdetails";
+        break;
       case "brahmasutrawelcome":
         link = "https://gita1a.web.app/brahmasutraWelcome";
         break;
@@ -210,11 +213,6 @@ const Navigation = () => {
                         <li className="leaf">
                           <Link to="/srimad" title="Srimadn Content">
                             Content
-                          </Link>
-                        </li>
-                        <li className="leaf">
-                          <Link to="" title="Chapterwise Shlokas">
-                            Chapterwise Shlokas
                           </Link>
                         </li>
                         <li className="leaf">
