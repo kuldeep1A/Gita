@@ -10,17 +10,35 @@ const Navigation = () => {
 
   const valuesMatching = () => {
     let link = "";
-    switch (searchValue.toLocaleLowerCase()) {
+    switch (searchValue.toLocaleLowerCase().replace(/\s/g, "")) {
       case "about":
+        link = "https://gita1a.web.app/about";
+        break;
+      case "aboutwebsite":
         link = "https://gita1a.web.app/about";
         break;
       case "history":
         link = "https://gita1a.web.app/history";
         break;
+      case "copyrights":
+        link = "https://gita1a.web.app/history";
+        break;
       case "team":
         link = "https://gita1a.web.app/Team";
         break;
+      case "ourteam":
+        link = "https://gita1a.web.app/Team";
+        break;
       case "quick":
+        link = "https://gita1a.web.app/quicklinks";
+        break;
+      case "link":
+        link = "https://gita1a.web.app/quicklinks";
+        break;
+      case "quicklink":
+        link = "https://gita1a.web.app/quicklinks";
+        break;
+      case "quicklinks":
         link = "https://gita1a.web.app/quicklinks";
         break;
       case "ashtavakra":
@@ -94,6 +112,9 @@ const Navigation = () => {
         break;
       case "gitas":
         link = "https://gita1a.web.app/othergitas";
+        break;
+      case "license":
+        link = "https://github.com/kuldeep1A/Gita/blob/master/LICENSE";
         break;
       default:
         link = "./NotFound";
