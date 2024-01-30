@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Ashtavakra() {
+  useEffect(() => {
+    document.title = "Ashtavakra | Gita";
+
+    return () => {
+      document.title = "Ashtavakra | Gita";
+    };
+  }, []);
   const [idC, setidC] = useState("");
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
@@ -126,10 +133,7 @@ export default function Ashtavakra() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-chapter"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-chapter" className="v-ex-widget">
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
@@ -148,10 +152,7 @@ export default function Ashtavakra() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-shloka"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-shloka" className="v-ex-widget">
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">

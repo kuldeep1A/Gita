@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import { optionData, kandaNo } from "../DATA/OptionData";
 import SharePop from "../componets/SharePop";
 export default function Valmikiramayana() {
+  useEffect(() => {
+    document.title = "Valmiki Ramayana | Gita";
+
+    return () => {
+      document.title = "Valmiki Ramayana | Gita";
+    };
+  }, []);
   const [selectedKanda, setSelectedKanda] = useState("BALAKANDA");
   const [selectedSarga, setSelectedSarga] = useState(1);
   const [selectedShloka, setSelectedShloka] = useState(1);

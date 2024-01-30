@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import ReactGA from "react-ga";
 import ScrollRestoration from "./componets/ScrollRestoration";
 import Navigation from "./componets/Navigation";
@@ -30,6 +30,13 @@ import Vibhishana from "./pages/Vibhishana";
 import Valmikiramayana from "./pages/valmikiramayana";
 
 function App() {
+  const _isDark =
+    window.sessionStorage.getItem("isDark") === "true" ? true : false;
+  useEffect(() => {
+    if (_isDark) {
+      document.body.classList.add("_d-mode");
+    }
+  }, [_isDark]);
   return (
     <>
       <BrowserRouter>
@@ -62,8 +69,8 @@ function App() {
             <Route path="/yogasutra" element={<Yogasutra />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
+            <Route path="*" element={<Nopage />} />
           </Route>
-          <Route path="*" element={<Nopage />} />
         </Routes>
       </BrowserRouter>
       <Footer />

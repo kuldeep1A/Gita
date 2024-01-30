@@ -1,6 +1,14 @@
+import { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 export default function QuickLinks() {
+  useEffect(() => {
+    document.title = "Quick Links | Gita";
+
+    return () => {
+      document.title = "Quick Links | Gita";
+    };
+  }, []);
   return (
     <>
       <div className="container">

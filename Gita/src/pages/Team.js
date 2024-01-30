@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
 export default function Team() {
+  useEffect(() => {
+    document.title = "Our Team | Gita";
+
+    return () => {
+      document.title = "Our Team | Gita";
+    };
+  }, []);
   const imageStyle = {
     width: "200px",
     height: "200px",
@@ -33,9 +40,9 @@ export default function Team() {
                         draggable="false"
                         style={imageStyle}
                       />
-                      <h2 className="size-6">
+                      <h2 className="size-6" style={{ marginTop: "10px" }}>
                         <Link
-                          to="https://linkedin.com/in/kuldeep1a"
+                          to="https://in.linkedin.com/in/kuldeep1a?trk=public_profile_browsemap"
                           target="_blank"
                         >
                           Kuldeep Dhagnar

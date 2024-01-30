@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Yogasutra() {
+  useEffect(() => {
+    document.title = "Yogasutra | Gita";
+
+    return () => {
+      document.title = "Yogasutra | Gita";
+    };
+  }, []);
   const [idC, setidC] = useState("");
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
@@ -178,10 +185,7 @@ export default function Yogasutra() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-chapter"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-chapter" className="v-ex-widget">
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
@@ -200,10 +204,7 @@ export default function Yogasutra() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-shloka"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-shloka" className="v-ex-widget">
                             <label className="fw-normal">Sutra</label>
                             <div>
                               <div className="views-widget">

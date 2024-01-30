@@ -1,6 +1,13 @@
 import { Link, Outlet } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 export default function Othergitas() {
+  useEffect(() => {
+    document.title = "Other Gitas";
+
+    return () => {
+      document.title = "Other Gitas";
+    };
+  }, []);
   return (
     <>
       <div className="container">

@@ -1,4 +1,13 @@
+import { useEffect } from "react";
+
 export default function About() {
+  useEffect(() => {
+    document.title = "About Website | Gita";
+
+    return () => {
+      document.title = "About Website | Gita";
+    };
+  }, []);
   return (
     <>
       <div className="container">

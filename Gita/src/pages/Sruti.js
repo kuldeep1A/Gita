@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Sruti() {
+  useEffect(() => {
+    document.title = "Sruti | Gita";
+
+    return () => {
+      document.title = "Sruti | Gita";
+    };
+  }, []);
   const [idC, setidC] = useState("");
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);

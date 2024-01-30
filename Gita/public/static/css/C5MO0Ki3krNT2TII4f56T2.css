@@ -10,14 +10,14 @@
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 820px) {
   #h .top_r {
     margin-top: 25px;
 
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 820px) {
   body #footer {
     padding: 4% 5% 4% 5%;
   }
@@ -93,15 +93,32 @@
     background-color: #18222b;
     color: white;
     border-radius: 8px !important;
-    margin-left: -10px !important;
-    margin: 0 auto;
+    margin: auto;
+    width: auto;
     padding: 3%;
     letter-spacing: 1px;
     text-align: center;
   }
+
+  ._top {
+    margin-top: 40px;
+  }
 }
 
 @media screen and (max-width: 420px) {
+  ._s-word {
+    width: 80%;
+  }
+
+  #main-me .nav-toggle {
+    margin: auto !important;
+    width: auto;
+  }
+
+  .nopage .error {
+    margin-top: 100px !important;
+  }
+
   #main-me {
     width: 349px !important;
   }

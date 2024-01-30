@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 export default function Home() {
+  useEffect(() => {
+    document.title = "Home | Gita";
+
+    return () => {
+      document.title = "Home | Gita";
+    };
+  }, []);
   const colorx = {
     color: "#a52a2a",
-  };
-  const background = {
-    backgroundColor: "#ffffe0",
   };
   return (
     <>
@@ -13,11 +17,13 @@ export default function Home() {
         <div className="content">
           <span style={colorx}>
             <strong>
-              <span style={background}>
+              <span className="_notice">
                 NOTICE: Users can edit content now. If you want to be an editor,
                 please send your credentials with offical{" "}
-                <em style={{color: "black", fontWeight: "bold"}}>GitaSuperSite</em> Website
-                Maintained by IIT Kanpur.
+                <em style={{ color: "black", fontWeight: "bold" }}>
+                  GitaSuperSite
+                </em>{" "}
+                Website Maintained by IIT Kanpur.
               </span>
             </strong>
           </span>

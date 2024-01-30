@@ -1,5 +1,13 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 export default function SriIntro() {
+  useEffect(() => {
+    document.title = "Srimad Intro | Gita";
+
+    return () => {
+      document.title = "Srimad Intro | Gita";
+    };
+  }, []);
   return (
     <>
       <div className="container">

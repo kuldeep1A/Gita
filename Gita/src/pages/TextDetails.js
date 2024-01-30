@@ -1,4 +1,13 @@
+import { useEffect } from "react";
+
 export default function TextDetails() {
+  useEffect(() => {
+    document.title = "Text Details | Gita";
+
+    return () => {
+      document.title = "Text Details | Gita";
+    };
+  }, []);
   return (
     <>
       <div className="container">
@@ -23,9 +32,7 @@ export default function TextDetails() {
                     <b>Srimad Bhagavadgita Sankarabhashya</b> [Commentary by Sri
                     Sankaracharya]
                     <br />
-                    <b>
-                      Srimadbhagavadgita translated by Swami Tejomayananda
-                    </b>
+                    <b>Srimadbhagavadgita translated by Swami Tejomayananda</b>
                     (1993, Central Chinmaya Mission Trust, Bombay) [Hindi
                     translation of The Holy Geeta by Swami Chinmayananda]
                     <br />

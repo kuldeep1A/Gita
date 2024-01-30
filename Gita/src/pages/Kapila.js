@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Kapila() {
+  useEffect(() => {
+    document.title = "Kapila | Gita";
+
+    return () => {
+      document.title = "Kapila | Gita";
+    };
+  }, []);
   const [idC, setidC] = useState("");
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);

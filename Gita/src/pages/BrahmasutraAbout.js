@@ -1,4 +1,13 @@
+import { useEffect } from "react";
+
 export default function BrahmasutraAbout() {
+  useEffect(() => {
+    document.title = "Brahmasutra About | Gita";
+
+    return () => {
+      document.title = "Brahmasutra About | Gita";
+    };
+  }, []);
   return (
     <>
       <div className="container">

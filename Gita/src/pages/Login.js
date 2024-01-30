@@ -1,4 +1,13 @@
+import { useEffect } from "react";
+
 export default function Login() {
+  useEffect(() => {
+    document.title = "Login | Gita";
+
+    return () => {
+      document.title = "Login | Gita";
+    };
+  }, []);
   return (
     <>
       <div className="container">

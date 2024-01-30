@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Brahmasutra() {
+  useEffect(() => {
+    document.title = "Brahmasutra | Gita";
+
+    return () => {
+      document.title = "Brahmasutra | Gita";
+    };
+  }, []);
   const [idC, setidC] = useState("");
   const [idQ, setidQ] = useState("");
   const [selectedChapter, setSelectedChapter] = useState(1);

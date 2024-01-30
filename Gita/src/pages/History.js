@@ -1,4 +1,13 @@
+import { useEffect } from "react";
+
 export default function History() {
+  useEffect(() => {
+    document.title = "History © | Gita";
+
+    return () => {
+      document.title = "History © | Gita";
+    };
+  }, []);
   return (
     <>
       <div className="container">
@@ -50,8 +59,11 @@ export default function History() {
                       As our project unfolded, we integrated a number of
                       features designed to facilitate users in exploring a wide
                       range of historical content.{" "}
-                      <em
-                        style={{ fontSize: "20px", backgroundColor: "whitesmoke" }}
+                      <em className="_src-gita1a"
+                        style={{
+                          fontSize: "20px",
+                          backgroundColor: "whitesmoke",
+                        }}
                       >
                         The important thing is all the data of the sutra is
                         captured by the original site on gitaSupersite.

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState("");
-
   useEffect(() => {
     const _y = new Date().getFullYear();
     const _sY = `${_y}`.split("");

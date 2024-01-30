@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Sriram() {
+  useEffect(() => {
+    document.title = "Sriram | Gita";
+
+    return () => {
+      document.title = "Sriram | Gita";
+    };
+  }, []);
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedShloka, setSelectedShloka] = useState(1);
   const [ShlokaContent, setShlokaContent] = useState("");

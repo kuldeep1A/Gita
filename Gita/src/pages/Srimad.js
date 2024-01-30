@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Srimad() {
+  useEffect(() => {
+    document.title = "Srimad Bhagavad | Gita";
+
+    return () => {
+      document.title = "Srimad Bhagavad | Gita";
+    };
+  }, []);
   const [selectedChapter, setSelectedChapter] = useState(1);
   const [selectedShloka, setselectedShloka] = useState(1);
   const [OptionLength, setOptionLength] = useState(1);

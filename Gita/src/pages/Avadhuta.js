@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Avadhuta() {
+  useEffect(() => {
+    document.title = "Avadhuta | Gita";
+
+    return () => {
+      document.title = "Avadhuta | Gita";
+    };
+  }, []);
   const [idC, setidC] = useState("");
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
@@ -127,10 +134,7 @@ export default function Avadhuta() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-chapter"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-chapter" className="v-ex-widget">
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
@@ -149,10 +153,7 @@ export default function Avadhuta() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-shloka"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-shloka" className="v-ex-widget">
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">

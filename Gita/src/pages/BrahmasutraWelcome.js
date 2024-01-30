@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 export default function BrahmasutraWelcome() {
   const imageStyle = {
@@ -5,6 +6,13 @@ export default function BrahmasutraWelcome() {
     alignItems: "center",
     justifyContent: "center",
   };
+  useEffect(() => {
+    document.title = "Brahmasutra Welcome | Gita";
+
+    return () => {
+      document.title = "Brahmasutra Welcome | Gita";
+    };
+  }, []);
   return (
     <>
       <div className="container">

@@ -5,6 +5,13 @@ import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 
 export default function Vibhishana() {
+  useEffect(() => {
+    document.title = "Vibhishana | Gita";
+
+    return () => {
+      document.title = "Vibhishana | Gita";
+    };
+  }, []);
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedShloka, setSelectedShloka] = useState(1);
   const [ShlokaContent, setShlokaContent] = useState("");
@@ -37,7 +44,6 @@ export default function Vibhishana() {
         }
       }
     };
-
 
     document.body.addEventListener("click", handleClickOutside);
     window.addEventListener("scroll", () => closeSharePop(), { capture: true });
@@ -113,10 +119,7 @@ export default function Vibhishana() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-shloka"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-shloka" className="v-ex-widget">
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">

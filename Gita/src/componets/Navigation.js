@@ -1,154 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import DarkButton from "./DarkButton";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-
+  const [_innerWidth, setInnerWidth] = useState(window.innerWidth);
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   const valuesMatching = () => {
-    let link = "";
-    switch (searchValue.toLocaleLowerCase().replace(/\s/g, "")) {
-      case "about":
-        link = "https://gita1a.web.app/about";
-        break;
-      case "aboutwebsite":
-        link = "https://gita1a.web.app/about";
-        break;
-      case "history":
-        link = "https://gita1a.web.app/history";
-        break;
-      case "copyrights":
-        link = "https://gita1a.web.app/history";
-        break;
-      case "team":
-        link = "https://gita1a.web.app/Team";
-        break;
-      case "ourteam":
-        link = "https://gita1a.web.app/Team";
-        break;
-      case "quick":
-        link = "https://gita1a.web.app/quicklinks";
-        break;
-      case "link":
-        link = "https://gita1a.web.app/quicklinks";
-        break;
-      case "quicklink":
-        link = "https://gita1a.web.app/quicklinks";
-        break;
-      case "quicklinks":
-        link = "https://gita1a.web.app/quicklinks";
-        break;
-      case "ashtavakra":
-        link = "https://gita1a.web.app/ashtavakra";
-        break;
-      case "avadhuta":
-        link = "https://gita1a.web.app/avadhuta";
-        break;
-      case "kapila":
-        link = "https://gita1a.web.app/kapila";
-        break;
-      case "sriram":
-        link = "https://gita1a.web.app/sriram";
-        break;
-      case "sruti":
-        link = "https://gita1a.web.app/sruti";
-        break;
-      case "uddhava":
-        link = "https://gita1a.web.app/uddhava";
-        break;
-      case "vibhishana":
-        link = "https://gita1a.web.app/vibhishana";
-        break;
-      case "intro":
-        link = "https://gita1a.web.app/srimadIntro";
-        break;
-      case "srimad":
-        link = "https://gita1a.web.app/srimad";
-        break;
-      case "text":
-        link = "https://gita1a.web.app/srimadTextdetails";
-        break;
-      case "details":
-        link = "https://gita1a.web.app/srimadTextdetails";
-        break;
-      case "brahmasutrawelcome":
-        link = "https://gita1a.web.app/brahmasutraWelcome";
-        break;
-      case "welcome":
-        link = "https://gita1a.web.app/brahmasutraWelcome";
-        break;
-      case "brahmasutra":
-        link = "https://gita1a.web.app/brahmasutra";
-        break;
-      case "brahma":
-        link = "https://gita1a.web.app/brahmasutra";
-        break;
-      case "valmiki":
-        link = "https://gita1a.web.app/valmikiramayana";
-        break;
-      case "valmikiramayana":
-        link = "https://gita1a.web.app/valmikiramayana";
-        break;
-      case "yoga":
-        link = "https://gita1a.web.app/yogasutra";
-        break;
-      case "yogasutra":
-        link = "https://gita1a.web.app/yogasutra";
-        break;
-      case "contact":
-        link = "https://gita1a.web.app/contact";
-        break;
-      case "login":
-        link = "https://gita1a.web.app/login";
-        break;
-      case "other":
-        link = "https://gita1a.web.app/othergitas";
-        break;
-      case "gita":
-        link = "https://gita1a.web.app/othergitas";
-        break;
-      case "gitas":
-        link = "https://gita1a.web.app/othergitas";
-        break;
-      case "license":
-        link = "https://github.com/kuldeep1A/Gita/blob/master/LICENSE";
-        break;
-      default:
-        link = "./NotFound";
-        break;
-    }
-
+    const link = `https://gita1a.web.app/${searchValue
+      .toLocaleLowerCase()
+      .replace(/\s/g, "")}`;
     setSearchValue("");
     return link;
   };
-
   const redirectSearchPage = () => {
     const link = valuesMatching();
-    console.log(searchValue);
     window.open(link, "_self");
   };
+  let _isDark =
+    window.sessionStorage.getItem("isDark") === "true" ? true : false;
 
-  useEffect(() => {});
-
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setInnerWidth(window.innerWidth);
+    });
+  });
   return (
     <>
-      <div>
+      <div className="_top">
         <div className="in_he_wrap">
           <header id="h" role="banner">
             <div className="top_l">
               <div id="logo">
                 <Link to="/" title="Home">
-                  <img src="./static/images/gita.jpg" alt="Gita" />
+                  {_isDark ? (
+                    <>
+                      <img src="./static/images/gita1ab.jpg" alt="Gita" />
+                    </>
+                  ) : (
+                    <>
+                      <img src="./static/images/gita1aw.jpg" alt="Gita" />
+                    </>
+                  )}
                 </Link>
               </div>
             </div>
 
             <div className="top_r">
               <div className="region re-search">
-                <div id="b-s-form">
+                <div
+                  id="b-s-form"
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <div className="content">
                     <div>
                       <div>
@@ -177,6 +86,15 @@ const Navigation = () => {
                       </div>
                     </div>
                   </div>
+                  {_innerWidth < 820 ? (
+                    <>
+                      <div style={{ marginLeft: "35px", marginTop: "3px" }}>
+                        <DarkButton />
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
             </div>
@@ -184,7 +102,6 @@ const Navigation = () => {
             <div className="clear"></div>
           </header>
         </div>
-
         <div className="me_wrap">
           <nav id="main-me" role="navigation">
             <Link to="#" className="nav-toggle" onClick={handleToggleMenu}>
@@ -206,7 +123,12 @@ const Navigation = () => {
                   <Link to="/about">About Website</Link>
                 </li>
                 <li className="leaf m" onClick={handleToggleMenu}>
-                  <Link to="/history">History</Link>
+                  <Link to="/history">
+                    History{" "}
+                    <span title="Some Copyright" className="cp-chra">
+                      ©
+                    </span>
+                  </Link>
                 </li>
                 <li className="leaf m" onClick={handleToggleMenu}>
                   <Link to="/team">Our Team</Link>
@@ -321,13 +243,22 @@ const Navigation = () => {
                     Login
                   </Link>
                 </li>
+                {_innerWidth > 820 ? (
+                  <>
+                    <div className="_c-sec" style={{ display: "inline" }}>
+                      <DarkButton />
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </ul>
             </div>
             <div className="clear"></div>
           </nav>
         </div>
+        <Outlet />
       </div>
-      <Outlet />
     </>
   );
 };

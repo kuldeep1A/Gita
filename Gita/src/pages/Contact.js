@@ -1,7 +1,14 @@
-import React from "react";
-import { EmailLinkD, EmailLinkM } from "../componets/EmailLink";
+import React, { useEffect } from "react";
+import { EmailLinkD, EmailLinkM } from "../Function/A_Functions";
 
 export default function Contact() {
+  useEffect(() => {
+    document.title = "Contact | Gita";
+
+    return () => {
+      document.title = "Contact | Gita";
+    };
+  }, []);
   return (
     <div className="container">
       <div className="con-wrap">
