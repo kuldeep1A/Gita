@@ -28,10 +28,20 @@ import Sruti from "./pages/Sruti";
 import Uddhava from "./pages/Uddhava";
 import Vibhishana from "./pages/Vibhishana";
 import Valmikiramayana from "./pages/valmikiramayana";
+import _set_session from "./Function/A_Functions";
 
 function App() {
-  const _isDark =
+  let _isDark =
     window.sessionStorage.getItem("isDark") === "true" ? true : false;
+  if (window.sessionStorage.getItem("isDark") === null) {
+    const _t_hours = new Date().getHours();
+    if (_t_hours >= 19 || _t_hours < 7) {
+      _isDark = true;
+      _set_session()
+    } else {
+      _isDark = false
+    }
+  }
   useEffect(() => {
     if (_isDark) {
       document.body.classList.add("_d-mode");

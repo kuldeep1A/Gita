@@ -22,3 +22,14 @@ export const EmailLinkM = ({ email, subject }) => {
     </a>
   );
 };
+
+export default function _set_session() {
+  if (window.sessionStorage.getItem("isDark") === null) {
+    window.sessionStorage.setItem("isDark", "true");
+  } else if (window.sessionStorage.getItem("isDark") === "true") {
+    window.sessionStorage.setItem("isDark", "false");
+  } else if (window.sessionStorage.getItem("isDark") === "false") {
+    window.sessionStorage.setItem("isDark", "true");
+  }
+  window.location.reload();
+}

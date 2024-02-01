@@ -1,18 +1,9 @@
+import _set_session from "../Function/A_Functions";
 const DarkButton = () => {
-  const _cs = () => {
-    if (window.sessionStorage.getItem("isDark") === null) {
-      window.sessionStorage.setItem("isDark", "true");
-    } else if (window.sessionStorage.getItem("isDark") === "true") {
-      window.sessionStorage.setItem("isDark", "false");
-    } else if (window.sessionStorage.getItem("isDark") === "false") {
-      window.sessionStorage.setItem("isDark", "true");
-    }
-    window.location.reload();
-  };
   return (
     <>
       <div className="_c-mode">
-        <div onClick={_cs} className="_dark-bu">
+        <div onClick={_set_session} className="_dark-bu">
           {window.sessionStorage.getItem("isDark") === "true" ? (
             <>
               <span>
