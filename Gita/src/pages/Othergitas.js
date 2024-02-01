@@ -16,7 +16,7 @@ export default function Othergitas() {
             <div id="content">
               <section id="post-content" role="main">
                 <h1 className="pa-title">Other Gitas</h1>
-                <div className="fi-items">
+                <div className="fi-items _d-p-size">
                   <div className="list size-5">
                     <div className="mb-15">
                       <Link to="/ashtavakra">Ashtavakra Gita</Link>

@@ -187,11 +187,7 @@ export default function Valmikiramayana() {
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  id="edit-language"
-                                  className="form-select required"
-                                  defaultValue={"dv"}
-                                >
+                                <select defaultValue={"dv"}>
                                   <option value={"dv"}>Devanagari</option>
                                 </select>
                               </div>
@@ -210,8 +206,6 @@ export default function Valmikiramayana() {
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
                                   defaultValue={"BALAKANDA"}
                                   onChange={handleKandaChange}
                                 >
@@ -235,16 +229,11 @@ export default function Valmikiramayana() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-chapter"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-chapter" className="v-ex-widget">
                             <label className="fw-normal">Sarga</label>
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
                                   value={selectedSarga}
                                   onChange={handleSargaChange}
                                 >
@@ -260,16 +249,11 @@ export default function Valmikiramayana() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-shloka"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-shloka" className="v-ex-widget">
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
                                   value={selectedShloka}
                                   onChange={handleShlokaChange}
                                 >

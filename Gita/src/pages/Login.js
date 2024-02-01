@@ -19,7 +19,7 @@ export default function Login() {
                   Admin Account <span>(only for admin server)</span>
                   <h1>IP Not Match...</h1>
                 </div>
-                <div className="fi-items">
+                <div className="fi-items _d-p-size">
                   <div></div>
                 </div>
               </section>

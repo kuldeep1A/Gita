@@ -16,7 +16,7 @@ export default function Contact() {
           <div id="content">
             <section id="post-content" role="main">
               <div className="pa-title">Contact</div>
-              <div className="fi-items">
+              <div className="fi-items _d-p-size">
                 <p className="size-5">
                   {window.innerWidth < 680 ? (
                     <EmailLinkM

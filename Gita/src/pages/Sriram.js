@@ -107,26 +107,17 @@ export default function Sriram() {
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  id="edit-language"
-                                  className="form-select required"
-                                  defaultValue={"dv"}
-                                >
+                                <select defaultValue={"dv"}>
                                   <option value={"dv"}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-shloka"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-shloka" className="v-ex-widget">
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
                                   value={selectedShloka}
                                   onChange={handleShlokaChange}
                                 >

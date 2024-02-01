@@ -144,8 +144,8 @@ export default function Brahmasutra() {
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
+                                  
+                                  
                                   defaultValue={"dv"}
                                 >
                                   <option value={"dv"}>Devanagari</option>
@@ -161,8 +161,8 @@ export default function Brahmasutra() {
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
+                                  
+                                  
                                   value={selectedChapter}
                                   onChange={handleChapterChange}
                                 >
@@ -183,8 +183,8 @@ export default function Brahmasutra() {
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
+                                  
+                                  
                                   value={selectedQuarter}
                                   onChange={handleQuarterChange}
                                 >
@@ -205,8 +205,8 @@ export default function Brahmasutra() {
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
+                                  
+                                  
                                   value={selectedSutra}
                                   onChange={handleSutraChange}
                                 >

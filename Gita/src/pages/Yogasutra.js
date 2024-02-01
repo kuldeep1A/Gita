@@ -175,11 +175,7 @@ export default function Yogasutra() {
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  id="edit-language"
-                                  className="form-select required"
-                                  defaultValue={"dv"}
-                                >
+                                <select defaultValue={"dv"}>
                                   <option value={"dv"}>Devanagari</option>
                                 </select>
                               </div>
@@ -190,8 +186,6 @@ export default function Yogasutra() {
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
                                   value={selectedChapter}
                                   onChange={handleChapterChange}
                                 >
@@ -209,8 +203,6 @@ export default function Yogasutra() {
                             <div>
                               <div className="views-widget">
                                 <select
-                                  id="edit-language"
-                                  className="form-select required"
                                   value={selectedSutra}
                                   onChange={handleSutraChange}
                                 >

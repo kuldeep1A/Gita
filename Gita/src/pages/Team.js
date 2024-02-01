@@ -12,7 +12,7 @@ export default function Team() {
     width: "200px",
     height: "200px",
     borderRadius: "50%",
-    boxShadow: "0px 0px 20px 1px",
+    boxShadow: "-14px -4px 20px 1px",
   };
   return (
     <>

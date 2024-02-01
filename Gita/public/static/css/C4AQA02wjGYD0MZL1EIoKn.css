@@ -2,7 +2,6 @@
   touch-action: manipulation;
 }
 
-
 body {
   font-size: 15px;
 }
@@ -250,6 +249,10 @@ ul.menu {
   font-family: var(--font-sans);
 }
 
+._d-p-size {
+  height: 410px;
+}
+
 .not-available {
   display: inline-block;
   width: 8px;
@@ -291,7 +294,7 @@ ul.menu {
 
 .v-fi_sutra {
   position: relative;
-  border: 1px solid black !important;
+  border: 1px solid black;
   padding: 10px;
   padding-bottom: 16px !important;
 }
@@ -402,6 +405,20 @@ button {
 
 .list {
   margin-bottom: auto;
+
+  div {
+    width: 240px;
+    padding: 5px;
+  }
+
+  div:hover {
+    background-color: #f3f3f3 !important;
+    border-radius: 10px;
+
+    a {
+      font-size: 30px;
+    }
+  }
 }
 
 .team-member {
@@ -446,10 +463,19 @@ table.homepage td {
   padding: 10px;
   border: 1px solid #dbdbdb;
   vertical-align: middle;
+  height: 50px;
+}
+
+table.homepage td {
+  a:hover {
+    font-size: 19px;
+    text-decoration: underline;
+  }
 }
 
 a {
   text-decoration: none;
+  list-style: none;
 }
 
 b {
@@ -678,7 +704,7 @@ span._notice {
   }
 
   div.mb-15>a {
-    color: rgb(188, 166, 209) !important;
+    color: #cdf7d2 !important;
   }
 
   div.pa-title {
@@ -705,5 +731,26 @@ span._notice {
   #main-me .nav-toggle,
   #footer {
     background-color: #435f6021 !important;
+  }
+
+  .list {
+    div:hover {
+      background-color: #252525 !important;
+    }
+  }
+
+  .v-fi_sutra {
+    border: 1px solid white;
+    p {
+      font {
+        b {
+          color: white !important;
+        }
+      }
+    }
+  }
+  select {
+    background-color: #252525 !important;
+    color: white !important;
   }
 }

@@ -23,3 +23,4 @@ container-wrap = con-wrap
 top_left = top_l
 top_right = top_r
 header = h
+_d-p-size = _default-page-size
