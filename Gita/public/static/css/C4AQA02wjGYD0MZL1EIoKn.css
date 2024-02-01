@@ -620,18 +620,14 @@ body #footer {
 ._c-sec {
   float: right;
   margin-right: 10px;
-  margin-top: 11px;
+  margin-top: 5px;
 }
 
 ._c-mode>div._dark-bu {
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
-  font-size: 19px;
   width: 35px;
-  font-weight: 500;
-  color: #1d1d1d;
-  /* background-color: white; */
+  /* color: #1d1d1d; */
 }
 
 ._c-mode>div._dark-bu>span {
@@ -640,8 +636,8 @@ body #footer {
 }
 
 ._dark-lo {
-  height: 25px;
-  width: 25px;
+  height: 35px;
+  width: 35px;
 }
 
 span._notice {

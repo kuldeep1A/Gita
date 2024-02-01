@@ -88,7 +88,7 @@ const Navigation = () => {
                   </div>
                   {_innerWidth < 820 ? (
                     <>
-                      <div style={{ marginLeft: "35px", marginTop: "3px" }}>
+                      <div style={{ marginLeft: "15px", marginTop: "3px" }}>
                         <DarkButton />
                       </div>
                     </>

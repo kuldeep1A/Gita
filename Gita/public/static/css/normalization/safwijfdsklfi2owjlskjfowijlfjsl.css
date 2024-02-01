@@ -26,7 +26,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  user-select: none;
+  user-select: none !important;
 }
 
 .user-none {
@@ -109,7 +109,7 @@ input,
 optgroup,
 select,
 textarea {
-  user-select: none;
+  user-select: none !important;
   font-family: inherit;
   font-size: 100%;
   line-height: 1.15;
@@ -2003,7 +2003,7 @@ body.bg-white-400 .main {
 
 
 body {
-  user-select: none;
+  user-select: none !important;
   color: #191414;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
