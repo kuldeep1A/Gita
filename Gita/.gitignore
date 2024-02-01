@@ -28,8 +28,4 @@ yarn-error.log*
 .firebaserc
 .firebase/*
 .firebase/
-**/database.rules.json
-**/firebase.json
-**/firestore.indexes.json
-**/firestore.rules
 **/hosting.YnVpbGQ.cache
