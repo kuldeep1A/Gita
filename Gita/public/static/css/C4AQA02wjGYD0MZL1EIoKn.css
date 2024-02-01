@@ -1,3 +1,8 @@
+#root {
+  touch-action: manipulation;
+}
+
+
 body {
   font-size: 15px;
 }
