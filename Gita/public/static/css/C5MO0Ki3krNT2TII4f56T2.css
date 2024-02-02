@@ -128,4 +128,8 @@
     width: 100%;
     margin: auto;
   }
+
+  ._d-p-size {
+    height: 310px !important;
+  }
 }

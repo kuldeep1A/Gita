@@ -216,15 +216,6 @@ export default function Valmikiramayana() {
                                   <option value={"ARANYAKANDA"}>
                                     ARANYAKANDA
                                   </option>
-                                  <option value={"KISHKINDAKANDA"}>
-                                    KISHKINDAKANDA
-                                  </option>
-                                  <option value={"SUNDARAKANDA"}>
-                                    SUNDARAKANDA
-                                  </option>
-                                  <option value={"YUDDHAKANDA"}>
-                                    YUDDHAKANDA
-                                  </option>
                                 </select>
                               </div>
                             </div>
@@ -389,6 +380,20 @@ export default function Valmikiramayana() {
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div className="_is-database-available-on-kuldeep1a-dataset">
+                  <div>
+                    <span>KISHKINDAKANDA,</span>
+                    <span>SUNDARAKANDA,</span>
+                    <span>YUDDHAKANDA</span>
+                  </div>
+                  <div>
+                    <span>
+                      <em style={{ color: "red" }}>Not</em> available, it will
+                      be <em style={{ color: "green" }}>updated</em> in our
+                      database <em style={{ color: "green" }}>soon</em>.
+                    </span>
                   </div>
                 </div>
               </section>

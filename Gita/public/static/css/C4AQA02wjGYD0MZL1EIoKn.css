@@ -463,7 +463,7 @@ table.homepage td {
   padding: 10px;
   border: 1px solid #dbdbdb;
   vertical-align: middle;
-  height: 50px;
+  height: 63px;
 }
 
 table.homepage td {
@@ -741,6 +741,7 @@ span._notice {
 
   .v-fi_sutra {
     border: 1px solid white;
+
     p {
       font {
         b {
@@ -749,8 +750,27 @@ span._notice {
       }
     }
   }
+
   select {
     background-color: #252525 !important;
     color: white !important;
   }
+}
+
+._is-database-available-on-kuldeep1a-dataset {
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+  margin-top: 4px;
+
+  div {
+    span {
+      margin-right: 3px;
+
+      em {
+        font-weight: bold;
+      }
+    }
+  }
+
 }
