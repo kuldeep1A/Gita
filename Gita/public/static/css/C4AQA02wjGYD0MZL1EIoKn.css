@@ -763,6 +763,10 @@ span._notice {
   padding: 3px;
   margin-top: 4px;
 
+  div:first-child span {
+    text-decoration: underline #dd2727 0.00000000000001mm;
+  }
+
   div {
     span {
       margin-right: 3px;

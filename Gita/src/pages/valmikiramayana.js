@@ -68,9 +68,7 @@ export default function Valmikiramayana() {
     var engs = [];
     var all = {};
     if (shloka && c === 0) {
-      all = shloka
-        .split("'")
-        .filter((line) => line.trim() !== "," && line.trim() !== "");
+      all = shloka.split("'").filter((line) => line.trim() !== "," && line.trim() !== "");
       c = c + 1;
     }
     var ed = "";
@@ -175,14 +173,8 @@ export default function Valmikiramayana() {
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div
-                            id="edit-language-wrapper"
-                            className="v-ex-widget"
-                          >
-                            <label
-                              htmlFor="edit-language"
-                              className="fw-normal"
-                            >
+                          <div id="edit-language-wrapper" className="v-ex-widget">
+                            <label htmlFor="edit-language" className="fw-normal">
                               Script
                             </label>
                             <div>
@@ -193,29 +185,16 @@ export default function Valmikiramayana() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-language-wrapper"
-                            className="v-ex-widget"
-                          >
-                            <label
-                              htmlFor="edit-language"
-                              className="fw-normal"
-                            >
+                          <div id="edit-language-wrapper" className="v-ex-widget">
+                            <label htmlFor="edit-language" className="fw-normal">
                               Kanda
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  defaultValue={"BALAKANDA"}
-                                  onChange={handleKandaChange}
-                                >
+                                <select defaultValue={"BALAKANDA"} onChange={handleKandaChange}>
                                   <option value={"BALAKANDA"}>BALAKANDA</option>
-                                  <option value={"AYODHYAKANDA"}>
-                                    AYODHYAKANDA
-                                  </option>
-                                  <option value={"ARANYAKANDA"}>
-                                    ARANYAKANDA
-                                  </option>
+                                  <option value={"AYODHYAKANDA"}>AYODHYAKANDA</option>
+                                  <option value={"ARANYAKANDA"}>ARANYAKANDA</option>
                                 </select>
                               </div>
                             </div>
@@ -224,18 +203,12 @@ export default function Valmikiramayana() {
                             <label className="fw-normal">Sarga</label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  value={selectedSarga}
-                                  onChange={handleSargaChange}
-                                >
-                                  {Array.from(
-                                    { length: handleSargaLen() },
-                                    (_, index) => (
-                                      <option key={index + 1} value={index + 1}>
-                                        {index + 1}
-                                      </option>
-                                    )
-                                  )}
+                                <select value={selectedSarga} onChange={handleSargaChange}>
+                                  {Array.from({ length: handleSargaLen() }, (_, index) => (
+                                    <option key={index + 1} value={index + 1}>
+                                      {index + 1}
+                                    </option>
+                                  ))}
                                 </select>
                               </div>
                             </div>
@@ -244,18 +217,12 @@ export default function Valmikiramayana() {
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  value={selectedShloka}
-                                  onChange={handleShlokaChange}
-                                >
-                                  {Array.from(
-                                    { length: handleShlokaLen() },
-                                    (_, index) => (
-                                      <option key={index + 1} value={index + 1}>
-                                        {index + 1}
-                                      </option>
-                                    )
-                                  )}
+                                <select value={selectedShloka} onChange={handleShlokaChange}>
+                                  {Array.from({ length: handleShlokaLen() }, (_, index) => (
+                                    <option key={index + 1} value={index + 1}>
+                                      {index + 1}
+                                    </option>
+                                  ))}
                                 </select>
                               </div>
                             </div>
@@ -273,23 +240,13 @@ export default function Valmikiramayana() {
                             </p>
                             <div className="hov-parent">
                               <p className="text-center h-fonts">
-                                <font
-                                  id={shId}
-                                  className="fw-normal size-6 line-100"
-                                >
-                                  {selectedShloka === 1 &&
-                                  shlokaData.content ? (
+                                <font id={shId} className="fw-normal size-6 line-100">
+                                  {selectedShloka === 1 && shlokaData.content ? (
                                     <React.Fragment>
                                       <>
                                         <span className="d-block">
                                           <span className="d-block eng-title size-8 line-50">
-                                            {`[${
-                                              sanEng(
-                                                shlokaData.content,
-                                                0,
-                                                false
-                                              )[0]
-                                            }]`}
+                                            {`[${sanEng(shlokaData.content, 0, false)[0]}]`}
                                           </span>
                                         </span>
                                       </>
@@ -298,23 +255,21 @@ export default function Valmikiramayana() {
                                     ""
                                   )}
                                   {selectedShloka === 1 && shlokaData.content
-                                    ? sanEng(shlokaData.content, 0, true).map(
-                                        (line, index) => (
-                                          <React.Fragment key={index}>
-                                            {line.split("'")}
-                                            <>
-                                              <br />
-                                              <br />
-                                            </>
-                                          </React.Fragment>
-                                        )
-                                      )
+                                    ? sanEng(shlokaData.content, 0, true).map((line, index) => (
+                                        <React.Fragment key={index}>
+                                          {line.split("'")}
+                                          <>
+                                            <br />
+                                            <br />
+                                          </>
+                                        </React.Fragment>
+                                      ))
                                     : shlokaData.content &&
                                       selectedShloka >= 2 &&
                                       shlokaData.content
                                         .trim()
                                         .includes(
-                                          `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`
+                                          `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`,
                                         )
                                     ? shlokaData.content
                                         .split(",")
@@ -331,10 +286,7 @@ export default function Valmikiramayana() {
                                     : "Shloka not found."}
                                 </font>
                               </p>
-                              <div
-                                id="shareBottom"
-                                className="hov-child ml-auto mr-1 p-absolute"
-                              >
+                              <div id="shareBottom" className="hov-child ml-auto mr-1 p-absolute">
                                 <div className="d-flex flex-row">
                                   <div className="">
                                     <button
@@ -344,10 +296,7 @@ export default function Valmikiramayana() {
                                         handleClick(event);
                                       }}
                                     >
-                                      <i
-                                        ref={shareRef}
-                                        className="sdf material-symbols-outlined"
-                                      >
+                                      <i ref={shareRef} className="sdf material-symbols-outlined">
                                         share
                                       </i>
                                     </button>
@@ -384,15 +333,15 @@ export default function Valmikiramayana() {
                 </div>
                 <div className="_is-database-available-on-kuldeep1a-dataset">
                   <div>
-                    <span>KISHKINDAKANDA,</span>
-                    <span>SUNDARAKANDA,</span>
-                    <span>YUDDHAKANDA</span>
+                    <span style={{ marginRight: "10px" }}>KISHKINDAKANDA,</span>
+                    <span style={{ marginRight: "10px" }}>SUNDARAKANDA,</span>
+                    <span style={{ marginRight: "10px" }}>YUDDHAKANDA</span>
                   </div>
                   <div>
                     <span>
-                      <em style={{ color: "red" }}>Not</em> available, it will
-                      be <em style={{ color: "green" }}>updated</em> in our
-                      database <em style={{ color: "green" }}>soon</em>.
+                      <em style={{ color: "red" }}>Not</em> available, it will be{" "}
+                      <em style={{ color: "green" }}>updated</em> in our database{" "}
+                      <em style={{ color: "green" }}>soon</em>.
                     </span>
                   </div>
                 </div>
@@ -409,7 +358,7 @@ export default function Valmikiramayana() {
               title={shareTitle}
               isLargeLength={false}
             />,
-            document.body
+            document.body,
           )}
       </div>
     </>
