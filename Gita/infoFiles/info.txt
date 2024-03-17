@@ -24,3 +24,5 @@ top_left = top_l
 top_right = top_r
 header = h
 _d-p-size = _default-page-size
+l-t-action = lable-toot-action
+c-lc-action = change-language_code-action 

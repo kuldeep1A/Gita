@@ -1,8 +1,9 @@
 import { createPortal } from "react-dom";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
+import { _translate } from "../Function/A_Functions";
 
 export default function Sriram() {
   useEffect(() => {
@@ -15,7 +16,10 @@ export default function Sriram() {
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedShloka, setSelectedShloka] = useState(1);
   const [ShlokaContent, setShlokaContent] = useState("");
+  const [translateContent, setTranslateCotent] = useState("");
   const [isSharePopVisible, setSharePopVisible] = useState(false);
+  const [isHindiTranslate, setIsHindiTranslate] = useState(true);
+  const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
   const shareRef = useRef(null);
   var site = "sriram";
@@ -44,11 +48,9 @@ export default function Sriram() {
         }
       }
     };
-
     document.body.addEventListener("click", handleClickOutside);
     window.addEventListener("scroll", () => closeSharePop(), { capture: true });
     window.addEventListener("resize", () => closeSharePop());
-
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
       window.removeEventListener("scroll", () => closeSharePop(), {
@@ -61,7 +63,39 @@ export default function Sriram() {
     const newShloka = parseInt(event.target.value, 10);
     setSelectedShloka(newShloka);
   };
+  const goTranslate = useCallback(async (sansContent, whatcode) => {
+    if (sansContent.length < 1912) {
+      const content = await _translate(sansContent, whatcode);
+      if (content !== "") {
+        setTranslateCotent(content);
+      } else {
+        setTranslateCotent("Wait for Shloka!");
+      }
+    } else {
+      setTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
+    }
+  }, []);
+  const _changeCodeToEn = async () => {
+    setIsHindiTranslate(false);
+    await goTranslate(ShlokaContent, isHindiTranslate);
+  };
+  const _changeCodeToHi = async () => {
+    setIsHindiTranslate(true);
+    await goTranslate(ShlokaContent, isHindiTranslate);
+  };
+  function _hideTrans() {
+    if (hideTrans) {
+      setHideTrans(false);
+    } else {
+      setHideTrans(true);
+    }
+  }
   useEffect(() => {
+    if (ShlokaContent !== "" && ShlokaContent) {
+      goTranslate(ShlokaContent, isHindiTranslate);
+    } else {
+      setTranslateCotent("Wait for Shloka!");
+    }
     const fetchShlokaContent = async () => {
       try {
         const documentPath = `/sriram/oShTnZHJGovqgQ0tPs24/`;
@@ -69,19 +103,22 @@ export default function Sriram() {
         const docSanpshot = await getDoc(docRef);
         if (docSanpshot.exists) {
           const ShlokaData = docSanpshot.data();
-          const ShlokaArray = Object.entries(ShlokaData).map(
-            ([shlokaNumber, Shloka]) => ({ shlokaNumber, Shloka })
-          );
-          setOptionLength(ShlokaArray.length);
-          const shloka = ShlokaData[`Shloka${selectedShloka}`];
-          setShlokaContent(shloka);
+          if (ShlokaData !== undefined && ShlokaData !== null) {
+            const ShlokaArray = Object.entries(ShlokaData).map(([shlokaNumber, Shloka]) => ({
+              shlokaNumber,
+              Shloka,
+            }));
+            setOptionLength(ShlokaArray.length);
+            const shloka = ShlokaData[`Shloka${selectedShloka}`];
+            setShlokaContent(shloka);
+          }
         }
       } catch (error) {
         console.error("Error fetching shloka content: ", error);
       }
     };
     fetchShlokaContent();
-  }, [selectedShloka]);
+  }, [selectedShloka, goTranslate, isHindiTranslate, ShlokaContent]);
   return (
     <>
       <div className="container">
@@ -95,14 +132,8 @@ export default function Sriram() {
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div
-                            id="edit-language-wrapper"
-                            className="v-ex-widget"
-                          >
-                            <label
-                              htmlFor="edit-language"
-                              className="fw-normal"
-                            >
+                          <div id="edit-language-wrapper" className="v-ex-widget">
+                            <label htmlFor="edit-language" className="fw-normal">
                               Script
                             </label>
                             <div>
@@ -117,18 +148,12 @@ export default function Sriram() {
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  value={selectedShloka}
-                                  onChange={handleShlokaChange}
-                                >
-                                  {Array.from(
-                                    { length: OptionLength },
-                                    (_, index) => (
-                                      <option key={index + 1} value={index + 1}>
-                                        {index + 1}
-                                      </option>
-                                    )
-                                  )}
+                                <select value={selectedShloka} onChange={handleShlokaChange}>
+                                  {Array.from({ length: OptionLength }, (_, index) => (
+                                    <option key={index + 1} value={index + 1}>
+                                      {index + 1}
+                                    </option>
+                                  ))}
                                 </select>
                               </div>
                             </div>
@@ -201,10 +226,7 @@ export default function Sriram() {
                                 : "Shloka not found."}
                             </font>
                           </p>
-                          <div
-                            id="shareBottom"
-                            className="hov-child ml-auto mr-1 p-absolute"
-                          >
+                          <div id="shareBottom" className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
@@ -214,10 +236,7 @@ export default function Sriram() {
                                     handleClick(event);
                                   }}
                                 >
-                                  <i
-                                    ref={shareRef}
-                                    className="sdf material-symbols-outlined"
-                                  >
+                                  <i ref={shareRef} className="sdf material-symbols-outlined">
                                     share
                                   </i>
                                 </button>
@@ -227,6 +246,34 @@ export default function Sriram() {
                         </div>
                       </div>
                     </div>
+                    <div className="l-t-action">
+                      <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                    </div>
+                    {hideTrans ? (
+                      <div className="translate-view">
+                        <div className="v-fi_sutra">
+                          <div className="c-lc-action">
+                            <div>
+                              <span onClick={_changeCodeToEn}>
+                                {isHindiTranslate ? "En" : "English"}
+                              </span>
+                            </div>
+                            <div>
+                              <span onClick={_changeCodeToHi}>
+                                {isHindiTranslate ? "Hindi" : "Hi"}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="hov-parent">
+                            <p className="text-center h-fonts">
+                              <font className="fw-normal size-6">{translateContent}</font>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
               </section>
@@ -242,7 +289,7 @@ export default function Sriram() {
               title={shareTitle}
               isLargeLength={false}
             />,
-            document.body
+            document.body,
           )}
       </div>
     </>

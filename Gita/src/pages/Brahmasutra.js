@@ -1,13 +1,13 @@
 import { createPortal } from "react-dom";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
+import { _translate } from "../Function/A_Functions";
 
 export default function Brahmasutra() {
   useEffect(() => {
     document.title = "Brahmasutra | Gita";
-
     return () => {
       document.title = "Brahmasutra | Gita";
     };
@@ -19,7 +19,10 @@ export default function Brahmasutra() {
   const [selectedSutra, setSelectedSutra] = useState(1);
   const [OptionLength, setOptionLength] = useState(1);
   const [sutraContent, setSutraContent] = useState("");
+  const [translateContent, setTranslateCotent] = useState("");
   const [isSharePopVisible, setSharePopVisible] = useState(false);
+  const [isHindiTranslate, setIsHindiTranslate] = useState(true);
+  const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
   const shareRef = useRef(null);
   var site = "brahmasutra";
@@ -48,11 +51,9 @@ export default function Brahmasutra() {
         }
       }
     };
-
     document.body.addEventListener("click", handleClickOutside);
     window.addEventListener("scroll", () => closeSharePop(), { capture: true });
     window.addEventListener("resize", () => closeSharePop());
-
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
       window.removeEventListener("scroll", () => closeSharePop(), {
@@ -76,7 +77,39 @@ export default function Brahmasutra() {
     const newSutra = parseInt(evnet.target.value, 10);
     setSelectedSutra(newSutra);
   };
+  const goTranslate = useCallback(async (sansContent, whatcode) => {
+    if (sansContent.length < 1912) {
+      const content = await _translate(sansContent, whatcode);
+      if (content !== "") {
+        setTranslateCotent(content);
+      } else {
+        setTranslateCotent("Wait for Shloka!");
+      }
+    } else {
+      setTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
+    }
+  }, []);
+  const _changeCodeToEn = async () => {
+    setIsHindiTranslate(false);
+    await goTranslate(sutraContent, isHindiTranslate);
+  };
+  const _changeCodeToHi = async () => {
+    setIsHindiTranslate(true);
+    await goTranslate(sutraContent, isHindiTranslate);
+  };
+  function _hideTrans() {
+    if (hideTrans) {
+      setHideTrans(false);
+    } else {
+      setHideTrans(true);
+    }
+  }
   useEffect(() => {
+    if (sutraContent !== "" && sutraContent) {
+      goTranslate(sutraContent, isHindiTranslate);
+    } else {
+      setTranslateCotent("Wait for Shloka!");
+    }
     const fetchSutraContent = async () => {
       try {
         const pathC = `/brahmasutra/yvDcZdIZ7ZCTA2ptHSoj/Chapter${selectedChapter}`;
@@ -101,15 +134,15 @@ export default function Brahmasutra() {
           const docSnapshot = await getDoc(docRef);
           if (docSnapshot.exists) {
             const sutraData = docSnapshot.data();
-            const sutraArray = Object.entries(sutraData).map(
-              ([sutraNumber, sutra]) => ({
+            if (sutraData !== undefined && sutraData !== null) {
+              const sutraArray = Object.entries(sutraData).map(([sutraNumber, sutra]) => ({
                 sutraNumber,
                 sutra,
-              })
-            );
-            setOptionLength(sutraArray.length);
-            const sutra = sutraData[`Sutra${selectedSutra}`];
-            setSutraContent(sutra);
+              }));
+              setOptionLength(sutraArray.length);
+              const sutra = sutraData[`Sutra${selectedSutra}`];
+              setSutraContent(sutra);
+            }
           }
         }
       } catch (error) {
@@ -117,7 +150,16 @@ export default function Brahmasutra() {
       }
     };
     fetchSutraContent();
-  }, [sutraContent, selectedChapter, selectedQuarter, selectedSutra, idC, idQ]);
+  }, [
+    sutraContent,
+    goTranslate,
+    isHindiTranslate,
+    selectedChapter,
+    selectedQuarter,
+    selectedSutra,
+    idC,
+    idQ,
+  ]);
   return (
     <>
       <div className="container">
@@ -131,41 +173,23 @@ export default function Brahmasutra() {
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div
-                            id="edit-language-wrapper"
-                            className="v-ex-widget"
-                          >
-                            <label
-                              htmlFor="edit-language"
-                              className="fw-normal"
-                            >
+                          <div id="edit-language-wrapper" className="v-ex-widget">
+                            <label htmlFor="edit-language" className="fw-normal">
                               Script
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  
-                                  
-                                  defaultValue={"dv"}
-                                >
+                                <select defaultValue={"dv"}>
                                   <option value={"dv"}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-chapter"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-chapter" className="v-ex-widget">
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  
-                                  
-                                  value={selectedChapter}
-                                  onChange={handleChapterChange}
-                                >
+                                <select value={selectedChapter} onChange={handleChapterChange}>
                                   {Array.from({ length: 4 }, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
@@ -175,19 +199,11 @@ export default function Brahmasutra() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-shloka"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-shloka" className="v-ex-widget">
                             <label className="fw-normal">Quarter</label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  
-                                  
-                                  value={selectedQuarter}
-                                  onChange={handleQuarterChange}
-                                >
+                                <select value={selectedQuarter} onChange={handleQuarterChange}>
                                   {Array.from({ length: 4 }, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
@@ -197,27 +213,16 @@ export default function Brahmasutra() {
                               </div>
                             </div>
                           </div>
-                          <div
-                            id="edit-field-shloka"
-                            className="v-ex-widget"
-                          >
+                          <div id="edit-field-shloka" className="v-ex-widget">
                             <label className="fw-normal">Sutra</label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  
-                                  
-                                  value={selectedSutra}
-                                  onChange={handleSutraChange}
-                                >
-                                  {Array.from(
-                                    { length: OptionLength },
-                                    (_, index) => (
-                                      <option key={index + 1} value={index + 1}>
-                                        {index + 1}
-                                      </option>
-                                    )
-                                  )}
+                                <select value={selectedSutra} onChange={handleSutraChange}>
+                                  {Array.from({ length: OptionLength }, (_, index) => (
+                                    <option key={index + 1} value={index + 1}>
+                                      {index + 1}
+                                    </option>
+                                  ))}
                                 </select>
                               </div>
                             </div>
@@ -225,7 +230,7 @@ export default function Brahmasutra() {
                         </div>
                       </div>
                       <div className="view-content">
-                        <div className="c_dis_sutra">
+                        <div className="c-dis-sutra">
                           <div>
                             <div className="v-fi_sutra">
                               <p className="text-center">
@@ -235,10 +240,7 @@ export default function Brahmasutra() {
                                 </font>
                               </p>
                               <div className="hov-parent">
-                                <div
-                                  id="shareTop"
-                                  className="hov-child ml-auto mr-1 p-absolute"
-                                >
+                                <div id="shareTop" className="hov-child ml-auto mr-1 p-absolute">
                                   <div className="d-flex flex-row">
                                     <div className="">
                                       <button
@@ -248,10 +250,7 @@ export default function Brahmasutra() {
                                           handleClick(event);
                                         }}
                                       >
-                                        <i
-                                          ref={shareRef}
-                                          className="sdf material-symbols-outlined"
-                                        >
+                                        <i ref={shareRef} className="sdf material-symbols-outlined">
                                           share
                                         </i>
                                       </button>
@@ -259,10 +258,7 @@ export default function Brahmasutra() {
                                   </div>
                                 </div>
                                 <p className="h-fonts">
-                                  <font
-                                    id={shId}
-                                    className="fw-normal size-6 line-150"
-                                  >
+                                  <font id={shId} className="text-center fw-normal size-6 line-150">
                                     {sutraContent
                                       ? sutraContent
                                           .split(" ")
@@ -277,6 +273,34 @@ export default function Brahmasutra() {
                               </div>
                             </div>
                           </div>
+                          <div className="l-t-action">
+                            <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                          </div>
+                          {hideTrans ? (
+                            <div className="translate-view">
+                              <div className="v-fi_sutra">
+                                <div className="c-lc-action">
+                                  <div>
+                                    <span onClick={_changeCodeToEn}>
+                                      {isHindiTranslate ? "En" : "English"}
+                                    </span>
+                                  </div>
+                                  <div>
+                                    <span onClick={_changeCodeToHi}>
+                                      {isHindiTranslate ? "Hindi" : "Hi"}
+                                    </span>
+                                  </div>
+                                </div>
+                                <div className="hov-parent">
+                                  <p className="text-center h-fonts">
+                                    <font className="fw-normal size-6">{translateContent}</font>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <></>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -295,7 +319,7 @@ export default function Brahmasutra() {
               title={shareTitle}
               isLargeLength={true}
             />,
-            document.body
+            document.body,
           )}
       </div>
     </>

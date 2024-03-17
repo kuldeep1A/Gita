@@ -23,6 +23,7 @@ export default function Valmikiramayana() {
   const yuddhadaLen = Object.keys(optionData.YUDDHAKANDA).length;
   const [shlokaData, setShlokaData] = useState({});
   const [isSharePopVisible, setSharePopVisible] = useState(false);
+  const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
   const shareRef = useRef(null);
   var site = "valmikiramayana";
@@ -136,6 +137,13 @@ export default function Valmikiramayana() {
       return l;
     }
   };
+  function _hideTrans() {
+    if (hideTrans) {
+      setHideTrans(false);
+    } else {
+      setHideTrans(true);
+    }
+  }
   useEffect(() => {
     const fetchSutraContent = async () => {
       try {
@@ -229,7 +237,7 @@ export default function Valmikiramayana() {
                           </div>
                         </div>
                       </div>
-                      <div className="c_dis_sutra">
+                      <div className="c-dis-sutra">
                         <div>
                           <div className="v-fi_sutra">
                             <p className="text-center">
@@ -306,27 +314,34 @@ export default function Valmikiramayana() {
                             </div>
                           </div>
                         </div>
-                        <div>
-                          <div className="v-fi_sutra">
-                            <p className="text-left">
-                              <font className="color-dark-aubergine fw-normal size-6">
-                                <b>Translate</b>
-                                <br />
-                              </font>
-                            </p>
-                            <p className="h-fonts">
-                              <font className="fw-normal size-6 line-150">
-                                {shlokaData.translate}
-                              </font>
-                            </p>
-                            <br />
-                            <p className="h-fonts">
-                              <font className="fw-normal size-6 line-150">
-                                {shlokaData.description}
-                              </font>
-                            </p>
-                          </div>
+                        <div className="l-t-action">
+                          <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
                         </div>
+                        {hideTrans ? (
+                          <div className="translate-view">
+                            <div className="v-fi_sutra">
+                              <p className="text-left">
+                                <font className="color-dark-aubergine fw-normal size-6">
+                                  <b>Translate</b>
+                                  <br />
+                                </font>
+                              </p>
+                              <p className="h-fonts">
+                                <font className="fw-normal size-6 line-150">
+                                  {shlokaData.translate}
+                                </font>
+                              </p>
+                              <br />
+                              <p className="h-fonts">
+                                <font className="fw-normal size-6 line-150">
+                                  {shlokaData.description}
+                                </font>
+                              </p>
+                            </div>
+                          </div>
+                        ) : (
+                          <></>
+                        )}
                       </div>
                     </div>
                   </div>

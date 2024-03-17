@@ -1,13 +1,13 @@
 import { createPortal } from "react-dom";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
+import { _translate } from "../Function/A_Functions";
 
 export default function Yogasutra() {
   useEffect(() => {
     document.title = "Yogasutra | Gita";
-
     return () => {
       document.title = "Yogasutra | Gita";
     };
@@ -19,11 +19,18 @@ export default function Yogasutra() {
   const [SutraContent, setSutraContent] = useState("");
   const [BhasyaContent, setBhasyaContent] = useState("");
   const [VrittiContent, setVrittiContent] = useState("");
+  const [stranslateContent, setSTranslateCotent] = useState("");
+  const [btranslateContent, setBTranslateCotent] = useState("");
+  const [vtranslateContent, setVTranslateCotent] = useState("");
+  const [translateContent, setTranslateCotent] = useState("");
+  const [whichSutra, setWhichSutra] = useState(2);
   const [isViewSutra, setIsViewSutra] = useState(false);
   const [isViewBhasya, setIsViewBhasya] = useState(false);
   const [isViewVritti, setIsViewVritti] = useState(false);
-  const [shareTC, setShareTC] = useState("sutra");
   const [isSharePopVisible, setSharePopVisible] = useState(false);
+  const [isHindiTranslate, setIsHindiTranslate] = useState(true);
+  const [hideTrans, setHideTrans] = useState(true);
+  const [shareTC, setShareTC] = useState("sutra");
   const [clickEvent, setClickEvent] = useState(null);
   const shareRefS = useRef(null);
   const shareRefB = useRef(null);
@@ -45,7 +52,66 @@ export default function Yogasutra() {
   const closeSharePop = () => {
     setSharePopVisible(false);
   };
+  const fillTranslate = useCallback(
+    (whichSutra) => {
+      if (whichSutra === 1) {
+        setTranslateCotent(stranslateContent);
+      } else if (whichSutra === 2) {
+        setTranslateCotent(btranslateContent);
+      } else if (whichSutra === 3) {
+        setTranslateCotent(vtranslateContent);
+      }
+    },
+    [stranslateContent, btranslateContent, vtranslateContent],
+  );
+  const goTranslate = useCallback(
+    async (shsContent, shbContent, shvContent, whatcode) => {
+      if (shbContent.length < 1912 && shvContent.length < 1912) {
+        const shstcontent = await _translate(shsContent, whatcode);
+        const shbtcontent = await _translate(shbContent, whatcode);
+        const shvtcontent = await _translate(shvContent, whatcode);
+        if (shstcontent !== "" && shbtcontent !== "" && shvtcontent !== "") {
+          setSTranslateCotent(shstcontent);
+          setBTranslateCotent(shbtcontent);
+          setVTranslateCotent(shvtcontent);
+          fillTranslate(whichSutra);
+        } else {
+          setSTranslateCotent("Wait for Shloka!");
+          setBTranslateCotent("Wait for Shloka!");
+          setVTranslateCotent("Wait for Shloka!");
+        }
+      } else {
+        setSTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
+        setBTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
+        setVTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
+      }
+    },
+    [whichSutra, fillTranslate],
+  );
+  const _changeCodeToEn = async () => {
+    setIsHindiTranslate(false);
+    await goTranslate(BhasyaContent, isHindiTranslate);
+  };
+  const _changeCodeToHi = async () => {
+    setIsHindiTranslate(true);
+    await goTranslate(BhasyaContent, isHindiTranslate);
+  };
+  function _hideTrans() {
+    if (hideTrans) {
+      setHideTrans(false);
+    } else {
+      setHideTrans(true);
+    }
+  }
   useEffect(() => {
+    if (BhasyaContent !== "" && BhasyaContent) {
+      goTranslate(SutraContent, BhasyaContent, VrittiContent, isHindiTranslate);
+      fillTranslate(whichSutra);
+    } else {
+      setSTranslateCotent("Wait for Shloka!");
+      setBTranslateCotent("Wait for Shloka!");
+      setVTranslateCotent("Wait for Shloka!");
+    }
     const handleClickOutside = (event, shareRef) => {
       const target = event.target || event.srcElement;
       if (target && shareRef !== null) {
@@ -57,7 +123,6 @@ export default function Yogasutra() {
         }
       }
     };
-
     const handleRef = (event) => {
       if (event) {
         const isShareS = event.target.hasAttribute("data-share-s");
@@ -74,11 +139,9 @@ export default function Yogasutra() {
         }
       }
     };
-
     document.body.addEventListener("click", handleRef);
     window.addEventListener("scroll", () => closeSharePop(), { capture: true });
     window.addEventListener("resize", () => closeSharePop());
-
     return () => {
       document.body.removeEventListener("click", handleRef);
       window.removeEventListener("scroll", () => closeSharePop(), {
@@ -86,7 +149,19 @@ export default function Yogasutra() {
       });
       window.removeEventListener("resize", () => closeSharePop());
     };
-  }, [shId, shareRefB, shareRefS, shareRefV]);
+  }, [
+    shId,
+    goTranslate,
+    isHindiTranslate,
+    BhasyaContent,
+    SutraContent,
+    VrittiContent,
+    shareRefB,
+    shareRefS,
+    shareRefV,
+    whichSutra,
+    fillTranslate,
+  ]);
   const handleChapterChange = (event) => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
@@ -99,12 +174,15 @@ export default function Yogasutra() {
   const handleCheckboxChange = (checkboxNumber) => {
     switch (checkboxNumber) {
       case 1:
+        fillTranslate(!isViewBhasya ? 2 : !isViewVritti ? 3 : 2);
         setIsViewSutra(!isViewSutra);
         break;
       case 2:
+        fillTranslate(!isViewSutra ? 1 : !isViewVritti ? 3 : 2);
         setIsViewBhasya(!isViewBhasya);
         break;
       case 3:
+        fillTranslate(!isViewSutra ? 1 : !isViewBhasya ? 2 : 2);
         setIsViewVritti(!isViewVritti);
         break;
       default:
@@ -112,6 +190,7 @@ export default function Yogasutra() {
     }
   };
   const areAnyCheckboxesChecked = isViewBhasya && isViewSutra && isViewVritti;
+
   useEffect(() => {
     const fetching = async () => {
       try {
@@ -128,19 +207,19 @@ export default function Yogasutra() {
           const docSanpshot = await getDoc(docRef);
           if (docSanpshot.exists) {
             const SutraData = docSanpshot.data();
-            const SutraArrays = Object.entries(SutraData).map(
-              ([key, value]) => ({
+            if (SutraData !== undefined && SutraData !== null) {
+              const SutraArrays = Object.entries(SutraData).map(([key, value]) => ({
                 key,
                 value,
-              })
-            );
-            setOptionLength(SutraArrays.length / 3);
-            const Sutra = SutraData[`Sutra${selectedSutra}`];
-            const Bhasya = SutraData[`Bhashya${selectedSutra}`];
-            const Vritti = SutraData[`Vritti${selectedSutra}`];
-            setSutraContent(Sutra);
-            setBhasyaContent(Bhasya);
-            setVrittiContent(Vritti);
+              }));
+              setOptionLength(SutraArrays.length / 3);
+              const Sutra = SutraData[`Sutra${selectedSutra}`];
+              const Bhasya = SutraData[`Bhashya${selectedSutra}`];
+              const Vritti = SutraData[`Vritti${selectedSutra}`];
+              setSutraContent(Sutra);
+              setBhasyaContent(Bhasya);
+              setVrittiContent(Vritti);
+            }
           }
         }
       } catch (error) {
@@ -149,7 +228,6 @@ export default function Yogasutra() {
     };
     fetching();
   }, [idC, selectedChapter, selectedSutra]);
-
   return (
     <>
       <div className="container">
@@ -163,14 +241,8 @@ export default function Yogasutra() {
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div
-                            id="edit-language-wrapper"
-                            className="v-ex-widget"
-                          >
-                            <label
-                              htmlFor="edit-language"
-                              className="fw-normal"
-                            >
+                          <div id="edit-language-wrapper" className="v-ex-widget">
+                            <label htmlFor="edit-language" className="fw-normal">
                               Script
                             </label>
                             <div>
@@ -185,10 +257,7 @@ export default function Yogasutra() {
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  value={selectedChapter}
-                                  onChange={handleChapterChange}
-                                >
+                                <select value={selectedChapter} onChange={handleChapterChange}>
                                   {Array.from({ length: 4 }, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
@@ -202,18 +271,12 @@ export default function Yogasutra() {
                             <label className="fw-normal">Sutra</label>
                             <div>
                               <div className="views-widget">
-                                <select
-                                  value={selectedSutra}
-                                  onChange={handleSutraChange}
-                                >
-                                  {Array.from(
-                                    { length: OptionLength },
-                                    (_, index) => (
-                                      <option key={index + 1} value={index + 1}>
-                                        {index + 1}
-                                      </option>
-                                    )
-                                  )}
+                                <select value={selectedSutra} onChange={handleSutraChange}>
+                                  {Array.from({ length: OptionLength }, (_, index) => (
+                                    <option key={index + 1} value={index + 1}>
+                                      {index + 1}
+                                    </option>
+                                  ))}
                                 </select>
                               </div>
                             </div>
@@ -262,12 +325,10 @@ export default function Yogasutra() {
                   </div>
                 </div>
                 <div className="view-content">
-                  <div className="c_dis_sutra">
+                  <div className="c-dis-sutra">
                     <div
                       className={`_sutra ${
-                        isViewSutra
-                          ? "view_sutra is-hidden-mobile is-hidden-desktop "
-                          : ""
+                        isViewSutra ? "view_sutra is-hidden-mobile is-hidden-desktop " : ""
                       }`}
                     >
                       <div className="v-fi_sutra">
@@ -279,10 +340,7 @@ export default function Yogasutra() {
                         </p>
                         <div className="hov-parent">
                           <p className="text-center h-fonts">
-                            <font
-                              id={shsId}
-                              className="fw-normal size-6 line-150"
-                            >
+                            <font id={shsId} className="fw-normal size-6 line-150">
                               {SutraContent
                                 ? SutraContent.split("।")
                                     .filter((line) => line.trim() !== "")
@@ -332,10 +390,7 @@ export default function Yogasutra() {
                                 : "Sutra not found."}
                             </font>
                           </p>
-                          <div
-                            id="shareTop"
-                            className="hov-child ml-auto mr-1 p-absolute"
-                          >
+                          <div id="shareTop" className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
@@ -362,9 +417,7 @@ export default function Yogasutra() {
                     </div>
                     <div
                       className={`_bhasya ${
-                        isViewBhasya
-                          ? "view_bhasya is-hidden-mobile is-hidden-desktop"
-                          : ""
+                        isViewBhasya ? "view_bhasya is-hidden-mobile is-hidden-desktop" : ""
                       }`}
                     >
                       <div className="v-fi_sutra">
@@ -376,10 +429,7 @@ export default function Yogasutra() {
                         </p>
                         <div className="hov-parent">
                           <p className="text-center h-fonts">
-                            <font
-                              id={shbId}
-                              className="fw-normal size-6 line-150"
-                            >
+                            <font id={shbId} className="fw-normal size-6 line-150">
                               {BhasyaContent
                                 ? BhasyaContent.split("।")
                                     .filter((line) => line.trim() !== "")
@@ -429,10 +479,7 @@ export default function Yogasutra() {
                                 : "Bhasya not found."}
                             </font>
                           </p>
-                          <div
-                            id="shareTop"
-                            className="hov-child ml-auto mr-1 p-absolute"
-                          >
+                          <div id="shareTop" className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
@@ -459,9 +506,7 @@ export default function Yogasutra() {
                     </div>
                     <div
                       className={`_vritti ${
-                        isViewVritti
-                          ? "view_vritti is-hidden-mobile is-hidden-desktop"
-                          : ""
+                        isViewVritti ? "view_vritti is-hidden-mobile is-hidden-desktop" : ""
                       }`}
                     >
                       <div className="v-fi_sutra">
@@ -473,10 +518,7 @@ export default function Yogasutra() {
                         </p>
                         <div className="hov-parent">
                           <p className="text-center h-fonts">
-                            <font
-                              id={shvId}
-                              className="fw-normal size-6 line-150"
-                            >
+                            <font id={shvId} className="fw-normal size-6 line-150">
                               {VrittiContent
                                 ? VrittiContent.split("।")
                                     .filter((line) => line.trim() !== "")
@@ -526,10 +568,7 @@ export default function Yogasutra() {
                                 : "Vritti not found."}
                             </font>
                           </p>
-                          <div
-                            id="shareTop"
-                            className="hov-child ml-auto mr-1 p-absolute"
-                          >
+                          <div id="shareTop" className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
@@ -554,11 +593,75 @@ export default function Yogasutra() {
                         </div>
                       </div>
                     </div>
+                    {isViewBhasya && isViewSutra && isViewVritti ? (
+                      <></>
+                    ) : (
+                      <>
+                        <div className="l-t-action">
+                          <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                        </div>
+                        {hideTrans ? (
+                          <div className="translate-view">
+                            <div className="v-fi_sutra">
+                              <div className="c-lc-action">
+                                <div>
+                                  <span onClick={_changeCodeToEn}>
+                                    {isHindiTranslate ? "En" : "English"}
+                                  </span>
+                                </div>
+                                <div>
+                                  <span onClick={_changeCodeToHi}>
+                                    {isHindiTranslate ? "Hindi" : "Hi"}
+                                  </span>
+                                </div>
+                                <div>
+                                  <span
+                                    className={`_sutra ${
+                                      isViewSutra
+                                        ? "view_sutra is-hidden-mobile is-hidden-desktop "
+                                        : ""
+                                    }`}
+                                    onClick={() => setWhichSutra(1)}
+                                  >
+                                    {whichSutra === 1 ? "Sutra" : "S"}
+                                  </span>
+                                  <span
+                                    className={`_bhasya ${
+                                      isViewBhasya
+                                        ? "view_bhasya is-hidden-mobile is-hidden-desktop"
+                                        : ""
+                                    }`}
+                                    onClick={() => setWhichSutra(2)}
+                                  >
+                                    {whichSutra === 2 ? "Bhasya" : "B"}
+                                  </span>
+                                  <span
+                                    className={`_vritti ${
+                                      isViewVritti
+                                        ? "view_vritti is-hidden-mobile is-hidden-desktop"
+                                        : ""
+                                    }`}
+                                    onClick={() => setWhichSutra(3)}
+                                  >
+                                    {whichSutra === 3 ? "Vritti" : "V"}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="hov-parent">
+                                <p className="text-center h-fonts">
+                                  <font className="fw-normal size-6">{translateContent}</font>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <></>
+                        )}
+                      </>
+                    )}
                   </div>
                 </div>
-                {areAnyCheckboxesChecked && (
-                  <p>At least one Sutra's is checked.</p>
-                )}
+                {areAnyCheckboxesChecked && <p>At least one Sutra's is checked.</p>}
               </section>
             </div>
           </div>
@@ -572,7 +675,7 @@ export default function Yogasutra() {
               title={shareTitle}
               isLargeLength={false}
             />,
-            document.body
+            document.body,
           )}
       </div>
     </>

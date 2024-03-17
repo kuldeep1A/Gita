@@ -66,8 +66,8 @@ body {
 }
 
 #b-s-form input:focus {
-  outline: navy;
-  border: 1px solid navy;
+  outline: rgb(197, 197, 247);
+  border: 1px solid rgb(175, 175, 226);
 }
 
 #b-s-form .f-submit {
@@ -290,6 +290,10 @@ ul.menu {
 .c-dis-sutra {
   float: none;
   width: 100%;
+
+  div:nth-child(-n+3) {
+    margin-bottom: 4px;
+  }
 }
 
 .v-fi_sutra {
@@ -688,9 +692,8 @@ span._notice {
     color: white !important;
   }
 
-
   #b-s-form .f-text {
-    background-color: black !important;
+    background-color: #181818 !important;
     color: whitesmoke !important;
   }
 
@@ -747,6 +750,8 @@ span._notice {
         b {
           color: white !important;
         }
+
+        overflow-wrap: break-word;
       }
     }
   }
@@ -777,4 +782,64 @@ span._notice {
     }
   }
 
+}
+
+.l-t-action {
+  padding-top: 3px;
+
+  width: 130px;
+  cursor: pointer;
+}
+
+.l-t-action:hover div::after {
+  content: " Translate";
+}
+
+.c-lc-action {
+  display: flex;
+  height: 25px;
+  flex-direction: row;
+
+  div {
+    span {
+      display: none;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    span:hover {
+      color: #498bcd;
+    }
+  }
+}
+
+.c-lc-action>div:nth-last-child(-n+1) {
+  position: absolute;
+  right: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  span:hover {
+    font-size: large;
+    cursor: pointer;
+  }
+}
+
+.translate-view {
+  margin-top: 3px;
+
+  font {
+    line-height: 30px;
+  }
+}
+
+.translate-view:hover {
+  .c-lc-action {
+    div {
+      span {
+        display: block;
+      }
+    }
+  }
 }

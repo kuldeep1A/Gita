@@ -1,8 +1,9 @@
 import React from "react";
+import JsGoogleTranslateFree from "@kreisler/js-google-translate-free";
 
 export const EmailLinkD = ({ email, subject }) => {
   const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-    email
+    email,
   )}&su=${encodeURIComponent(subject)}`;
 
   return (
@@ -13,9 +14,7 @@ export const EmailLinkD = ({ email, subject }) => {
 };
 
 export const EmailLinkM = ({ email, subject }) => {
-  const mailtoLink = `mailto:${encodeURIComponent(
-    email
-  )}?subject=${encodeURIComponent(subject)}`;
+  const mailtoLink = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}`;
   return (
     <a target="_blank" href={mailtoLink} rel="noreferrer">
       {email}
@@ -33,3 +32,18 @@ export default function _set_session() {
   }
   window.location.reload();
 }
+
+export const _translate = async (sansContent, whatcode) => {
+  try {
+    var lanCode = whatcode ? "hi" : "en";
+    const translation = await JsGoogleTranslateFree.translate({
+      from: "sa",
+      to: lanCode,
+      text: sansContent,
+    });
+    return translation;
+  } catch (error) {
+    console.error("Trans error:", error);
+    return "";
+  }
+};

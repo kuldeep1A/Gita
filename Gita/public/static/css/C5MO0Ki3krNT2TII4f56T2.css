@@ -132,4 +132,16 @@
   ._d-p-size {
     height: 310px !important;
   }
+
+  .c-lc-action {
+    div {
+      span {
+        display: block;
+      }
+
+      span:hover {
+        color: #498bcd;
+      }
+    }
+  }
 }

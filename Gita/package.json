@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@kreisler/js-google-translate-free": "^4.0.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^10.3.1",
     "jquery": "^3.7.0",
+    "node-google-translate-skidz": "^1.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-ga": "^3.3.1",
