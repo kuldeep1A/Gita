@@ -614,7 +614,7 @@ export default function Yogasutra() {
                                     {isHindiTranslate ? "Hindi" : "Hi"}
                                   </span>
                                 </div>
-                                <div>
+                                <div className="whichTranslation">
                                   <span
                                     className={`_sutra ${
                                       isViewSutra

@@ -813,7 +813,7 @@ span._notice {
   }
 }
 
-.c-lc-action>div:nth-last-child(-n+1) {
+.c-lc-action>.whichTranslation {
   position: absolute;
   right: 5px;
   display: flex;
