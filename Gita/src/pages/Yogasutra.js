@@ -29,7 +29,7 @@ export default function Yogasutra() {
   const [isViewVritti, setIsViewVritti] = useState(false);
   const [isSharePopVisible, setSharePopVisible] = useState(false);
   const [isHindiTranslate, setIsHindiTranslate] = useState(true);
-  const [hideTrans, setHideTrans] = useState(true);
+  const [hideTrans, setHideTrans] = useState(false);
   const [shareTC, setShareTC] = useState("sutra");
   const [clickEvent, setClickEvent] = useState(null);
   const shareRefS = useRef(null);

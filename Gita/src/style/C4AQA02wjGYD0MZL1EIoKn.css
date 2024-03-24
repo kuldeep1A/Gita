@@ -214,6 +214,7 @@ ul.menu {
 }
 
 .r-f-welcome {
+  display: none;
   margin: 2% auto;
   max-width: 1024px;
   text-align: center;

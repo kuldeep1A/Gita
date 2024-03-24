@@ -43,3 +43,8 @@ media
 .idea/**/shelf
 
 .vs/
+
+/dist
+./dist
+dist
+**/dist/**
