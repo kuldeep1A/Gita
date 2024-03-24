@@ -1,5 +1,5 @@
 .idea/
-
+package-lock.json
 docker/
 
 main/
@@ -42,4 +42,7 @@ media
 .idea/**/dictionaries
 .idea/**/shelf
 
-.vs/
+.vs/z
+
+# credentials 
+Credentials
