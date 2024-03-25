@@ -18,11 +18,9 @@ export default function Home() {
           <span style={colorx}>
             <strong>
               <span className="_notice">
-                NOTICE: Users can edit content now. If you want to be an editor,
-                please send your credentials with offical{" "}
-                <em style={{ color: "black", fontWeight: "bold" }}>
-                  GitaSuperSite
-                </em>{" "}
+                NOTICE: Users can edit content now. If you want to be an editor, please send your
+                credentials with offical
+                <em style={{ color: "black", fontWeight: "bold" }}>GitaSuperSite</em>
                 Website Maintained by IIT Kanpur.
               </span>
             </strong>
