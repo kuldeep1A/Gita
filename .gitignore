@@ -48,3 +48,6 @@ media
 ./dist
 dist
 **/dist/**
+
+# Credentials
+Credentials
