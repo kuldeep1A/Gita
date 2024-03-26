@@ -4,6 +4,7 @@ import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
 import SharePop from "../componets/SharePop";
 import { _translate } from "../Function/A_Functions";
+import { TranslateView } from "../componets/TranslateView";
 
 export default function Avadhuta() {
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function Avadhuta() {
   const [translateContent, setTranslateCotent] = useState("");
   const [isSharePopVisible, setSharePopVisible] = useState(false);
   const [isHindiTranslate, setIsHindiTranslate] = useState(true);
-  const [hideTrans, setHideTrans] = useState(false);
+  const [hideTrans, setHideTrans] = useState(true);
   const [clickEvent, setClickEvent] = useState(null);
   const shareRef = useRef(null);
   var site = "avadhuta";
@@ -274,27 +275,12 @@ export default function Avadhuta() {
                       <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
                     </div>
                     {hideTrans ? (
-                      <div className="translate-view">
-                        <div className="v-fi_sutra">
-                          <div className="c-lc-action">
-                            <div>
-                              <span onClick={_changeCodeToEn}>
-                                {isHindiTranslate ? "En" : "English"}
-                              </span>
-                            </div>
-                            <div>
-                              <span onClick={_changeCodeToHi}>
-                                {isHindiTranslate ? "Hindi" : "Hi"}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="hov-parent">
-                            <p className="text-center h-fonts">
-                              <font className="fw-normal size-6">{translateContent}</font>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                       <TranslateView
+                        _changeCodeToEn={_changeCodeToEn}
+                        _changeCodeToHi={_changeCodeToHi}
+                        isHindiTranslate={isHindiTranslate}
+                        translateContent={translateContent}
+                      />
                     ) : (
                       <></>
                     )}

@@ -1021,4 +1021,43 @@ span._notice {
       }
     }
   }
+
+  .audio-button {
+    div {
+      display: block;
+    }
+  }
+}
+
+.audio-button {
+  display: flex;
+  height: 3px;
+
+  div {
+    display: block;
+    height: 3px;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn)
+  }
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn)
+  }
+}
+
+.animate-spin {
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite
 }
