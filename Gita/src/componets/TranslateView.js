@@ -9,7 +9,7 @@ export const TranslateView = ({
   isHindiTranslate,
   translateContent,
 }) => {
-  const { speak, voices } = useSpeechSynthesis();
+  const { speak, cancel, voices } = useSpeechSynthesis();
   return (
     <div className="translate-view">
       <div className="v-fi_sutra">
@@ -27,7 +27,16 @@ export const TranslateView = ({
           </p>
           <div className="audio-button">
             <div
-              onClick={() => _SpeakInEnHi(!isHindiTranslate, isHindiTranslate, translateContent, speak, voices)}
+              onClick={() =>
+                _SpeakInEnHi(
+                  !isHindiTranslate,
+                  isHindiTranslate,
+                  translateContent,
+                  speak,
+                  voices,
+                  cancel,
+                )
+              }
             >
               {Svgs._svgAloud()}
             </div>

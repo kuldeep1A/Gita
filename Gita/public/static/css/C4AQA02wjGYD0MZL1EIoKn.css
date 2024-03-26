@@ -1034,7 +1034,7 @@ span._notice {
   height: 3px;
 
   div {
-    display: block;
+    display: none;
     height: 3px;
 
     svg {

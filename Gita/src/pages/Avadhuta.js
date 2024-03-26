@@ -22,7 +22,7 @@ export default function Avadhuta() {
   const [translateContent, setTranslateCotent] = useState("");
   const [isSharePopVisible, setSharePopVisible] = useState(false);
   const [isHindiTranslate, setIsHindiTranslate] = useState(true);
-  const [hideTrans, setHideTrans] = useState(true);
+  const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
   const shareRef = useRef(null);
   var site = "avadhuta";
