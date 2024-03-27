@@ -1,11 +1,9 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { collection, doc, getDocs, getDoc } from "firebase/firestore";
-import { database } from "../../../Function/A_Functions";
 import SharePop from "../../../componets/SharePop";
 import { _translate } from "../../../Function/A_Functions";
 import { TranslateView } from "../../../componets/TranslateView";
-
+import { fetchOtherGitasContent } from "../../../services/services";
 export default function Ashtavakra() {
   useEffect(() => {
     document.title = "Ashtavakra | Gita";
@@ -107,34 +105,17 @@ export default function Ashtavakra() {
       setTranslateCotent("Wait for Shloka!");
     }
     const fetchShlokaContent = async () => {
-      try {
-        const pathC = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}`;
-        const refC = collection(database, pathC);
-        getDocs(refC).then((sanpshot) => {
-          sanpshot.docs.forEach((doc) => {
-            setidC(`${doc.id}`);
-          });
-        });
-        if (idC) {
-          const documentPath = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}/${idC}`;
-          const docRef = doc(database, documentPath);
-          const docSanpshot = await getDoc(docRef);
-          if (docSanpshot.exists) {
-            const ShlokaData = docSanpshot.data();
-            if (ShlokaData !== undefined && ShlokaData !== null) {
-              const ShlokaArray = Object.entries(ShlokaData).map(([shlokaNumber, Shloka]) => ({
-                shlokaNumber,
-                Shloka,
-              }));
-              setOptionLength(ShlokaArray.length);
-              const shloka = ShlokaData[`Shloka${selectedShloka}`];
-              setShlokaContent(shloka);
-            }
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching shloka content: ", error);
-      }
+      const _pathC = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}`;
+      const _documentPath = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}/${idC}`;
+      await fetchOtherGitasContent(
+        idC,
+        setidC,
+        setOptionLength,
+        selectedShloka,
+        setShlokaContent,
+        _pathC,
+        _documentPath,
+      );
     };
     fetchShlokaContent();
   }, [idC, selectedShloka, selectedChapter, ShlokaContent, goTranslate, isHindiTranslate]);

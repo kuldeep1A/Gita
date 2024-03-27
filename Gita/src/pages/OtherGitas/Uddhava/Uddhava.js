@@ -1,11 +1,9 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
-import { database } from "../../../Function/A_Functions";
 import SharePop from "../../../componets/SharePop";
 import { _translate } from "../../../Function/A_Functions";
 import { TranslateView } from "../../../componets/TranslateView";
-
+import { fetchOtherGitasContent } from "../../../services/services";
 export default function Uddhava() {
   useEffect(() => {
     document.title = "Uddhava | Gita";
@@ -104,35 +102,17 @@ export default function Uddhava() {
   };
   useEffect(() => {
     const fetchShlokaContent = async () => {
-      try {
-        const pathC = `/uddhava/p1vmMbUk9wM6B5yO0Ujk/Chapter${selectedChapter}`;
-        const refC = collection(database, pathC);
-
-        getDocs(refC).then((sanpshot) => {
-          sanpshot.docs.forEach((doc) => {
-            setidC(`${doc.id}`);
-          });
-        });
-        if (idC) {
-          const documentPath = `/uddhava/p1vmMbUk9wM6B5yO0Ujk/Chapter${selectedChapter}/${idC}`;
-          const docRef = doc(database, documentPath);
-          const docSanpshot = await getDoc(docRef);
-          if (docSanpshot.exists) {
-            const ShlokaData = docSanpshot.data();
-            if (ShlokaData !== undefined && ShlokaData !== null) {
-              const ShlokaArray = Object.entries(ShlokaData).map(([shlokaNumber, Shloka]) => ({
-                shlokaNumber,
-                Shloka,
-              }));
-              setOptionLength(ShlokaArray.length);
-              const shloka = ShlokaData[`Shloka${selectedShloka}`];
-              setShlokaContent(shloka);
-            }
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching shloka content: ", error);
-      }
+      const _pathC = `/uddhava/p1vmMbUk9wM6B5yO0Ujk/Chapter${selectedChapter}`;
+      const _documentPath = `/uddhava/p1vmMbUk9wM6B5yO0Ujk/Chapter${selectedChapter}/${idC}`;
+      await fetchOtherGitasContent(
+        idC,
+        setidC,
+        setOptionLength,
+        selectedShloka,
+        setShlokaContent,
+        _pathC,
+        _documentPath,
+      );
     };
     fetchShlokaContent();
   }, [idC, selectedShloka, selectedChapter]);
@@ -280,7 +260,7 @@ export default function Uddhava() {
                       <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
                     </div>
                     {hideTrans ? (
-                       <TranslateView
+                      <TranslateView
                         _changeCodeToEn={_changeCodeToEn}
                         _changeCodeToHi={_changeCodeToHi}
                         isHindiTranslate={isHindiTranslate}
