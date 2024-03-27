@@ -129,9 +129,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# package
-package-lock.json
-
 # dependencies
 /node_modules
 /.pnp
@@ -170,9 +167,3 @@ firestore.indexes.json
 Credentials
 
 build
-
-# gita1a
-Gita
-.github
-README.md
-LICENSE
