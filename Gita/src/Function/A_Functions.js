@@ -35,7 +35,6 @@ export const EmailLinkD = ({ email, subject }) => {
     </a>
   );
 };
-
 export const EmailLinkM = ({ email, subject }) => {
   const mailtoLink = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}`;
   return (
@@ -44,7 +43,6 @@ export const EmailLinkM = ({ email, subject }) => {
     </a>
   );
 };
-
 export default function _set_session() {
   if (window.sessionStorage.getItem("isDark") === null) {
     window.sessionStorage.setItem("isDark", "true");
@@ -67,7 +65,6 @@ const firebaseConfig = {
 };
 export const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
-
 export const _translate = async (sansContent, whatcode) => {
   try {
     var lanCode = whatcode ? "hi" : "en";
