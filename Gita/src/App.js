@@ -2,32 +2,32 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 import ReactGA from "react-ga";
 import ScrollRestoration from "./componets/ScrollRestoration";
+import {
+  Home,
+  About,
+  Ashtavakra,
+  Avadhuta,
+  Kapila,
+  Sriram,
+  Sruti,
+  Uddhava,
+  Vibhishana,
+  Othergitas,
+  QuickLinks,
+  Team,
+  Valmikiramayana,
+  Srimad,
+  TextDetails,
+  History,
+  Brahmasutra,
+  BrahmasutraAbout,
+  Yogasutra,
+  Contact,
+  Login,
+  Nopage,
+} from "./pages/Pages";
 import Navigation from "./componets/Navigation";
 import Footer from "./componets/Footer";
-import Nopage from "./pages/Nopage";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import History from "./pages/History";
-import Login from "./pages/Login";
-import Contact from "./pages/Contact";
-import Team from "./pages/Team";
-import QuickLinks from "./pages/QuickLinks";
-import SrimadIntro from "./pages/SrimadIntro";
-import Srimad from "./pages/Srimad";
-import Brahmasutra from "./pages/Brahmasutra";
-import BrahmasutraWelcome from "./pages/BrahmasutraWelcome";
-import BrahmasutraAbout from "./pages/BrahmasutraAbout";
-import TextDetails from "./pages/TextDetails";
-import Othergitas from "./pages/Othergitas";
-import Yogasutra from "./pages/Yogasutra";
-import Ashtavakra from "./pages/Ashtavakra";
-import Avadhuta from "./pages/Avadhuta";
-import Kapila from "./pages/Kapila";
-import Sriram from "./pages/Sriram";
-import Sruti from "./pages/Sruti";
-import Uddhava from "./pages/Uddhava";
-import Vibhishana from "./pages/Vibhishana";
-import Valmikiramayana from "./pages/valmikiramayana";
 import _set_session from "./Function/A_Functions";
 
 function App() {
@@ -65,10 +65,10 @@ function App() {
             <Route path="/sruti" element={<Sruti />} />
             <Route path="/uddhava" element={<Uddhava />} />
             <Route path="/vibhishana" element={<Vibhishana />} />
-            <Route path="/srimadIntro" element={<SrimadIntro />} />
+            <Route path="/srimadIntro" element={<Srimad />} />
             <Route path="/srimad" element={<Srimad />} />
             <Route path="/srimadTextdetails" element={<TextDetails />} />
-            <Route path="/brahmasutraWelcome" element={<BrahmasutraWelcome />} />
+            <Route path="/brahmasutraWelcome" element={<Brahmasutra />} />
             <Route path="/valmikiramayana" element={<Valmikiramayana />} />
             <Route path="/brahmasutraAbout" element={<BrahmasutraAbout />} />
             <Route path="/brahmasutra" element={<Brahmasutra />} />
