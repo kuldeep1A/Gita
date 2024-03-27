@@ -1,9 +1,9 @@
 import React from "react";
 import JsGoogleTranslateFree from "@kreisler/js-google-translate-free";
 
-export const _SpeakInEnHi = async (_isEn, _isHi, _content, speak, voices, cancel) => {
+export const _SpeakInEnHi = (_isEn, _isHi, _content, speak, voices, cancel) => {
   if (_isEn) {
-    const _englishMaleVoice = await voices.find((voice) => voice.lang.startsWith("en"));
+    const _englishMaleVoice = voices.find((voice) => voice.lang.startsWith("en"));
     if (_englishMaleVoice && _content) {
       speak({
         text: _content,
@@ -11,7 +11,7 @@ export const _SpeakInEnHi = async (_isEn, _isHi, _content, speak, voices, cancel
       });
     }
   } else if (_isHi) {
-    const _hindiFemaleVoice = await voices.find((voice) => voice.lang.startsWith("hi-IN"));
+    const _hindiFemaleVoice = voices.find((voice) => voice.lang.startsWith("hi-IN"));
     if (_hindiFemaleVoice && _content) {
       speak({
         text: _content,

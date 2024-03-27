@@ -1043,6 +1043,11 @@ span._notice {
   }
 }
 
+.audio-button-disable {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 @-webkit-keyframes spin {
   to {
     -webkit-transform: rotate(1turn);
