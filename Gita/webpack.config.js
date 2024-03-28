@@ -63,6 +63,10 @@ module.exports = {
           from: "src/assets/images/icon/",
           to: "static/images/icon/",
         },
+        {
+          from: "app/manifest.json",
+          to: "manifest.json",
+        },
       ],
     }),
   ],

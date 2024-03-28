@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { gita1ab, gita1aw } from "../DATA/MoreData";
+import { gita1ab, gita1aw, searchIcon } from "../DATA/MoreData";
 
 import { Link, Outlet } from "react-router-dom";
 import DarkButton from "./DarkButton";
@@ -80,6 +80,7 @@ const Navigation = () => {
                             type="button"
                             name="Search Button"
                             className="f-submit"
+                            style={{ background: `url(${searchIcon}) no-repeat center top` }}
                           />
                         </div>
                       </div>

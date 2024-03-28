@@ -175,7 +175,6 @@ export default function Sriram() {
                           </font>
                         </p>
                         <div className="hov-parent">
-                          {" "}
                           <p className="text-center h-fonts">
                             <font id={shId} className="fw-normal size-6">
                               {ShlokaContent
@@ -251,7 +250,7 @@ export default function Sriram() {
                       <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
                     </div>
                     {hideTrans ? (
-                       <TranslateView
+                      <TranslateView
                         _changeCodeToEn={_changeCodeToEn}
                         _changeCodeToHi={_changeCodeToHi}
                         isHindiTranslate={isHindiTranslate}
