@@ -9,7 +9,18 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].js",
+    filename: "[name].[contenthash].js",
+  },
+  optimization: {
+    minimize: true,
+    splitChunks: {
+      chunks: "all",
+    },
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 244 * 1024,
+    maxAssetSize: 244 * 1024,
   },
   devServer: {
     port: 3000,
@@ -29,6 +40,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
+        type: "javascript/auto",
         use: "json-loader",
       },
       {
@@ -41,14 +53,10 @@ module.exports = {
           path.resolve(__dirname, "src/assets/images"),
           path.resolve(__dirname, "src/assets/icon"),
         ],
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              outputPath: "images/",
-            },
-          },
-        ],
+        type: "asset/resource",
+        generator: {
+          filename: "images/[name].[contenthash].[ext]",
+        },
       },
     ],
   },
