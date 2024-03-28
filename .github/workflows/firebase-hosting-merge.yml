@@ -41,10 +41,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: npm install --legacy-peer-deps
+      - run: npm install --force --legacy-peer-deps
         working-directory: ./Gita/
 
-      - name: Install webpack-cli
+      - name: Install webpack-cli --force --legacy-peer-deps
         run: npm install -D webpack-cli
         working-directory: ./Gita/
 
