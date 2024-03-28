@@ -154,14 +154,9 @@ yarn-error.log*
 # firebase
 .vs-code/
 .idea/
-.firebaserc
 .firebase/*
 .firebase/
 **/hosting.YnVpbGQ.cache
-database.rules.json
-firebase.json
-firestore.rules
-firestore.indexes.json
 
 # Credentials
 Credentials
