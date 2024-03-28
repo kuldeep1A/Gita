@@ -30,10 +30,6 @@ jobs:
       name: Gita1a
       url: https://github.com
 
-    defaults:
-      run:
-        working-directory: ./Gita/
-
     steps:
       - name: Set ENV mode
         run: echo "NODE_ENV=production" >> $GITHUB_ENV
@@ -46,6 +42,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: npm install --legacy-peer-deps && npm run build
+        working-directory: ./Gita/
 
       - name: Firebase Extended
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -55,4 +52,3 @@ jobs:
           channelId: live
           projectId: gita1a
           entryPoint: ./Gita/
-
