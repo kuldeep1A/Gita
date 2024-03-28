@@ -3,7 +3,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 module.exports = {
-  mode: "development",
+  mode: "production",
+  devtool: "hidden-source-map",
   context: __dirname,
   entry: "./src/index.js",
   output: {
