@@ -30,6 +30,8 @@ jobs:
         working-directory: ./Gita/
     steps:
       - uses: actions/checkout@v4
+      - name: Set ENV mode
+        run: echo "NODE_ENV=production" >> $GITHUB_ENV
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
