@@ -20,7 +20,7 @@ export const TranslateView = ({
       setTimeout(() => {
         setTimeout(() => {
           setAudioStatus("playing");
-        }, 2000);
+        }, 1500);
         _SpeakInEnHi(!isHindiTranslate, isHindiTranslate, translateContent, speak, voices, cancel);
       }, 1000);
       setTimeout(() => {
