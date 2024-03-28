@@ -1,10 +1,9 @@
-import gita from "../assets/images/gita.jpg";
 import gita1ab from "../assets/images/gita1ab.jpg";
 import gita1aw from "../assets/images/gita1aw.jpg";
 import searchIcon from "../assets/images/search-icon.png";
 import profile from "../assets/images/img/profile.jpg";
 import welcome from "../assets/images/img/welcome.png";
-export { gita, gita1ab, gita1aw, searchIcon, profile, welcome };
+export { gita1ab, gita1aw, searchIcon, profile, welcome };
 
 export const optionData = {
   BALAKANDA: {
