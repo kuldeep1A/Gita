@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import SharePop from "../../../componets/SharePop";
-import { _translate } from "../../../Function/A_Functions";
+import { _translate } from "../../../Function/utils";
 import { TranslateView } from "../../../componets/TranslateView";
 import { fetchOtherGitasContent } from "../../../services/services";
 

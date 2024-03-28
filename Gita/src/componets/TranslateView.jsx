@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Svgs from "./Svgs";
-import { _SpeakInEnHi } from "../Function/A_Functions";
+import { _SpeakInEnHi } from "../Function/utils";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { TranslateViewTypes } from "../Function/PropTypes";
 export const TranslateView = ({

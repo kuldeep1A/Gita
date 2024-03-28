@@ -1,10 +1,10 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
-import { database } from "../../Function/A_Functions";
+import { database } from "../../Function/firebaseConfig";
 import SharePop from "../../componets/SharePop";
 
-import { _translate } from "../../Function/A_Functions";
+import { _translate } from "../../Function/utils";
 export default function Srimad() {
   useEffect(() => {
     document.title = "Srimad Bhagavad | Gita";

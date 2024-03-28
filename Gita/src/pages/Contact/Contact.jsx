@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { EmailLinkD, EmailLinkM } from "../../Function/A_Functions";
+import { EmailLinkD, EmailLinkM } from "../../Function/EmailLinks.jsx";
 
 export default function Contact() {
   useEffect(() => {

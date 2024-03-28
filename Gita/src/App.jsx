@@ -28,7 +28,7 @@ import {
 } from "./pages/Pages";
 import Navigation from "./componets/Navigation";
 import Footer from "./componets/Footer";
-import _set_session from "./Function/A_Functions";
+import _set_session from "./Function/utils";
 import "./App.css";
 
 function App() {
