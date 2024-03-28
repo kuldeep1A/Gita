@@ -1,3 +1,4 @@
+import React from "react";
 export default function SharePop({ e, Idx, site, title, isLargeLength }) {
   var useX = 0;
   var useY = 0;
@@ -54,11 +55,7 @@ export default function SharePop({ e, Idx, site, title, isLargeLength }) {
         style={{ maxWidth: "800px", transitionDuration: "300ms" }}
         data-placement="bottom-start"
       >
-        <div
-          className="tippy-content"
-          data-state="visible"
-          style={{ transitionDuration: "300ms" }}
-        >
+        <div className="tippy-content" data-state="visible" style={{ transitionDuration: "300ms" }}>
           <div>
             <div className="shadow-elevated bg-fill-content-prime rounded-20 rounded-15-mobile pb-mobile-xxxs pt-mobile-xxxs pb-xxxs pt-xxxs">
               <ul className="d-flex flex-col min-w-[220px]">
@@ -83,7 +80,7 @@ export default function SharePop({ e, Idx, site, title, isLargeLength }) {
                     <li className="w-full d-flex">
                       <a
                         href={`https://twitter.com/intent/tweet?lang=en&url=https%3A%2F%2Fgita1a.web.app%2F${site}&text=${encodeURIComponent(
-                          title + "\t\n\n" + content + "\nYour Opinion: \n\n\n"
+                          title + "\t\n\n" + content + "\nYour Opinion: \n\n\n",
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -103,15 +100,11 @@ export default function SharePop({ e, Idx, site, title, isLargeLength }) {
                         href={
                           window.innerWidth > 690
                             ? `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(
-                                title
-                              )}&body=${encodeURIComponent(
-                                content + `\nYour Opinion:\n\n\n`
-                              )}`
+                                title,
+                              )}&body=${encodeURIComponent(content + `\nYour Opinion:\n\n\n`)}`
                             : `mailto:?subject=${encodeURIComponent(
-                                title
-                              )}&body=${encodeURIComponent(
-                                content + `\nYour Opinion:\n\n\n`
-                              )}`
+                                title,
+                              )}&body=${encodeURIComponent(content + `\nYour Opinion:\n\n\n`)}`
                         }
                         target="_blank"
                         rel="noopener noreferrer"

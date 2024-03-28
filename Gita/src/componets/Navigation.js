@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { gita1ab, gita1aw, searchIcon } from "../DATA/MoreData";
+
 import { Link, Outlet } from "react-router-dom";
 import DarkButton from "./DarkButton";
 const Navigation = () => {
@@ -9,9 +11,7 @@ const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const valuesMatching = () => {
-    const link = `https://gita1a.web.app/${searchValue
-      .toLocaleLowerCase()
-      .replace(/\s/g, "")}`;
+    const link = `https://gita1a.web.app/${searchValue.toLocaleLowerCase().replace(/\s/g, "")}`;
     setSearchValue("");
     return link;
   };
@@ -19,8 +19,7 @@ const Navigation = () => {
     const link = valuesMatching();
     window.open(link, "_self");
   };
-  let _isDark =
-    window.sessionStorage.getItem("isDark") === "true" ? true : false;
+  let _isDark = window.sessionStorage.getItem("isDark") === "true" ? true : false;
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -37,11 +36,11 @@ const Navigation = () => {
                 <Link to="/" title="Home">
                   {_isDark ? (
                     <>
-                      <img src="./static/images/gita1ab.jpg" alt="Gita" />
+                      <img src={gita1ab} alt="Gita" />
                     </>
                   ) : (
                     <>
-                      <img src="./static/images/gita1aw.jpg" alt="Gita" />
+                      <img src={gita1aw} alt="Gita" />
                     </>
                   )}
                 </Link>
@@ -81,6 +80,7 @@ const Navigation = () => {
                             type="button"
                             name="Search Button"
                             className="f-submit"
+                            style={{ background: `url(${searchIcon}) no-repeat center top` }}
                           />
                         </div>
                       </div>
@@ -110,12 +110,7 @@ const Navigation = () => {
             <div className="menu-navigation-container">
               <ul className={`menu ${isMenuOpen ? "open" : ""}`}>
                 <li className="first leaf m">
-                  <Link
-                    to="/"
-                    title=""
-                    className="active"
-                    onClick={handleToggleMenu}
-                  >
+                  <Link to="/" title="" className="active" onClick={handleToggleMenu}>
                     Home
                   </Link>
                 </li>
@@ -134,12 +129,7 @@ const Navigation = () => {
                   <Link to="/team">Our Team</Link>
                 </li>
                 <li className="expanded">
-                  <Link
-                    to="/QuickLinks"
-                    title=""
-                    className="active"
-                    onClick={handleToggleMenu}
-                  >
+                  <Link to="/QuickLinks" title="" className="active" onClick={handleToggleMenu}>
                     Quick Links
                   </Link>
                   <ul className="menu">

@@ -1,3 +1,4 @@
+import React from "react";
 export default class Svgs {
   static _svgSunRise() {
     return (

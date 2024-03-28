@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState("");
@@ -17,12 +17,7 @@ const Footer = () => {
         <div className="d-flex horizontal-between">
           <span>
             <h1 className="size-9 color-white">
-              <a
-                className="color-white"
-                href="/history"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="color-white" href="/history" target="_blank" rel="noreferrer">
                 Copyright-©
               </a>
               {` 2022-${currentYear}`}
