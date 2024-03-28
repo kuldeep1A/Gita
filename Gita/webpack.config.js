@@ -2,6 +2,8 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
+const envPath = `.env.${process.env.NODE_ENV}`;
+require("dotenv").config({ path: envPath });
 module.exports = {
   mode: "production",
   devtool: "hidden-source-map",
@@ -65,7 +67,9 @@ module.exports = {
       template: path.resolve(__dirname, "app/index.html"),
       filename: "index.html",
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: envPath,
+    }),
     new CopyPlugin({
       patterns: [
         {
