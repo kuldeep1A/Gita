@@ -256,6 +256,7 @@ body {
     width: 29px;
     padding: 0;
     text-indent: -9999px;
+    background: url("../images/search-icon.png") no-repeat center top;
     border-color: #e4e4e4 #d2d2d2 #b4b4b4;
     overflow: hidden;
     box-shadow: none;
@@ -1040,6 +1041,11 @@ span._notice {
             cursor: pointer;
         }
     }
+}
+
+.audio-button-disable {
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 @-webkit-keyframes spin {
