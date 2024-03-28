@@ -104,20 +104,17 @@ export default function Avadhuta() {
     } else {
       setTranslateCotent("Wait for Shloka!");
     }
-    const fetchShlokaContent = async () => {
-      const _pathC = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}`;
-      const _documentPath = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}/${idC}`;
-      await fetchOtherGitasContent(
-        idC,
-        setidC,
-        setOptionLength,
-        selectedShloka,
-        setShlokaContent,
-        _pathC,
-        _documentPath,
-      );
-    };
-    fetchShlokaContent();
+    let _pathC = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}`;
+    let _documentPath = `/avadhuta/PZwDAbZOEQEVFpl0bQvC/Chapter${selectedChapter}/${idC}`;
+    fetchOtherGitasContent({
+      idC,
+      setidC,
+      setOptionLength,
+      selectedShloka,
+      setShlokaContent,
+      _pathC,
+      _documentPath,
+    });
   }, [idC, selectedShloka, selectedChapter, ShlokaContent, goTranslate, isHindiTranslate]);
 
   return (

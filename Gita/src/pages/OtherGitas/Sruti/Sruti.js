@@ -101,20 +101,17 @@ export default function Sruti() {
     } else {
       setTranslateCotent("Wait for Shloka!");
     }
-    const fetchShlokaContent = async () => {
-      const _pathC = `/sruti/Dplc8LhuM2N6DIA6X9mA/Chapter${selectedChapter}`;
-      const _documentPath = `/sruti/Dplc8LhuM2N6DIA6X9mA/Chapter${selectedChapter}/${idC}`;
-      await fetchOtherGitasContent(
-        idC,
-        setidC,
-        setOptionLength,
-        selectedShloka,
-        setShlokaContent,
-        _pathC,
-        _documentPath,
-      );
-    };
-    fetchShlokaContent();
+    let _pathC = `/sruti/Dplc8LhuM2N6DIA6X9mA/Chapter${selectedChapter}`;
+    let _documentPath = `/sruti/Dplc8LhuM2N6DIA6X9mA/Chapter${selectedChapter}/${idC}`;
+    fetchOtherGitasContent({
+      idC,
+      setidC,
+      setOptionLength,
+      selectedShloka,
+      setShlokaContent,
+      _pathC,
+      _documentPath,
+    });
   }, [idC, selectedShloka, selectedChapter, isHindiTranslate, goTranslate, ShlokaContent]);
   return (
     <>

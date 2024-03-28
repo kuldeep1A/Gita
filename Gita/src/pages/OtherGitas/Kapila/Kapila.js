@@ -102,22 +102,17 @@ export default function Kapila() {
     } else {
       setTranslateCotent("Wait for Shloka!");
     }
-    const fetchShlokaContent = async () => {
-      const _pathC = `/kapila/T4qdkzJAP1B1eMF0cqiy/Chapter${selectedChapter}`;
-      const _documentPath = `/kapila/T4qdkzJAP1B1eMF0cqiy/Chapter${selectedChapter}/${idC}`;
-
-      await fetchOtherGitasContent(
-        idC,
-        setidC,
-        setOptionLength,
-        selectedShloka,
-        setShlokaContent,
-        _pathC,
-        _documentPath,
-      );
-    };
-
-    fetchShlokaContent();
+    let _pathC = `/kapila/T4qdkzJAP1B1eMF0cqiy/Chapter${selectedChapter}`;
+    let _documentPath = `/kapila/T4qdkzJAP1B1eMF0cqiy/Chapter${selectedChapter}/${idC}`;
+    fetchOtherGitasContent({
+      idC,
+      setidC,
+      setOptionLength,
+      selectedShloka,
+      setShlokaContent,
+      _pathC,
+      _documentPath,
+    });
   }, [idC, selectedShloka, selectedChapter, ShlokaContent, goTranslate, isHindiTranslate]);
 
   return (

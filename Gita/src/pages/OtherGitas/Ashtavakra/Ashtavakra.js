@@ -1,9 +1,10 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import SharePop from "../../../componets/SharePop";
-import { _translate } from "../../../Function/A_Functions";
+import { _translate, } from "../../../Function/A_Functions";
 import { TranslateView } from "../../../componets/TranslateView";
 import { fetchOtherGitasContent } from "../../../services/services";
+
 export default function Ashtavakra() {
   useEffect(() => {
     document.title = "Ashtavakra | Gita";
@@ -104,20 +105,17 @@ export default function Ashtavakra() {
     } else {
       setTranslateCotent("Wait for Shloka!");
     }
-    const fetchShlokaContent = async () => {
-      const _pathC = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}`;
-      const _documentPath = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}/${idC}`;
-      await fetchOtherGitasContent(
-        idC,
-        setidC,
-        setOptionLength,
-        selectedShloka,
-        setShlokaContent,
-        _pathC,
-        _documentPath,
-      );
-    };
-    fetchShlokaContent();
+    let _pathC = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}`;
+    let _documentPath = `/ashtavakra/AuqlEMe4nVstLYx9tusX/Chapter${selectedChapter}/${idC}`;
+    fetchOtherGitasContent({
+      idC,
+      setidC,
+      setOptionLength,
+      selectedShloka,
+      setShlokaContent,
+      _pathC,
+      _documentPath,
+    });
   }, [idC, selectedShloka, selectedChapter, ShlokaContent, goTranslate, isHindiTranslate]);
   return (
     <>

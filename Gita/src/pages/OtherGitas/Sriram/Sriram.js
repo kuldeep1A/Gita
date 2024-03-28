@@ -1,10 +1,9 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { database } from "../../../Function/A_Functions";
 import SharePop from "../../../componets/SharePop";
 import { _translate } from "../../../Function/A_Functions";
 import { TranslateView } from "../../../componets/TranslateView";
+import { fetchOtherGitasDocument } from "../../../services/services";
 
 export default function Sriram() {
   useEffect(() => {
@@ -97,28 +96,8 @@ export default function Sriram() {
     } else {
       setTranslateCotent("Wait for Shloka!");
     }
-    const fetchShlokaContent = async () => {
-      try {
-        const documentPath = `/sriram/oShTnZHJGovqgQ0tPs24/`;
-        const docRef = doc(database, documentPath);
-        const docSanpshot = await getDoc(docRef);
-        if (docSanpshot.exists) {
-          const ShlokaData = docSanpshot.data();
-          if (ShlokaData !== undefined && ShlokaData !== null) {
-            const ShlokaArray = Object.entries(ShlokaData).map(([shlokaNumber, Shloka]) => ({
-              shlokaNumber,
-              Shloka,
-            }));
-            setOptionLength(ShlokaArray.length);
-            const shloka = ShlokaData[`Shloka${selectedShloka}`];
-            setShlokaContent(shloka);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching shloka content: ", error);
-      }
-    };
-    fetchShlokaContent();
+    let _documentPath = `/sriram/oShTnZHJGovqgQ0tPs24/`;
+    fetchOtherGitasDocument({ _documentPath, selectedShloka, setOptionLength, setShlokaContent });
   }, [selectedShloka, goTranslate, isHindiTranslate, ShlokaContent]);
   return (
     <>

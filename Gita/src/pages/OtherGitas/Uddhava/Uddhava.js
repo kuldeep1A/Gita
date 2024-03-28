@@ -101,20 +101,17 @@ export default function Uddhava() {
     setSelectedShloka(newShloka);
   };
   useEffect(() => {
-    const fetchShlokaContent = async () => {
-      const _pathC = `/uddhava/p1vmMbUk9wM6B5yO0Ujk/Chapter${selectedChapter}`;
-      const _documentPath = `/uddhava/p1vmMbUk9wM6B5yO0Ujk/Chapter${selectedChapter}/${idC}`;
-      await fetchOtherGitasContent(
-        idC,
-        setidC,
-        setOptionLength,
-        selectedShloka,
-        setShlokaContent,
-        _pathC,
-        _documentPath,
-      );
-    };
-    fetchShlokaContent();
+    let _pathC = `/uddhava/p1vmMbUk9wM6B5yO0Ujk/Chapter${selectedChapter}`;
+    let _documentPath = `/uddhava/p1vmMbUk9wM6B5yO0Ujk/Chapter${selectedChapter}/${idC}`;
+    fetchOtherGitasContent({
+      idC,
+      setidC,
+      setOptionLength,
+      selectedShloka,
+      setShlokaContent,
+      _pathC,
+      _documentPath,
+    });
   }, [idC, selectedShloka, selectedChapter]);
   return (
     <>
