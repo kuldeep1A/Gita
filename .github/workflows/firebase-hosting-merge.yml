@@ -41,7 +41,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: npm install --legacy-peer-deps && npm run build
+      - run: npm install --legacy-peer-deps
+        working-directory: ./Gita/
+
+      - name: Install webpack-cli
+        run: npm install -D webpack-cli
+        working-directory: ./Gita/
+
+      - run: npm run build
         working-directory: ./Gita/
 
       - name: Firebase Extended
@@ -52,3 +59,4 @@ jobs:
           channelId: live
           projectId: gita1a
           entryPoint: ./Gita/
+
