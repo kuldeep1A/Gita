@@ -2,23 +2,18 @@ import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { database } from "../firebaseConfig";
 
 export const fetchOtherGitasContent = async ({
-  setidC,
-  idC,
   setOptionLength,
   selectedShloka,
   setShlokaContent,
   _pathC,
-  _documentPath,
 }) => {
   try {
     const pathC = _pathC;
     const refC = collection(database, pathC);
-    getDocs(refC).then((sanpshot) => {
-      sanpshot.docs.forEach((doc) => {
-        setidC(`${doc.id}`);
-      });
-    });
+    const snapshot = await getDocs(refC);
+    let idC = snapshot?.docs[0].id;
     if (idC) {
+      let _documentPath = `${pathC}/${idC}`;
       await fetchOtherGitasDocument({
         _documentPath,
         setOptionLength,
@@ -40,20 +35,38 @@ export const fetchOtherGitasDocument = async ({
   try {
     const documentPath = _documentPath;
     const docRef = doc(database, documentPath);
-    const docSanpshot = await getDoc(docRef);
-    if (docSanpshot.exists) {
-      const ShlokaData = docSanpshot.data();
-      if (ShlokaData !== undefined && ShlokaData !== null) {
-        const ShlokaArray = Object.entries(ShlokaData).map(([shlokaNumber, Shloka]) => ({
-          shlokaNumber,
-          Shloka,
-        }));
-        setOptionLength(ShlokaArray.length);
-        const shloka = ShlokaData[`Shloka${selectedShloka}`];
-        setShlokaContent(shloka);
-      }
+    const docSnapshot = await getDoc(docRef);
+    if (docSnapshot.exists) {
+      const ShlokaData = docSnapshot?.data();
+      setOptionLength(ShlokaData ? Object.keys(ShlokaData).length : 1);
+      setShlokaContent(docSnapshot.get(`Shloka${selectedShloka}`));
+    } else {
+      setShlokaContent("");
     }
   } catch (error) {
     console.error("Error fetching shloka content: ", error);
+  }
+};
+
+export const fetchValmikiRamayanaData = async ({
+  _pathK,
+  setShlokaData,
+  selectedSarga,
+  selectedShloka,
+}) => {
+  try {
+    const pathK = _pathK;
+    const refK = collection(database, pathK);
+    const idKValue = (await getDocs(refK))?.docs[0].id;
+    if (idKValue) {
+      const pathS = `${pathK}/${idKValue}/sarga${selectedSarga}/Shloka${selectedShloka}`;
+      const refS = doc(database, pathS);
+      const docSnapshot = await getDoc(refS);
+      if (docSnapshot.exists()) {
+        setShlokaData(docSnapshot.data());
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching shloka content:", error);
   }
 };

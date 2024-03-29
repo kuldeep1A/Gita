@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { welcome } from "../../DATA/MoreData";
+import { welcome } from "../../../DATA/MoreData";
 export default function BrahmasutraWelcome() {
   const imageStyle = {
     display: "flex",

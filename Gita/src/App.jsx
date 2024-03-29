@@ -6,6 +6,7 @@ import {
   About,
   Brahmasutra,
   BrahmasutraAbout,
+  BrahmasutraWelcome,
   Contact,
   Nopage,
   HistoryCP,
@@ -21,6 +22,7 @@ import {
   Uddhava,
   Vibhishana,
   Srimad,
+  SriIntro,
   TextDetails,
   Team,
   Valmikiramayana,
@@ -66,10 +68,10 @@ function App() {
             <Route path="/sruti" element={<Sruti />} />
             <Route path="/uddhava" element={<Uddhava />} />
             <Route path="/vibhishana" element={<Vibhishana />} />
-            <Route path="/srimadIntro" element={<Srimad />} />
+            <Route path="/srimadIntro" element={<SriIntro />} />
             <Route path="/srimad" element={<Srimad />} />
             <Route path="/srimadTextdetails" element={<TextDetails />} />
-            <Route path="/brahmasutraWelcome" element={<Brahmasutra />} />
+            <Route path="/brahmasutraWelcome" element={<BrahmasutraWelcome />} />
             <Route path="/valmikiramayana" element={<Valmikiramayana />} />
             <Route path="/brahmasutraAbout" element={<BrahmasutraAbout />} />
             <Route path="/brahmasutra" element={<Brahmasutra />} />
@@ -90,4 +92,3 @@ export default App;
 const slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa = "G-VXSDXFRQS7";
 ReactGA.initialize(slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa);
 ReactGA.pageview(window.location.pathname + window.location.search);
-

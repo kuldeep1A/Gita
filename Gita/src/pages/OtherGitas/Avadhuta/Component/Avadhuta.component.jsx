@@ -1,104 +1,29 @@
+import { OtherGitasPropTypesv1 } from "../../../../Function/PropTypes";
+import React from "react";
 import { createPortal } from "react-dom";
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import SharePop from "../../../componets/SharePop";
-import { _translate } from "../../../Function/utils";
-import { TranslateView } from "../../../componets/TranslateView";
-import { fetchOtherGitasDocument } from "../../../services/services";
-
-export default function Sriram() {
-  useEffect(() => {
-    document.title = "Sriram | Gita";
-
-    return () => {
-      document.title = "Sriram | Gita";
-    };
-  }, []);
-  const [OptionLength, setOptionLength] = useState(1);
-  const [selectedShloka, setSelectedShloka] = useState(1);
-  const [ShlokaContent, setShlokaContent] = useState("");
-  const [translateContent, setTranslateCotent] = useState("");
-  const [isSharePopVisible, setSharePopVisible] = useState(false);
-  const [isHindiTranslate, setIsHindiTranslate] = useState(true);
-  const [hideTrans, setHideTrans] = useState(false);
-  const [clickEvent, setClickEvent] = useState(null);
-  const shareRef = useRef(null);
-  var site = "sriram";
-  var shId = `sh-${site}-${selectedShloka}`;
-  var shareTitle = `Sriram Gita, shloka: ${selectedShloka}.`;
-  const handleClick = (event) => {
-    if (!isSharePopVisible) {
-      setClickEvent(event);
-      setSharePopVisible(true);
-    } else {
-      closeSharePop();
-    }
-  };
-  const closeSharePop = () => {
-    setSharePopVisible(false);
-  };
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      const target = event.target || event.srcElement;
-      if (target && shareRef !== null) {
-        const share_b = !shareRef.current.contains(target);
-        if (share_b) {
-          setTimeout(() => {
-            closeSharePop();
-          }, 100);
-        }
-      }
-    };
-    document.body.addEventListener("click", handleClickOutside);
-    window.addEventListener("scroll", () => closeSharePop(), { capture: true });
-    window.addEventListener("resize", () => closeSharePop());
-    return () => {
-      document.body.removeEventListener("click", handleClickOutside);
-      window.removeEventListener("scroll", () => closeSharePop(), {
-        capture: true,
-      });
-      window.removeEventListener("resize", () => closeSharePop());
-    };
-  }, [shId]);
-  const handleShlokaChange = (event) => {
-    const newShloka = parseInt(event.target.value, 10);
-    setSelectedShloka(newShloka);
-  };
-  const goTranslate = useCallback(async (sansContent, whatcode) => {
-    if (sansContent.length < 1912) {
-      const content = await _translate(sansContent, whatcode);
-      if (content !== "") {
-        setTranslateCotent(content);
-      } else {
-        setTranslateCotent("Wait for Shloka!");
-      }
-    } else {
-      setTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
-    }
-  }, []);
-  const _changeCodeToEn = async () => {
-    setIsHindiTranslate(false);
-    await goTranslate(ShlokaContent, isHindiTranslate);
-  };
-  const _changeCodeToHi = async () => {
-    setIsHindiTranslate(true);
-    await goTranslate(ShlokaContent, isHindiTranslate);
-  };
-  function _hideTrans() {
-    if (hideTrans) {
-      setHideTrans(false);
-    } else {
-      setHideTrans(true);
-    }
-  }
-  useEffect(() => {
-    if (ShlokaContent !== "" && ShlokaContent) {
-      goTranslate(ShlokaContent, isHindiTranslate);
-    } else {
-      setTranslateCotent("Wait for Shloka!");
-    }
-    let _documentPath = `/sriram/oShTnZHJGovqgQ0tPs24/`;
-    fetchOtherGitasDocument({ _documentPath, selectedShloka, setOptionLength, setShlokaContent });
-  }, [selectedShloka, goTranslate, isHindiTranslate, ShlokaContent]);
+import SharePop from "../../../../componets/SharePop";
+import { TranslateView } from "../../../../componets/TranslateView";
+const AvadhutaComponent = ({
+  selectedChapter,
+  handleChapterChange,
+  selectedShloka,
+  handleShlokaChange,
+  OptionLength,
+  shId,
+  ShlokaContent,
+  handleClick,
+  shareRef,
+  _hideTrans,
+  hideTrans,
+  _changeCodeToEn,
+  _changeCodeToHi,
+  isHindiTranslate,
+  translateContent,
+  isSharePopVisible,
+  clickEvent,
+  site,
+  shareTitle,
+}) => {
   return (
     <>
       <div className="container">
@@ -106,7 +31,7 @@ export default function Sriram() {
           <div className="c-si-wrap">
             <div id="content">
               <section id="post-content" role="main">
-                <h1 className="pa-title">Sriram Gita</h1>
+                <h1 className="pa-title">Avadhuta Gita</h1>
                 <div className="region region-content">
                   <div className="content">
                     <div>
@@ -120,6 +45,20 @@ export default function Sriram() {
                               <div className="views-widget">
                                 <select defaultValue={"dv"}>
                                   <option value={"dv"}>Devanagari</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="edit-field-chapter" className="v-ex-widget">
+                            <label className="fw-normal">Chapter</label>
+                            <div>
+                              <div className="views-widget">
+                                <select value={selectedChapter} onChange={handleChapterChange}>
+                                  {Array.from({ length: 8 }, (_, index) => (
+                                    <option key={index + 1} value={index + 1}>
+                                      {index + 1}
+                                    </option>
+                                  ))}
                                 </select>
                               </div>
                             </div>
@@ -149,7 +88,7 @@ export default function Sriram() {
                       <div className="v-fi_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
-                            <b>Sriram Gita</b>
+                            <b>Avadhuta Gita</b>
                             <br />
                           </font>
                         </p>
@@ -161,11 +100,7 @@ export default function Sriram() {
                                     .filter((line) => line.trim() !== "")
                                     .map((line, index, array) => (
                                       <React.Fragment key={index}>
-                                        {array.length === 2
-                                          ? index === 1
-                                            ? ` ।। ${line} ।।`
-                                            : line.trim()
-                                          : array.length >= 4
+                                        {array.length >= 4
                                           ? index === 3
                                             ? ` ।। ${line} ।।`
                                             : line.trim()
@@ -177,23 +112,19 @@ export default function Sriram() {
                                           ? index === 1
                                             ? "।"
                                             : ""
-                                          : array.length === 2
-                                          ? ""
                                           : index === 0
                                           ? "।"
                                           : ""}
-
-                                        {array.length === 2
-                                          ? ""
-                                          : index === 0 && (
-                                              <>
-                                                <br />
-                                                <br />
-                                              </>
-                                            )}
+                                        {index === 0 && selectedChapter <= 20 && (
+                                          <>
+                                            <br />
+                                            <br />
+                                          </>
+                                        )}
 
                                         {array.length >= 4
-                                          ? index === 1 && (
+                                          ? index === 1 &&
+                                            selectedChapter <= 20 && (
                                               <>
                                                 <br />
                                                 <br />
@@ -258,4 +189,7 @@ export default function Sriram() {
       </div>
     </>
   );
-}
+};
+export default AvadhutaComponent;
+
+AvadhutaComponent.propTypes = OtherGitasPropTypesv1;

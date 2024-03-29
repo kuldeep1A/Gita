@@ -5,6 +5,9 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
-  plugins: [react()],
+  plugins: [
+    react({
+      include: "**/*.js",
+    }),
+  ],
 });
-
