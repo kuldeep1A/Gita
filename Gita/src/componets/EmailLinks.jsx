@@ -1,4 +1,4 @@
-import { EmailLinkPropTypes } from "./PropTypes";
+import { EmailLinkPropTypes } from "../Function/PropTypes";
 export const EmailLinkD = ({ email, subject }) => {
   const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
     email,

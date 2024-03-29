@@ -1,6 +1,5 @@
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
-
-import { database } from "../Function/firebaseConfig";
+import { database } from "../firebaseConfig";
 
 export const fetchOtherGitasContent = async ({
   setidC,

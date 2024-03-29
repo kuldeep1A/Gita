@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef } from "react";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
-import { database } from "../../Function/firebaseConfig";
+import { database } from "../../firebaseConfig";
 import { optionData, kandaNo } from "../../DATA/MoreData";
 import SharePop from "../../componets/SharePop";
 export default function Valmikiramayana() {

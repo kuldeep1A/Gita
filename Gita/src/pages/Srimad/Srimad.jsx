@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
-import { database } from "../../Function/firebaseConfig";
+import { database } from "../../firebaseConfig";
 import SharePop from "../../componets/SharePop";
 
 import { _translate } from "../../Function/utils";

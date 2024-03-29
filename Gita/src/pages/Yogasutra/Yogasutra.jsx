@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
-import { database } from "../../Function/firebaseConfig";
+import { database } from "../../firebaseConfig";
 import SharePop from "../../componets/SharePop";
 import { _translate } from "../../Function/utils";
 
@@ -12,7 +12,6 @@ export default function Yogasutra() {
       document.title = "Yogasutra | Gita";
     };
   }, []);
-  const [idC, setidC] = useState("");
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
   const [selectedSutra, setSelectedSutra] = useState(1);
@@ -196,12 +195,13 @@ export default function Yogasutra() {
       try {
         const pathC = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}`;
         const refC = collection(database, pathC);
-        getDocs(refC).then((snapshot) => {
-          snapshot.docs.forEach((doc) => {
-            setidC(`${doc.id}`);
-          });
-        });
-        if (idC) {
+        const snapshot = await getDocs(refC);
+        let idC = "";
+
+        if (!snapshot.empty) {
+          const lastDoc = snapshot.docs[snapshot.docs.length - 1];
+          idC = lastDoc.id;
+
           const documentPath = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}/${idC}`;
           const docRef = doc(database, documentPath);
           const docSanpshot = await getDoc(docRef);
@@ -227,7 +227,7 @@ export default function Yogasutra() {
       }
     };
     fetching();
-  }, [idC, selectedChapter, selectedSutra]);
+  }, [selectedChapter, selectedSutra]);
   return (
     <>
       <div className="container">
