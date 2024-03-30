@@ -124,14 +124,15 @@ const ValmikiramayanaFun = () => {
   }
   useEffect(() => {
     let _path = `/gitas/database/valmikiramayana/kandas/${selectedKanda}/sargas/sarga${selectedSarga}/shlokasdoc`;
-
-    fetchGitasContent({
-      _path,
-      _fieldname: 'Shloka',
-      selectedShloka,
-      setShlokaContent: setShlokaData,
-      setOptionLength: setShlokaOptionLen,
-    });
+    if ((selectedKanda, selectedSarga, selectedShloka)) {
+      fetchGitasContent({
+        _path,
+        _fieldname: 'Shloka',
+        selectedShloka,
+        setShlokaContent: setShlokaData,
+        setOptionLength: setShlokaOptionLen,
+      });
+    }
   }, [selectedKanda, shlokaData, selectedSarga, selectedShloka]);
   return {
     _hideTrans,

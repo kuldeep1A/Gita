@@ -1,5 +1,5 @@
 import {initializeApp} from 'firebase/app';
-import {initializeFirestore, memoryLocalCache} from 'firebase/firestore';
+import {initializeFirestore} from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN,
@@ -13,6 +13,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const database = initializeFirestore(app, {
   experimentalLongPollingOptions: true,
-  localCache: memoryLocalCache(),
   useFetchStreams: false,
 });

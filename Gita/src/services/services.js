@@ -12,15 +12,15 @@ export const fetchGitasContent = async ({
     const refC = doc(database, _path);
     const snapshot = await getDoc(refC);
     if (snapshot.exists) {
+      const data = snapshot.data();
+      console.log();
       const key = `${_fieldname}${selectedShloka}`;
-      setOptionLength(
-        snapshot.data() ? Object.keys(snapshot.data()).length : 1,
-      );
+      setOptionLength(data ? Object.keys(data).length : 1);
       setShlokaContent(snapshot.get(key));
     } else {
       console.error('Document does not exist.');
     }
   } catch (error) {
-    console.error('Unable to fetch data. Please Reload.');
+    console.error('Unable to fetch data. Please Reload.', error);
   }
 };

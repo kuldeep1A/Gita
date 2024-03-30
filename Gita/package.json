@@ -1,6 +1,7 @@
 {
-  "name": "gita1a",
+  "name": "gitas",
   "private": true,
+  "description": "",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
