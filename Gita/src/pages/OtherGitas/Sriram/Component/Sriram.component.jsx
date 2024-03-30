@@ -1,26 +1,26 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import { TranslateView } from "../../../../componets/TranslateView";
-import SharePop from "../../../../componets/SharePop";
-import { OtherGitasPropTypesv2 } from "../../../../Function/PropTypes";
+import React from 'react';
+import {createPortal} from 'react-dom';
+import {TranslateView} from '../../../../componets/TranslateView';
+import SharePop from '../../../../componets/SharePop';
+import {OtherGitasPropTypesv2} from '../../../../Function/PropTypes';
 const SriramComponent = ({
-  selectedShloka,
-  handleShlokaChange,
   OptionLength,
-  shId,
   ShlokaContent,
-  handleClick,
-  shareRef,
-  _hideTrans,
-  hideTrans,
   _changeCodeToEn,
   _changeCodeToHi,
-  isHindiTranslate,
-  translateContent,
   clickEvent,
-  site,
-  shareTitle,
+  handleClick,
+  handleShlokaChange,
+  _hideTrans,
+  hideTrans,
+  isHindiTranslate,
   isSharePopVisible,
+  selectedShloka,
+  shareRef,
+  shareTitle,
+  shId,
+  site,
+  translateContent,
 }) => {
   return (
     <>
@@ -35,14 +35,18 @@ const SriramComponent = ({
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div id="edit-language-wrapper" className="v-ex-widget">
-                            <label htmlFor="edit-language" className="fw-normal">
+                          <div
+                            id="edit-language-wrapper"
+                            className="v-ex-widget">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal">
                               Script
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select defaultValue={"dv"}>
-                                  <option value={"dv"}>Devanagari</option>
+                                <select defaultValue={'dv'}>
+                                  <option value={'dv'}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
@@ -51,12 +55,17 @@ const SriramComponent = ({
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedShloka} onChange={handleShlokaChange}>
-                                  {Array.from({ length: OptionLength }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                <select
+                                  value={selectedShloka}
+                                  onChange={handleShlokaChange}>
+                                  {Array.from(
+                                    {length: OptionLength},
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    ),
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -80,8 +89,8 @@ const SriramComponent = ({
                           <p className="text-center h-fonts">
                             <font id={shId} className="fw-normal size-6">
                               {ShlokaContent
-                                ? ShlokaContent.split("।")
-                                    .filter((line) => line.trim() !== "")
+                                ? ShlokaContent.split('।')
+                                    .filter(line => line.trim() !== '')
                                     .map((line, index, array) => (
                                       <React.Fragment key={index}>
                                         {array.length === 2
@@ -89,25 +98,25 @@ const SriramComponent = ({
                                             ? ` ।। ${line} ।।`
                                             : line.trim()
                                           : array.length >= 4
-                                          ? index === 3
-                                            ? ` ।। ${line} ।।`
-                                            : line.trim()
-                                          : index === 2
-                                          ? ` ।। ${line} ।।`
-                                          : line.trim()}
+                                            ? index === 3
+                                              ? ` ।। ${line} ।।`
+                                              : line.trim()
+                                            : index === 2
+                                              ? ` ।। ${line} ।।`
+                                              : line.trim()}
 
                                         {array.length >= 4
                                           ? index === 1
-                                            ? "।"
-                                            : ""
+                                            ? '।'
+                                            : ''
                                           : array.length === 2
-                                          ? ""
-                                          : index === 0
-                                          ? "।"
-                                          : ""}
+                                            ? ''
+                                            : index === 0
+                                              ? '।'
+                                              : ''}
 
                                         {array.length === 2
-                                          ? ""
+                                          ? ''
                                           : index === 0 && (
                                               <>
                                                 <br />
@@ -122,23 +131,26 @@ const SriramComponent = ({
                                                 <br />
                                               </>
                                             )
-                                          : ""}
+                                          : ''}
                                       </React.Fragment>
                                     ))
-                                : "Shloka not found."}
+                                : 'Shloka not found.'}
                             </font>
                           </p>
-                          <div id="shareBottom" className="hov-child ml-auto mr-1 p-absolute">
+                          <div
+                            id="shareBottom"
+                            className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
                                   className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
                                   aria-expanded="false"
-                                  onClick={(event) => {
+                                  onClick={event => {
                                     handleClick(event);
-                                  }}
-                                >
-                                  <i ref={shareRef} className="sdf material-symbols-outlined">
+                                  }}>
+                                  <i
+                                    ref={shareRef}
+                                    className="sdf material-symbols-outlined">
                                     share
                                   </i>
                                 </button>
@@ -149,7 +161,9 @@ const SriramComponent = ({
                       </div>
                     </div>
                     <div className="l-t-action">
-                      <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                      <div onClick={_hideTrans}>
+                        {hideTrans ? 'Hide' : 'Show'}
+                      </div>
                     </div>
                     {hideTrans ? (
                       <TranslateView

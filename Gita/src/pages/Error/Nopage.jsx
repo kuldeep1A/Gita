@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import Svgs from "../../componets/Svgs";
+import {useEffect} from 'react';
+import Svgs from '../../componets/Svgs';
 
 const Nopage = () => {
   const _sw = window.location.pathname.slice(1, 19);
   useEffect(() => {
-    document.title = "Search 😒";
+    document.title = 'Search 😒';
     return () => {
-      document.title = "Search 😒";
+      document.title = 'Search 😒';
     };
   }, []);
   return (

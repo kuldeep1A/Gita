@@ -1,27 +1,27 @@
-import ValmikiramayanaComponent from "./Component/Valmikiramayana.component";
-import useValmikiramayanaLogic from "./Component/Valmikiramayana.fun";
+import ValmikiramayanaComponent from './Component/Valmikiramayana.component';
+import useValmikiramayanaLogic from './Component/Valmikiramayana.fun';
 
 const Valmikiramayana = () => {
   const {
+    _hideTrans,
+    clickEvent,
+    handleClick,
+    handleKandaChange,
+    handleSargaChange,
+    handleSargaLen,
+    handleShlokaChange,
+    shlokaOptionLen,
+    hideTrans,
+    isSharePopVisible,
+    sanEng,
     selectedKanda,
     selectedSarga,
     selectedShloka,
-    shlokaData,
-    sanEng,
-    isSharePopVisible,
-    clickEvent,
-    handleClick,
-    shareRef,
     shId,
-    site,
-    hideTrans,
-    _hideTrans,
-    handleKandaChange,
-    handleSargaChange,
-    handleShlokaChange,
-    handleSargaLen,
-    handleShlokaLen,
+    shareRef,
     shareTitle,
+    shlokaData,
+    site,
   } = useValmikiramayanaLogic();
 
   return (
@@ -32,7 +32,7 @@ const Valmikiramayana = () => {
       handleSargaLen={handleSargaLen}
       selectedShloka={selectedShloka}
       handleShlokaChange={handleShlokaChange}
-      handleShlokaLen={handleShlokaLen}
+      shlokaOptionLen={shlokaOptionLen}
       shId={shId}
       shlokaData={shlokaData}
       sanEng={sanEng}

@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import {useEffect} from 'react';
 
 export default function Login() {
   useEffect(() => {
-    document.title = "Login | Gita";
+    document.title = 'Login | Gita';
 
     return () => {
-      document.title = "Login | Gita";
+      document.title = 'Login | Gita';
     };
   }, []);
   return (

@@ -1,30 +1,30 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import SharePop from "../../../componets/SharePop";
-import { ContentPropTypes } from "../../../Function/PropTypes";
-import { TranslateView } from "../../../componets/TranslateView";
+import React from 'react';
+import {createPortal} from 'react-dom';
+import SharePop from '../../../componets/SharePop';
+import {ContentPropTypes} from '../../../Function/PropTypes';
+import {TranslateView} from '../../../componets/TranslateView';
 const BrahmaSutraComponent = ({
-  selectedChapter,
-  handleChapterChange,
-  selectedQuarter,
-  handleQuarterChange,
-  selectedSutra,
-  handleSutraChange,
   OptionLength,
+  _changeCodeToEn,
+  _changeCodeToHi,
+  clickEvent,
+  handleChapterChange,
   handleClick,
-  shareRef,
-  shId,
-  sutraContent,
+  handleQuarterChange,
+  handleSutraChange,
   _hideTrans,
   hideTrans,
-  _changeCodeToEn,
   isHindiTranslate,
-  _changeCodeToHi,
-  translateContent,
   isSharePopVisible,
-  clickEvent,
-  site,
+  selectedChapter,
+  selectedQuarter,
+  selectedSutra,
+  shareRef,
   shareTitle,
+  shId,
+  site,
+  sutraContent,
+  translateContent,
 }) => {
   return (
     <>
@@ -39,14 +39,18 @@ const BrahmaSutraComponent = ({
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div id="edit-language-wrapper" className="v-ex-widget">
-                            <label htmlFor="edit-language" className="fw-normal">
+                          <div
+                            id="edit-language-wrapper"
+                            className="v-ex-widget">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal">
                               Script
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select defaultValue={"dv"}>
-                                  <option value={"dv"}>Devanagari</option>
+                                <select defaultValue={'dv'}>
+                                  <option value={'dv'}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
@@ -55,8 +59,10 @@ const BrahmaSutraComponent = ({
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedChapter} onChange={handleChapterChange}>
-                                  {Array.from({ length: 4 }, (_, index) => (
+                                <select
+                                  value={selectedChapter}
+                                  onChange={handleChapterChange}>
+                                  {Array.from({length: 4}, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
                                     </option>
@@ -69,8 +75,10 @@ const BrahmaSutraComponent = ({
                             <label className="fw-normal">Quarter</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedQuarter} onChange={handleQuarterChange}>
-                                  {Array.from({ length: 4 }, (_, index) => (
+                                <select
+                                  value={selectedQuarter}
+                                  onChange={handleQuarterChange}>
+                                  {Array.from({length: 4}, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
                                     </option>
@@ -83,12 +91,17 @@ const BrahmaSutraComponent = ({
                             <label className="fw-normal">Sutra</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedSutra} onChange={handleSutraChange}>
-                                  {Array.from({ length: OptionLength }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                <select
+                                  value={selectedSutra}
+                                  onChange={handleSutraChange}>
+                                  {Array.from(
+                                    {length: OptionLength},
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    ),
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -106,17 +119,20 @@ const BrahmaSutraComponent = ({
                                 </font>
                               </p>
                               <div className="hov-parent">
-                                <div id="shareTop" className="hov-child ml-auto mr-1 p-absolute">
+                                <div
+                                  id="shareTop"
+                                  className="hov-child ml-auto mr-1 p-absolute">
                                   <div className="d-flex flex-row">
                                     <div className="">
                                       <button
                                         className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
                                         aria-expanded="false"
-                                        onClick={(event) => {
+                                        onClick={event => {
                                           handleClick(event);
-                                        }}
-                                      >
-                                        <i ref={shareRef} className="sdf material-symbols-outlined">
+                                        }}>
+                                        <i
+                                          ref={shareRef}
+                                          className="sdf material-symbols-outlined">
                                           share
                                         </i>
                                       </button>
@@ -124,13 +140,15 @@ const BrahmaSutraComponent = ({
                                   </div>
                                 </div>
                                 <p className="h-fonts">
-                                  <font id={shId} className="text-center fw-normal size-6 line-150">
+                                  <font
+                                    id={shId}
+                                    className="text-center fw-normal size-6 line-150">
                                     {sutraContent
                                       ? sutraContent
-                                          .split(" ")
+                                          .split(' ')
                                           .map((line, index) => (
                                             <React.Fragment key={index}>
-                                              {line + " "}
+                                              {line + ' '}
                                             </React.Fragment>
                                           ))
                                       : `Sutra not found.`}
@@ -140,7 +158,9 @@ const BrahmaSutraComponent = ({
                             </div>
                           </div>
                           <div className="l-t-action">
-                            <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                            <div onClick={_hideTrans}>
+                              {hideTrans ? 'Hide' : 'Show'}
+                            </div>
                           </div>
                           {hideTrans ? (
                             <TranslateView

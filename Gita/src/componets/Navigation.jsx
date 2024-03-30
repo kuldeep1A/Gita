@@ -1,28 +1,29 @@
-import { useEffect, useState } from "react";
-import { gita1ab, gita1aw, searchIcon } from "../DATA/MoreData";
+import {useEffect, useState} from 'react';
+import {gita1ab, gita1aw, searchIcon} from '../DATA/MoreData';
 
-import { Link, Outlet } from "react-router-dom";
-import DarkButton from "./DarkButton";
+import {Link, Outlet} from 'react-router-dom';
+import DarkButton from './DarkButton';
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [_innerWidth, setInnerWidth] = useState(window.innerWidth);
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const valuesMatching = () => {
-    const link = `https://gita1a.web.app/${searchValue.toLocaleLowerCase().replace(/\s/g, "")}`;
-    setSearchValue("");
+    const link = `https://gita1a.web.app/${searchValue.toLocaleLowerCase().replace(/\s/g, '')}`;
+    setSearchValue('');
     return link;
   };
   const redirectSearchPage = () => {
     const link = valuesMatching();
-    window.open(link, "_self");
+    window.open(link, '_self');
   };
-  let _isDark = window.sessionStorage.getItem("isDark") === "true" ? true : false;
+  let _isDark =
+    window.sessionStorage.getItem('isDark') === 'true' ? true : false;
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       setInnerWidth(window.innerWidth);
     });
   });
@@ -52,11 +53,10 @@ const Navigation = () => {
                 <div
                   id="b-s-form"
                   style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                  }}
-                >
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
                   <div className="content">
                     <div>
                       <div>
@@ -65,9 +65,9 @@ const Navigation = () => {
                             type="text"
                             className="f-text"
                             value={searchValue}
-                            onChange={(e) => setSearchValue(e.target.value)}
-                            onKeyUp={(event) => {
-                              if (event.key === "Enter") {
+                            onChange={e => setSearchValue(e.target.value)}
+                            onKeyUp={event => {
+                              if (event.key === 'Enter') {
                                 event.preventDefault();
                                 redirectSearchPage();
                               }
@@ -80,7 +80,9 @@ const Navigation = () => {
                             type="button"
                             name="Search Button"
                             className="f-submit"
-                            style={{ background: `url(${searchIcon}) no-repeat center top` }}
+                            style={{
+                              background: `url(${searchIcon}) no-repeat center top`,
+                            }}
                           />
                         </div>
                       </div>
@@ -88,7 +90,7 @@ const Navigation = () => {
                   </div>
                   {_innerWidth < 820 ? (
                     <>
-                      <div style={{ marginLeft: "15px", marginTop: "3px" }}>
+                      <div style={{marginLeft: '15px', marginTop: '3px'}}>
                         <DarkButton />
                       </div>
                     </>
@@ -108,9 +110,13 @@ const Navigation = () => {
               Navigation
             </Link>
             <div className="menu-navigation-container">
-              <ul className={`menu text-center  ${isMenuOpen ? "open" : ""}`}>
+              <ul className={`menu text-center  ${isMenuOpen ? 'open' : ''}`}>
                 <li className="first leaf m">
-                  <Link to="/" title="" className="active" onClick={handleToggleMenu}>
+                  <Link
+                    to="/"
+                    title=""
+                    className="active"
+                    onClick={handleToggleMenu}>
                     Home
                   </Link>
                 </li>
@@ -119,7 +125,7 @@ const Navigation = () => {
                 </li>
                 <li className="leaf m" onClick={handleToggleMenu}>
                   <Link to="/history">
-                    History{" "}
+                    History{' '}
                     <span title="Some Copyright" className="cp-chra">
                       ©
                     </span>
@@ -129,7 +135,11 @@ const Navigation = () => {
                   <Link to="/team">Our Team</Link>
                 </li>
                 <li className="expanded">
-                  <Link to="/QuickLinks" title="" className="active" onClick={handleToggleMenu}>
+                  <Link
+                    to="/QuickLinks"
+                    title=""
+                    className="active"
+                    onClick={handleToggleMenu}>
                     Quick Links
                   </Link>
                   <ul className="menu text-left">
@@ -235,7 +245,7 @@ const Navigation = () => {
                 </li>
                 {_innerWidth > 820 ? (
                   <>
-                    <div className="_c-sec" style={{ display: "inline" }}>
+                    <div className="_c-sec" style={{display: 'inline'}}>
                       <DarkButton />
                     </div>
                   </>

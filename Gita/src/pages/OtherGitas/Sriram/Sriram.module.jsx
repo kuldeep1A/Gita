@@ -1,44 +1,44 @@
-import SriramComponent from "./Component/Sriram.component";
-import SriramFun from "./Component/Sriram.fun";
+import SriramComponent from './Component/Sriram.component';
+import SriramFun from './Component/Sriram.fun';
 const Sriram = () => {
   const {
-    selectedShloka,
-    handleShlokaChange,
     OptionLength,
-    shId,
     ShlokaContent,
-    handleClick,
-    shareRef,
-    _hideTrans,
-    hideTrans,
     _changeCodeToEn,
     _changeCodeToHi,
-    isHindiTranslate,
-    translateContent,
     clickEvent,
-    site,
-    shareTitle,
+    handleClick,
+    handleShlokaChange,
+    _hideTrans,
+    hideTrans,
+    isHindiTranslate,
     isSharePopVisible,
+    selectedShloka,
+    shareRef,
+    shareTitle,
+    shId,
+    site,
+    translateContent,
   } = SriramFun();
   return (
     <SriramComponent
-      selectedShloka={selectedShloka}
-      handleShlokaChange={handleShlokaChange}
       OptionLength={OptionLength}
-      shId={shId}
       ShlokaContent={ShlokaContent}
-      handleClick={handleClick}
-      shareRef={shareRef}
-      _hideTrans={_hideTrans}
-      hideTrans={hideTrans}
       _changeCodeToEn={_changeCodeToEn}
       _changeCodeToHi={_changeCodeToHi}
-      isHindiTranslate={isHindiTranslate}
-      translateContent={translateContent}
       clickEvent={clickEvent}
-      site={site}
-      shareTitle={shareTitle}
+      handleClick={handleClick}
+      handleShlokaChange={handleShlokaChange}
+      _hideTrans={_hideTrans}
+      hideTrans={hideTrans}
+      isHindiTranslate={isHindiTranslate}
       isSharePopVisible={isSharePopVisible}
+      selectedShloka={selectedShloka}
+      shareRef={shareRef}
+      shareTitle={shareTitle}
+      shId={shId}
+      site={site}
+      translateContent={translateContent}
     />
   );
 };

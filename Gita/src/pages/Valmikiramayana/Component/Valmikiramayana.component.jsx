@@ -1,8 +1,8 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import SharePop from "../../../componets/SharePop";
-import { kandaNo } from "../../../DATA/MoreData";
-import { ContentPropTypes } from "../../../Function/PropTypes";
+import React from 'react';
+import {createPortal} from 'react-dom';
+import SharePop from '../../../componets/SharePop';
+import {kandaNo} from '../../../DATA/MoreData';
+import {valmikiramayanaPropTypes} from '../../../Function/PropTypes';
 const ValmikiramayanaComponent = ({
   _hideTrans,
   clickEvent,
@@ -11,7 +11,7 @@ const ValmikiramayanaComponent = ({
   handleSargaChange,
   handleSargaLen,
   handleShlokaChange,
-  handleShlokaLen,
+  shlokaOptionLen,
   hideTrans,
   isSharePopVisible,
   sanEng,
@@ -37,28 +37,42 @@ const ValmikiramayanaComponent = ({
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div id="edit-language-wrapper" className="v-ex-widget">
-                            <label htmlFor="edit-language" className="fw-normal">
+                          <div
+                            id="edit-language-wrapper"
+                            className="v-ex-widget">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal">
                               Script
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select defaultValue={"dv"}>
-                                  <option value={"dv"}>Devanagari</option>
+                                <select defaultValue={'dv'}>
+                                  <option value={'dv'}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
                           </div>
-                          <div id="edit-language-wrapper" className="v-ex-widget">
-                            <label htmlFor="edit-language" className="fw-normal">
+                          <div
+                            id="edit-language-wrapper"
+                            className="v-ex-widget">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal">
                               Kanda
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select defaultValue={"BALAKANDA"} onChange={handleKandaChange}>
-                                  <option value={"BALAKANDA"}>BALAKANDA</option>
-                                  <option value={"AYODHYAKANDA"}>AYODHYAKANDA</option>
-                                  <option value={"ARANYAKANDA"}>ARANYAKANDA</option>
+                                <select
+                                  defaultValue={'BALAKANDA'}
+                                  onChange={handleKandaChange}>
+                                  <option value={'BALAKANDA'}>BALAKANDA</option>
+                                  <option value={'AYODHYAKANDA'}>
+                                    AYODHYAKANDA
+                                  </option>
+                                  <option value={'ARANYAKANDA'}>
+                                    ARANYAKANDA
+                                  </option>
                                 </select>
                               </div>
                             </div>
@@ -67,12 +81,17 @@ const ValmikiramayanaComponent = ({
                             <label className="fw-normal">Sarga</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedSarga} onChange={handleSargaChange}>
-                                  {Array.from({ length: handleSargaLen() }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                <select
+                                  value={selectedSarga}
+                                  onChange={handleSargaChange}>
+                                  {Array.from(
+                                    {length: handleSargaLen()},
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    ),
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -81,12 +100,17 @@ const ValmikiramayanaComponent = ({
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedShloka} onChange={handleShlokaChange}>
-                                  {Array.from({ length: handleShlokaLen() }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                <select
+                                  value={selectedShloka}
+                                  onChange={handleShlokaChange}>
+                                  {Array.from(
+                                    {length: shlokaOptionLen},
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    ),
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -104,8 +128,11 @@ const ValmikiramayanaComponent = ({
                             </p>
                             <div className="hov-parent">
                               <p className="text-center h-fonts">
-                                <font id={shId} className="fw-normal size-6 line-100">
-                                  {selectedShloka === 1 && shlokaData.content ? (
+                                <font
+                                  id={shId}
+                                  className="fw-normal size-6 line-100">
+                                  {selectedShloka === 1 &&
+                                  shlokaData.content ? (
                                     <React.Fragment>
                                       <>
                                         <span className="d-block">
@@ -116,29 +143,11 @@ const ValmikiramayanaComponent = ({
                                       </>
                                     </React.Fragment>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                   {selectedShloka === 1 && shlokaData.content
-                                    ? sanEng(shlokaData.content, 0, true).map((line, index) => (
-                                        <React.Fragment key={index}>
-                                          {line.split("'")}
-                                          <>
-                                            <br />
-                                            <br />
-                                          </>
-                                        </React.Fragment>
-                                      ))
-                                    : shlokaData.content &&
-                                      selectedShloka >= 2 &&
-                                      shlokaData.content
-                                        .trim()
-                                        .includes(
-                                          `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`,
-                                        )
-                                    ? shlokaData.content
-                                        .split(",")
-                                        .filter((line) => line.trim() !== "")
-                                        .map((line, index) => (
+                                    ? sanEng(shlokaData.content, 0, true).map(
+                                        (line, index) => (
                                           <React.Fragment key={index}>
                                             {line.split("'")}
                                             <>
@@ -146,21 +155,44 @@ const ValmikiramayanaComponent = ({
                                               <br />
                                             </>
                                           </React.Fragment>
-                                        ))
-                                    : "Shloka not found."}
+                                        ),
+                                      )
+                                    : shlokaData.content &&
+                                        selectedShloka >= 2 &&
+                                        shlokaData.content
+                                          .trim()
+                                          .includes(
+                                            `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`,
+                                          )
+                                      ? shlokaData.content
+                                          .split(',')
+                                          .filter(line => line.trim() !== '')
+                                          .map((line, index) => (
+                                            <React.Fragment key={index}>
+                                              {line.split("'")}
+                                              <>
+                                                <br />
+                                                <br />
+                                              </>
+                                            </React.Fragment>
+                                          ))
+                                      : 'Shloka not found.'}
                                 </font>
                               </p>
-                              <div id="shareBottom" className="hov-child ml-auto mr-1 p-absolute">
+                              <div
+                                id="shareBottom"
+                                className="hov-child ml-auto mr-1 p-absolute">
                                 <div className="d-flex flex-row">
                                   <div className="">
                                     <button
                                       className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
                                       aria-expanded="false"
-                                      onClick={(event) => {
+                                      onClick={event => {
                                         handleClick(event);
-                                      }}
-                                    >
-                                      <i ref={shareRef} className="sdf material-symbols-outlined">
+                                      }}>
+                                      <i
+                                        ref={shareRef}
+                                        className="sdf material-symbols-outlined">
                                         share
                                       </i>
                                     </button>
@@ -171,7 +203,9 @@ const ValmikiramayanaComponent = ({
                           </div>
                         </div>
                         <div className="l-t-action">
-                          <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                          <div onClick={_hideTrans}>
+                            {hideTrans ? 'Hide' : 'Show'}
+                          </div>
                         </div>
                         {hideTrans ? (
                           <div className="translate-view">
@@ -204,15 +238,15 @@ const ValmikiramayanaComponent = ({
                 </div>
                 <div className="_is-database-available-on-kuldeep1a-dataset">
                   <div>
-                    <span style={{ marginRight: "10px" }}>KISHKINDAKANDA,</span>
-                    <span style={{ marginRight: "10px" }}>SUNDARAKANDA,</span>
-                    <span style={{ marginRight: "10px" }}>YUDDHAKANDA</span>
+                    <span style={{marginRight: '10px'}}>KISHKINDAKANDA,</span>
+                    <span style={{marginRight: '10px'}}>SUNDARAKANDA,</span>
+                    <span style={{marginRight: '10px'}}>YUDDHAKANDA</span>
                   </div>
                   <div>
                     <span>
-                      <em style={{ color: "red" }}>Not</em> available, it will be{" "}
-                      <em style={{ color: "green" }}>updated</em> in our database{" "}
-                      <em style={{ color: "green" }}>soon</em>.
+                      <em style={{color: 'red'}}>Not</em> available, it will be{' '}
+                      <em style={{color: 'green'}}>updated</em> in our database{' '}
+                      <em style={{color: 'green'}}>soon</em>.
                     </span>
                   </div>
                 </div>
@@ -238,4 +272,4 @@ const ValmikiramayanaComponent = ({
 
 export default ValmikiramayanaComponent;
 
-ValmikiramayanaComponent.propTypes = ContentPropTypes;
+ValmikiramayanaComponent.propTypes = valmikiramayanaPropTypes;

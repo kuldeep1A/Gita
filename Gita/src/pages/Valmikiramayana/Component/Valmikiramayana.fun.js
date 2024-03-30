@@ -1,18 +1,18 @@
-import { useState, useEffect, useRef } from "react";
-import { fetchValmikiRamayanaData } from "../../../services/services";
-import { optionData } from "../../../DATA/MoreData";
+import {useState, useEffect, useRef} from 'react';
+import {fetchGitasContent} from '../../../services/services';
+import {optionData} from '../../../DATA/MoreData';
 
 const ValmikiramayanaFun = () => {
   useEffect(() => {
-    document.title = "Valmiki Ramayana | Gita";
-
+    document.title = 'Valmiki Ramayana | Gita';
     return () => {
-      document.title = "Valmiki Ramayana | Gita";
+      document.title = 'Valmiki Ramayana | Gita';
     };
   }, []);
-  const [selectedKanda, setSelectedKanda] = useState("BALAKANDA");
+  const [selectedKanda, setSelectedKanda] = useState('BALAKANDA');
   const [selectedSarga, setSelectedSarga] = useState(1);
   const [selectedShloka, setSelectedShloka] = useState(1);
+  const [shlokaOptionLen, setShlokaOptionLen] = useState(1);
   const balakandaLen = Object.keys(optionData.BALAKANDA).length;
   const ayodhyaLen = Object.keys(optionData.AYODHYAKANDA).length;
   const aranyadaLen = Object.keys(optionData.ARANYAKANDA).length;
@@ -24,10 +24,10 @@ const ValmikiramayanaFun = () => {
   const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
   const shareRef = useRef(null);
-  var site = "valmikiramayana";
+  var site = 'valmikiramayana';
   var shId = `sh-${selectedKanda}-${selectedSarga}-${selectedShloka}`;
   var shareTitle = `Valmiki Ramayana, Kanda: ${selectedKanda}, Sarga: ${selectedSarga}, Shloka: ${selectedShloka}.`;
-  const handleClick = (event) => {
+  const handleClick = event => {
     if (!isSharePopVisible) {
       setClickEvent(event);
       setSharePopVisible(true);
@@ -39,7 +39,7 @@ const ValmikiramayanaFun = () => {
     setSharePopVisible(false);
   };
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = event => {
       const target = event.target || event.srcElement;
       if (target && shareRef !== null) {
         const share_b = !shareRef.current.contains(target);
@@ -51,27 +51,29 @@ const ValmikiramayanaFun = () => {
       }
     };
 
-    document.body.addEventListener("click", handleClickOutside);
-    window.addEventListener("scroll", () => closeSharePop(), { capture: true });
-    window.addEventListener("resize", () => closeSharePop());
+    document.body.addEventListener('click', handleClickOutside);
+    window.addEventListener('scroll', () => closeSharePop(), {capture: true});
+    window.addEventListener('resize', () => closeSharePop());
 
     return () => {
-      document.body.removeEventListener("click", handleClickOutside);
-      window.removeEventListener("scroll", () => closeSharePop(), {
+      document.body.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('scroll', () => closeSharePop(), {
         capture: true,
       });
-      window.removeEventListener("resize", () => closeSharePop());
+      window.removeEventListener('resize', () => closeSharePop());
     };
   }, [shId]);
   const sanEng = (shloka, c, isSans) => {
     var engs = [];
     var all = {};
     if (shloka && c === 0) {
-      all = shloka.split("'").filter((line) => line.trim() !== "," && line.trim() !== "");
+      all = shloka
+        .split("'")
+        .filter(line => line.trim() !== ',' && line.trim() !== '');
       c = c + 1;
     }
-    var ed = "";
-    var sd = all.filter((e) => {
+    var ed = '';
+    var sd = all.filter(e => {
       if (/[a-zA-Z]/.test(e) && !engs.includes(e)) {
         ed = `${ed}${e}`;
       }
@@ -84,55 +86,33 @@ const ValmikiramayanaFun = () => {
       return engs;
     }
   };
-  const handleKandaChange = (event) => {
+  const handleKandaChange = event => {
     setSelectedKanda(event.target.value);
     setSelectedSarga(1);
     setSelectedShloka(1);
   };
-  const handleSargaChange = (event) => {
+  const handleSargaChange = event => {
     const newSarga = parseInt(event.target.value, 10);
     setSelectedSarga(newSarga);
     setSelectedShloka(1);
   };
-  const handleShlokaChange = (event) => {
+  const handleShlokaChange = event => {
     const newShloka = parseInt(event.target.value, 10);
     setSelectedShloka(newShloka);
   };
   const handleSargaLen = () => {
-    if (selectedKanda === "BALAKANDA") {
+    if (selectedKanda === 'BALAKANDA') {
       return balakandaLen;
-    } else if (selectedKanda === "AYODHYAKANDA") {
+    } else if (selectedKanda === 'AYODHYAKANDA') {
       return ayodhyaLen;
-    } else if (selectedKanda === "ARANYAKANDA") {
+    } else if (selectedKanda === 'ARANYAKANDA') {
       return aranyadaLen;
-    } else if (selectedKanda === "KISHKINDAKANDA") {
+    } else if (selectedKanda === 'KISHKINDAKANDA') {
       return kishkindaLen;
-    } else if (selectedKanda === "SUNDARAKANDA") {
+    } else if (selectedKanda === 'SUNDARAKANDA') {
       return sundaraLen;
-    } else if (selectedKanda === "YUDDHAKANDA") {
+    } else if (selectedKanda === 'YUDDHAKANDA') {
       return yuddhadaLen;
-    }
-  };
-  const handleShlokaLen = () => {
-    var l = 1;
-    if (selectedKanda === "BALAKANDA") {
-      l = optionData.BALAKANDA[selectedSarga];
-      return l;
-    } else if (selectedKanda === "AYODHYAKANDA") {
-      l = optionData.AYODHYAKANDA[selectedSarga];
-      return l;
-    } else if (selectedKanda === "ARANYAKANDA") {
-      l = optionData.ARANYAKANDA[selectedSarga];
-      return l;
-    } else if (selectedKanda === "KISHKINDAKANDA") {
-      l = optionData.KISHKINDAKANDA[selectedSarga];
-      return l;
-    } else if (selectedKanda === "SUNDARAKANDA") {
-      l = optionData.SUNDARAKANDA[selectedSarga];
-      return l;
-    } else if (selectedKanda === "YUDDHAKANDA") {
-      l = optionData.YUDDHAKANDA[selectedSarga];
-      return l;
     }
   };
   function _hideTrans() {
@@ -143,30 +123,36 @@ const ValmikiramayanaFun = () => {
     }
   }
   useEffect(() => {
-    let _pathK = `/valmikiramayana/J9qxm1uTJFUgEKP0fVvF/${selectedKanda}`;
+    let _path = `/gitas/database/valmikiramayana/kandas/${selectedKanda}/sargas/sarga${selectedSarga}/shlokasdoc`;
 
-    fetchValmikiRamayanaData({ _pathK, setShlokaData, selectedSarga, selectedShloka });
-  }, [selectedKanda, selectedSarga, selectedShloka]);
+    fetchGitasContent({
+      _path,
+      _fieldname: 'Shloka',
+      selectedShloka,
+      setShlokaContent: setShlokaData,
+      setOptionLength: setShlokaOptionLen,
+    });
+  }, [selectedKanda, shlokaData, selectedSarga, selectedShloka]);
   return {
+    _hideTrans,
+    clickEvent,
+    handleClick,
+    handleKandaChange,
+    handleSargaChange,
+    handleSargaLen,
+    handleShlokaChange,
+    shlokaOptionLen,
+    hideTrans,
+    isSharePopVisible,
+    sanEng,
     selectedKanda,
     selectedSarga,
     selectedShloka,
-    shlokaData,
-    sanEng,
-    isSharePopVisible,
-    clickEvent,
-    handleClick,
-    shareRef,
     shId,
-    site,
-    hideTrans,
-    _hideTrans,
-    handleKandaChange,
-    handleSargaChange,
-    handleShlokaChange,
-    handleSargaLen,
-    handleShlokaLen,
+    shareRef,
     shareTitle,
+    shlokaData,
+    site,
   };
 };
 

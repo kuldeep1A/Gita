@@ -1,5 +1,5 @@
-import { EmailLinkPropTypes } from "../Function/PropTypes";
-export const EmailLinkD = ({ email, subject }) => {
+import {EmailLinkPropTypes} from '../Function/PropTypes';
+export const EmailLinkD = ({email, subject}) => {
   const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
     email,
   )}&su=${encodeURIComponent(subject)}`;
@@ -10,7 +10,7 @@ export const EmailLinkD = ({ email, subject }) => {
     </a>
   );
 };
-export const EmailLinkM = ({ email, subject }) => {
+export const EmailLinkM = ({email, subject}) => {
   const mailtoLink = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}`;
   return (
     <a target="_blank" href={mailtoLink} rel="noreferrer">

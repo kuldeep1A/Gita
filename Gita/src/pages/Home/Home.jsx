@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import {useEffect} from 'react';
+import {Link, Outlet} from 'react-router-dom';
 export default function Home() {
   useEffect(() => {
-    document.title = "Home | Gita";
+    document.title = 'Home | Gita';
 
     return () => {
-      document.title = "Home | Gita";
+      document.title = 'Home | Gita';
     };
   }, []);
   const colorx = {
-    color: "#a52a2a",
+    color: '#a52a2a',
   };
   return (
     <>
@@ -18,9 +18,11 @@ export default function Home() {
           <span style={colorx}>
             <strong>
               <span className="_notice">
-                NOTICE: Users can edit content now. If you want to be an editor, please send your
-                credentials with offical
-                <em style={{ color: "black", fontWeight: "bold" }}>GitaSuperSite</em>
+                NOTICE: Users can edit content now. If you want to be an editor,
+                please send your credentials with offical
+                <em style={{color: 'black', fontWeight: 'bold'}}>
+                  GitaSuperSite
+                </em>
                 Website Maintained by IIT Kanpur.
               </span>
             </strong>

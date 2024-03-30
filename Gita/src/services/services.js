@@ -1,72 +1,38 @@
-import { collection, doc, getDocs, getDoc } from "firebase/firestore";
-import { database } from "../firebaseConfig";
+import {doc, getDoc} from 'firebase/firestore';
+import {database} from '../firebaseConfig';
 
-export const fetchOtherGitasContent = async ({
+export const fetchGitasContent = async ({
+  _path,
   setOptionLength,
   selectedShloka,
   setShlokaContent,
-  _pathC,
+  _fieldname,
 }) => {
-  try {
-    const pathC = _pathC;
-    const refC = collection(database, pathC);
-    const snapshot = await getDocs(refC);
-    let idC = snapshot?.docs[0].id;
-    if (idC) {
-      let _documentPath = `${pathC}/${idC}`;
-      await fetchOtherGitasDocument({
-        _documentPath,
-        setOptionLength,
-        selectedShloka,
-        setShlokaContent,
-      });
-    }
-  } catch (error) {
-    console.error("Error fetching shloka content: ", error);
-  }
-};
-
-export const fetchOtherGitasDocument = async ({
-  _documentPath,
-  setOptionLength,
-  selectedShloka,
-  setShlokaContent,
-}) => {
-  try {
-    const documentPath = _documentPath;
-    const docRef = doc(database, documentPath);
-    const docSnapshot = await getDoc(docRef);
-    if (docSnapshot.exists) {
-      const ShlokaData = docSnapshot?.data();
-      setOptionLength(ShlokaData ? Object.keys(ShlokaData).length : 1);
-      setShlokaContent(docSnapshot.get(`Shloka${selectedShloka}`));
-    } else {
-      setShlokaContent("");
-    }
-  } catch (error) {
-    console.error("Error fetching shloka content: ", error);
-  }
-};
-
-export const fetchValmikiRamayanaData = async ({
-  _pathK,
-  setShlokaData,
-  selectedSarga,
-  selectedShloka,
-}) => {
-  try {
-    const pathK = _pathK;
-    const refK = collection(database, pathK);
-    const idKValue = (await getDocs(refK))?.docs[0].id;
-    if (idKValue) {
-      const pathS = `${pathK}/${idKValue}/sarga${selectedSarga}/Shloka${selectedShloka}`;
-      const refS = doc(database, pathS);
-      const docSnapshot = await getDoc(refS);
-      if (docSnapshot.exists()) {
-        setShlokaData(docSnapshot.data());
+  const maxRetires = 3;
+  let retries = 0;
+  const fetchData = async () => {
+    try {
+      const refC = doc(database, _path);
+      const snapshot = await getDoc(refC);
+      if (snapshot.exists) {
+        const shlokasData = snapshot.data();
+        const key = `${_fieldname}${selectedShloka}`;
+        const shlokaContent = shlokasData[key];
+        setOptionLength(shlokasData ? Object.keys(shlokasData).length : 1);
+        setShlokaContent(shlokaContent);
+      } else {
+        console.error('Document does not exist.');
+      }
+    } catch (error) {
+      if (retries < maxRetires) {
+        retries++;
+        setTimeout(fetchData, 4000);
+      } else {
+        console.error(
+          'Max retires exceeded. Unable to fetch data. Please Reload.',
+        );
       }
     }
-  } catch (error) {
-    console.error("Error fetching shloka content:", error);
-  }
+  };
+  fetchData();
 };

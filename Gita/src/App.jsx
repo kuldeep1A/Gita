@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import ReactGA from "react-ga";
-import ScrollRestoration from "./componets/ScrollRestoration";
+import {useEffect} from 'react';
+import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import ReactGA from 'react-ga';
+import ScrollRestoration from './componets/ScrollRestoration';
 import {
   About,
   Brahmasutra,
@@ -27,15 +27,16 @@ import {
   Team,
   Valmikiramayana,
   Yogasutra,
-} from "./pages/Pages";
-import Navigation from "./componets/Navigation";
-import Footer from "./componets/Footer";
-import _set_session from "./Function/utils";
-import "./App.css";
+} from './pages/Pages';
+import Navigation from './componets/Navigation';
+import Footer from './componets/Footer';
+import _set_session from './Function/utils';
+import './App.css';
 
 function App() {
-  let _isDark = window.sessionStorage.getItem("isDark") === "true" ? true : false;
-  if (window.sessionStorage.getItem("isDark") === null) {
+  let _isDark =
+    window.sessionStorage.getItem('isDark') === 'true' ? true : false;
+  if (window.sessionStorage.getItem('isDark') === null) {
     const _t_hours = new Date().getHours();
     if (_t_hours >= 19 || _t_hours < 7) {
       _isDark = true;
@@ -46,7 +47,7 @@ function App() {
   }
   useEffect(() => {
     if (_isDark) {
-      document.body.classList.add("_d-mode");
+      document.body.classList.add('_d-mode');
     }
   }, [_isDark]);
   return (
@@ -71,7 +72,10 @@ function App() {
             <Route path="/srimadIntro" element={<SriIntro />} />
             <Route path="/srimad" element={<Srimad />} />
             <Route path="/srimadTextdetails" element={<TextDetails />} />
-            <Route path="/brahmasutraWelcome" element={<BrahmasutraWelcome />} />
+            <Route
+              path="/brahmasutraWelcome"
+              element={<BrahmasutraWelcome />}
+            />
             <Route path="/valmikiramayana" element={<Valmikiramayana />} />
             <Route path="/brahmasutraAbout" element={<BrahmasutraAbout />} />
             <Route path="/brahmasutra" element={<Brahmasutra />} />
@@ -89,6 +93,6 @@ function App() {
 
 export default App;
 
-const slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa = "G-VXSDXFRQS7";
+const slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa = 'G-VXSDXFRQS7';
 ReactGA.initialize(slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa);
 ReactGA.pageview(window.location.pathname + window.location.search);

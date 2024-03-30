@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from 'react';
 
 const Footer = () => {
-  const [currentYear, setCurrentYear] = useState("");
+  const [currentYear, setCurrentYear] = useState('');
   useEffect(() => {
     const _y = new Date().getFullYear();
-    const _sY = `${_y}`.split("");
+    const _sY = `${_y}`.split('');
     const _Y = `${_sY[2]}${_sY[3]}`;
     setCurrentYear(_Y);
   }, []);
@@ -17,7 +17,11 @@ const Footer = () => {
         <div className="d-flex horizontal-between">
           <span>
             <h1 className="size-9 color-white">
-              <a className="color-white" href="/history" target="_blank" rel="noreferrer">
+              <a
+                className="color-white"
+                href="/history"
+                target="_blank"
+                rel="noreferrer">
                 Copyright-©
               </a>
               {` 2022-${currentYear}`}
@@ -29,8 +33,7 @@ const Footer = () => {
                 className="color-white"
                 href="https://github.com/kuldeep1A/Gita/blob/master/LICENSE"
                 target="_blank"
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 LICENSE-℗
               </a>
             </h1>

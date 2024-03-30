@@ -1,26 +1,26 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
-import { database } from "../../../firebaseConfig";
-import { _translate } from "../../../Function/utils";
+import {useState, useEffect, useRef, useCallback} from 'react';
+import {collection, getDocs, doc, getDoc} from 'firebase/firestore';
+import {database} from '../../../firebaseConfig';
+import {_translate} from '../../../Function/utils';
 
 const YogaSutraFun = () => {
   useEffect(() => {
-    document.title = "Yogasutra | Gita";
+    document.title = 'Yogasutra | Gita';
     return () => {
-      document.title = "Yogasutra | Gita";
+      document.title = 'Yogasutra | Gita';
     };
   }, []);
-  const [idC, setidC] = useState("");
+  const [idC, setidC] = useState('');
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
   const [selectedSutra, setSelectedSutra] = useState(1);
-  const [SutraContent, setSutraContent] = useState("");
-  const [BhasyaContent, setBhasyaContent] = useState("");
-  const [VrittiContent, setVrittiContent] = useState("");
-  const [stranslateContent, setSTranslateCotent] = useState("");
-  const [btranslateContent, setBTranslateCotent] = useState("");
-  const [vtranslateContent, setVTranslateCotent] = useState("");
-  const [translateContent, setTranslateCotent] = useState("");
+  const [SutraContent, setSutraContent] = useState('');
+  const [BhasyaContent, setBhasyaContent] = useState('');
+  const [VrittiContent, setVrittiContent] = useState('');
+  const [stranslateContent, setSTranslateCotent] = useState('');
+  const [btranslateContent, setBTranslateCotent] = useState('');
+  const [vtranslateContent, setVTranslateCotent] = useState('');
+  const [translateContent, setTranslateCotent] = useState('');
   const [whichSutra, setWhichSutra] = useState(2);
   const [isViewSutra, setIsViewSutra] = useState(false);
   const [isViewBhasya, setIsViewBhasya] = useState(false);
@@ -28,18 +28,18 @@ const YogaSutraFun = () => {
   const [isSharePopVisible, setSharePopVisible] = useState(false);
   const [isHindiTranslate, setIsHindiTranslate] = useState(true);
   const [hideTrans, setHideTrans] = useState(false);
-  const [shareTC, setShareTC] = useState("sutra");
+  const [shareTC, setShareTC] = useState('sutra');
   const [clickEvent, setClickEvent] = useState(null);
   const shareRefS = useRef(null);
   const shareRefB = useRef(null);
   const shareRefV = useRef(null);
-  var site = "surti";
+  var site = 'surti';
   var shsId = `sh-${site}-sutra-${selectedChapter}-${selectedSutra}`;
   var shbId = `sh-${site}-bhasya-${selectedChapter}-${selectedSutra}`;
   var shvId = `sh-${site}-vritti-${selectedChapter}-${selectedSutra}`;
   var shId = `sh-${site}-${shareTC}-${selectedChapter}-${selectedSutra}`;
   var shareTitle = `Sruti Gita, Content: ${shareTC}, Chapter: ${selectedChapter}, shloka: ${selectedSutra}.`;
-  const handleClick = (event) => {
+  const handleClick = event => {
     if (!isSharePopVisible) {
       setClickEvent(event);
       setSharePopVisible(true);
@@ -51,7 +51,7 @@ const YogaSutraFun = () => {
     setSharePopVisible(false);
   };
   const fillTranslate = useCallback(
-    (whichSutra) => {
+    whichSutra => {
       if (whichSutra === 1) {
         setTranslateCotent(stranslateContent);
       } else if (whichSutra === 2) {
@@ -68,20 +68,26 @@ const YogaSutraFun = () => {
         const shstcontent = await _translate(shsContent, whatcode);
         const shbtcontent = await _translate(shbContent, whatcode);
         const shvtcontent = await _translate(shvContent, whatcode);
-        if (shstcontent !== "" && shbtcontent !== "" && shvtcontent !== "") {
+        if (shstcontent !== '' && shbtcontent !== '' && shvtcontent !== '') {
           setSTranslateCotent(shstcontent);
           setBTranslateCotent(shbtcontent);
           setVTranslateCotent(shvtcontent);
           fillTranslate(whichSutra);
         } else {
-          setSTranslateCotent("Wait for Shloka!");
-          setBTranslateCotent("Wait for Shloka!");
-          setVTranslateCotent("Wait for Shloka!");
+          setSTranslateCotent('Wait for Shloka!');
+          setBTranslateCotent('Wait for Shloka!');
+          setVTranslateCotent('Wait for Shloka!');
         }
       } else {
-        setSTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
-        setBTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
-        setVTranslateCotent("Wait for Shloka! Shloka Length must be less than 1912 character.");
+        setSTranslateCotent(
+          'Wait for Shloka! Shloka Length must be less than 1912 character.',
+        );
+        setBTranslateCotent(
+          'Wait for Shloka! Shloka Length must be less than 1912 character.',
+        );
+        setVTranslateCotent(
+          'Wait for Shloka! Shloka Length must be less than 1912 character.',
+        );
       }
     },
     [whichSutra, fillTranslate],
@@ -102,13 +108,13 @@ const YogaSutraFun = () => {
     }
   }
   useEffect(() => {
-    if (BhasyaContent !== "" && BhasyaContent) {
+    if (BhasyaContent !== '' && BhasyaContent) {
       goTranslate(SutraContent, BhasyaContent, VrittiContent, isHindiTranslate);
       fillTranslate(whichSutra);
     } else {
-      setSTranslateCotent("Wait for Shloka!");
-      setBTranslateCotent("Wait for Shloka!");
-      setVTranslateCotent("Wait for Shloka!");
+      setSTranslateCotent('Wait for Shloka!');
+      setBTranslateCotent('Wait for Shloka!');
+      setVTranslateCotent('Wait for Shloka!');
     }
     const handleClickOutside = (event, shareRef) => {
       const target = event.target || event.srcElement;
@@ -121,11 +127,11 @@ const YogaSutraFun = () => {
         }
       }
     };
-    const handleRef = (event) => {
+    const handleRef = event => {
       if (event) {
-        const isShareS = event.target.hasAttribute("data-share-s");
-        const isShareB = event.target.hasAttribute("data-share-b");
-        const isShareV = event.target.hasAttribute("data-share-v");
+        const isShareS = event.target.hasAttribute('data-share-s');
+        const isShareB = event.target.hasAttribute('data-share-b');
+        const isShareV = event.target.hasAttribute('data-share-v');
         if (isShareS) {
           handleClickOutside(event, shareRefS);
         } else if (isShareB) {
@@ -137,15 +143,15 @@ const YogaSutraFun = () => {
         }
       }
     };
-    document.body.addEventListener("click", handleRef);
-    window.addEventListener("scroll", () => closeSharePop(), { capture: true });
-    window.addEventListener("resize", () => closeSharePop());
+    document.body.addEventListener('click', handleRef);
+    window.addEventListener('scroll', () => closeSharePop(), {capture: true});
+    window.addEventListener('resize', () => closeSharePop());
     return () => {
-      document.body.removeEventListener("click", handleRef);
-      window.removeEventListener("scroll", () => closeSharePop(), {
+      document.body.removeEventListener('click', handleRef);
+      window.removeEventListener('scroll', () => closeSharePop(), {
         capture: true,
       });
-      window.removeEventListener("resize", () => closeSharePop());
+      window.removeEventListener('resize', () => closeSharePop());
     };
   }, [
     shId,
@@ -160,16 +166,16 @@ const YogaSutraFun = () => {
     whichSutra,
     fillTranslate,
   ]);
-  const handleChapterChange = (event) => {
+  const handleChapterChange = event => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
     setSelectedSutra(1);
   };
-  const handleSutraChange = (event) => {
+  const handleSutraChange = event => {
     const newSutra = parseInt(event.target.value, 10);
     setSelectedSutra(newSutra);
   };
-  const handleCheckboxChange = (checkboxNumber) => {
+  const handleCheckboxChange = checkboxNumber => {
     switch (checkboxNumber) {
       case 1:
         fillTranslate(!isViewBhasya ? 2 : !isViewVritti ? 3 : 2);
@@ -194,8 +200,8 @@ const YogaSutraFun = () => {
       try {
         const pathC = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}`;
         const refC = collection(database, pathC);
-        getDocs(refC).then((snapshot) => {
-          snapshot.docs.forEach((doc) => {
+        getDocs(refC).then(snapshot => {
+          snapshot.docs.forEach(doc => {
             setidC(`${doc.id}`);
           });
         });
@@ -206,10 +212,12 @@ const YogaSutraFun = () => {
           if (docSanpshot.exists) {
             const SutraData = docSanpshot.data();
             if (SutraData !== undefined && SutraData !== null) {
-              const SutraArrays = Object.entries(SutraData).map(([key, value]) => ({
-                key,
-                value,
-              }));
+              const SutraArrays = Object.entries(SutraData).map(
+                ([key, value]) => ({
+                  key,
+                  value,
+                }),
+              );
               setOptionLength(SutraArrays.length / 3);
               const Sutra = SutraData[`Sutra${selectedSutra}`];
               const Bhasya = SutraData[`Bhashya${selectedSutra}`];
@@ -221,7 +229,7 @@ const YogaSutraFun = () => {
           }
         }
       } catch (error) {
-        console.error("Error fetching sutras content: ", error);
+        console.error('Error fetching sutras content: ', error);
       }
     };
     fetching();

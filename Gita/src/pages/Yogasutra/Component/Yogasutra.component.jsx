@@ -1,7 +1,7 @@
-import SharePop from "../../../componets/SharePop";
-import React from "react";
-import { createPortal } from "react-dom";
-import { YogaSutraPropTypes } from "../../../Function/PropTypes";
+import SharePop from '../../../componets/SharePop';
+import React from 'react';
+import {createPortal} from 'react-dom';
+import {YogaSutraPropTypes} from '../../../Function/PropTypes';
 
 const YogaSutraComponent = ({
   selectedChapter,
@@ -52,14 +52,18 @@ const YogaSutraComponent = ({
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div id="edit-language-wrapper" className="v-ex-widget">
-                            <label htmlFor="edit-language" className="fw-normal">
+                          <div
+                            id="edit-language-wrapper"
+                            className="v-ex-widget">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal">
                               Script
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select defaultValue={"dv"}>
-                                  <option value={"dv"}>Devanagari</option>
+                                <select defaultValue={'dv'}>
+                                  <option value={'dv'}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
@@ -68,8 +72,10 @@ const YogaSutraComponent = ({
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedChapter} onChange={handleChapterChange}>
-                                  {Array.from({ length: 4 }, (_, index) => (
+                                <select
+                                  value={selectedChapter}
+                                  onChange={handleChapterChange}>
+                                  {Array.from({length: 4}, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
                                     </option>
@@ -82,12 +88,17 @@ const YogaSutraComponent = ({
                             <label className="fw-normal">Sutra</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedSutra} onChange={handleSutraChange}>
-                                  {Array.from({ length: OptionLength }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                <select
+                                  value={selectedSutra}
+                                  onChange={handleSutraChange}>
+                                  {Array.from(
+                                    {length: OptionLength},
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    ),
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -104,8 +115,7 @@ const YogaSutraComponent = ({
                             id="_sutra"
                             className="choice-box"
                             defaultChecked
-                            onClick={() => handleCheckboxChange(1)}
-                          ></input>
+                            onClick={() => handleCheckboxChange(1)}></input>
                         </div>
                       </div>
                       <div className="choice-view">
@@ -116,8 +126,7 @@ const YogaSutraComponent = ({
                             id="_Bhasya"
                             className="choice-box"
                             defaultChecked
-                            onClick={() => handleCheckboxChange(2)}
-                          ></input>
+                            onClick={() => handleCheckboxChange(2)}></input>
                         </div>
                       </div>
                       <div className="choice-view">
@@ -128,8 +137,7 @@ const YogaSutraComponent = ({
                             id="_vritti"
                             className="choice-box"
                             defaultChecked
-                            onClick={() => handleCheckboxChange(3)}
-                          ></input>
+                            onClick={() => handleCheckboxChange(3)}></input>
                         </div>
                       </div>
                     </div>
@@ -139,9 +147,10 @@ const YogaSutraComponent = ({
                   <div className="c-dis-sutra">
                     <div
                       className={`_sutra ${
-                        isViewSutra ? "view_sutra is-hidden-mobile is-hidden-desktop " : ""
-                      }`}
-                    >
+                        isViewSutra
+                          ? 'view_sutra is-hidden-mobile is-hidden-desktop '
+                          : ''
+                      }`}>
                       <div className="v-fi_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
@@ -151,10 +160,12 @@ const YogaSutraComponent = ({
                         </p>
                         <div className="hov-parent">
                           <p className="text-center h-fonts">
-                            <font id={shsId} className="fw-normal size-6 line-150">
+                            <font
+                              id={shsId}
+                              className="fw-normal size-6 line-150">
                               {SutraContent
-                                ? SutraContent.split("।")
-                                    .filter((line) => line.trim() !== "")
+                                ? SutraContent.split('।')
+                                    .filter(line => line.trim() !== '')
                                     .map((line, index, array) => (
                                       <React.Fragment key={index}>
                                         {array.length === 2
@@ -162,25 +173,25 @@ const YogaSutraComponent = ({
                                             ? ` ।। ${line} ।।`
                                             : line.trim()
                                           : array.length >= 4
-                                          ? index === 3
-                                            ? ` ।। ${line} ।।`
-                                            : line.trim()
-                                          : index === 2
-                                          ? ` ।। ${line} ।।`
-                                          : line.trim()}
+                                            ? index === 3
+                                              ? ` ।। ${line} ।।`
+                                              : line.trim()
+                                            : index === 2
+                                              ? ` ।। ${line} ।।`
+                                              : line.trim()}
 
                                         {array.length >= 4
                                           ? index === 1
-                                            ? "।"
-                                            : ""
+                                            ? '।'
+                                            : ''
                                           : array.length === 2
-                                          ? ""
-                                          : index === 0
-                                          ? "।"
-                                          : ""}
+                                            ? ''
+                                            : index === 0
+                                              ? '।'
+                                              : ''}
 
                                         {array.length === 2
-                                          ? ""
+                                          ? ''
                                           : index === 0 && (
                                               <>
                                                 <br />
@@ -195,28 +206,28 @@ const YogaSutraComponent = ({
                                                 <br />
                                               </>
                                             )
-                                          : ""}
+                                          : ''}
                                       </React.Fragment>
                                     ))
-                                : "Sutra not found."}
+                                : 'Sutra not found.'}
                             </font>
                           </p>
-                          <div id="shareTop" className="hov-child ml-auto mr-1 p-absolute">
+                          <div
+                            id="shareTop"
+                            className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
                                   className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
                                   aria-expanded="false"
-                                  onClick={(event) => {
+                                  onClick={event => {
                                     handleClick(event);
-                                    setShareTC("sutra");
-                                  }}
-                                >
+                                    setShareTC('sutra');
+                                  }}>
                                   <i
                                     ref={shareRefS}
                                     data-share-s
-                                    className="sdf material-symbols-outlined"
-                                  >
+                                    className="sdf material-symbols-outlined">
                                     share
                                   </i>
                                 </button>
@@ -228,9 +239,10 @@ const YogaSutraComponent = ({
                     </div>
                     <div
                       className={`_bhasya ${
-                        isViewBhasya ? "view_bhasya is-hidden-mobile is-hidden-desktop" : ""
-                      }`}
-                    >
+                        isViewBhasya
+                          ? 'view_bhasya is-hidden-mobile is-hidden-desktop'
+                          : ''
+                      }`}>
                       <div className="v-fi_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
@@ -240,10 +252,12 @@ const YogaSutraComponent = ({
                         </p>
                         <div className="hov-parent">
                           <p className="text-center h-fonts">
-                            <font id={shbId} className="fw-normal size-6 line-150">
+                            <font
+                              id={shbId}
+                              className="fw-normal size-6 line-150">
                               {BhasyaContent
-                                ? BhasyaContent.split("।")
-                                    .filter((line) => line.trim() !== "")
+                                ? BhasyaContent.split('।')
+                                    .filter(line => line.trim() !== '')
                                     .map((line, index, array) => (
                                       <React.Fragment key={index}>
                                         {array.length === 2
@@ -251,25 +265,25 @@ const YogaSutraComponent = ({
                                             ? ` ।। ${line} ।।`
                                             : line.trim()
                                           : array.length >= 4
-                                          ? index === 3
-                                            ? ` ।। ${line} ।।`
-                                            : line.trim()
-                                          : index === 2
-                                          ? ` ।। ${line} ।।`
-                                          : line.trim()}
+                                            ? index === 3
+                                              ? ` ।। ${line} ।।`
+                                              : line.trim()
+                                            : index === 2
+                                              ? ` ।। ${line} ।।`
+                                              : line.trim()}
 
                                         {array.length >= 4
                                           ? index === 1
-                                            ? "।"
-                                            : ""
+                                            ? '।'
+                                            : ''
                                           : array.length === 2
-                                          ? ""
-                                          : index === 0
-                                          ? "।"
-                                          : ""}
+                                            ? ''
+                                            : index === 0
+                                              ? '।'
+                                              : ''}
 
                                         {array.length === 2
-                                          ? ""
+                                          ? ''
                                           : index === 0 && (
                                               <>
                                                 <br />
@@ -284,28 +298,28 @@ const YogaSutraComponent = ({
                                                 <br />
                                               </>
                                             )
-                                          : ""}
+                                          : ''}
                                       </React.Fragment>
                                     ))
-                                : "Bhasya not found."}
+                                : 'Bhasya not found.'}
                             </font>
                           </p>
-                          <div id="shareTop" className="hov-child ml-auto mr-1 p-absolute">
+                          <div
+                            id="shareTop"
+                            className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
                                   className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
                                   aria-expanded="false"
-                                  onClick={(event) => {
+                                  onClick={event => {
                                     handleClick(event);
-                                    setShareTC("bhasya");
-                                  }}
-                                >
+                                    setShareTC('bhasya');
+                                  }}>
                                   <i
                                     ref={shareRefB}
                                     data-share-b
-                                    className="sdf material-symbols-outlined"
-                                  >
+                                    className="sdf material-symbols-outlined">
                                     share
                                   </i>
                                 </button>
@@ -317,9 +331,10 @@ const YogaSutraComponent = ({
                     </div>
                     <div
                       className={`_vritti ${
-                        isViewVritti ? "view_vritti is-hidden-mobile is-hidden-desktop" : ""
-                      }`}
-                    >
+                        isViewVritti
+                          ? 'view_vritti is-hidden-mobile is-hidden-desktop'
+                          : ''
+                      }`}>
                       <div className="v-fi_sutra">
                         <p className="text-center">
                           <font className="color-dark-aubergine fw-normal size-6">
@@ -329,10 +344,12 @@ const YogaSutraComponent = ({
                         </p>
                         <div className="hov-parent">
                           <p className="text-center h-fonts">
-                            <font id={shvId} className="fw-normal size-6 line-150">
+                            <font
+                              id={shvId}
+                              className="fw-normal size-6 line-150">
                               {VrittiContent
-                                ? VrittiContent.split("।")
-                                    .filter((line) => line.trim() !== "")
+                                ? VrittiContent.split('।')
+                                    .filter(line => line.trim() !== '')
                                     .map((line, index, array) => (
                                       <React.Fragment key={index}>
                                         {array.length === 2
@@ -340,25 +357,25 @@ const YogaSutraComponent = ({
                                             ? ` ।। ${line} ।।`
                                             : line.trim()
                                           : array.length >= 4
-                                          ? index === 3
-                                            ? ` ।। ${line} ।।`
-                                            : line.trim()
-                                          : index === 2
-                                          ? ` ।। ${line} ।।`
-                                          : line.trim()}
+                                            ? index === 3
+                                              ? ` ।। ${line} ।।`
+                                              : line.trim()
+                                            : index === 2
+                                              ? ` ।। ${line} ।।`
+                                              : line.trim()}
 
                                         {array.length >= 4
                                           ? index === 1
-                                            ? "।"
-                                            : ""
+                                            ? '।'
+                                            : ''
                                           : array.length === 2
-                                          ? ""
-                                          : index === 0
-                                          ? "।"
-                                          : ""}
+                                            ? ''
+                                            : index === 0
+                                              ? '।'
+                                              : ''}
 
                                         {array.length === 2
-                                          ? ""
+                                          ? ''
                                           : index === 0 && (
                                               <>
                                                 <br />
@@ -373,28 +390,28 @@ const YogaSutraComponent = ({
                                                 <br />
                                               </>
                                             )
-                                          : ""}
+                                          : ''}
                                       </React.Fragment>
                                     ))
-                                : "Vritti not found."}
+                                : 'Vritti not found.'}
                             </font>
                           </p>
-                          <div id="shareTop" className="hov-child ml-auto mr-1 p-absolute">
+                          <div
+                            id="shareTop"
+                            className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
                                   className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
                                   aria-expanded="false"
-                                  onClick={(event) => {
+                                  onClick={event => {
                                     handleClick(event);
-                                    setShareTC("vritti");
-                                  }}
-                                >
+                                    setShareTC('vritti');
+                                  }}>
                                   <i
                                     ref={shareRefV}
                                     data-share-v
-                                    className="sdf material-symbols-outlined"
-                                  >
+                                    className="sdf material-symbols-outlined">
                                     share
                                   </i>
                                 </button>
@@ -409,7 +426,9 @@ const YogaSutraComponent = ({
                     ) : (
                       <>
                         <div className="l-t-action">
-                          <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                          <div onClick={_hideTrans}>
+                            {hideTrans ? 'Hide' : 'Show'}
+                          </div>
                         </div>
                         {hideTrans ? (
                           <div className="translate-view">
@@ -417,50 +436,49 @@ const YogaSutraComponent = ({
                               <div className="c-lc-action">
                                 <div>
                                   <span onClick={_changeCodeToEn}>
-                                    {isHindiTranslate ? "En" : "English"}
+                                    {isHindiTranslate ? 'En' : 'English'}
                                   </span>
                                 </div>
                                 <div>
                                   <span onClick={_changeCodeToHi}>
-                                    {isHindiTranslate ? "Hindi" : "Hi"}
+                                    {isHindiTranslate ? 'Hindi' : 'Hi'}
                                   </span>
                                 </div>
                                 <div className="whichTranslation">
                                   <span
                                     className={`_sutra ${
                                       isViewSutra
-                                        ? "view_sutra is-hidden-mobile is-hidden-desktop "
-                                        : ""
+                                        ? 'view_sutra is-hidden-mobile is-hidden-desktop '
+                                        : ''
                                     }`}
-                                    onClick={() => setWhichSutra(1)}
-                                  >
-                                    {whichSutra === 1 ? "Sutra" : "S"}
+                                    onClick={() => setWhichSutra(1)}>
+                                    {whichSutra === 1 ? 'Sutra' : 'S'}
                                   </span>
                                   <span
                                     className={`_bhasya ${
                                       isViewBhasya
-                                        ? "view_bhasya is-hidden-mobile is-hidden-desktop"
-                                        : ""
+                                        ? 'view_bhasya is-hidden-mobile is-hidden-desktop'
+                                        : ''
                                     }`}
-                                    onClick={() => setWhichSutra(2)}
-                                  >
-                                    {whichSutra === 2 ? "Bhasya" : "B"}
+                                    onClick={() => setWhichSutra(2)}>
+                                    {whichSutra === 2 ? 'Bhasya' : 'B'}
                                   </span>
                                   <span
                                     className={`_vritti ${
                                       isViewVritti
-                                        ? "view_vritti is-hidden-mobile is-hidden-desktop"
-                                        : ""
+                                        ? 'view_vritti is-hidden-mobile is-hidden-desktop'
+                                        : ''
                                     }`}
-                                    onClick={() => setWhichSutra(3)}
-                                  >
-                                    {whichSutra === 3 ? "Vritti" : "V"}
+                                    onClick={() => setWhichSutra(3)}>
+                                    {whichSutra === 3 ? 'Vritti' : 'V'}
                                   </span>
                                 </div>
                               </div>
                               <div className="hov-parent">
                                 <p className="text-center h-fonts">
-                                  <font className="fw-normal size-6">{translateContent}</font>
+                                  <font className="fw-normal size-6">
+                                    {translateContent}
+                                  </font>
                                 </p>
                               </div>
                             </div>
@@ -472,7 +490,9 @@ const YogaSutraComponent = ({
                     )}
                   </div>
                 </div>
-                {areAnyCheckboxesChecked && <p>At least one Sutra&apos;s is checked.</p>}
+                {areAnyCheckboxesChecked && (
+                  <p>At least one Sutra&apos;s is checked.</p>
+                )}
               </section>
             </div>
           </div>

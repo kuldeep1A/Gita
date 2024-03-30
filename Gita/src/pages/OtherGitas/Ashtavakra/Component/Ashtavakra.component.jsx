@@ -1,29 +1,29 @@
-import { OtherGitasPropTypesv1 } from "../../../../Function/PropTypes";
-import React from "react";
-import { TranslateView } from "../../../../componets/TranslateView";
-import { createPortal } from "react-dom";
-import SharePop from "../../../../componets/SharePop";
+import {OtherGitasPropTypesv1} from '../../../../Function/PropTypes';
+import React from 'react';
+import {TranslateView} from '../../../../componets/TranslateView';
+import {createPortal} from 'react-dom';
+import SharePop from '../../../../componets/SharePop';
 
 const AshtavakraComponent = ({
-  selectedChapter,
-  handleChapterChange,
-  selectedShloka,
-  handleShlokaChange,
   OptionLength,
-  shId,
   ShlokaContent,
-  handleClick,
-  shareRef,
-  _hideTrans,
-  hideTrans,
   _changeCodeToEn,
   _changeCodeToHi,
-  isHindiTranslate,
-  translateContent,
-  isSharePopVisible,
   clickEvent,
-  site,
+  handleChapterChange,
+  handleClick,
+  handleShlokaChange,
+  _hideTrans,
+  hideTrans,
+  isHindiTranslate,
+  isSharePopVisible,
+  selectedChapter,
+  selectedShloka,
+  shareRef,
   shareTitle,
+  shId,
+  site,
+  translateContent,
 }) => {
   return (
     <>
@@ -38,14 +38,18 @@ const AshtavakraComponent = ({
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div id="edit-language-wrapper" className="v-ex-widget">
-                            <label htmlFor="edit-language" className="fw-normal">
+                          <div
+                            id="edit-language-wrapper"
+                            className="v-ex-widget">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal">
                               Script
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select defaultValue={"dv"}>
-                                  <option value={"dv"}>Devanagari</option>
+                                <select defaultValue={'dv'}>
+                                  <option value={'dv'}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
@@ -54,8 +58,10 @@ const AshtavakraComponent = ({
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedChapter} onChange={handleChapterChange}>
-                                  {Array.from({ length: 20 }, (_, index) => (
+                                <select
+                                  value={selectedChapter}
+                                  onChange={handleChapterChange}>
+                                  {Array.from({length: 20}, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
                                     </option>
@@ -68,12 +74,17 @@ const AshtavakraComponent = ({
                             <label className="fw-normal">Shloka</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedShloka} onChange={handleShlokaChange}>
-                                  {Array.from({ length: OptionLength }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                <select
+                                  value={selectedShloka}
+                                  onChange={handleShlokaChange}>
+                                  {Array.from(
+                                    {length: OptionLength},
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    ),
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -97,8 +108,8 @@ const AshtavakraComponent = ({
                           <p className="text-center h-fonts">
                             <font id={shId} className="fw-normal size-6">
                               {ShlokaContent
-                                ? ShlokaContent.split("।")
-                                    .filter((line) => line.trim() !== "")
+                                ? ShlokaContent.split('।')
+                                    .filter(line => line.trim() !== '')
                                     .map((line, index, array) => (
                                       <React.Fragment key={index}>
                                         {array.length >= 4
@@ -106,22 +117,23 @@ const AshtavakraComponent = ({
                                             ? ` ।। ${line} ।।`
                                             : line.trim()
                                           : index === 2
-                                          ? ` ।। ${line} ।।`
-                                          : line.trim()}
+                                            ? ` ।। ${line} ।।`
+                                            : line.trim()}
 
                                         {array.length >= 4
                                           ? index === 1
-                                            ? "।"
-                                            : ""
+                                            ? '।'
+                                            : ''
                                           : index === 0
-                                          ? "।"
-                                          : ""}
-                                        {index === 0 && selectedChapter <= 20 && (
-                                          <>
-                                            <br />
-                                            <br />
-                                          </>
-                                        )}
+                                            ? '।'
+                                            : ''}
+                                        {index === 0 &&
+                                          selectedChapter <= 20 && (
+                                            <>
+                                              <br />
+                                              <br />
+                                            </>
+                                          )}
 
                                         {array.length >= 4
                                           ? index === 1 &&
@@ -131,23 +143,26 @@ const AshtavakraComponent = ({
                                                 <br />
                                               </>
                                             )
-                                          : ""}
+                                          : ''}
                                       </React.Fragment>
                                     ))
-                                : "Shloka not found."}
+                                : 'Shloka not found.'}
                             </font>
                           </p>
-                          <div id="shareBottom" className="hov-child ml-auto mr-1 p-absolute">
+                          <div
+                            id="shareBottom"
+                            className="hov-child ml-auto mr-1 p-absolute">
                             <div className="d-flex flex-row">
                               <div className="">
                                 <button
                                   className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
                                   aria-expanded="false"
-                                  onClick={(event) => {
+                                  onClick={event => {
                                     handleClick(event);
-                                  }}
-                                >
-                                  <i ref={shareRef} className="sdf material-symbols-outlined">
+                                  }}>
+                                  <i
+                                    ref={shareRef}
+                                    className="sdf material-symbols-outlined">
                                     share
                                   </i>
                                 </button>
@@ -158,7 +173,9 @@ const AshtavakraComponent = ({
                       </div>
                     </div>
                     <div className="l-t-action">
-                      <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                      <div onClick={_hideTrans}>
+                        {hideTrans ? 'Hide' : 'Show'}
+                      </div>
                     </div>
                     {hideTrans ? (
                       <TranslateView

@@ -1,5 +1,5 @@
-import SrimadComponent from "./Component/Srimad.component";
-import SrimadFun from "./Component/Srimad.fun";
+import SrimadComponent from './Component/Srimad.component';
+import SrimadFun from './Component/Srimad.fun';
 
 const Srimad = () => {
   const {
@@ -18,6 +18,7 @@ const Srimad = () => {
     selectedShloka,
     shareRef,
     shareTitle,
+    shId,
     ShlokaContent,
     site,
     translateContent,
@@ -39,6 +40,7 @@ const Srimad = () => {
       selectedShloka={selectedShloka}
       shareRef={shareRef}
       shareTitle={shareTitle}
+      shId={shId}
       ShlokaContent={ShlokaContent}
       site={site}
       translateContent={translateContent}

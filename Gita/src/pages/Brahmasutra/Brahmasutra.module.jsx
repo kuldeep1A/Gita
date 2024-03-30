@@ -1,53 +1,53 @@
-import BrahmaSutraComponent from "./Component/Brahmasutra.component";
-import BrahmasutraFun from "./Component/Brahmasutra.fun";
+import BrahmaSutraComponent from './Component/Brahmasutra.component';
+import BrahmasutraFun from './Component/Brahmasutra.fun';
 const BrahmaSutra = () => {
   const {
-    selectedChapter,
-    handleChapterChange,
-    selectedQuarter,
-    handleQuarterChange,
-    selectedSutra,
-    handleSutraChange,
     OptionLength,
+    _changeCodeToEn,
+    _changeCodeToHi,
+    clickEvent,
+    handleChapterChange,
     handleClick,
-    shareRef,
-    shId,
-    sutraContent,
+    handleQuarterChange,
+    handleSutraChange,
     _hideTrans,
     hideTrans,
-    _changeCodeToEn,
     isHindiTranslate,
-    _changeCodeToHi,
-    translateContent,
     isSharePopVisible,
-    clickEvent,
-    site,
+    selectedChapter,
+    selectedQuarter,
+    selectedSutra,
+    shareRef,
     shareTitle,
+    shId,
+    site,
+    sutraContent,
+    translateContent,
   } = BrahmasutraFun();
 
   return (
     <BrahmaSutraComponent
-      selectedChapter={selectedChapter}
-      handleChapterChange={handleChapterChange}
-      selectedQuarter={selectedQuarter}
-      handleQuarterChange={handleQuarterChange}
-      selectedSutra={selectedSutra}
-      handleSutraChange={handleSutraChange}
       OptionLength={OptionLength}
-      handleClick={handleClick}
-      shareRef={shareRef}
-      shId={shId}
-      sutraContent={sutraContent}
-      _hideTrans={_hideTrans}
-      hideTrans={hideTrans}
       _changeCodeToEn={_changeCodeToEn}
       _changeCodeToHi={_changeCodeToHi}
-      isHindiTranslate={isHindiTranslate}
-      translateContent={translateContent}
-      isSharePopVisible={isSharePopVisible}
       clickEvent={clickEvent}
-      site={site}
+      handleChapterChange={handleChapterChange}
+      handleClick={handleClick}
+      handleQuarterChange={handleQuarterChange}
+      handleSutraChange={handleSutraChange}
+      _hideTrans={_hideTrans}
+      hideTrans={hideTrans}
+      isHindiTranslate={isHindiTranslate}
+      isSharePopVisible={isSharePopVisible}
+      selectedChapter={selectedChapter}
+      selectedQuarter={selectedQuarter}
+      selectedSutra={selectedSutra}
+      shareRef={shareRef}
       shareTitle={shareTitle}
+      shId={shId}
+      site={site}
+      sutraContent={sutraContent}
+      translateContent={translateContent}
     />
   );
 };

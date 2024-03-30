@@ -1,27 +1,27 @@
-import { createPortal } from "react-dom";
-import React from "react";
-import SharePop from "../../../componets/SharePop";
-import { ContentPropTypes } from "../../../Function/PropTypes";
+import {createPortal} from 'react-dom';
+import React from 'react';
+import SharePop from '../../../componets/SharePop';
+import {ContentPropTypes} from '../../../Function/PropTypes';
 const SrimadComponent = ({
-  selectedChapter,
+  _changeCodeToEn,
+  _changeCodeToHi,
+  _hideTrans,
+  clickEvent,
   handleChapterChange,
-  selectedShloka,
+  handleClick,
   handleSholkaChange,
+  hideTrans,
+  isHindiTranslate,
+  isSharePopVisible,
   OptionLength,
+  selectedChapter,
+  selectedShloka,
+  shareRef,
+  shareTitle,
   shId,
   ShlokaContent,
-  handleClick,
-  _hideTrans,
-  hideTrans,
-  _changeCodeToEn,
-  isHindiTranslate,
-  _changeCodeToHi,
-  translateContent,
-  isSharePopVisible,
-  clickEvent,
   site,
-  shareTitle,
-  shareRef,
+  translateContent,
 }) => {
   return (
     <>
@@ -36,14 +36,18 @@ const SrimadComponent = ({
                     <div>
                       <div className="filter">
                         <div className="v-ex-widgets clearfix">
-                          <div id="edit-language-wrapper" className="v-ex-widget">
-                            <label htmlFor="edit-language" className="fw-normal">
+                          <div
+                            id="edit-language-wrapper"
+                            className="v-ex-widget">
+                            <label
+                              htmlFor="edit-language"
+                              className="fw-normal">
                               Script
                             </label>
                             <div>
                               <div className="views-widget">
-                                <select defaultValue={"dv"}>
-                                  <option value={"dv"}>Devanagari</option>
+                                <select defaultValue={'dv'}>
+                                  <option value={'dv'}>Devanagari</option>
                                 </select>
                               </div>
                             </div>
@@ -52,8 +56,10 @@ const SrimadComponent = ({
                             <label className="fw-normal">Chapter</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedChapter} onChange={handleChapterChange}>
-                                  {Array.from({ length: 18 }, (_, index) => (
+                                <select
+                                  value={selectedChapter}
+                                  onChange={handleChapterChange}>
+                                  {Array.from({length: 18}, (_, index) => (
                                     <option key={index + 1} value={index + 1}>
                                       {index + 1}
                                     </option>
@@ -66,12 +72,17 @@ const SrimadComponent = ({
                             <label className="fw-normal">Sholka</label>
                             <div>
                               <div className="views-widget">
-                                <select value={selectedShloka} onChange={handleSholkaChange}>
-                                  {Array.from({ length: OptionLength }, (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ))}
+                                <select
+                                  value={selectedShloka}
+                                  onChange={handleSholkaChange}>
+                                  {Array.from(
+                                    {length: OptionLength},
+                                    (_, index) => (
+                                      <option key={index + 1} value={index + 1}>
+                                        {index + 1}
+                                      </option>
+                                    ),
+                                  )}
                                 </select>
                               </div>
                             </div>
@@ -92,31 +103,42 @@ const SrimadComponent = ({
                                 <p className="text-center h-fonts">
                                   <font id={shId} className="fw-normal size-6">
                                     {ShlokaContent
-                                      ? ShlokaContent.split("।")
-                                          .filter((line) => line.trim() !== "")
+                                      ? ShlokaContent.split('।')
+                                          .filter(line => line.trim() !== '')
                                           .map((line, index, array) => (
                                             <React.Fragment key={index}>
                                               {line.trim()}
-                                              {index === 0 ? "।" : ""}
-                                              {index === 1 && selectedChapter <= 18 ? "।।" : ""}
+                                              {index === 0 ? '।' : ''}
+                                              {index === 1 &&
+                                              selectedChapter <= 18
+                                                ? '।।'
+                                                : ''}
                                               {<br />}
-                                              {(index < array.length - 1 && <br />, (<br />))}
+                                              {
+                                                (index < array.length - 1 && (
+                                                  <br />
+                                                ),
+                                                (<br />))
+                                              }
                                             </React.Fragment>
                                           ))
-                                      : "Shloka not found."}
+                                      : 'Shloka not found.'}
                                   </font>
                                 </p>
-                                <div id="shareBottom" className="hov-child ml-auto mr-1 p-absolute">
+                                <div
+                                  id="shareBottom"
+                                  className="hov-child ml-auto mr-1 p-absolute">
                                   <div className="d-flex flex-row">
                                     <div className="">
                                       <button
                                         className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
                                         aria-expanded="false"
-                                        onClick={(event) => {
+                                        onClick={event => {
                                           handleClick(event);
-                                        }}
-                                      >
-                                        <i ref={shareRef} className="sdf material-symbols-outlined">
+                                        }}>
+                                        <i
+                                          ref={shareRef}
+                                          className="sdf material-symbols-outlined">
                                           share
                                         </i>
                                       </button>
@@ -127,7 +149,9 @@ const SrimadComponent = ({
                             </div>
                           </div>
                           <div className="l-t-action">
-                            <div onClick={_hideTrans}>{hideTrans ? "Hide" : "Show"}</div>
+                            <div onClick={_hideTrans}>
+                              {hideTrans ? 'Hide' : 'Show'}
+                            </div>
                           </div>
                           {hideTrans ? (
                             <div className="translate-view">
@@ -135,18 +159,20 @@ const SrimadComponent = ({
                                 <div className="c-lc-action">
                                   <div>
                                     <span onClick={_changeCodeToEn}>
-                                      {isHindiTranslate ? "En" : "English"}
+                                      {isHindiTranslate ? 'En' : 'English'}
                                     </span>
                                   </div>
                                   <div>
                                     <span onClick={_changeCodeToHi}>
-                                      {isHindiTranslate ? "Hindi" : "Hi"}
+                                      {isHindiTranslate ? 'Hindi' : 'Hi'}
                                     </span>
                                   </div>
                                 </div>
                                 <div className="hov-parent">
                                   <p className="text-center h-fonts">
-                                    <font className="fw-normal size-6">{translateContent}</font>
+                                    <font className="fw-normal size-6">
+                                      {translateContent}
+                                    </font>
                                   </p>
                                 </div>
                               </div>

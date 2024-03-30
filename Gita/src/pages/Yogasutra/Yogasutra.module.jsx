@@ -1,5 +1,5 @@
-import YogaSutraComponent from "./Component/Yogasutra.component";
-import YogaSutraFun from "./Component/Yogasutra.fun";
+import YogaSutraComponent from './Component/Yogasutra.component';
+import YogaSutraFun from './Component/Yogasutra.fun';
 const YogaSutra = () => {
   const {
     selectedChapter,
