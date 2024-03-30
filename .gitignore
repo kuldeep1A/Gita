@@ -1,8 +1,4 @@
 
-package-local.json
-package.json
-firebase.json
-.firebaserc
 .idea
 .vs-code
 .vscode
