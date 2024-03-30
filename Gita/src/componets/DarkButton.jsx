@@ -3,8 +3,8 @@ import Svgs from './Svgs';
 const DarkButton = () => {
   return (
     <>
-      <div className="_c-mode">
-        <div onClick={_set_session} className="_dark-bu">
+      <div className='_c-mode'>
+        <div onClick={_set_session} className='_dark-bu'>
           {window.sessionStorage.getItem('isDark') === 'true' ? (
             <>
               <span>{Svgs._svgSunRise()}</span>

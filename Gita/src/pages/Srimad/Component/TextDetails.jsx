@@ -10,13 +10,13 @@ export default function TextDetails() {
   }, []);
   return (
     <>
-      <div className="container">
-        <div className="con-wrap">
-          <div className="c-si-wrap">
-            <div id="content">
-              <section id="post-content" role="main">
-                <h1 className="pa-title">Srimad Bhagavadgita Details</h1>
-                <div className="fi-items">
+      <div className='container'>
+        <div className='con-wrap'>
+          <div className='c-si-wrap'>
+            <div id='content'>
+              <section id='post-content' role='main'>
+                <h1 className='pa-title'>Srimad Bhagavadgita Details</h1>
+                <div className='fi-items'>
                   <p>
                     <b>Bhagavadgita </b>
                     with the Commentary of Sankaracharya translated by Swami

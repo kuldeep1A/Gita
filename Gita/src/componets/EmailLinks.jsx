@@ -5,7 +5,7 @@ export const EmailLinkD = ({email, subject}) => {
   )}&su=${encodeURIComponent(subject)}`;
 
   return (
-    <a target="_blank" href={mailtoLink} rel="noreferrer">
+    <a target='_blank' href={mailtoLink} rel='noreferrer'>
       {email}
     </a>
   );
@@ -13,7 +13,7 @@ export const EmailLinkD = ({email, subject}) => {
 export const EmailLinkM = ({email, subject}) => {
   const mailtoLink = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}`;
   return (
-    <a target="_blank" href={mailtoLink} rel="noreferrer">
+    <a target='_blank' href={mailtoLink} rel='noreferrer'>
       {email}
     </a>
   );

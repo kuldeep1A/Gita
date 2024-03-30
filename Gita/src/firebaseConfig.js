@@ -14,4 +14,5 @@ const app = initializeApp(firebaseConfig);
 export const database = initializeFirestore(app, {
   experimentalLongPollingOptions: true,
   localCache: memoryLocalCache(),
+  useFetchStreams: false,
 });

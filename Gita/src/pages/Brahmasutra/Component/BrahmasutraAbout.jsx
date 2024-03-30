@@ -10,14 +10,14 @@ export default function BrahmasutraAbout() {
   }, []);
   return (
     <>
-      <div className="container">
-        <div className="con-wrap">
-          <div className="c-si-wrap">
-            <div id="content">
-              <section id="post-content" role="main">
-                <h1 className="pa-title">About Brahma Sutra</h1>
-                <div className="fi-items">
-                  <p className="size-7">
+      <div className='container'>
+        <div className='con-wrap'>
+          <div className='c-si-wrap'>
+            <div id='content'>
+              <section id='post-content' role='main'>
+                <h1 className='pa-title'>About Brahma Sutra</h1>
+                <div className='fi-items'>
+                  <p className='size-7'>
                     Vedanta philosophy acknowledges the Prasthana Trayi as its
                     three authoritative primary sources. The texts comprising
                     the Prasthana Trayi are the Upanishads, the Bhagavadgita and
@@ -31,7 +31,7 @@ export default function BrahmasutraAbout() {
                     considered complete without a close examination of the
                     Prasthana Trayi.
                   </p>
-                  <p className="size-7">
+                  <p className='size-7'>
                     While the Upanishads and the Bhagavadgita are authoritative
                     Vedanta texts, it is in the Brahma Sutra that the teachings
                     of Vedanta are set forth in a systematic and logical order.
@@ -39,7 +39,7 @@ export default function BrahmasutraAbout() {
                     the Vedanta Sutra, Uttara-mimamsa Sutra, Shariraka Sutra and
                     the Bhikshu Sutra.
                   </p>
-                  <p className="size-7">
+                  <p className='size-7'>
                     The Brahma Sutra consists of 555 aphorisms or sutras, in 4
                     chapters, each chapter being divided into 4 sections each.
                     The first chapter (Samanvaya: harmony) explains that all the
@@ -51,7 +51,7 @@ export default function BrahmasutraAbout() {
                     can be achieved. The fourth chapter (Phala: the fruit) talks
                     of the state that is achieved in final emancipation.
                   </p>
-                  <p className="size-7">
+                  <p className='size-7'>
                     Indian tradition identifies Badrayana, the author of the
                     Brahma Sutra, with Vyasa, the compiler of the Vedas. Many
                     commentaries have been written on this text, the earliest

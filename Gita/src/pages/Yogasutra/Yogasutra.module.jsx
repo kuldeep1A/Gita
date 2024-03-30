@@ -2,78 +2,78 @@ import YogaSutraComponent from './Component/Yogasutra.component';
 import YogaSutraFun from './Component/Yogasutra.fun';
 const YogaSutra = () => {
   const {
-    selectedChapter,
+    _changeCodeToEn,
+    _changeCodeToHi,
+    _hideTrans,
+    areAnyCheckboxesChecked,
+    BhasyaContent,
+    clickEvent,
     handleChapterChange,
-    selectedSutra,
-    handleSutraChange,
-    OptionLength,
     handleCheckboxChange,
+    handleClick,
+    handleSutraChange,
+    hideTrans,
+    isHindiTranslate,
+    isSharePopVisible,
     isViewBhasya,
     isViewSutra,
     isViewVritti,
-    shsId,
-    SutraContent,
-    handleClick,
+    OptionLength,
+    selectedChapter,
+    selectedSutra,
     setShareTC,
+    setWhichSutra,
+    shbId,
+    shId,
     shareRefB,
     shareRefS,
     shareRefV,
     shareTitle,
-    shbId,
+    shsId,
     shvId,
-    BhasyaContent,
-    VrittiContent,
-    _hideTrans,
-    hideTrans,
-    _changeCodeToEn,
-    _changeCodeToHi,
-    isHindiTranslate,
-    setWhichSutra,
-    whichSutra,
-    translateContent,
-    clickEvent,
-    shId,
     site,
-    isSharePopVisible,
-    areAnyCheckboxesChecked,
+    SutraContent,
+    translateContent,
+    VrittiContent,
+    whichSutra,
   } = YogaSutraFun();
 
   return (
     <YogaSutraComponent
-      selectedChapter={selectedChapter}
+      _changeCodeToEn={_changeCodeToEn}
+      _changeCodeToHi={_changeCodeToHi}
+      _hideTrans={_hideTrans}
+      areAnyCheckboxesChecked={areAnyCheckboxesChecked}
+      BhasyaContent={BhasyaContent}
+      clickEvent={clickEvent}
       handleChapterChange={handleChapterChange}
-      selectedSutra={selectedSutra}
-      handleSutraChange={handleSutraChange}
-      OptionLength={OptionLength}
       handleCheckboxChange={handleCheckboxChange}
+      handleClick={handleClick}
+      handleSutraChange={handleSutraChange}
+      hideTrans={hideTrans}
+      isHindiTranslate={isHindiTranslate}
+      isSharePopVisible={isSharePopVisible}
       isViewBhasya={isViewBhasya}
       isViewSutra={isViewSutra}
       isViewVritti={isViewVritti}
-      shsId={shsId}
-      SutraContent={SutraContent}
-      handleClick={handleClick}
+      OptionLength={OptionLength}
+      selectedChapter={selectedChapter}
+      selectedSutra={selectedSutra}
       setShareTC={setShareTC}
+      setWhichSutra={setWhichSutra}
+      shbId={shbId}
+      shId={shId}
       shareRefB={shareRefB}
       shareRefS={shareRefS}
       shareRefV={shareRefV}
       shareTitle={shareTitle}
-      shbId={shbId}
+      shsId={shsId}
       shvId={shvId}
-      BhasyaContent={BhasyaContent}
-      VrittiContent={VrittiContent}
-      _hideTrans={_hideTrans}
-      hideTrans={hideTrans}
-      _changeCodeToEn={_changeCodeToEn}
-      _changeCodeToHi={_changeCodeToHi}
-      isHindiTranslate={isHindiTranslate}
-      setWhichSutra={setWhichSutra}
-      whichSutra={whichSutra}
-      translateContent={translateContent}
-      clickEvent={clickEvent}
-      shId={shId}
       site={site}
-      isSharePopVisible={isSharePopVisible}
-      areAnyCheckboxesChecked={areAnyCheckboxesChecked}
+      SutraContent={SutraContent}
+      translateContent={translateContent}
+      VrittiContent={VrittiContent}
+      whichSutra={whichSutra}
     />
   );
 };

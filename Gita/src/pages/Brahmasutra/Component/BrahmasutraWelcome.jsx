@@ -16,14 +16,14 @@ export default function BrahmasutraWelcome() {
   }, []);
   return (
     <>
-      <div className="container">
-        <div className="con-wrap">
-          <div className="c-si-wrap">
-            <div id="content">
-              <section id="post-content" role="main">
-                <h1 className="pa-title">Welcome to Brahma Sutra!</h1>
-                <div className="fi-items">
-                  <p className="size-7">
+      <div className='container'>
+        <div className='con-wrap'>
+          <div className='c-si-wrap'>
+            <div id='content'>
+              <section id='post-content' role='main'>
+                <h1 className='pa-title'>Welcome to Brahma Sutra!</h1>
+                <div className='fi-items'>
+                  <p className='size-7'>
                     Read Badrayana’s Brahma Sutra, the authoritative text that
                     systematically expounds Vedanta philosophy. Also read Adi
                     Sankara’s monumental commentary on this work. These Sanskrit
@@ -31,10 +31,10 @@ export default function BrahmasutraWelcome() {
                     language scripts, including Roman.
                   </p>
                   <div style={imageStyle}>
-                    <img src={welcome} draggable="false" alt="welcome banner" />
+                    <img src={welcome} draggable='false' alt='welcome banner' />
                   </div>
                   <h1>
-                    <Link to="/brahmasutra">View Sutras</Link>
+                    <Link to='/brahmasutra'>View Sutras</Link>
                   </h1>
                 </div>
               </section>

@@ -13,11 +13,11 @@ export default function Home() {
   };
   return (
     <>
-      <div className="r-f-welcome">
-        <div className="content">
+      <div className='r-f-welcome'>
+        <div className='content'>
           <span style={colorx}>
             <strong>
-              <span className="_notice">
+              <span className='_notice'>
                 NOTICE: Users can edit content now. If you want to be an editor,
                 please send your credentials with offical
                 <em style={{color: 'black', fontWeight: 'bold'}}>
@@ -30,25 +30,25 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container">
-        <div className="con-wrap">
-          <div className="c-si-wrap">
-            <div id="content">
-              <section id="post-content" role="main">
-                <h1 className="pa-title">Welcome to Gita Site!</h1>
-                <div className="fi-items">
-                  <table className="homepage">
+      <div className='container'>
+        <div className='con-wrap'>
+          <div className='c-si-wrap'>
+            <div id='content'>
+              <section id='post-content' role='main'>
+                <h1 className='pa-title'>Welcome to Gita Site!</h1>
+                <div className='fi-items'>
+                  <table className='homepage'>
                     <tbody>
                       <tr>
                         <td>
-                          <Link to="/srimadIntro">
+                          <Link to='/srimadIntro'>
                             <strong>Srimad BhagavadGita</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="/othergitas">
+                          <Link to='/othergitas'>
                             <strong>Other Gitas</strong>
                           </Link>
                           <br />
@@ -57,17 +57,17 @@ export default function Home() {
                       </tr>
                       <tr>
                         <td>
-                          <Link className="user-none pointer-event-none" to="">
+                          <Link className='user-none pointer-event-none' to=''>
                             <strong>
                               Ramcharitmanas
-                              <span className="not-available"></span>
+                              <span className='not-available'></span>
                             </strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="/valmikiramayana">
+                          <Link to='/valmikiramayana'>
                             <strong>Valmiki Ramayana</strong>
                           </Link>
                           <br />
@@ -76,14 +76,14 @@ export default function Home() {
                       </tr>
                       <tr>
                         <td>
-                          <Link to="/brahmasutraWelcome">
+                          <Link to='/brahmasutraWelcome'>
                             <strong>Brahma Sutra</strong>
                           </Link>
                           <br />
                           &nbsp;
                         </td>
                         <td>
-                          <Link to="yogasutra">
+                          <Link to='yogasutra'>
                             <strong>Yoga Sutra</strong>
                           </Link>
                           <br />
@@ -96,10 +96,10 @@ export default function Home() {
               </section>
             </div>
           </div>
-          <div className="fse-describe user-none pointer-event-none">
+          <div className='fse-describe user-none pointer-event-none'>
             <h1>
-              <strong className="size-9">
-                <span className="not-available"></span> : Not Available
+              <strong className='size-9'>
+                <span className='not-available'></span> : Not Available
               </strong>
             </h1>
           </div>

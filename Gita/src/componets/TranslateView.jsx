@@ -48,9 +48,9 @@ export const TranslateView = ({
     }
   };
   return (
-    <div className="translate-view">
-      <div className="v-fi_sutra">
-        <div className="c-lc-action">
+    <div className='translate-view'>
+      <div className='v-fi_sutra'>
+        <div className='c-lc-action'>
           <div>
             <span onClick={_changeCodeToEn}>
               {isHindiTranslate ? 'En' : 'English'}
@@ -62,12 +62,12 @@ export const TranslateView = ({
             </span>
           </div>
         </div>
-        <div className="hov-parent">
-          <p className="text-center h-fonts">
-            <font className="fw-normal size-6">{translateContent}</font>
+        <div className='hov-parent'>
+          <p className='text-center h-fonts'>
+            <font className='fw-normal size-6'>{translateContent}</font>
           </p>
           {supported && translateContent !== 'Wait for Shloka!' ? (
-            <div className="audio-button">
+            <div className='audio-button'>
               <div onClick={() => handleSpeak()}>{getAudioIcon()}</div>
             </div>
           ) : (

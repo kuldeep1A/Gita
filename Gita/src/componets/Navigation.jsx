@@ -29,41 +29,41 @@ const Navigation = () => {
   });
   return (
     <>
-      <div className="_top">
-        <div className="in_he_wrap">
-          <header id="h" role="banner">
-            <div className="top_l">
-              <div id="logo">
-                <Link to="/" title="Home">
+      <div className='_top'>
+        <div className='in_he_wrap'>
+          <header id='h' role='banner'>
+            <div className='top_l'>
+              <div id='logo'>
+                <Link to='/' title='Home'>
                   {_isDark ? (
                     <>
-                      <img src={gita1ab} alt="Gita" />
+                      <img src={gita1ab} alt='Gita' />
                     </>
                   ) : (
                     <>
-                      <img src={gita1aw} alt="Gita" />
+                      <img src={gita1aw} alt='Gita' />
                     </>
                   )}
                 </Link>
               </div>
             </div>
 
-            <div className="top_r">
-              <div className="region re-search">
+            <div className='top_r'>
+              <div className='region re-search'>
                 <div
-                  id="b-s-form"
+                  id='b-s-form'
                   style={{
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                   }}>
-                  <div className="content">
+                  <div className='content'>
                     <div>
                       <div>
                         <div>
                           <input
-                            type="text"
-                            className="f-text"
+                            type='text'
+                            className='f-text'
                             value={searchValue}
                             onChange={e => setSearchValue(e.target.value)}
                             onKeyUp={event => {
@@ -74,12 +74,12 @@ const Navigation = () => {
                             }}
                           />
                         </div>
-                        <div id="edit-actions">
+                        <div id='edit-actions'>
                           <button
                             onClick={redirectSearchPage}
-                            type="button"
-                            name="Search Button"
-                            className="f-submit"
+                            type='button'
+                            name='Search Button'
+                            className='f-submit'
                             style={{
                               background: `url(${searchIcon}) no-repeat center top`,
                             }}
@@ -101,151 +101,151 @@ const Navigation = () => {
               </div>
             </div>
 
-            <div className="clear"></div>
+            <div className='clear'></div>
           </header>
         </div>
-        <div className="me_wrap">
-          <nav id="main-me" role="navigation">
-            <Link to="#" className="nav-toggle" onClick={handleToggleMenu}>
+        <div className='me_wrap'>
+          <nav id='main-me' role='navigation'>
+            <Link to='#' className='nav-toggle' onClick={handleToggleMenu}>
               Navigation
             </Link>
-            <div className="menu-navigation-container">
+            <div className='menu-navigation-container'>
               <ul className={`menu text-center  ${isMenuOpen ? 'open' : ''}`}>
-                <li className="first leaf m">
+                <li className='first leaf m'>
                   <Link
-                    to="/"
-                    title=""
-                    className="active"
+                    to='/'
+                    title=''
+                    className='active'
                     onClick={handleToggleMenu}>
                     Home
                   </Link>
                 </li>
-                <li className="leaf m" onClick={handleToggleMenu}>
-                  <Link to="/about">About Website</Link>
+                <li className='leaf m' onClick={handleToggleMenu}>
+                  <Link to='/about'>About Website</Link>
                 </li>
-                <li className="leaf m" onClick={handleToggleMenu}>
-                  <Link to="/history">
+                <li className='leaf m' onClick={handleToggleMenu}>
+                  <Link to='/history'>
                     History{' '}
-                    <span title="Some Copyright" className="cp-chra">
+                    <span title='Some Copyright' className='cp-chra'>
                       ©
                     </span>
                   </Link>
                 </li>
-                <li className="leaf m" onClick={handleToggleMenu}>
-                  <Link to="/team">Our Team</Link>
+                <li className='leaf m' onClick={handleToggleMenu}>
+                  <Link to='/team'>Our Team</Link>
                 </li>
-                <li className="expanded">
+                <li className='expanded'>
                   <Link
-                    to="/QuickLinks"
-                    title=""
-                    className="active"
+                    to='/QuickLinks'
+                    title=''
+                    className='active'
                     onClick={handleToggleMenu}>
                     Quick Links
                   </Link>
-                  <ul className="menu text-left">
-                    <li className="first expanded">
-                      <Link to="/srimad" title="Srimad BhagavadGita">
+                  <ul className='menu text-left'>
+                    <li className='first expanded'>
+                      <Link to='/srimad' title='Srimad BhagavadGita'>
                         Srimad BhagavadGita
                       </Link>
-                      <ul className="menu">
-                        <li className="first leaf">
-                          <Link to="/srimadIntro" title="Introduction">
+                      <ul className='menu'>
+                        <li className='first leaf'>
+                          <Link to='/srimadIntro' title='Introduction'>
                             Introduction
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/srimad" title="Srimadn Content">
+                        <li className='leaf'>
+                          <Link to='/srimad' title='Srimadn Content'>
                             Content
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/srimadTextdetails" title="Text Details">
+                        <li className='leaf'>
+                          <Link to='/srimadTextdetails' title='Text Details'>
                             Text Details
                           </Link>
                         </li>
                       </ul>
                     </li>
-                    <li className="expanded">
-                      <Link to="/othergitas" title="Other Gitas">
+                    <li className='expanded'>
+                      <Link to='/othergitas' title='Other Gitas'>
                         Other Gitas
                       </Link>
-                      <ul className="menu">
-                        <li className="first leaf">
-                          <Link to="/ashtavakra" title="Ashtavakra Gita">
+                      <ul className='menu'>
+                        <li className='first leaf'>
+                          <Link to='/ashtavakra' title='Ashtavakra Gita'>
                             Ashtavakra Gita
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/avadhuta" title="Avadhuta Gita">
+                        <li className='leaf'>
+                          <Link to='/avadhuta' title='Avadhuta Gita'>
                             Avadhuta Gita
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/kapila" title="Kapila Gita">
+                        <li className='leaf'>
+                          <Link to='/kapila' title='Kapila Gita'>
                             Kapila Gita
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/sriram" title="Sriram Gita">
+                        <li className='leaf'>
+                          <Link to='/sriram' title='Sriram Gita'>
                             Sriram Gita
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/sruti" title="Sruti Gita">
+                        <li className='leaf'>
+                          <Link to='/sruti' title='Sruti Gita'>
                             Sruti Gita
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/uddhava" title="Uddhava Gita">
+                        <li className='leaf'>
+                          <Link to='/uddhava' title='Uddhava Gita'>
                             Uddhava Gita
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/vibhishana" title="Vibhishana Gita">
+                        <li className='leaf'>
+                          <Link to='/vibhishana' title='Vibhishana Gita'>
                             Vibhishana Gita
                           </Link>
                         </li>
                       </ul>
                     </li>
-                    <li className="expanded">
-                      <Link to="/brahmasutra" title="Brahmasutra content">
+                    <li className='expanded'>
+                      <Link to='/brahmasutra' title='Brahmasutra content'>
                         BrahmaSutra (ब्रह्मसूत्र)
                       </Link>
-                      <ul className="menu">
-                        <li className="first leaf">
-                          <Link title="Welcome" to="/brahmasutraWelcome">
+                      <ul className='menu'>
+                        <li className='first leaf'>
+                          <Link title='Welcome' to='/brahmasutraWelcome'>
                             Welcome
                           </Link>
                         </li>
-                        <li className="leaf">
-                          <Link to="/brahmasutraAbout">About Brahma Sutra</Link>
+                        <li className='leaf'>
+                          <Link to='/brahmasutraAbout'>About Brahma Sutra</Link>
                         </li>
-                        <li className="last leaf">
-                          <Link to="/brahmasutra" title="Brahmasutra content">
+                        <li className='last leaf'>
+                          <Link to='/brahmasutra' title='Brahmasutra content'>
                             Content
                           </Link>
                         </li>
                       </ul>
                     </li>
-                    <li className="last expanded">
-                      <Link to="yogasutra" title="Yogasutra content">
+                    <li className='last expanded'>
+                      <Link to='yogasutra' title='Yogasutra content'>
                         YogaSutra
                       </Link>
                     </li>
                   </ul>
                 </li>
 
-                <li className="leaf m" onClick={handleToggleMenu}>
-                  <Link to="/contact">Contact</Link>
+                <li className='leaf m' onClick={handleToggleMenu}>
+                  <Link to='/contact'>Contact</Link>
                 </li>
-                <li className="last leaf m" onClick={handleToggleMenu}>
-                  <Link to="/login" title="Admin Server">
+                <li className='last leaf m' onClick={handleToggleMenu}>
+                  <Link to='/login' title='Admin Server'>
                     Login
                   </Link>
                 </li>
                 {_innerWidth > 820 ? (
                   <>
-                    <div className="_c-sec" style={{display: 'inline'}}>
+                    <div className='_c-sec' style={{display: 'inline'}}>
                       <DarkButton />
                     </div>
                   </>
@@ -254,7 +254,7 @@ const Navigation = () => {
                 )}
               </ul>
             </div>
-            <div className="clear"></div>
+            <div className='clear'></div>
           </nav>
         </div>
         <Outlet />

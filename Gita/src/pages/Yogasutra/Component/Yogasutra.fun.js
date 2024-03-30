@@ -1,7 +1,6 @@
 import {useState, useEffect, useRef, useCallback} from 'react';
-import {collection, getDocs, doc, getDoc} from 'firebase/firestore';
-import {database} from '../../../firebaseConfig';
 import {_translate} from '../../../Function/utils';
+import {fetchGitasContent} from '../../../services/services';
 
 const YogaSutraFun = () => {
   useEffect(() => {
@@ -10,7 +9,6 @@ const YogaSutraFun = () => {
       document.title = 'Yogasutra | Gita';
     };
   }, []);
-  const [idC, setidC] = useState('');
   const [OptionLength, setOptionLength] = useState(1);
   const [selectedChapter, setSelectedChapter] = useState(1);
   const [selectedSutra, setSelectedSutra] = useState(1);
@@ -196,79 +194,66 @@ const YogaSutraFun = () => {
   const areAnyCheckboxesChecked = isViewBhasya && isViewSutra && isViewVritti;
 
   useEffect(() => {
-    const fetching = async () => {
-      try {
-        const pathC = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}`;
-        const refC = collection(database, pathC);
-        getDocs(refC).then(snapshot => {
-          snapshot.docs.forEach(doc => {
-            setidC(`${doc.id}`);
-          });
-        });
-        if (idC) {
-          const documentPath = `/yogasutra/sRlub19VnFbWvEfx4nGi/Chapter${selectedChapter}/${idC}`;
-          const docRef = doc(database, documentPath);
-          const docSanpshot = await getDoc(docRef);
-          if (docSanpshot.exists) {
-            const SutraData = docSanpshot.data();
-            if (SutraData !== undefined && SutraData !== null) {
-              const SutraArrays = Object.entries(SutraData).map(
-                ([key, value]) => ({
-                  key,
-                  value,
-                }),
-              );
-              setOptionLength(SutraArrays.length / 3);
-              const Sutra = SutraData[`Sutra${selectedSutra}`];
-              const Bhasya = SutraData[`Bhashya${selectedSutra}`];
-              const Vritti = SutraData[`Vritti${selectedSutra}`];
-              setSutraContent(Sutra);
-              setBhasyaContent(Bhasya);
-              setVrittiContent(Vritti);
-            }
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching sutras content: ', error);
-      }
-    };
-    fetching();
-  }, [idC, selectedChapter, selectedSutra]);
+    let _pathB = `/gitas/database/yogasutra/chapters/Chapter${selectedChapter}/shlokas/Bhashya/shlokasdoc`;
+    let _pathS = `/gitas/database/yogasutra/chapters/Chapter${selectedChapter}/shlokas/Sutra/shlokasdoc`;
+    let _pathV = `/gitas/database/yogasutra/chapters/Chapter${selectedChapter}/shlokas/Vritti/shlokasdoc`;
+    fetchGitasContent({
+      _path: _pathB,
+      setOptionLength,
+      selectedShloka: selectedSutra,
+      setShlokaContent: setBhasyaContent,
+      _fieldname: 'Bhashya',
+    });
+    fetchGitasContent({
+      _path: _pathS,
+      setOptionLength,
+      selectedShloka: selectedSutra,
+      setShlokaContent: setSutraContent,
+      _fieldname: 'Sutra',
+    });
+    fetchGitasContent({
+      _path: _pathV,
+      setOptionLength,
+      selectedShloka: selectedSutra,
+      setShlokaContent: setVrittiContent,
+      _fieldname: 'Vritti',
+    });
+  }, [selectedChapter, selectedSutra]);
   return {
-    selectedChapter,
+    _changeCodeToEn,
+    _changeCodeToHi,
+    _hideTrans,
+    areAnyCheckboxesChecked,
+    BhasyaContent,
+    clickEvent,
     handleChapterChange,
-    selectedSutra,
-    handleSutraChange,
-    OptionLength,
     handleCheckboxChange,
+    handleClick,
+    handleSutraChange,
+    hideTrans,
+    isHindiTranslate,
+    isSharePopVisible,
     isViewBhasya,
     isViewSutra,
     isViewVritti,
-    shsId,
-    SutraContent,
-    handleClick,
+    OptionLength,
+    selectedChapter,
+    selectedSutra,
     setShareTC,
+    setWhichSutra,
+    shbId,
+    shId,
     shareRefB,
     shareRefS,
     shareRefV,
     shareTitle,
-    shbId,
+    shsId,
     shvId,
-    BhasyaContent,
-    VrittiContent,
-    _hideTrans,
-    hideTrans,
-    _changeCodeToEn,
-    _changeCodeToHi,
-    isHindiTranslate,
-    setWhichSutra,
-    whichSutra,
-    translateContent,
-    clickEvent,
-    shId,
     site,
-    isSharePopVisible,
-    areAnyCheckboxesChecked,
+    SutraContent,
+    translateContent,
+    VrittiContent,
+    whichSutra,
   };
 };
 export default YogaSutraFun;

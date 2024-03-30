@@ -5,6 +5,6 @@
     "trailingComma": "all",
     "bracketSpacing": false,
     "bracketSameLine": true,
-    "jsxSingleQuote": false,
+    "jsxSingleQuote": true,
     "arrowParens": "avoid"
 }

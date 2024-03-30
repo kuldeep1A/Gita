@@ -26,27 +26,27 @@ const ValmikiramayanaComponent = ({
 }) => {
   return (
     <>
-      <div className="container">
-        <div className="con-wrap">
-          <div className="c-si-wrap">
-            <div id="content">
-              <section id="post-content" role="main">
-                <h1 className="pa-title">Valmiki Ramayana</h1>
-                <div className="region region-content">
-                  <div className="content">
+      <div className='container'>
+        <div className='con-wrap'>
+          <div className='c-si-wrap'>
+            <div id='content'>
+              <section id='post-content' role='main'>
+                <h1 className='pa-title'>Valmiki Ramayana</h1>
+                <div className='region region-content'>
+                  <div className='content'>
                     <div>
-                      <div className="filter">
-                        <div className="v-ex-widgets clearfix">
+                      <div className='filter'>
+                        <div className='v-ex-widgets clearfix'>
                           <div
-                            id="edit-language-wrapper"
-                            className="v-ex-widget">
+                            id='edit-language-wrapper'
+                            className='v-ex-widget'>
                             <label
-                              htmlFor="edit-language"
-                              className="fw-normal">
+                              htmlFor='edit-language'
+                              className='fw-normal'>
                               Script
                             </label>
                             <div>
-                              <div className="views-widget">
+                              <div className='views-widget'>
                                 <select defaultValue={'dv'}>
                                   <option value={'dv'}>Devanagari</option>
                                 </select>
@@ -54,15 +54,15 @@ const ValmikiramayanaComponent = ({
                             </div>
                           </div>
                           <div
-                            id="edit-language-wrapper"
-                            className="v-ex-widget">
+                            id='edit-language-wrapper'
+                            className='v-ex-widget'>
                             <label
-                              htmlFor="edit-language"
-                              className="fw-normal">
+                              htmlFor='edit-language'
+                              className='fw-normal'>
                               Kanda
                             </label>
                             <div>
-                              <div className="views-widget">
+                              <div className='views-widget'>
                                 <select
                                   defaultValue={'BALAKANDA'}
                                   onChange={handleKandaChange}>
@@ -77,10 +77,10 @@ const ValmikiramayanaComponent = ({
                               </div>
                             </div>
                           </div>
-                          <div id="edit-field-chapter" className="v-ex-widget">
-                            <label className="fw-normal">Sarga</label>
+                          <div id='edit-field-chapter' className='v-ex-widget'>
+                            <label className='fw-normal'>Sarga</label>
                             <div>
-                              <div className="views-widget">
+                              <div className='views-widget'>
                                 <select
                                   value={selectedSarga}
                                   onChange={handleSargaChange}>
@@ -96,10 +96,10 @@ const ValmikiramayanaComponent = ({
                               </div>
                             </div>
                           </div>
-                          <div id="edit-field-shloka" className="v-ex-widget">
-                            <label className="fw-normal">Shloka</label>
+                          <div id='edit-field-shloka' className='v-ex-widget'>
+                            <label className='fw-normal'>Shloka</label>
                             <div>
-                              <div className="views-widget">
+                              <div className='views-widget'>
                                 <select
                                   value={selectedShloka}
                                   onChange={handleShlokaChange}>
@@ -117,26 +117,26 @@ const ValmikiramayanaComponent = ({
                           </div>
                         </div>
                       </div>
-                      <div className="c-dis-sutra">
+                      <div className='c-dis-sutra'>
                         <div>
-                          <div className="v-fi_sutra">
-                            <p className="text-center">
-                              <font className="color-dark-aubergine fw-normal size-6">
+                          <div className='v-fi_sutra'>
+                            <p className='text-center'>
+                              <font className='color-dark-aubergine fw-normal size-6'>
                                 <b>Shloka</b>
                                 <br />
                               </font>
                             </p>
-                            <div className="hov-parent">
-                              <p className="text-center h-fonts">
+                            <div className='hov-parent'>
+                              <p className='text-center h-fonts'>
                                 <font
                                   id={shId}
-                                  className="fw-normal size-6 line-100">
+                                  className='fw-normal size-6 line-100'>
                                   {selectedShloka === 1 &&
                                   shlokaData.content ? (
                                     <React.Fragment>
                                       <>
-                                        <span className="d-block">
-                                          <span className="d-block eng-title size-8 line-50">
+                                        <span className='d-block'>
+                                          <span className='d-block eng-title size-8 line-50'>
                                             {`[${sanEng(shlokaData.content, 0, false)[0]}]`}
                                           </span>
                                         </span>
@@ -180,19 +180,19 @@ const ValmikiramayanaComponent = ({
                                 </font>
                               </p>
                               <div
-                                id="shareBottom"
-                                className="hov-child ml-auto mr-1 p-absolute">
-                                <div className="d-flex flex-row">
-                                  <div className="">
+                                id='shareBottom'
+                                className='hov-child ml-auto mr-1 p-absolute'>
+                                <div className='d-flex flex-row'>
+                                  <div className=''>
                                     <button
-                                      className="d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer"
-                                      aria-expanded="false"
+                                      className='d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer'
+                                      aria-expanded='false'
                                       onClick={event => {
                                         handleClick(event);
                                       }}>
                                       <i
                                         ref={shareRef}
-                                        className="sdf material-symbols-outlined">
+                                        className='sdf material-symbols-outlined'>
                                         share
                                       </i>
                                     </button>
@@ -202,28 +202,28 @@ const ValmikiramayanaComponent = ({
                             </div>
                           </div>
                         </div>
-                        <div className="l-t-action">
+                        <div className='l-t-action'>
                           <div onClick={_hideTrans}>
                             {hideTrans ? 'Hide' : 'Show'}
                           </div>
                         </div>
                         {hideTrans ? (
-                          <div className="translate-view">
-                            <div className="v-fi_sutra">
-                              <p className="text-left">
-                                <font className="color-dark-aubergine fw-normal size-6">
+                          <div className='translate-view'>
+                            <div className='v-fi_sutra'>
+                              <p className='text-left'>
+                                <font className='color-dark-aubergine fw-normal size-6'>
                                   <b>Translate</b>
                                   <br />
                                 </font>
                               </p>
-                              <p className="h-fonts">
-                                <font className="fw-normal size-6 line-150">
+                              <p className='h-fonts'>
+                                <font className='fw-normal size-6 line-150'>
                                   {shlokaData.translate}
                                 </font>
                               </p>
                               <br />
-                              <p className="h-fonts">
-                                <font className="fw-normal size-6 line-150">
+                              <p className='h-fonts'>
+                                <font className='fw-normal size-6 line-150'>
                                   {shlokaData.description}
                                 </font>
                               </p>
@@ -236,7 +236,7 @@ const ValmikiramayanaComponent = ({
                     </div>
                   </div>
                 </div>
-                <div className="_is-database-available-on-kuldeep1a-dataset">
+                <div className='_is-database-available-on-kuldeep1a-dataset'>
                   <div>
                     <span style={{marginRight: '10px'}}>KISHKINDAKANDA,</span>
                     <span style={{marginRight: '10px'}}>SUNDARAKANDA,</span>

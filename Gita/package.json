@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prettier": "prettier --write ./src"
+    "prettier": "prettier --write ./src/**/*.{js,jsx,ts,tsx,css} && prettier --write **/*.css"
   },
   "dependencies": {
     "@kreisler/js-google-translate-free": "^4.0.2",
