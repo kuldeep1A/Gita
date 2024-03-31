@@ -13,7 +13,7 @@ export const fetchGitasContent = async ({
   try {
     const refC = doc(database, _path);
     const snapshot = await getDoc(refC);
-    if (snapshot.exists) {
+    if (snapshot.exists()) {
       const data = snapshot?.data();
       setOptionLength(data ? Object.keys(data).length : 1);
       const key = `${_fieldname}${selectedShloka}`;
