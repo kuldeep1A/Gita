@@ -141,6 +141,8 @@ export const valmikiramayanaPropTypes = {
   shId: PropTypes.string,
   shareRef: PropTypes.object,
   shareTitle: PropTypes.string,
-  shlokaData: PropTypes.object,
+  shlokaContent: PropTypes.string,
+  shlokaDescription: PropTypes.string,
+  shlokaTranslate: PropTypes.string,
   site: PropTypes.string,
 };

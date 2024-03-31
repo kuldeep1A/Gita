@@ -20,31 +20,35 @@ const Valmikiramayana = () => {
     shId,
     shareRef,
     shareTitle,
-    shlokaData,
+    shlokaContent,
+    shlokaDescription,
+    shlokaTranslate,
     site,
   } = useValmikiramayanaLogic();
 
   return (
     <ValmikiramayanaComponent
+      _hideTrans={_hideTrans}
+      clickEvent={clickEvent}
+      handleClick={handleClick}
       handleKandaChange={handleKandaChange}
-      selectedSarga={selectedSarga}
       handleSargaChange={handleSargaChange}
       handleSargaLen={handleSargaLen}
-      selectedShloka={selectedShloka}
       handleShlokaChange={handleShlokaChange}
       shlokaOptionLen={shlokaOptionLen}
-      shId={shId}
-      shlokaData={shlokaData}
-      sanEng={sanEng}
-      selectedKanda={selectedKanda}
-      handleClick={handleClick}
-      shareRef={shareRef}
-      _hideTrans={_hideTrans}
       hideTrans={hideTrans}
       isSharePopVisible={isSharePopVisible}
-      clickEvent={clickEvent}
-      site={site}
+      sanEng={sanEng}
+      selectedKanda={selectedKanda}
+      selectedSarga={selectedSarga}
+      selectedShloka={selectedShloka}
+      shId={shId}
+      shareRef={shareRef}
       shareTitle={shareTitle}
+      shlokaContent={shlokaContent}
+      shlokaDescription={shlokaDescription}
+      shlokaTranslate={shlokaTranslate}
+      site={site}
     />
   );
 };

@@ -21,7 +21,9 @@ const ValmikiramayanaComponent = ({
   shId,
   shareRef,
   shareTitle,
-  shlokaData,
+  shlokaContent,
+  shlokaDescription,
+  shlokaTranslate,
   site,
 }) => {
   return (
@@ -131,13 +133,12 @@ const ValmikiramayanaComponent = ({
                                 <font
                                   id={shId}
                                   className='fw-normal size-6 line-100'>
-                                  {selectedShloka === 1 &&
-                                  shlokaData.content ? (
+                                  {selectedShloka === 1 && shlokaContent ? (
                                     <React.Fragment>
                                       <>
                                         <span className='d-block'>
                                           <span className='d-block eng-title size-8 line-50'>
-                                            {`[${sanEng(shlokaData.content, 0, false)[0]}]`}
+                                            {`[${sanEng(shlokaContent, 0, false)[0]}]`}
                                           </span>
                                         </span>
                                       </>
@@ -145,8 +146,8 @@ const ValmikiramayanaComponent = ({
                                   ) : (
                                     ''
                                   )}
-                                  {selectedShloka === 1 && shlokaData.content
-                                    ? sanEng(shlokaData.content, 0, true).map(
+                                  {selectedShloka === 1 && shlokaContent
+                                    ? sanEng(shlokaContent, 0, true).map(
                                         (line, index) => (
                                           <React.Fragment key={index}>
                                             {line.split("'")}
@@ -157,14 +158,14 @@ const ValmikiramayanaComponent = ({
                                           </React.Fragment>
                                         ),
                                       )
-                                    : shlokaData.content &&
+                                    : shlokaContent &&
                                         selectedShloka >= 2 &&
-                                        shlokaData.content
+                                        shlokaContent
                                           .trim()
                                           .includes(
                                             `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`,
                                           )
-                                      ? shlokaData.content
+                                      ? shlokaContent
                                           .split(',')
                                           .filter(line => line.trim() !== '')
                                           .map((line, index) => (
@@ -218,13 +219,13 @@ const ValmikiramayanaComponent = ({
                               </p>
                               <p className='h-fonts'>
                                 <font className='fw-normal size-6 line-150'>
-                                  {shlokaData.translate}
+                                  {shlokaTranslate}
                                 </font>
                               </p>
                               <br />
                               <p className='h-fonts'>
                                 <font className='fw-normal size-6 line-150'>
-                                  {shlokaData.description}
+                                  {shlokaDescription}
                                 </font>
                               </p>
                             </div>

@@ -6,17 +6,26 @@ export const fetchGitasContent = async ({
   setOptionLength,
   selectedShloka,
   setShlokaContent,
+  setShlokaTranslate,
+  setShlokaDescription,
   _fieldname,
 }) => {
   try {
     const refC = doc(database, _path);
     const snapshot = await getDoc(refC);
     if (snapshot.exists) {
-      const data = snapshot.data();
-      console.log();
-      const key = `${_fieldname}${selectedShloka}`;
+      const data = snapshot?.data();
       setOptionLength(data ? Object.keys(data).length : 1);
-      setShlokaContent(snapshot.get(key));
+      const key = `${_fieldname}${selectedShloka}`;
+      const shloka = snapshot.get(key);
+      if (typeof shloka === 'string') {
+        setShlokaContent(shloka);
+      } else {
+        const keys = ['description', 'content', 'translate'];
+        setShlokaDescription(shloka[keys[0]]);
+        setShlokaContent(shloka[keys[1]]);
+        setShlokaTranslate(shloka[keys[2]]);
+      }
     } else {
       console.error('Document does not exist.');
     }

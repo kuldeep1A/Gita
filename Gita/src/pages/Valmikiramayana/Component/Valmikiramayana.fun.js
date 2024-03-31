@@ -19,7 +19,9 @@ const ValmikiramayanaFun = () => {
   const kishkindaLen = Object.keys(optionData.KISHKINDAKANDA).length;
   const sundaraLen = Object.keys(optionData.SUNDARAKANDA).length;
   const yuddhadaLen = Object.keys(optionData.YUDDHAKANDA).length;
-  const [shlokaData, setShlokaData] = useState({});
+  const [shlokaContent, setShlokaContent] = useState('');
+  const [shlokaTranslate, setShlokaTranslate] = useState('');
+  const [shlokaDescription, setShlokaDescription] = useState('');
   const [isSharePopVisible, setSharePopVisible] = useState(false);
   const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
@@ -129,11 +131,20 @@ const ValmikiramayanaFun = () => {
         _path,
         _fieldname: 'Shloka',
         selectedShloka,
-        setShlokaContent: setShlokaData,
+        setShlokaContent: setShlokaContent,
+        setShlokaDescription: setShlokaDescription,
+        setShlokaTranslate: setShlokaTranslate,
         setOptionLength: setShlokaOptionLen,
       });
     }
-  }, [selectedKanda, shlokaData, selectedSarga, selectedShloka]);
+  }, [
+    selectedKanda,
+    selectedSarga,
+    selectedShloka,
+    shlokaContent,
+    shlokaDescription,
+    shlokaTranslate,
+  ]);
   return {
     _hideTrans,
     clickEvent,
@@ -152,7 +163,9 @@ const ValmikiramayanaFun = () => {
     shId,
     shareRef,
     shareTitle,
-    shlokaData,
+    shlokaContent,
+    shlokaDescription,
+    shlokaTranslate,
     site,
   };
 };
