@@ -5,3 +5,4 @@
 config
 local
 gita1a
+.env
