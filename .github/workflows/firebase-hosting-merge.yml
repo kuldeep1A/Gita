@@ -2,7 +2,7 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebbase Hosting on merge
-"on":
+'on':
   push:
     branches:
       - master
@@ -34,9 +34,10 @@ jobs:
       - name: Firebase Extended
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_GEETAS1A }}"
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GEETAS1A }}'
           channelId: live
           projectId: gita1a
           entryPoint: ./Gita/
-
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
