@@ -5,7 +5,6 @@
   },
   "hosting": {
     "site": "gitas",
-    "public": "public",
     "source": ".",
     "ignore": [
       "firebase.json",
