@@ -11,7 +11,7 @@ const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const valuesMatching = () => {
-    const link = `https://gita1a.web.app/${searchValue.toLocaleLowerCase().replace(/\s/g, '')}`;
+    const link = `https://gitas.web.app/${searchValue.toLocaleLowerCase().replace(/\s/g, '')}`;
     setSearchValue('');
     return link;
   };

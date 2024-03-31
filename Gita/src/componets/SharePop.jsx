@@ -78,7 +78,7 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
                   <>
                     <li className='w-full d-flex'>
                       <a
-                        href={`https://twitter.com/intent/tweet?lang=en&url=https%3A%2F%2Fgita1a.web.app%2F${site}&text=${encodeURIComponent(
+                        href={`https://twitter.com/intent/tweet?lang=en&url=https%3A%2F%2Fgitas.web.app%2F${site}&text=${encodeURIComponent(
                           title + '\t\n\n' + content + '\nYour Opinion: \n\n\n',
                         )}`}
                         target='_blank'
