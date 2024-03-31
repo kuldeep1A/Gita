@@ -30,12 +30,6 @@ jobs:
         working-directory: ./Gita/
     steps:
       - uses: actions/checkout@v4
-      - name: Set ENV
-        run: echo "NODE_ENV=production" >> $GITHUB_ENV
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
       - run: npm install --legacy-peer-deps && npm run build
       - name: Firebase Extended
         uses: FirebaseExtended/action-hosting-deploy@v0
