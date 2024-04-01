@@ -1191,6 +1191,29 @@ span._notice {
     background-color: #252525 !important;
     color: white !important;
   }
+
+  .auth {
+    background-color: #454545b9;
+
+    div {
+
+      button {
+        color: white;
+      }
+
+      input {
+        border: 1px solid #229bbbad;
+      }
+    }
+  }
+
+  .UN {
+    color: green !important;
+  }
+
+  .ON {
+    color: rgb(255, 119, 119) !important;
+  }
 }
 
 ._is-database-available-on-kuldeep1a-dataset {
@@ -1319,18 +1342,41 @@ span._notice {
 }
 
 .auth {
-  width: 400px;
+  max-width: 400px;
+  min-width: 200px;
   padding: 10px;
-  background-color: #ddf1eb79;
+  background-color: #f0f0f0b9;
   border-radius: 5px;
+
+  div {
+    width: 200px;
+    padding: 5px;
+
+    input {
+      border-radius: 2px;
+      border: 1px solid rgba(124, 123, 123, 0.339);
+      width: 250px;
+      height: 25px;
+    }
+
+    input:active {
+      border: 1px solid rgba(124, 123, 123, 0.339);
+    }
+
+    button {
+      width: 100px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid rgba(124, 123, 123, 0.339);
+    }
+  }
 }
 
-.auth-input {
-  width: 200px;
-  padding: 5px;
 
-  input {
-    border-radius: 2px;
-    border: 1px solid black;
-  }
+.UN {
+  color: green !important;
+}
+
+.ON {
+  color: rgb(255, 119, 119) !important;
 }

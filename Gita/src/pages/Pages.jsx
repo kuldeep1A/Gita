@@ -7,7 +7,7 @@ import Nopage from './Error/Nopage.jsx';
 import HistoryCP from './HistoryCP/History.jsx';
 import Home from './Home/Home.jsx';
 import QuickLinks from './Home/QuickLinks.jsx';
-import Login from './Login/Login.jsx';
+import Login from './Login/Login.module.jsx';
 import Othergitas from './OtherGitas/Othergitas.jsx';
 import Ashtavakra from './OtherGitas/Ashtavakra/Ashtavakra.module.jsx';
 import Avadhuta from './OtherGitas/Avadhuta/Avadhuta.module.jsx';
