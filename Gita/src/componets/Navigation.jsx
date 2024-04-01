@@ -37,11 +37,11 @@ const Navigation = () => {
                 <Link to='/' title='Home'>
                   {_isDark ? (
                     <>
-                      <img src={gita1ab} alt='Gita' />
+                      <img src={gita1ab} draggable='false' alt='Gita' />
                     </>
                   ) : (
                     <>
-                      <img src={gita1aw} alt='Gita' />
+                      <img src={gita1aw} draggable='false' alt='Gita' />
                     </>
                   )}
                 </Link>

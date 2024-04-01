@@ -633,6 +633,12 @@ ul.menu {
   text-align: center;
 }
 
+.welcome-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   clear: both;
   overflow: hidden;
@@ -832,11 +838,16 @@ button {
   div:hover {
     background-color: #f3f3f3 !important;
     border-radius: 10px;
+    margin-bottom: 6px;
 
     a {
       font-size: 30px;
     }
   }
+}
+
+.othergitas-list {
+  height: 380px;
 }
 
 .team-member {

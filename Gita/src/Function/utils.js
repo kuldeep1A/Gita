@@ -9,9 +9,7 @@ export const _SpeakInEnHi = (_isEn, _isHi, _content, speak, voices, cancel) => {
       });
     }
   } else if (_isHi) {
-    const _hindiFemaleVoice = voices.find(voice =>
-      voice.lang.startsWith('hi-IN'),
-    );
+    const _hindiFemaleVoice = voices.find(voice => voice.lang.startsWith('hi'));
     if (_hindiFemaleVoice && _content) {
       speak({
         text: _content,
@@ -46,3 +44,33 @@ export const _translate = async (sansContent, whatcode) => {
     return '';
   }
 };
+export const goTranslate = async ({
+  sansContent,
+  whatcode,
+  setTranslateCotent,
+}) => {
+  console.log(whatcode);
+  if (sansContent.length < 1912) {
+    const content = await _translate(sansContent, whatcode);
+    if (content !== '') {
+      setTranslateCotent(content);
+    } else {
+      setTranslateCotent('Wait for Shloka!');
+    }
+  } else {
+    setTranslateCotent(
+      'Wait for Shloka! Shloka Length must be less than 1912 character.',
+    );
+  }
+};
+export let _isDark =
+  window.sessionStorage.getItem('isDark') === 'true' ? true : false;
+if (window.sessionStorage.getItem('isDark') === null) {
+  const _t_hours = new Date().getHours();
+  if (_t_hours >= 19 || _t_hours < 7) {
+    _isDark = true;
+    _set_session();
+  } else {
+    _isDark = false;
+  }
+}

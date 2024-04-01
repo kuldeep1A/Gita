@@ -1,5 +1,5 @@
-import {useState, useEffect, useRef, useCallback} from 'react';
-import {_translate} from '../../../../Function/utils';
+import {useState, useEffect, useRef} from 'react';
+import {goTranslate} from '../../../../Function/utils';
 import {fetchGitasContent} from '../../../../services/services';
 const UddhavaFun = () => {
   useEffect(() => {
@@ -32,27 +32,22 @@ const UddhavaFun = () => {
   const closeSharePop = () => {
     setSharePopVisible(false);
   };
-  const goTranslate = useCallback(async (sansContent, whatcode) => {
-    if (sansContent.length < 1912) {
-      const content = await _translate(sansContent, whatcode);
-      if (content !== '') {
-        setTranslateCotent(content);
-      } else {
-        setTranslateCotent('Wait for Shloka!');
-      }
-    } else {
-      setTranslateCotent(
-        'Wait for Shloka! Shloka Length must be less than 1912 character.',
-      );
-    }
-  }, []);
+
   const _changeCodeToEn = async () => {
     setIsHindiTranslate(false);
-    await goTranslate(ShlokaContent, isHindiTranslate);
+    await goTranslate({
+      sansContent: ShlokaContent,
+      whatcode: isHindiTranslate,
+      setTranslateCotent,
+    });
   };
   const _changeCodeToHi = async () => {
     setIsHindiTranslate(true);
-    await goTranslate(ShlokaContent, isHindiTranslate);
+    await goTranslate({
+      sansContent: ShlokaContent,
+      whatcode: isHindiTranslate,
+      setTranslateCotent,
+    });
   };
   function _hideTrans() {
     if (hideTrans) {
@@ -63,7 +58,11 @@ const UddhavaFun = () => {
   }
   useEffect(() => {
     if (ShlokaContent !== '' && ShlokaContent) {
-      goTranslate(ShlokaContent, isHindiTranslate);
+      goTranslate({
+        sansContent: ShlokaContent,
+        whatcode: isHindiTranslate,
+        setTranslateCotent,
+      });
     } else {
       setTranslateCotent('Wait for Shloka!');
     }
@@ -88,7 +87,7 @@ const UddhavaFun = () => {
       });
       window.removeEventListener('resize', () => closeSharePop());
     };
-  }, [shId, goTranslate, isHindiTranslate, ShlokaContent]);
+  }, [shId, isHindiTranslate, ShlokaContent]);
   const handleChapterChange = event => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
