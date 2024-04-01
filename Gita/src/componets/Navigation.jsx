@@ -24,6 +24,11 @@ const Navigation = () => {
 
   useEffect(() => {
     window.addEventListener('resize', () => {
+      if (_innerWidth > 820) {
+        if (isMenuOpen) {
+          setIsMenuOpen(!isMenuOpen);
+        }
+      }
       setInnerWidth(window.innerWidth);
     });
   });
