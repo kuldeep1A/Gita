@@ -544,7 +544,7 @@ body {
   display: inline-block;
 }
 
-#main-me li:hover > a {
+#main-me li:hover>a {
   background-color: #01152a;
   border-radius: 13px !important;
 }
@@ -576,9 +576,9 @@ ul.menu {
   overflow: visible !important;
 }
 
-#main-me li:hover > ul,
-#main-me li li:hover > ul,
-#main-me li li li:hover > ul {
+#main-me li:hover>ul,
+#main-me li li:hover>ul,
+#main-me li li li:hover>ul {
   display: block;
   border-radius: 10%;
 }
@@ -608,7 +608,7 @@ ul.menu {
   border-width: 1px 0 0 0;
 }
 
-#main-me li li:hover > a {
+#main-me li li:hover>a {
   background: #01152a !important;
   border-radius: 8px !important;
   border-top: 1px solid #17b495;
@@ -1074,7 +1074,7 @@ body #footer {
   top: 1px;
 }
 
-#main-me li:hover > a:hover {
+#main-me li:hover>a:hover {
   .cp-chra {
     transition-duration: 1ms;
     display: inline-block;
@@ -1089,14 +1089,14 @@ body #footer {
   margin-top: 5px;
 }
 
-._c-mode > div._dark-bu {
+._c-mode>div._dark-bu {
   cursor: pointer;
   text-align: center;
   width: 35px;
   /* color: #1d1d1d; */
 }
 
-._c-mode > div._dark-bu > span {
+._c-mode>div._dark-bu>span {
   position: relative;
   top: 4px;
 }
@@ -1118,7 +1118,7 @@ span._notice {
   background-color: #1d1d1d !important;
   color: white !important;
 
-  ._c-mode > div._dark-bu {
+  ._c-mode>div._dark-bu {
     /* background-color: #1d1d1d !important; */
     color: white !important;
   }
@@ -1137,7 +1137,7 @@ span._notice {
     background-color: #464444 !important;
   }
 
-  div.mb-15 > a {
+  div.mb-15>a {
     color: #cdf7d2 !important;
   }
 
@@ -1243,7 +1243,7 @@ span._notice {
   }
 }
 
-.c-lc-action > .whichTranslation {
+.c-lc-action>.whichTranslation {
   position: absolute;
   right: 5px;
   display: flex;
@@ -1316,4 +1316,21 @@ span._notice {
 .animate-spin {
   -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
+}
+
+.auth {
+  width: 400px;
+  padding: 10px;
+  background-color: #ddf1eb79;
+  border-radius: 5px;
+}
+
+.auth-input {
+  width: 200px;
+  padding: 5px;
+
+  input {
+    border-radius: 2px;
+    border: 1px solid black;
+  }
 }
