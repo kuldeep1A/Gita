@@ -20,7 +20,23 @@ export default function Login() {
                   <h1>IP Not Match...</h1>
                 </div>
                 <div className='fi-items _d-p-size'>
-                  <div></div>
+                  <div>
+                    <div className='auth'>
+                      <form action='' method='post'>
+                        <div className='auth-input auth-email'>
+                          <label htmlFor='email'>Email</label>
+                          <input type='email' id='email' />
+                        </div>
+                        <div className='auth-input auth-password'>
+                          <label htmlFor='password'>Passowrd</label>
+                          <input type='passowrd' id='password' />
+                        </div>
+                        <div className='auth-input auth-submit'>
+                          <button type='submit'>Login</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </section>
             </div>
