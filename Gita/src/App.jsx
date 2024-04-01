@@ -30,26 +30,15 @@ import {
 } from './pages/Pages';
 import Navigation from './componets/Navigation';
 import Footer from './componets/Footer';
-import _set_session from './Function/utils';
+import {_isDark} from './Function/utils';
 import './App.css';
 
 function App() {
-  let _isDark =
-    window.sessionStorage.getItem('isDark') === 'true' ? true : false;
-  if (window.sessionStorage.getItem('isDark') === null) {
-    const _t_hours = new Date().getHours();
-    if (_t_hours >= 19 || _t_hours < 7) {
-      _isDark = true;
-      _set_session();
-    } else {
-      _isDark = false;
-    }
-  }
   useEffect(() => {
     if (_isDark) {
       document.body.classList.add('_d-mode');
     }
-  }, [_isDark]);
+  }, []);
   return (
     <>
       <BrowserRouter>

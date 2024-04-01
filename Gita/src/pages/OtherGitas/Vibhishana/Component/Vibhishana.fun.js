@@ -1,6 +1,6 @@
-import {useEffect, useState, useRef, useCallback} from 'react';
+import {useEffect, useState, useRef} from 'react';
 import {fetchGitasContent} from '../../../../services/services';
-import {_translate} from '../../../../Function/utils';
+import {goTranslate} from '../../../../Function/utils';
 const VibhishanaFun = () => {
   useEffect(() => {
     document.title = 'Vibhishana | Gita';
@@ -58,27 +58,22 @@ const VibhishanaFun = () => {
     const newShloka = parseInt(event.target.value, 10);
     setSelectedShloka(newShloka);
   };
-  const goTranslate = useCallback(async (sansContent, whatcode) => {
-    if (sansContent.length < 1912) {
-      const content = await _translate(sansContent, whatcode);
-      if (content !== '') {
-        setTranslateCotent(content);
-      } else {
-        setTranslateCotent('Wait for Shloka!');
-      }
-    } else {
-      setTranslateCotent(
-        'Wait for Shloka! Shloka Length must be less than 1912 character.',
-      );
-    }
-  }, []);
+
   const _changeCodeToEn = async () => {
     setIsHindiTranslate(false);
-    await goTranslate(ShlokaContent, isHindiTranslate);
+    await goTranslate({
+      sansContent: ShlokaContent,
+      whatcode: isHindiTranslate,
+      setTranslateCotent,
+    });
   };
   const _changeCodeToHi = async () => {
     setIsHindiTranslate(true);
-    await goTranslate(ShlokaContent, isHindiTranslate);
+    await goTranslate({
+      sansContent: ShlokaContent,
+      whatcode: isHindiTranslate,
+      setTranslateCotent,
+    });
   };
   function _hideTrans() {
     if (hideTrans) {
@@ -89,7 +84,11 @@ const VibhishanaFun = () => {
   }
   useEffect(() => {
     if (ShlokaContent !== '' && ShlokaContent) {
-      goTranslate(ShlokaContent, isHindiTranslate);
+      goTranslate({
+        sansContent: ShlokaContent,
+        whatcode: isHindiTranslate,
+        setTranslateCotent,
+      });
     } else {
       setTranslateCotent('Wait for Shloka!');
     }
@@ -102,7 +101,7 @@ const VibhishanaFun = () => {
       setShlokaContent,
       _fieldname: 'Shloka',
     });
-  }, [selectedShloka, isHindiTranslate, ShlokaContent, goTranslate]);
+  }, [selectedShloka, isHindiTranslate, ShlokaContent]);
   return {
     OptionLength,
     ShlokaContent,

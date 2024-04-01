@@ -1,5 +1,5 @@
-import {useState, useEffect, useRef, useCallback} from 'react';
-import {_translate} from '../../../Function/utils';
+import {useState, useEffect, useRef} from 'react';
+import {goTranslate} from '../../../Function/utils';
 import {fetchGitasContent} from '../../../services/services';
 
 const BrahmasutraFun = () => {
@@ -72,27 +72,22 @@ const BrahmasutraFun = () => {
     const newSutra = parseInt(evnet.target.value, 10);
     setSelectedSutra(newSutra);
   };
-  const goTranslate = useCallback(async (sansContent, whatcode) => {
-    if (sansContent.length < 1912) {
-      const content = await _translate(sansContent, whatcode);
-      if (content !== '') {
-        setTranslateCotent(content);
-      } else {
-        setTranslateCotent('Wait for Shloka!');
-      }
-    } else {
-      setTranslateCotent(
-        'Wait for Shloka! Shloka Length must be less than 1912 character.',
-      );
-    }
-  }, []);
+
   const _changeCodeToEn = async () => {
     setIsHindiTranslate(false);
-    await goTranslate(sutraContent, isHindiTranslate);
+    await goTranslate({
+      sansContent: sutraContent,
+      whatcode: isHindiTranslate,
+      setTranslateCotent,
+    });
   };
   const _changeCodeToHi = async () => {
     setIsHindiTranslate(true);
-    await goTranslate(sutraContent, isHindiTranslate);
+    await goTranslate({
+      sansContent: sutraContent,
+      whatcode: isHindiTranslate,
+      setTranslateCotent,
+    });
   };
   function _hideTrans() {
     if (hideTrans) {
@@ -103,7 +98,11 @@ const BrahmasutraFun = () => {
   }
   useEffect(() => {
     if (sutraContent !== '' && sutraContent) {
-      goTranslate(sutraContent, isHindiTranslate);
+      goTranslate({
+        sansContent: sutraContent,
+        whatcode: isHindiTranslate,
+        setTranslateCotent,
+      });
     } else {
       setTranslateCotent('Wait for Shloka!');
     }
@@ -117,7 +116,6 @@ const BrahmasutraFun = () => {
     });
   }, [
     sutraContent,
-    goTranslate,
     isHindiTranslate,
     selectedChapter,
     selectedQuarter,

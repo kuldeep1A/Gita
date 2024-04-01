@@ -1,15 +1,10 @@
 import {useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {welcome} from '../../../DATA/MoreData';
+import {welcomeblack, welcomewhite} from '../../../DATA/MoreData';
+import {_isDark} from '../../../Function/utils';
 export default function BrahmasutraWelcome() {
-  const imageStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
   useEffect(() => {
     document.title = 'Brahmasutra Welcome | Gita';
-
     return () => {
       document.title = 'Brahmasutra Welcome | Gita';
     };
@@ -22,6 +17,9 @@ export default function BrahmasutraWelcome() {
             <div id='content'>
               <section id='post-content' role='main'>
                 <h1 className='pa-title'>Welcome to Brahma Sutra!</h1>
+                <h1>
+                  <Link to='/brahmasutra'>View Sutras</Link>
+                </h1>
                 <div className='fi-items'>
                   <p className='size-7'>
                     Read Badrayana’s Brahma Sutra, the authoritative text that
@@ -30,12 +28,13 @@ export default function BrahmasutraWelcome() {
                     texts can be viewed on this website in any of 11 Indian
                     language scripts, including Roman.
                   </p>
-                  <div style={imageStyle}>
-                    <img src={welcome} draggable='false' alt='welcome banner' />
+                  <div className='welcome-img'>
+                    <img
+                      src={_isDark ? welcomeblack : welcomewhite}
+                      draggable='false'
+                      alt='welcome banner'
+                    />
                   </div>
-                  <h1>
-                    <Link to='/brahmasutra'>View Sutras</Link>
-                  </h1>
                 </div>
               </section>
             </div>
