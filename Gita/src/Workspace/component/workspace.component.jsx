@@ -17,11 +17,7 @@ const WorkspaceComponent = ({userEmail, emailVerified}) => {
                   />
                 </div>
                 <div className='fi-items _d-p-size'>
-                  <div>
-                    <div>
-                      <WorkStationComponent emailVerified={emailVerified} />
-                    </div>
-                  </div>
+                  <WorkStationComponent emailVerified={emailVerified} />
                 </div>
               </section>
             </div>

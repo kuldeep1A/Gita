@@ -34,13 +34,18 @@
   }
 }
 
-@media screen and (min-width: 820px) {
+@media screen and (min-width: 830px) and (max-width: 980px) {
   #h .top_r {
     margin-top: 25px;
   }
+  body{
+    margin: 10px 5px !important;
+  }
+
+
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 830px) {
   body #footer {
     padding: 4% 5% 4% 5%;
   }
@@ -96,7 +101,7 @@
     max-width: 700px;
   }
 
-  #main-me > a {
+  #main-me>a {
     width: 100%;
     padding: 3% 2%;
     border-radius: 0;
@@ -126,11 +131,18 @@
   ._top {
     margin-top: 40px;
   }
+
   .page-ws-tab {
     flex-direction: column;
   }
+
   .user {
     justify-content: space-between;
+  }
+
+  .dbAc {
+    flex-direction: column;
+    width: 250px;
   }
 }
 
@@ -179,9 +191,10 @@
       display: block;
     }
   }
+
   .user {
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: left;
-    align-items:start;
+    align-items: start;
   }
 }
