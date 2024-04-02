@@ -49,7 +49,6 @@ export const goTranslate = async ({
   whatcode,
   setTranslateCotent,
 }) => {
-  console.log(whatcode);
   if (sansContent.length < 1912) {
     const content = await _translate(sansContent, whatcode);
     if (content !== '') {

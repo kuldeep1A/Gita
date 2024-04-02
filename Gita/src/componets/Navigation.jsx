@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import {gita1ab, gita1aw, searchIcon} from '../DATA/MoreData';
-
 import {Link, Outlet} from 'react-router-dom';
 import DarkButton from './DarkButton';
 const Navigation = () => {

@@ -1,5 +1,18 @@
-export const LoginComponent = UTN => {
-  console.log(UTN);
+import {LoginPropTypes} from '../../../Function/PropTypes';
+import FormComponent from './workspace.component/form.component';
+import PageTitle from './workspace.component/page.title';
+export const LoginComponent = ({
+  UTN,
+  setEmail,
+  setPassword,
+  handleAuth,
+  displayName,
+  userEmail,
+  emailVerified,
+  photoURL,
+  logedIn,
+  handleOut,
+}) => {
   return (
     <>
       <div className='container'>
@@ -8,31 +21,24 @@ export const LoginComponent = UTN => {
             <div id='content'>
               <section id='post-content' role='main'>
                 <div className='pa-title'>
-                  Admin Account <span>(only for admin server)</span>
-                  {UTN ? (
-                    <h1 className='UN'>On Admin Network</h1>
-                  ) : (
-                    <h1 className='ON'>IP Not Match...</h1>
-                  )}
+                  <PageTitle
+                    UTN={UTN}
+                    logedIn={logedIn}
+                    handleOut={handleOut}
+                    displayName={displayName}
+                    userEmail={userEmail}
+                    emailVerified={emailVerified}
+                    photoURL={photoURL}
+                  />
                 </div>
                 <div className='fi-items _d-p-size'>
                   <div>
-                    {UTN ? (
-                      <div className='auth'>
-                        <form action='' method=''>
-                          <div className='auth-input auth-email'>
-                            <label htmlFor='email'>Email</label>
-                            <input type='email' required id='email' />
-                          </div>
-                          <div className='auth-input auth-password'>
-                            <label htmlFor='password'>Passowrd</label>
-                            <input type='passowrd' required id='password' />
-                          </div>
-                          <div className='auth-input auth-submit'>
-                            <button type='submit'>Login</button>
-                          </div>
-                        </form>
-                      </div>
+                    {UTN && !logedIn ? (
+                      <FormComponent
+                        setEmail={setEmail}
+                        setPassword={setPassword}
+                        handleAuth={handleAuth}
+                      />
                     ) : (
                       <div></div>
                     )}
@@ -46,3 +52,4 @@ export const LoginComponent = UTN => {
     </>
   );
 };
+LoginComponent.propTypes = LoginPropTypes;

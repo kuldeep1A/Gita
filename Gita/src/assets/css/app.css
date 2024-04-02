@@ -1380,3 +1380,22 @@ span._notice {
 .ON {
   color: rgb(255, 119, 119) !important;
 }
+
+.page-tab {
+  display: block;
+  padding: 15px;
+}
+
+.page-tab>div {
+  position: relative;
+}
+
+.gsignout {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: -40px;
+}
+.gsignout:hover {
+  background-color: #848383b8;
+}

@@ -144,3 +144,14 @@ export const valmikiramayanaPropTypes = {
   shlokaTranslate: PropTypes.string,
   site: PropTypes.string,
 };
+export const LoginPropTypes = {
+  UTN: PropTypes.bool,
+  setEmail: PropTypes.func,
+  setPassword: PropTypes.func,
+  handleAuth: PropTypes.func,
+  displayName: PropTypes.string,
+  userEmail: PropTypes.string,
+  emailVerified: PropTypes.bool,
+  photoURL: PropTypes.string,
+  logedIn: PropTypes.bool,
+};
