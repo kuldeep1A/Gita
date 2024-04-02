@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import ReactGA from 'react-ga';
 import ScrollRestoration from './componets/ScrollRestoration';
@@ -27,14 +27,17 @@ import {
   Team,
   Valmikiramayana,
   Yogasutra,
+  Workspace,
 } from './pages/Pages';
 import Navigation from './componets/Navigation';
 import Footer from './componets/Footer';
 import {_isDark} from './Function/utils';
 import './App.css';
-
+import {_getAuth} from './Function/auth/auth';
 function App() {
+  const [isWorkspace, setWorkspace] = useState(false);
   useEffect(() => {
+    _getAuth().then(d => setWorkspace(d));
     if (_isDark) {
       document.body.classList.add('_d-mode');
     }
@@ -44,7 +47,7 @@ function App() {
       <BrowserRouter>
         <ScrollRestoration />
         <Routes>
-          <Route path='/' element={<Navigation />}>
+          <Route path='/' element={<Navigation isWorkspace={isWorkspace} />}>
             <Route index element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/history' element={<HistoryCP />} />
@@ -70,7 +73,12 @@ function App() {
             <Route path='/brahmasutra' element={<Brahmasutra />} />
             <Route path='/yogasutra' element={<Yogasutra />} />
             <Route path='/contact' element={<Contact />} />
-            <Route path='/login' element={<Login />} />
+            {isWorkspace ? (
+              <Route path='/workspace' element={<Workspace />} />
+            ) : (
+              <Route path='/login' element={<Login />} />
+            )}
+
             <Route path='*' element={<Nopage />} />
           </Route>
         </Routes>

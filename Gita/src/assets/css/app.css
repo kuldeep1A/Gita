@@ -658,10 +658,8 @@ ul.menu {
 
 .c-si-wrap #content {
   width: 90%;
-  margin: 10px 50px 10px 10px;
-  display: inline;
-  margin-bottom: 10px;
-  float: right;
+  margin: 15px auto;
+  display: block;
 }
 
 .fi-items {
@@ -1214,6 +1212,12 @@ span._notice {
   .ON {
     color: rgb(255, 119, 119) !important;
   }
+
+  .user {
+    button {
+      color: white;
+    }
+  }
 }
 
 ._is-database-available-on-kuldeep1a-dataset {
@@ -1396,6 +1400,54 @@ span._notice {
   right: 10px;
   top: -40px;
 }
+
 .gsignout:hover {
   background-color: #848383b8;
+}
+
+.page-ws-tab {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 2px 4px silver;
+  padding: 10px;
+}
+
+.user {
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.user .email {
+  font-size: 17px;
+  margin-right: 10px;
+}
+
+.wsignout {
+  width: 120px;
+
+  button {
+    border-radius: 10px;
+    border: 1px solid rgb(132, 108, 108);
+  }
+}
+
+.wsverified {
+  background-color: green;
+}
+
+.wscheck {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  margin-left: 4px;
+  box-shadow: 0px 0px 7px 2px rgb(138, 129, 129);
+}
+
+.wsunverified {
+  background-color: rgb(167, 27, 27);
 }

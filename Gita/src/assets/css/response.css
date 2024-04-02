@@ -126,6 +126,12 @@
   ._top {
     margin-top: 40px;
   }
+  .page-ws-tab {
+    flex-direction: column;
+  }
+  .user {
+    justify-content: space-between;
+  }
 }
 
 @media screen and (max-width: 420px) {
@@ -172,5 +178,10 @@
     div {
       display: block;
     }
+  }
+  .user {
+    flex-direction: column-reverse;
+    justify-content: left;
+    align-items:start;
   }
 }

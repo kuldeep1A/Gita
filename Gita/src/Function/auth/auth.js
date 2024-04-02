@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-export const auth = getAuth();
+const auth = getAuth();
 export const handleSignIn = async (email, passowrd) => {
   await signInWithEmailAndPassword(auth, email, passowrd).catch(error => {
     if (error.code == 'auth/wrong-password') {
@@ -15,32 +15,37 @@ export const handleSignIn = async (email, passowrd) => {
     }
     console.error('error: ', error);
   });
-};
-
-export const handleSignOut = async setLogedIn => {
   if (auth.currentUser) {
-    await signOut(auth);
-    setLogedIn(false);
+    window.location.href = 'http://localhost:5173/workspace';
   }
 };
 
-export const authStage = ({
-  setDisplayName,
-  setUserEmail,
-  setEmailVerified,
-  setPhotoURL,
-  setLogedIn,
-}) => {
+export const handleSignOut = async ({setLogedIn}) => {
+  if (auth.currentUser) {
+    await signOut(auth);
+    setLogedIn && setLogedIn(false);
+    if (!setLogedIn) {
+      window.location.href = 'http://localhost:5173/login';
+    }
+  }
+};
+
+export const authStage = ({setUserEmail, setEmailVerified, setLogedIn}) => {
   onAuthStateChanged(auth, function (user) {
     if (user) {
-      setDisplayName(user.displayName);
-      setUserEmail(user.email);
-      setEmailVerified(user.emailVerified);
-      setPhotoURL(user.photoURL);
-      setLogedIn(true);
+      setUserEmail && setUserEmail(user.email);
+      setEmailVerified && setEmailVerified(user.emailVerified);
+      setLogedIn && setLogedIn(true);
     } else {
-      setLogedIn(false);
+      setLogedIn && setLogedIn(false);
     }
   });
 };
 onAuthStateChanged(auth, function () {});
+
+export const _getAuth = () =>
+  new Promise(resolve => {
+    onAuthStateChanged(auth, user => {
+      resolve(!!user);
+    });
+  });

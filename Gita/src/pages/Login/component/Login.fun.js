@@ -9,10 +9,6 @@ export const LoginFunc = () => {
   const [UTN, _setUTN] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [displayName, setDisplayName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  const [emailVerified, setEmailVerified] = useState(false);
-  const [photoURL, setPhotoURL] = useState('');
   const [logedIn, setLogedIn] = useState(false);
 
   const handleAuth = async () => {
@@ -34,10 +30,6 @@ export const LoginFunc = () => {
   useEffect(() => {
     if (UTN) {
       authStage({
-        setDisplayName,
-        setUserEmail,
-        setEmailVerified,
-        setPhotoURL,
         setLogedIn,
       });
     }
@@ -55,10 +47,6 @@ export const LoginFunc = () => {
     setEmail,
     setPassword,
     handleAuth,
-    displayName,
-    userEmail,
-    emailVerified,
-    photoURL,
     logedIn,
     handleOut,
   };

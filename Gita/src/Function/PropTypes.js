@@ -155,3 +155,10 @@ export const LoginPropTypes = {
   photoURL: PropTypes.string,
   logedIn: PropTypes.bool,
 };
+export const NavPropTypes = {
+  isWorkspace: PropTypes.bool,
+};
+export const WorkspacePropTypes = {
+  userEmail: PropTypes.string,
+  emailVerified: PropTypes.bool,
+};

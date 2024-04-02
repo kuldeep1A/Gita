@@ -22,6 +22,7 @@ import TextDetails from './Srimad/Component/TextDetails.jsx';
 import Team from './Team/Team.jsx';
 import Valmikiramayana from './Valmikiramayana/Valmikiramayana.module.jsx';
 import Yogasutra from './Yogasutra/Yogasutra.module.jsx';
+import Workspace from '../Workspace/workspace.module.jsx';
 export {
   About,
   Brahmasutra,
@@ -47,4 +48,5 @@ export {
   Team,
   Valmikiramayana,
   Yogasutra,
+  Workspace,
 };
