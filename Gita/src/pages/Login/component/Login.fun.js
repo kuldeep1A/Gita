@@ -12,19 +12,15 @@ export const LoginFunc = () => {
   const [logedIn, setLogedIn] = useState(false);
 
   const handleAuth = async () => {
-    if (UTN) {
+    if (UTN && /^[^@]+@gmail\.com$/i.test(email) && password.length > 14) {
       await handleSignIn(email, password);
-      if (logedIn) {
-        window.open('https://gitas.web.app/gitasWorkspace');
-      }
+    } else {
+      alert('Password Lenght must be 14 Above. And Must have Google Email.');
     }
   };
   const handleOut = async () => {
     if (UTN) {
       await handleSignOut(setLogedIn);
-      if (!logedIn) {
-        window.location.href = 'https://gitas.web.app/login';
-      }
     }
   };
   useEffect(() => {

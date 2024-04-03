@@ -38,7 +38,8 @@
   #h .top_r {
     margin-top: 25px;
   }
-  body{
+
+  body {
     margin: 10px 5px !important;
   }
 
@@ -143,6 +144,12 @@
   .dbAc {
     flex-direction: column;
     width: 250px;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .controller {
+    flex-direction: column-reverse;
   }
 }
 

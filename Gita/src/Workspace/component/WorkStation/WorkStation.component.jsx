@@ -1,102 +1,118 @@
 import WorkStationFun from './WorkStation.fun';
-
+import OptionComponent from './Options/Option.component';
 const WorkStationComponent = () => {
-  const {dbC, setDbc} = WorkStationFun();
-  console.log(dbC);
+  const {
+    cSel1V,
+    chcode,
+    chV,
+    cSel3V,
+    cSel2V,
+    dbC,
+    data,
+    _fetch,
+    mode,
+    qucode,
+    setData,
+    setSel1V,
+    setSel3V,
+    setSel2V,
+    setDbc,
+    setMode,
+    shcode,
+    shlokasLen,
+  } = WorkStationFun();
   return (
     <div className='workstation'>
-      <div className='dbAc'>
-        <div className='sel-db'>
-          <label htmlFor=''>Database Collection</label>
-          <select
-            name='db-col'
-            id='db-col'
-            onChange={_ => {
-              setDbc(_.target.value);
-            }}
-            defaultChecked>
-            <option value='n-non'>NnN</option>
-            <option value='c-bra'>Brahmasutra</option>
-            <option value='c-ash'>Ashtavakra</option>
-            <option value='c-kap'>Kapila</option>
-            <option value='c-sri-a'>Sriam</option>
-            <option value='c-sru'>Sruti</option>
-            <option value='c-udd'>Uddhava</option>
-            <option value='c-vib'>Vibhishana</option>
-            <option value='c-sri-b'>Srimad</option>
-            <option value='c-val'>Valmikiramayana</option>
-            <option value='c-yog'>Yogasutra</option>
-          </select>
+      <div className='controller'>
+        <div className='dbAc'>
+          <div className='sel-db sel'>
+            <label htmlFor=''>Database Collection</label>
+            <select
+              name='db-col'
+              id='db-col'
+              value={dbC}
+              onChange={_ => {
+                setDbc(_.target.value);
+              }}
+              defaultChecked>
+              <option value=''>Database</option>
+              <option value='c-bra'>Brahmasutra</option>
+              <option value='c-ash'>Ashtavakra</option>
+              <option value='c-kap'>Kapila</option>
+              <option value='s-sri'>Sriam</option>
+              <option value='c-sru'>Sruti</option>
+              <option value='c-udd'>Uddhava</option>
+              <option value='s-vib'>Vibhishana</option>
+              <option value='c-sri'>Srimad</option>
+              <option value='c-val'>Valmikiramayana</option>
+              <option value='c-yog'>Yogasutra</option>
+            </select>
+          </div>
+          <OptionComponent
+            cSel1V={cSel1V}
+            chcode={chcode}
+            chV={chV}
+            cSel3V={cSel3V}
+            cSel2V={cSel2V}
+            mode={mode}
+            qucode={qucode}
+            setSel1V={setSel1V}
+            setSel3V={setSel3V}
+            setSel2V={setSel2V}
+            shcode={shcode}
+            shlokasLen={shlokasLen}
+            whatdb={dbC}
+          />
         </div>
-        <div className='sel-db'>
-          <label htmlFor=''>Database Collection</label>
-          <select
-            name='db-col'
-            id='db-col'
-            onChange={_ => {
-              setDbc(_.target.value);
-            }}
-            defaultChecked>
-            <option value='n-non'>NnN</option>
-            <option value='c-bra'>Brahmasutra</option>
-            <option value='c-ash'>Ashtavakra</option>
-            <option value='c-kap'>Kapila</option>
-            <option value='c-sri-a'>Sriam</option>
-            <option value='c-sru'>Sruti</option>
-            <option value='c-udd'>Uddhava</option>
-            <option value='c-vib'>Vibhishana</option>
-            <option value='c-sri-b'>Srimad</option>
-            <option value='c-val'>Valmikiramayana</option>
-            <option value='c-yog'>Yogasutra</option>
-          </select>
-        </div>
-        <div className='sel-db'>
-          <label htmlFor=''>Database Collection</label>
-          <select
-            name='db-col'
-            id='db-col'
-            onChange={_ => {
-              setDbc(_.target.value);
-            }}
-            defaultChecked>
-            <option value='n-non'>NnN</option>
-            <option value='c-bra'>Brahmasutra</option>
-            <option value='c-ash'>Ashtavakra</option>
-            <option value='c-kap'>Kapila</option>
-            <option value='c-sri-a'>Sriam</option>
-            <option value='c-sru'>Sruti</option>
-            <option value='c-udd'>Uddhava</option>
-            <option value='c-vib'>Vibhishana</option>
-            <option value='c-sri-b'>Srimad</option>
-            <option value='c-val'>Valmikiramayana</option>
-            <option value='c-yog'>Yogasutra</option>
-          </select>
-        </div>
-        <div className='sel-db'>
-          <label htmlFor=''>Database Collection</label>
-          <select
-            name='db-col'
-            id='db-col'
-            onChange={_ => {
-              setDbc(_.target.value);
-            }}
-            defaultChecked>
-            <option value='n-non'>NnN</option>
-            <option value='c-bra'>Brahmasutra</option>
-            <option value='c-ash'>Ashtavakra</option>
-            <option value='c-kap'>Kapila</option>
-            <option value='c-sri-a'>Sriam</option>
-            <option value='c-sru'>Sruti</option>
-            <option value='c-udd'>Uddhava</option>
-            <option value='c-vib'>Vibhishana</option>
-            <option value='c-sri-b'>Srimad</option>
-            <option value='c-val'>Valmikiramayana</option>
-            <option value='c-yog'>Yogasutra</option>
-          </select>
+        <div className='actiondb'>
+          <div className='mode'>
+            <select
+              name='mode-ch'
+              id='mode-ch'
+              value={mode}
+              onChange={e => setMode(parseInt(e.target.value))}>
+              <option value={0}>Changing Mode</option>
+              <option value={1}>Addition Mode</option>
+            </select>
+          </div>
+          <div className='fetch'>
+            <button
+              onClick={() => _fetch()}
+              disabled={
+                mode === 0 && cSel3V === 0 ? true : mode === 1 ? true : false
+              }>
+              Fetch
+            </button>
+          </div>
         </div>
       </div>
-      <div className="editor">
-        
+      <div
+        style={{marginTop: '10px'}}
+        className={`editor ${!cSel2V ? 'disappear' : ''}`}>
+        <div className='shlokaInfo'>
+          You are now at Shloka No.
+          {mode == 0
+            ? `${cSel3V} --- Changing`
+            : `${shlokasLen + 1} --- Addition`}
+        </div>
+        <div className='shlokaEditor'>
+          <textarea
+            name='shlokas editor'
+            className={data ? '' : 'eM'}
+            spellCheck={false}
+            aria-autocomplete={false}
+            aria-expanded={true}
+            id=''
+            style={{height: '330px'}}
+            value={data}
+            onChange={e => setData(e.target.value)}
+          />
+        </div>
+        <div className={`updation ${data ? '' : 'is-hidden-desktop'}`}>
+          <div className='confirm'>
+            <button type='button'>Confirm</button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -162,3 +162,14 @@ export const WorkspacePropTypes = {
   userEmail: PropTypes.string,
   emailVerified: PropTypes.bool,
 };
+export const OptionPropTypes = {
+  chV: PropTypes.number,
+};
+export const ShlokasOptionPropTypes = {
+  preSel: PropTypes.number,
+  cSel3V: PropTypes.number,
+  setSel3V: PropTypes.func,
+  shcode: PropTypes.array,
+  type: PropTypes.string,
+  shlokasLen: PropTypes.number,
+};

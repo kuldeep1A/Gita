@@ -15,406 +15,6 @@ html {
   --bg-blend-mode: overlay;
 }
 
-select::-webkit-scrollbar {
-  overflow: visible;
-}
-
-select::-webkit-scrollbar-button {
-  height: 0;
-  width: 0;
-}
-
-select::-webkit-scrollbar-track {
-  background-clip: padding-box;
-  border: solid transparent;
-  border-width: 0 0 0 4px;
-}
-
-select::-webkit-scrollbar-track:horizontal {
-  border-width: 4px 0 0;
-}
-
-select::-webkit-scrollbar-track:hover {
-  -webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
-  box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
-}
-
-select::-webkit-scrollbar-track:horizontal:hover {
-  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-}
-
-select::-webkit-scrollbar-track:active {
-  background-color: rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-}
-
-select::-webkit-scrollbar-track:horizontal:active {
-  -webkit-box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-}
-
-select::-webkit-scrollbar-thumb {
-  background-clip: padding-box;
-  border: solid transparent;
-  min-height: 28px;
-  padding: 100px 0 0;
-  -webkit-box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-}
-
-select::-webkit-scrollbar-thumb:horizontal {
-  border-width: 6px 1px 1px;
-  padding: 0 0 0 100px;
-  -webkit-box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-}
-
-select::-webkit-scrollbar-thumb:hover {
-  -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
-}
-
-select::-webkit-scrollbar-thumb:active {
-  -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.35);
-  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.35);
-}
-
-select::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-select::-webkit-scrollbar-track-piece {
-  background-clip: padding-box;
-  -webkit-box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-}
-
-select::-webkit-scrollbar-track-piece:horizontal {
-  border-width: 3px 0 0;
-  -webkit-box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-}
-
-select::-webkit-scrollbar-thumb {
-  border-width: 1px 1px 1px 5px;
-}
-
-select::-webkit-scrollbar-thumb:horizontal {
-  border-width: 5px 1px 1px;
-}
-
-select::-webkit-scrollbar-corner {
-  background-clip: padding-box;
-  background-color: #f5f5f5;
-  border: solid #fff;
-  border-width: 3px 0 0 3px;
-  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.14);
-  -moz-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.14);
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.14);
-}
-
-select::-webkit-scrollbar {
-  height: 16px;
-  width: 16px;
-}
-
-select::-webkit-scrollbar-track,
-select::-webkit-scrollbar-thumb,
-select::-webkit-scrollbar-track-piece {
-  border-width: 4px !important;
-}
-
-select::-webkit-scrollbar-track {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  margin: 0 4px;
-}
-
-select::-webkit-scrollbar-track:hover {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  background: none;
-}
-
-select::-webkit-scrollbar-thumb {
-  background-color: #dadce0;
-  border-color: transparent;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  border-style: solid;
-  border-width: 4px;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
-select::-webkit-scrollbar-thumb:hover {
-  background-color: #80868b;
-}
-
-select::-webkit-scrollbar-thumb:active {
-  background-color: #5f6368;
-}
-
-select::-webkit-scrollbar-track-piece {
-  background-color: #fff;
-  border: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
-body::-webkit-scrollbar {
-  overflow: visible;
-}
-
-body::-webkit-scrollbar-button {
-  height: 0;
-  width: 0;
-}
-
-body::-webkit-scrollbar-track {
-  background-clip: padding-box;
-  border: solid transparent;
-  border-width: 0 0 0 4px;
-}
-
-body::-webkit-scrollbar-track:horizontal {
-  border-width: 4px 0 0;
-}
-
-body::-webkit-scrollbar-track:hover {
-  -webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
-  box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
-}
-
-body::-webkit-scrollbar-track:horizontal:hover {
-  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-}
-
-body::-webkit-scrollbar-track:active {
-  background-color: rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-}
-
-body::-webkit-scrollbar-track:horizontal:active {
-  -webkit-box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-clip: padding-box;
-  border: solid transparent;
-  min-height: 28px;
-  padding: 100px 0 0;
-  -webkit-box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-}
-
-body::-webkit-scrollbar-thumb:horizontal {
-  border-width: 6px 1px 1px;
-  padding: 0 0 0 100px;
-  -webkit-box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
-}
-
-body::-webkit-scrollbar-thumb:active {
-  -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.35);
-  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.35);
-}
-
-body::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-body::-webkit-scrollbar-track-piece {
-  background-clip: padding-box;
-  -webkit-box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 1px 0 0 rgba(0, 0, 0, 0.14),
-    inset -1px 0 0 rgba(0, 0, 0, 0.07);
-}
-
-body::-webkit-scrollbar-track-piece:horizontal {
-  border-width: 3px 0 0;
-  -webkit-box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  box-shadow:
-    inset 0 1px 0 rgba(0, 0, 0, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-}
-
-body::-webkit-scrollbar-thumb {
-  border-width: 1px 1px 1px 5px;
-}
-
-body::-webkit-scrollbar-thumb:horizontal {
-  border-width: 5px 1px 1px;
-}
-
-body::-webkit-scrollbar-corner {
-  background-clip: padding-box;
-  background-color: #f5f5f5;
-  border: solid #fff;
-  border-width: 3px 0 0 3px;
-  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.14);
-  -moz-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.14);
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.14);
-}
-
-body::-webkit-scrollbar {
-  height: 16px;
-  width: 16px;
-}
-
-body::-webkit-scrollbar-track,
-body::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-track-piece {
-  border-width: 4px !important;
-}
-
-body::-webkit-scrollbar-track {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  margin: 0 4px;
-}
-
-body::-webkit-scrollbar-track:hover {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  background: none;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #dadce0;
-  border-color: transparent;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  border-style: solid;
-  border-width: 4px;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background-color: #80868b;
-}
-
-body::-webkit-scrollbar-thumb:active {
-  background-color: #5f6368;
-}
-
-body::-webkit-scrollbar-track-piece {
-  background-color: #fff;
-  border: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
 body {
   font-size: 15px;
 }
@@ -1218,6 +818,21 @@ span._notice {
       color: white;
     }
   }
+
+  .dbAc {
+    border: 1px dotted rgb(201, 194, 194) !important;
+  }
+
+  .fetch {
+    button {
+      color: white;
+      border: 1px solid whitesmoke;
+    }
+  }
+
+  .editor {
+    border: 1px solid whitesmoke;
+  }
 }
 
 ._is-database-available-on-kuldeep1a-dataset {
@@ -1376,6 +991,17 @@ span._notice {
   }
 }
 
+.pass {
+  padding: 0px !important;
+  position: relative;
+
+  .clear-button {
+    position: absolute;
+    top: 3px;
+    left: 220px;
+  }
+}
+
 
 .UN {
   color: green !important;
@@ -1458,18 +1084,71 @@ span._notice {
   display: flex;
   min-width: 250px;
   max-width: 620px;
+  width: fit-content;
   gap: 10px;
-  border: 1px dotted seashell;
-  padding: 10px;
+  border: 1px dotted rgb(65, 63, 63);
+  padding: 10px 14px;
   overflow: auto;
+
+  .sel {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.sel-db {
+.controller {
   display: flex;
-  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
 }
+
+.actiondb {
+  display: flex;
+}
+
+.mode {
+  select {
+    padding: 2px;
+  }
+}
+
+.fetch {
+  button {
+    margin: 0px 2px;
+    padding: 2px;
+  }
+}
+
+.shlokaInfo {
+  width: 50%;
+  margin: 10px auto;
+}
+
 .editor {
+  display: block;
   width: 100%;
-  height: 300px;
-  border: 1px solid beige;
+  border: 1px solid rgb(88, 88, 84);
+
+  .shlokaEditor {
+    width: 90%;
+    margin: auto;
+
+    .eM {
+      height: 110px !important;
+    }
+
+    textarea {
+      width: 100%;
+      height: auto;
+      outline: none;
+      border: none;
+      resize: vertical;
+      overflow-x: auto;
+      line-height: 32px;
+    }
+  }
+}
+
+.disappear {
+  display: none;
 }
