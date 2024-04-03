@@ -1,9 +1,5 @@
 import {LoginPropTypes} from '../../../../Function/PropTypes';
-const PageTitle = ({
-  UTN,
-  logedIn,
-  handleOut,
-}) => {
+const PageTitle = ({UTN, logedIn, handleOut}) => {
   return (
     <>
       <div className='page-tab'>

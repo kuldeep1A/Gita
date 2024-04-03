@@ -7,7 +7,7 @@ const FormComponent = ({setEmail, setPassword, handleAuth}) => {
   return (
     <div className='auth'>
       <data>
-        <form >
+        <form>
           <div className='auth-email'>
             <label htmlFor='email'>Email</label>
             <input
@@ -37,8 +37,8 @@ const FormComponent = ({setEmail, setPassword, handleAuth}) => {
           </div>
           <div className='auth-submit'>
             <button
-              onClick={(e) => {
-                e.preventDefault()
+              onClick={e => {
+                e.preventDefault();
                 handleAuth();
               }}>
               Login

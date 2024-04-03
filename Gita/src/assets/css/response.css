@@ -42,8 +42,6 @@
   body {
     margin: 10px 5px !important;
   }
-
-
 }
 
 @media screen and (max-width: 830px) {
@@ -102,7 +100,7 @@
     max-width: 700px;
   }
 
-  #main-me>a {
+  #main-me > a {
     width: 100%;
     padding: 3% 2%;
     border-radius: 0;

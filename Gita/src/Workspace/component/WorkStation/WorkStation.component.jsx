@@ -9,16 +9,16 @@ const WorkStationComponent = () => {
     cSel2V,
     dbC,
     data,
+    disappear,
     _fetch,
+    fetchEnable,
     mode,
-    qucode,
     setData,
     setSel1V,
     setSel3V,
     setSel2V,
     setDbc,
     setMode,
-    shcode,
     shlokasLen,
   } = WorkStationFun();
   return (
@@ -55,11 +55,9 @@ const WorkStationComponent = () => {
             cSel3V={cSel3V}
             cSel2V={cSel2V}
             mode={mode}
-            qucode={qucode}
             setSel1V={setSel1V}
             setSel3V={setSel3V}
             setSel2V={setSel2V}
-            shcode={shcode}
             shlokasLen={shlokasLen}
             whatdb={dbC}
           />
@@ -76,11 +74,7 @@ const WorkStationComponent = () => {
             </select>
           </div>
           <div className='fetch'>
-            <button
-              onClick={() => _fetch()}
-              disabled={
-                mode === 0 && cSel3V === 0 ? true : mode === 1 ? true : false
-              }>
+            <button onClick={() => _fetch()} disabled={fetchEnable}>
               Fetch
             </button>
           </div>
@@ -88,7 +82,7 @@ const WorkStationComponent = () => {
       </div>
       <div
         style={{marginTop: '10px'}}
-        className={`editor ${!cSel2V ? 'disappear' : ''}`}>
+        className={`editor ${disappear ? 'disappear' : ''}`}>
         <div className='shlokaInfo'>
           You are now at Shloka No.
           {mode == 0

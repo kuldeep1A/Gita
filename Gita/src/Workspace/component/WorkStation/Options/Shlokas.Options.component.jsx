@@ -1,6 +1,6 @@
 import {ShlokasOptionPropTypes} from '../../../../Function/PropTypes';
 
-const ShlokasOptions = ({preSel, cSelSV, setSelSV, shcode, type, shlokasLen}) => {
+const ShlokasOptions = ({preSel, cSelSV, setSelSV, type, shlokasLen}) => {
   return (
     <div className='sel-ch sel'>
       <label htmlFor=''>Select {type}</label>
@@ -12,8 +12,8 @@ const ShlokasOptions = ({preSel, cSelSV, setSelSV, shcode, type, shlokasLen}) =>
           select
         </option>
         {Array.from({length: shlokasLen}, (_, index) => (
-          <option id={shcode[index]} key={index + 1} value={index + 1}>
-            {`${index + 1} - ${shcode[index]}`}
+          <option key={index + 1} value={index + 1}>
+            {`${index + 1} - ${type}`}
           </option>
         ))}
       </select>

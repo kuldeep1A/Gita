@@ -1,4 +1,4 @@
-import {useEffect, useState, useCallback} from 'react';
+import {useEffect, useState} from 'react';
 import {getShloka, getShlokasLen} from './services/workstation.service';
 
 const WorkStationFun = () => {
@@ -11,76 +11,79 @@ const WorkStationFun = () => {
   const [csarV, setCsarV] = useState(0);
   const [csutV, setCsutV] = useState('Bhashya');
   const [data, setData] = useState('');
-  const [chcode, setChcode] = useState([]);
-  const [qucode, setQucode] = useState([]);
-  const [shcode, setShcode] = useState([]);
   const [path, setPath] = useState('');
   const [shlokasLen, setShlokasLen] = useState(0);
   const [mode, setMode] = useState(0);
   const [field, setField] = useState('');
+  const [disappear, setDisappear] = useState(true);
+  const [fetchEnable, setFetchEnable] = useState(false);
   const dpath = '/gitas/database';
 
   const _fetch = () => {
     if (field !== '') {
+      console.log('fetch');
       getShloka({field, setData});
+      setDisappear(false);
     }
   };
 
-  function newCodes(indexs) {
-    const newcodes = [];
-    for (let index = 0; index < indexs; index++) {
-      const ran = Array.from({length: 6}, () =>
-        String.fromCharCode(
-          Math.floor(Math.random() * 26) + (Math.random() > 0.5 ? 65 : 97),
-        ),
-      ).join('');
-      newcodes[index] = ran;
-    }
-    return newcodes;
-  }
-  const shcodeGen = useCallback(shlokasLen => {
-    setShcode(newCodes(shlokasLen));
-  }, []);
-
   useEffect(() => {
-    console.log('use 1');
-    setChcode([]);
+    // console.log('use 1');
     setSel1V(0);
     setSel2V(0);
+    setSel3V(0);
     setData('');
+    setDisappear(true);
   }, [dbC]);
+
   useEffect(() => {
-    console.log('use 2');
-    setShcode([]);
+    // console.log('use 2');
     setSel3V(0);
     setShlokasLen(0);
     setData('');
     cSel2V > 0 && path && getShlokasLen({_path: path, setShlokasLen});
-  }, [cSel2V, path]);
-
-  // useEffect(() => {
-  //   console.log('use ex');
-  //   cSel1V > 0 &&
-  //     path &&
-  //     getShlokasLen({_path: path, setShlokasLen}) &&
-  //     shcodeGen();
-  // }, [cSel1V, dbC, path, shcode, shcodeGen]);
+  }, [cSel2V, path, mode]);
 
   useEffect(() => {
-    console.log('use 3');
+    // console.log('use 3');
     setDbc('');
     setData('');
   }, [mode]);
+
   useEffect(() => {
-    console.log('use 4');
+    setSel2V(0);
+    setSel3V(0);
+  }, [cSel1V]);
 
-    const chcodeGen = () => {
-      setChcode(newCodes(chV));
-    };
-    const qucodeGen = () => {
-      setQucode(newCodes(4));
-    };
+  useEffect(() => {
+    const _sdb = ['c-bra', 'c-val', 'c-yog'];
+    if (_sdb.includes(dbC)) {
+      cSel1V > 0 && cSel2V > 0 && setDisappear(true);
+    } else {
+      console.log('d', cSel3V);
+      cSel1V > 0 && cSel3V === 0 && setDisappear(true);
+    }
+  }, [cSel1V, cSel2V, cSel3V, dbC]);
+  useEffect(() => {
+    // console.log('use 4');
 
+    const _sdb = [
+      'c-ash',
+      'c-kap',
+      's-sri',
+      'c-sru',
+      'c-udd',
+      's-vib',
+      'c-sri',
+      'c-val',
+    ];
+    if (_sdb.includes(dbC)) {
+      cSel1V > 0 && path && getShlokasLen({_path: path, setShlokasLen});
+    }
+  }, [cSel1V, dbC, path]);
+
+  useEffect(() => {
+    // console.log('use 5');
     const dbCValues = {
       'c-bra': 4,
       'c-ash': 20,
@@ -92,12 +95,11 @@ const WorkStationFun = () => {
       'c-yog': 4,
     };
     setChV(dbCValues[dbC] || 0);
-    chV > 0 && chcode.length === 0 && chcodeGen();
-    cSel1V > 0 && qucode.length === 0 && qucodeGen();
-    cSel2V > 0 && shcode.length === 0 && shlokasLen > 0 && shcodeGen();
-  }, [dbC, chV, cSel1V, chcode, shlokasLen, shcode, cSel2V, qucode, shcodeGen]);
+  }, [dbC, chV, cSel1V, shlokasLen, cSel2V]);
+
   useEffect(() => {
-    console.log('use 5');
+    // console.log('use 6');
+
     const paths = {
       'c-bra': `${dpath}/brahmasutra/chapters/Chapter${cSel1V}/quarters/Quarter${cSel2V}/sutrasdoc`,
       'c-ash': `${dpath}/othergitas/collection/ashtavakra/chapters/Chapter${cSel1V}/shlokasdoc`,
@@ -114,7 +116,7 @@ const WorkStationFun = () => {
   }, [dbC, dpath, cSel1V, cSel2V, ckanV, csarV, csutV]);
 
   useEffect(() => {
-    console.log('use 6');
+    // console.log('use 7');
     const fields = {
       'c-bra': `Sutra${cSel3V}`,
       'c-ash': `Shloka${cSel3V}`,
@@ -133,7 +135,6 @@ const WorkStationFun = () => {
 
   return {
     cSel1V,
-    chcode,
     chV,
     ckanV,
     csarV,
@@ -142,16 +143,16 @@ const WorkStationFun = () => {
     cSel2V,
     dbC,
     data,
+    disappear,
     _fetch,
+    fetchEnable,
     mode,
-    qucode,
     setData,
     setSel1V,
     setSel3V,
     setSel2V,
     setDbc,
     setMode,
-    shcode,
     shlokasLen,
   };
 };

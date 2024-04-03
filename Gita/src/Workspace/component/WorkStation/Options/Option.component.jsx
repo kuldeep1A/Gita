@@ -3,23 +3,19 @@ import ShlokasOptions from './Shlokas.Options.component';
 
 const OptionComponent = ({
   cSel1V,
-  chcode,
   chV,
   cSel3V,
   cSel2V,
   mode,
-  qucode,
   setSel1V,
   setSel3V,
   setSel2V,
-  shcode,
   shlokasLen,
   whatdb,
 }) => {
   return (
     <>
       {chV &&
-      chcode &&
       [
         'c-bra',
         'c-ash',
@@ -39,8 +35,8 @@ const OptionComponent = ({
               select
             </option>
             {Array.from({length: chV}, (_, index) => (
-              <option id={chcode[index]} key={index + 1} value={index + 1}>
-                {`${index + 1} - ${chcode[index]}`}
+              <option key={index + 1} value={index + 1}>
+                {`${index + 1} - Chapter`}
               </option>
             ))}
           </select>
@@ -60,8 +56,8 @@ const OptionComponent = ({
                 Select
               </option>
               {Array.from({length: 4}, (_, index) => (
-                <option id={qucode[index]} key={index + 1} value={index + 1}>
-                  {`${index + 1} - ${qucode[index]}`}
+                <option key={index + 1} value={index + 1}>
+                  {`${index + 1}  - Quarter`}
                 </option>
               ))}
             </select>
@@ -71,7 +67,6 @@ const OptionComponent = ({
               preSel={cSel2V}
               cSelSV={cSel3V}
               setSelSV={setSel3V}
-              shcode={shcode}
               type='Sutra'
               shlokasLen={shlokasLen}
             />
@@ -84,12 +79,11 @@ const OptionComponent = ({
       )}
       {whatdb === 'c-ash' && cSel1V ? (
         <>
-          {cSel1V && mode == 0 ? (
+          {mode == 0 ? (
             <ShlokasOptions
               preSel={cSel1V}
-              cSelSV={cSel3V}
-              setSelSV={setSel3V}
-              shcode={shcode}
+              cSelSV={cSel2V}
+              setSelSV={setSel2V}
               type='Shloka'
               shlokasLen={shlokasLen}
             />
