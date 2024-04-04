@@ -2,25 +2,29 @@ import WorkStationFun from './WorkStation.fun';
 import OptionComponent from './Options/Option.component';
 const WorkStationComponent = () => {
   const {
-    cSel1V,
-    chcode,
     chV,
-    cSel3V,
+    cSel1V,
     cSel2V,
+    cSel3V,
     dbC,
     data,
     disappear,
     _fetch,
-    fetchEnable,
+    fetchDisable,
     mode,
     setData,
-    setSel1V,
-    setSel3V,
-    setSel2V,
-    setDbc,
-    setMode,
     shlokasLen,
+    SutTypes,
+    handleDbChange,
+    handleMode,
+    handleChange1,
+    handleChange1a,
+    handleChange2b,
+    handleChange2a,
+    handleChange2c,
+    handleChange3a,
   } = WorkStationFun();
+
   return (
     <div className='workstation'>
       <div className='controller'>
@@ -31,35 +35,37 @@ const WorkStationComponent = () => {
               name='db-col'
               id='db-col'
               value={dbC}
-              onChange={_ => {
-                setDbc(_.target.value);
-              }}
+              onChange={handleDbChange}
               defaultChecked>
               <option value=''>Database</option>
-              <option value='c-bra'>Brahmasutra</option>
               <option value='c-ash'>Ashtavakra</option>
+              <option value='c-ava'>Avadhuta</option>
+              <option value='c-bra'>Brahmasutra</option>
               <option value='c-kap'>Kapila</option>
               <option value='s-sri'>Sriam</option>
+              <option value='c-sri'>Srimad</option>
               <option value='c-sru'>Sruti</option>
               <option value='c-udd'>Uddhava</option>
-              <option value='s-vib'>Vibhishana</option>
-              <option value='c-sri'>Srimad</option>
               <option value='c-val'>Valmikiramayana</option>
+              <option value='s-vib'>Vibhishana</option>
               <option value='c-yog'>Yogasutra</option>
             </select>
           </div>
           <OptionComponent
-            cSel1V={cSel1V}
-            chcode={chcode}
             chV={chV}
-            cSel3V={cSel3V}
+            cSel1V={cSel1V}
             cSel2V={cSel2V}
+            cSel3V={cSel3V}
             mode={mode}
-            setSel1V={setSel1V}
-            setSel3V={setSel3V}
-            setSel2V={setSel2V}
             shlokasLen={shlokasLen}
             whatdb={dbC}
+            SutTypes={SutTypes}
+            handleChange1={handleChange1}
+            handleChange1a={handleChange1a}
+            handleChange2b={handleChange2b}
+            handleChange2a={handleChange2a}
+            handleChange2c={handleChange2c}
+            handleChange3a={handleChange3a}
           />
         </div>
         <div className='actiondb'>
@@ -68,13 +74,13 @@ const WorkStationComponent = () => {
               name='mode-ch'
               id='mode-ch'
               value={mode}
-              onChange={e => setMode(parseInt(e.target.value))}>
+              onChange={e => handleMode(parseInt(e.target.value))}>
               <option value={0}>Changing Mode</option>
               <option value={1}>Addition Mode</option>
             </select>
           </div>
           <div className='fetch'>
-            <button onClick={() => _fetch()} disabled={fetchEnable}>
+            <button onClick={() => _fetch()} disabled={fetchDisable}>
               Fetch
             </button>
           </div>
@@ -86,7 +92,7 @@ const WorkStationComponent = () => {
         <div className='shlokaInfo'>
           You are now at Shloka No.
           {mode == 0
-            ? `${cSel3V} --- Changing`
+            ? `${['c-bra', 'c-val'].includes(dbC) ? cSel3V : ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd', 'c-yog'].includes(dbC) ? cSel2V : cSel1V} --- Changing`
             : `${shlokasLen + 1} --- Addition`}
         </div>
         <div className='shlokaEditor'>

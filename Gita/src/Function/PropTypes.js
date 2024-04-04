@@ -166,9 +166,9 @@ export const OptionPropTypes = {
   chV: PropTypes.number,
 };
 export const ShlokasOptionPropTypes = {
-  preSel: PropTypes.number,
+  preSel: PropTypes.any,
   cSel3V: PropTypes.number,
-  setSel3V: PropTypes.func,
   type: PropTypes.string,
   shlokasLen: PropTypes.number,
+  handleChange: PropTypes.func,
 };

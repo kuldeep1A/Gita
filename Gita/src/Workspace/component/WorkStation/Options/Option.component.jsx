@@ -1,5 +1,5 @@
 import {OptionPropTypes} from '../../../../Function/PropTypes';
-import ShlokasOptions from './Shlokas.Options.component';
+import {ShlokasOptions} from './Shlokas.Options.component';
 
 const OptionComponent = ({
   cSel1V,
@@ -7,11 +7,15 @@ const OptionComponent = ({
   cSel3V,
   cSel2V,
   mode,
-  setSel1V,
-  setSel3V,
-  setSel2V,
   shlokasLen,
   whatdb,
+  SutTypes,
+  handleChange1,
+  handleChange1a,
+  handleChange2b,
+  handleChange2a,
+  handleChange2c,
+  handleChange3a,
 }) => {
   return (
     <>
@@ -19,18 +23,18 @@ const OptionComponent = ({
       [
         'c-bra',
         'c-ash',
+        'c-ava',
         'c-kap',
         'c-sru',
         'c-udd',
         'c-sri',
-        'c-val',
         'c-yog',
       ].includes(whatdb) ? (
         <div className='sel-ch sel'>
           <label htmlFor=''>Select Chapters</label>
           <select
             value={cSel1V}
-            onChange={e => setSel1V(parseInt(e.target.value))}>
+            onChange={e => handleChange1(parseInt(e.target.value))}>
             <option value={0} defaultChecked>
               select
             </option>
@@ -44,6 +48,43 @@ const OptionComponent = ({
       ) : (
         <></>
       )}
+
+      {whatdb === 'c-ash' && cSel1V ? (
+        <>
+          {mode == 0 ? (
+            <ShlokasOptions
+              preSel={cSel1V}
+              cSelSV={cSel2V}
+              type='Shloka'
+              shlokasLen={shlokasLen}
+              handleChange={handleChange2a}
+            />
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
+
+      {whatdb === 'c-ava' && cSel1V ? (
+        <>
+          {mode == 0 ? (
+            <ShlokasOptions
+              preSel={cSel1V}
+              cSelSV={cSel2V}
+              type='Shloka'
+              shlokasLen={shlokasLen}
+              handleChange={handleChange2a}
+            />
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
+
       {whatdb === 'c-bra' && cSel1V ? (
         <>
           <div className=' sel'>
@@ -51,7 +92,9 @@ const OptionComponent = ({
             <select
               disabled={!cSel1V}
               value={cSel2V}
-              onChange={e => setSel2V(parseInt(e.target.value))}>
+              onChange={e => {
+                handleChange2a(parseInt(e.target.value));
+              }}>
               <option value={0} defaultChecked={true}>
                 Select
               </option>
@@ -66,9 +109,9 @@ const OptionComponent = ({
             <ShlokasOptions
               preSel={cSel2V}
               cSelSV={cSel3V}
-              setSelSV={setSel3V}
               type='Sutra'
               shlokasLen={shlokasLen}
+              handleChange={handleChange3a}
             />
           ) : (
             <></>
@@ -77,15 +120,126 @@ const OptionComponent = ({
       ) : (
         <></>
       )}
-      {whatdb === 'c-ash' && cSel1V ? (
+
+      {whatdb === 'c-kap' && cSel1V ? (
         <>
           {mode == 0 ? (
             <ShlokasOptions
               preSel={cSel1V}
               cSelSV={cSel2V}
-              setSelSV={setSel2V}
               type='Shloka'
               shlokasLen={shlokasLen}
+              handleChange={handleChange2a}
+            />
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
+
+      {whatdb === 's-sri' ? (
+        <ShlokasOptions
+          cSelSV={cSel1V}
+          type='Sutra'
+          shlokasLen={shlokasLen}
+          handleChange={handleChange1a}
+        />
+      ) : (
+        <></>
+      )}
+
+      {whatdb === 'c-sri' && cSel1V ? (
+        <>
+          {mode == 0 ? (
+            <ShlokasOptions
+              preSel={cSel1V}
+              cSelSV={cSel2V}
+              type='Shloka'
+              shlokasLen={shlokasLen}
+              handleChange={handleChange2a}
+            />
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
+
+      {whatdb === 'c-sru' && cSel1V ? (
+        <>
+          {mode == 0 ? (
+            <ShlokasOptions
+              preSel={cSel1V}
+              cSelSV={cSel2V}
+              type='Shloka'
+              shlokasLen={shlokasLen}
+              handleChange={handleChange2a}
+            />
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
+
+      {whatdb === 'c-udd' && cSel1V ? (
+        <>
+          {mode == 0 ? (
+            <ShlokasOptions
+              preSel={cSel1V}
+              cSelSV={cSel2V}
+              type='Shloka'
+              shlokasLen={shlokasLen}
+              handleChange={handleChange2a}
+            />
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
+
+      {whatdb === 's-vib' ? (
+        <ShlokasOptions
+          cSelSV={cSel1V}
+          type='Sutra'
+          shlokasLen={shlokasLen}
+          handleChange={handleChange1a}
+        />
+      ) : (
+        <></>
+      )}
+
+      {whatdb === 'c-yog' && cSel1V ? (
+        <>
+          <div className=' sel'>
+            <label htmlFor=''>Select Types</label>
+            <select
+              disabled={!cSel1V}
+              value={SutTypes}
+              onChange={e => {
+                handleChange2b(e.target.value);
+              }}>
+              <option value='' defaultChecked={true}>
+                Select
+              </option>
+              <option value='Bhashya'>Bhashyas</option>
+              <option value='Sutra'>Sutras</option>
+              <option value='Vritti'>Bhojavrttis</option>
+            </select>
+          </div>
+          {mode == 0 && SutTypes ? (
+            <ShlokasOptions
+              preSel={SutTypes}
+              cSelSV={cSel3V}
+              type='Shloka'
+              shlokasLen={shlokasLen}
+              handleChange={handleChange2c}
             />
           ) : (
             <></>

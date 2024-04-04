@@ -1,13 +1,15 @@
-import {ShlokasOptionPropTypes} from '../../../../Function/PropTypes';
+import {
+  ShlokasOptionPropTypes,
+} from '../../../../Function/PropTypes';
 
-const ShlokasOptions = ({preSel, cSelSV, setSelSV, type, shlokasLen}) => {
+const ShlokasOptions = ({preSel, cSelSV, type, shlokasLen, handleChange}) => {
   return (
     <div className='sel-ch sel'>
       <label htmlFor=''>Select {type}</label>
       <select
-        disabled={!preSel}
+        disabled={preSel === undefined ? false : !preSel}
         value={cSelSV}
-        onChange={e => setSelSV(parseInt(e.target.value))}>
+        onChange={e => handleChange(parseInt(e.target.value))}>
         <option value={0} defaultChecked>
           select
         </option>
@@ -21,5 +23,5 @@ const ShlokasOptions = ({preSel, cSelSV, setSelSV, type, shlokasLen}) => {
   );
 };
 
-export default ShlokasOptions;
+export {ShlokasOptions, };
 ShlokasOptions.propTypes = ShlokasOptionPropTypes;
