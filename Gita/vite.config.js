@@ -7,5 +7,7 @@ export default defineConfig({
       include: '**/*.js',
     }),
   ],
-  envPrefix: 'VITE_',
+  define: {
+    process_env: {},
+  },
 });
