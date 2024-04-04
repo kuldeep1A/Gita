@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "vite build --mode production",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
+    "preview": "vite preview --port 8080",
     "prettier": "prettier --write ./src/**/*.{js,jsx,ts,tsx,css} && prettier --write **/*.css"
   },
   "dependencies": {
