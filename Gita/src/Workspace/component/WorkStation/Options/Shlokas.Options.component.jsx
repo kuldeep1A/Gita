@@ -1,6 +1,4 @@
-import {
-  ShlokasOptionPropTypes,
-} from '../../../../Function/PropTypes';
+import {ShlokasOptionPropTypes} from '../../../../Function/PropTypes';
 
 const ShlokasOptions = ({preSel, cSelSV, type, shlokasLen, handleChange}) => {
   return (
@@ -23,5 +21,5 @@ const ShlokasOptions = ({preSel, cSelSV, type, shlokasLen, handleChange}) => {
   );
 };
 
-export {ShlokasOptions, };
+export {ShlokasOptions};
 ShlokasOptions.propTypes = ShlokasOptionPropTypes;

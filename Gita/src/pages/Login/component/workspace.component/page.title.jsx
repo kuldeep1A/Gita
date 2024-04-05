@@ -1,5 +1,5 @@
 import {LoginPropTypes} from '../../../../Function/PropTypes';
-const PageTitle = ({UTN, logedIn, handleOut}) => {
+const PageTitle = ({UTN}) => {
   return (
     <>
       <div className='page-tab'>
@@ -7,18 +7,6 @@ const PageTitle = ({UTN, logedIn, handleOut}) => {
         {UTN ? (
           <div>
             <h1 className='UN'>On Admin Browser or Network</h1>
-            {!logedIn ? (
-              <></>
-            ) : (
-              <div className='gsignout'>
-                <button
-                  onClick={() => {
-                    handleOut();
-                  }}>
-                  SignOut
-                </button>
-              </div>
-            )}
           </div>
         ) : (
           <div>

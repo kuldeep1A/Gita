@@ -172,3 +172,8 @@ export const ShlokasOptionPropTypes = {
   shlokasLen: PropTypes.number,
   handleChange: PropTypes.func,
 };
+export const ConfrimPropTypes = {
+  handleConfirm: PropTypes.func,
+  confirm: PropTypes.bool,
+  changeData: PropTypes.string,
+};

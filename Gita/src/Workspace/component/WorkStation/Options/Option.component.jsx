@@ -10,11 +10,14 @@ const OptionComponent = ({
   shlokasLen,
   whatdb,
   SutTypes,
+  KandaTypes,
+  SargaLen,
   handleChange1,
   handleChange1a,
+  handleChange1b,
   handleChange2b,
   handleChange2a,
-  handleChange2c,
+  handleChange3b,
   handleChange3a,
 }) => {
   return (
@@ -239,7 +242,61 @@ const OptionComponent = ({
               cSelSV={cSel3V}
               type='Shloka'
               shlokasLen={shlokasLen}
-              handleChange={handleChange2c}
+              handleChange={handleChange3b}
+            />
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
+
+      {whatdb === 'c-val' ? (
+        <>
+          <div className=' sel'>
+            <label htmlFor=''>Select Kandas</label>
+            <select
+              value={KandaTypes}
+              onChange={e => {
+                handleChange1b(e.target.value);
+              }}>
+              <option value='' defaultChecked={true}>
+                Select
+              </option>
+              <option value='ARANYAKANDA'>ARANYAKANDA</option>
+              <option value='AYODHYAKANDA'>AYODHYAKANDA</option>
+              <option value='BALAKANDA'>BALAKANDA</option>
+            </select>
+          </div>
+          {KandaTypes ? (
+            <div className=' sel'>
+              <label htmlFor=''>Select Sargas</label>
+              <select
+                value={cSel2V}
+                onChange={e => {
+                  handleChange2a(parseInt(e.target.value));
+                }}>
+                <option value={0} defaultChecked={true}>
+                  Select
+                </option>
+                {Array.from({length: SargaLen}, (_, index) => (
+                  <option key={index + 1} value={index + 1}>
+                    {index + 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ) : (
+            <></>
+          )}
+          {mode == 0 && cSel2V ? (
+            <ShlokasOptions
+              preSel={cSel2V}
+              cSelSV={cSel3V}
+              type='Shloka'
+              shlokasLen={shlokasLen}
+              handleChange={handleChange3b}
             />
           ) : (
             <></>

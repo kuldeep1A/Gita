@@ -11,6 +11,5 @@ export const getShlokasLen = async ({_path, setShlokasLen}) => {
 };
 
 export const getShloka = ({field, setData}) => {
-  console.log('d: ', shlokas[field]);
   setData(shlokas[field]);
 };

@@ -34,7 +34,7 @@
   }
 }
 
-@media screen and (min-width: 830px) and (max-width: 980px) {
+@media screen and (min-width: 850px) and (max-width: 980px) {
   #h .top_r {
     margin-top: 25px;
   }
@@ -44,7 +44,7 @@
   }
 }
 
-@media screen and (max-width: 830px) {
+@media screen and (max-width: 850px) {
   body #footer {
     padding: 4% 5% 4% 5%;
   }
@@ -142,6 +142,9 @@
   .dbAc {
     flex-direction: column;
     width: 250px;
+  }
+  .updation {
+    justify-content: center;
   }
 }
 

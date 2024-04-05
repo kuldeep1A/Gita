@@ -1,30 +1,37 @@
 import WorkStationFun from './WorkStation.fun';
 import OptionComponent from './Options/Option.component';
+import ConfirmComponent from './Confirm/Confirm.component';
 const WorkStationComponent = () => {
   const {
+    cData,
     chV,
+    confirm,
     cSel1V,
     cSel2V,
     cSel3V,
-    dbC,
     data,
+    dbC,
     disappear,
     _fetch,
     fetchDisable,
-    mode,
-    setData,
-    shlokasLen,
-    SutTypes,
-    handleDbChange,
-    handleMode,
     handleChange1,
     handleChange1a,
+    handleChange1b,
     handleChange2b,
     handleChange2a,
-    handleChange2c,
+    handleChange3b,
     handleChange3a,
+    handleChangeData,
+    handleConfirm,
+    handleDbChange,
+    handleMode,
+    KandaTypes,
+    mode,
+    SargaLen,
+    shlokasLen,
+    SutTypes,
   } = WorkStationFun();
-
+  const _con = cData;
   return (
     <div className='workstation'>
       <div className='controller'>
@@ -35,7 +42,7 @@ const WorkStationComponent = () => {
               name='db-col'
               id='db-col'
               value={dbC}
-              onChange={handleDbChange}
+              onChange={e => handleDbChange(e.target.value)}
               defaultChecked>
               <option value=''>Database</option>
               <option value='c-ash'>Ashtavakra</option>
@@ -60,11 +67,14 @@ const WorkStationComponent = () => {
             shlokasLen={shlokasLen}
             whatdb={dbC}
             SutTypes={SutTypes}
+            KandaTypes={KandaTypes}
+            SargaLen={SargaLen}
             handleChange1={handleChange1}
             handleChange1a={handleChange1a}
+            handleChange1b={handleChange1b}
             handleChange2b={handleChange2b}
             handleChange2a={handleChange2a}
-            handleChange2c={handleChange2c}
+            handleChange3b={handleChange3b}
             handleChange3a={handleChange3a}
           />
         </div>
@@ -96,21 +106,43 @@ const WorkStationComponent = () => {
             : `${shlokasLen + 1} --- Addition`}
         </div>
         <div className='shlokaEditor'>
-          <textarea
-            name='shlokas editor'
-            className={data ? '' : 'eM'}
-            spellCheck={false}
-            aria-autocomplete={false}
-            aria-expanded={true}
-            id=''
-            style={{height: '330px'}}
-            value={data}
-            onChange={e => setData(e.target.value)}
-          />
+          <div className='ch-con-area'>
+            <textarea
+              name='shlokas editor'
+              className={data ? '' : 'eM'}
+              spellCheck={false}
+              aria-autocomplete={false}
+              aria-expanded={true}
+              value={
+                cData === ''
+                  ? data
+                  : cData === data
+                    ? data
+                    : cData != data
+                      ? undefined
+                      : undefined
+              }
+              id=''
+              style={{height: '330px'}}
+              onChange={e => handleChangeData(e.target.value)}
+            />
+            <div className='c-em3-data'>
+              <div className='ch-data'>{cData}</div>
+            </div>
+          </div>
         </div>
-        <div className={`updation ${data ? '' : 'is-hidden-desktop'}`}>
+        <div className={`updation ${cData !== '' ? '' : 'is-hidden-desktop'}`}>
           <div className='confirm'>
-            <button type='button'>Confirm</button>
+            <button type='button' onClick={handleConfirm}>
+              Confirm
+            </button>
+            {_con && confirm && (
+              <ConfirmComponent
+                handleConfirm={handleConfirm}
+                confirm={confirm}
+                changeData={_con}
+              />
+            )}
           </div>
         </div>
       </div>

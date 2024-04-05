@@ -6,12 +6,7 @@ export const LoginComponent = ({
   setEmail,
   setPassword,
   handleAuth,
-  displayName,
-  userEmail,
-  emailVerified,
-  photoURL,
   logedIn,
-  handleOut,
 }) => {
   return (
     <>
@@ -21,17 +16,9 @@ export const LoginComponent = ({
             <div id='content'>
               <section id='post-content' role='main'>
                 <div className='pa-title'>
-                  <PageTitle
-                    UTN={UTN}
-                    logedIn={logedIn}
-                    handleOut={handleOut}
-                    displayName={displayName}
-                    userEmail={userEmail}
-                    emailVerified={emailVerified}
-                    photoURL={photoURL}
-                  />
+                  <PageTitle UTN={UTN} />
                 </div>
-                <div className='fi-items _d-p-size'>
+                <div className='fi-items'>
                   <div>
                     {UTN && !logedIn ? (
                       <FormComponent

@@ -1,10 +1,6 @@
 import {useEffect, useState} from 'react';
 import {authUtils} from '../../../Function/auth/utils';
-import {
-  authStage,
-  handleSignIn,
-  handleSignOut,
-} from '../../../Function/auth/auth';
+import {authStage, handleSignIn} from '../../../Function/auth/auth';
 export const LoginFunc = () => {
   const [UTN, _setUTN] = useState(false);
   const [email, setEmail] = useState('');
@@ -16,11 +12,6 @@ export const LoginFunc = () => {
       await handleSignIn(email, password);
     } else {
       alert('Password Lenght must be 14 Above. And Must have Google Email.');
-    }
-  };
-  const handleOut = async () => {
-    if (UTN) {
-      await handleSignOut(setLogedIn);
     }
   };
   useEffect(() => {
@@ -44,6 +35,5 @@ export const LoginFunc = () => {
     setPassword,
     handleAuth,
     logedIn,
-    handleOut,
   };
 };
