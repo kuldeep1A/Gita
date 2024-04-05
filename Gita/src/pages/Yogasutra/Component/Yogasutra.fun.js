@@ -28,6 +28,9 @@ const YogaSutraFun = () => {
   const [hideTrans, setHideTrans] = useState(false);
   const [shareTC, setShareTC] = useState('sutra');
   const [clickEvent, setClickEvent] = useState(null);
+  const [data1, setData1] = useState({});
+  const [data2, setData2] = useState({});
+  const [data3, setData3] = useState({});
   const shareRefS = useRef(null);
   const shareRefB = useRef(null);
   const shareRefV = useRef(null);
@@ -168,6 +171,9 @@ const YogaSutraFun = () => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
     setSelectedSutra(1);
+    setData1({});
+    setData2({});
+    setData3({});
   };
   const handleSutraChange = event => {
     const newSutra = parseInt(event.target.value, 10);
@@ -197,28 +203,46 @@ const YogaSutraFun = () => {
     let _pathB = `/gitas/database/yogasutra/chapters/Chapter${selectedChapter}/shlokas/Bhashya/shlokasdoc`;
     let _pathS = `/gitas/database/yogasutra/chapters/Chapter${selectedChapter}/shlokas/Sutra/shlokasdoc`;
     let _pathV = `/gitas/database/yogasutra/chapters/Chapter${selectedChapter}/shlokas/Vritti/shlokasdoc`;
-    fetchGitasContent({
-      _path: _pathB,
-      setOptionLength,
-      selectedShloka: selectedSutra,
-      setShlokaContent: setBhasyaContent,
-      _fieldname: 'Bhashya',
-    });
-    fetchGitasContent({
-      _path: _pathS,
-      setOptionLength,
-      selectedShloka: selectedSutra,
-      setShlokaContent: setSutraContent,
-      _fieldname: 'Sutra',
-    });
-    fetchGitasContent({
-      _path: _pathV,
-      setOptionLength,
-      selectedShloka: selectedSutra,
-      setShlokaContent: setVrittiContent,
-      _fieldname: 'Vritti',
-    });
-  }, [selectedChapter, selectedSutra]);
+
+    Object.keys(data1).length === 0 &&
+      fetchGitasContent({
+        _path: _pathB,
+        setOptionLength,
+        selectedShloka: selectedSutra,
+        setShlokaContent: setBhasyaContent,
+        _fieldname: 'Bhashya',
+        setData: setData1,
+      });
+
+    Object.keys(data2).length === 0 &&
+      fetchGitasContent({
+        _path: _pathS,
+        setOptionLength,
+        selectedShloka: selectedSutra,
+        setShlokaContent: setSutraContent,
+        _fieldname: 'Sutra',
+        setData: setData2,
+      });
+    Object.keys(data3).length === 0 &&
+      fetchGitasContent({
+        _path: _pathV,
+        setOptionLength,
+        selectedShloka: selectedSutra,
+        setShlokaContent: setVrittiContent,
+        _fieldname: 'Vritti',
+        setData: setData3,
+      });
+  }, [selectedChapter, data1, data2, data3, selectedSutra]);
+
+  useEffect(() => {
+    Object.keys(data1).length > 0 &&
+      setBhasyaContent(data1[`Bhashya${selectedSutra}`]);
+    Object.keys(data2).length > 0 &&
+      setSutraContent(data2[`Sutra${selectedSutra}`]);
+    Object.keys(data3).length > 0 &&
+      setVrittiContent(data3[`Vritti${selectedSutra}`]);
+  }, [selectedSutra, data1, data2, data3]);
+
   return {
     _changeCodeToEn,
     _changeCodeToHi,

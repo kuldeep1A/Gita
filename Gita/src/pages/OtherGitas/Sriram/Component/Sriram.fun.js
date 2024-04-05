@@ -16,6 +16,7 @@ const SriramFun = () => {
   const [isHindiTranslate, setIsHindiTranslate] = useState(true);
   const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
+  const [data, setData] = useState({});
   const shareRef = useRef(null);
   var site = 'sriram';
   var shId = `sh-${site}-${selectedShloka}`;
@@ -92,15 +93,22 @@ const SriramFun = () => {
     } else {
       setTranslateCotent('Wait for Shloka!');
     }
+  }, [isHindiTranslate, ShlokaContent]);
+
+  useEffect(() => {
     let _path = `/gitas/database/othergitas/collection/sriram/shlokasdoc`;
-    fetchGitasContent({
-      _path,
-      selectedShloka,
-      setOptionLength,
-      setShlokaContent,
-      _fieldname: 'Shloka',
-    });
-  }, [selectedShloka, isHindiTranslate, ShlokaContent]);
+    Object.keys(data).length === 0 &&
+      fetchGitasContent({
+        _path,
+        selectedShloka,
+        setOptionLength,
+        setShlokaContent,
+        _fieldname: 'Shloka',
+        setData,
+      });
+    Object.keys(data).length !== 0 &&
+      setShlokaContent(data[`Shloka${selectedShloka}`]);
+  }, [selectedShloka, data]);
   return {
     OptionLength,
     ShlokaContent,

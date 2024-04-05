@@ -39,7 +39,6 @@ const YogaSutraComponent = ({
   VrittiContent,
   whichSutra,
 }) => {
-  console.log(SutraContent, BhasyaContent, VrittiContent);
   return (
     <>
       <div className='container'>

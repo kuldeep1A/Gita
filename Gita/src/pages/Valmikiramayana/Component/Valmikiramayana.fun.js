@@ -25,6 +25,7 @@ const ValmikiramayanaFun = () => {
   const [isSharePopVisible, setSharePopVisible] = useState(false);
   const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
+  const [data, setData] = useState({});
   const shareRef = useRef(null);
   var site = 'valmikiramayana';
   var shId = `sh-${selectedKanda}-${selectedSarga}-${selectedShloka}`;
@@ -92,11 +93,13 @@ const ValmikiramayanaFun = () => {
     setSelectedKanda(event.target.value);
     setSelectedSarga(1);
     setSelectedShloka(1);
+    setData({});
   };
   const handleSargaChange = event => {
     const newSarga = parseInt(event.target.value, 10);
     setSelectedSarga(newSarga);
     setSelectedShloka(1);
+    setData({});
   };
   const handleShlokaChange = event => {
     const newShloka = parseInt(event.target.value, 10);
@@ -126,7 +129,10 @@ const ValmikiramayanaFun = () => {
   }
   useEffect(() => {
     let _path = `/gitas/database/valmikiramayana/kandas/${selectedKanda}/sargas/sarga${selectedSarga}/shlokasdoc`;
-    if ((selectedKanda, selectedSarga, selectedShloka)) {
+    if (
+      (selectedKanda, selectedSarga, selectedShloka) &&
+      Object.keys(data).length === 0
+    ) {
       fetchGitasContent({
         _path,
         _fieldname: 'Shloka',
@@ -135,6 +141,7 @@ const ValmikiramayanaFun = () => {
         setShlokaDescription: setShlokaDescription,
         setShlokaTranslate: setShlokaTranslate,
         setOptionLength: setShlokaOptionLen,
+        setData: setData,
       });
     }
   }, [
@@ -144,7 +151,18 @@ const ValmikiramayanaFun = () => {
     shlokaContent,
     shlokaDescription,
     shlokaTranslate,
+    data,
   ]);
+
+  useEffect(() => {
+    if (Object.keys(data).length > 0) {
+      const keys = ['description', 'content', 'translate'];
+      const shloka = data[`Shloka${selectedShloka}`];
+      setShlokaDescription(shloka[keys[0]]);
+      setShlokaContent(shloka[keys[1]]);
+      setShlokaTranslate(shloka[keys[2]]);
+    }
+  }, [data, selectedShloka]);
   return {
     _hideTrans,
     clickEvent,

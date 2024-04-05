@@ -134,52 +134,44 @@ const ValmikiramayanaComponent = ({
                                   id={shId}
                                   className='fw-normal size-6 line-100'>
                                   {selectedShloka === 1 && shlokaContent ? (
-                                    <React.Fragment>
-                                      <>
-                                        <span className='d-block'>
-                                          <span className='d-block eng-title size-8 line-50'>
-                                            {`[${sanEng(shlokaContent, 0, false)[0]}]`}
-                                          </span>
+                                    <>
+                                      <span className='d-block'>
+                                        <span className='d-block eng-title size-8 line-50'>
+                                          {`[${sanEng(shlokaContent, 0, false)[0]}]`}
                                         </span>
-                                      </>
-                                    </React.Fragment>
-                                  ) : (
-                                    ''
-                                  )}
-                                  {selectedShloka === 1 && shlokaContent
-                                    ? sanEng(shlokaContent, 0, true).map(
+                                      </span>
+                                      {sanEng(shlokaContent, 0, true).map(
                                         (line, index) => (
                                           <React.Fragment key={index}>
                                             {line.split("'")}
-                                            <>
-                                              <br />
-                                              <br />
-                                            </>
+                                            <br />
+                                            <br />
                                           </React.Fragment>
                                         ),
-                                      )
-                                    : shlokaContent &&
-                                        selectedShloka >= 2 &&
-                                        shlokaContent
-                                          .trim()
-                                          .includes(
-                                            `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`,
-                                          )
-                                      ? shlokaContent
-                                          .split(',')
-                                          .filter(line => line.trim() !== '')
-                                          .map((line, index) => (
-                                            <React.Fragment key={index}>
-                                              {line.split("'")}
-                                              <>
-                                                <br />
-                                                <br />
-                                              </>
-                                            </React.Fragment>
-                                          ))
-                                      : shlokaContent
-                                        ? shlokaContent
-                                        : 'Shloka not found.'}
+                                      )}
+                                    </>
+                                  ) : selectedShloka >= 2 &&
+                                    shlokaContent &&
+                                    shlokaContent
+                                      .trim()
+                                      .includes(
+                                        `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`,
+                                      ) ? (
+                                    shlokaContent
+                                      .split(',')
+                                      .filter(line => line.trim() !== '')
+                                      .map((line, index) => (
+                                        <React.Fragment key={index}>
+                                          {line.split("'")}
+                                          <br />
+                                          <br />
+                                        </React.Fragment>
+                                      ))
+                                  ) : shlokaContent ? (
+                                    shlokaContent
+                                  ) : (
+                                    'Shloka not found.'
+                                  )}
                                 </font>
                               </p>
                               <div

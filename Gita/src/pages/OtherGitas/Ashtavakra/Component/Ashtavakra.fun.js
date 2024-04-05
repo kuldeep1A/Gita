@@ -17,6 +17,7 @@ const AshtavakraFun = () => {
   const [isHindiTranslate, setIsHindiTranslate] = useState(true);
   const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
+  const [data, setData] = useState({});
   const shareRef = useRef(null);
   var site = 'ashtavakra';
   var shId = `sh-${site}-${selectedChapter}-${selectedShloka}`;
@@ -61,6 +62,7 @@ const AshtavakraFun = () => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
     setSelectedShloka(1);
+    setData({});
   };
   const handleShlokaChange = event => {
     const newShloka = parseInt(event.target.value, 10);
@@ -91,15 +93,26 @@ const AshtavakraFun = () => {
     } else {
       setTranslateCotent('Wait for Shloka!');
     }
+  }, [ShlokaContent, isHindiTranslate]);
+
+  useEffect(() => {
     let _path = `/gitas/database/othergitas/collection/ashtavakra/chapters/Chapter${selectedChapter}/shlokasdoc`;
-    fetchGitasContent({
-      _path,
-      setOptionLength,
-      selectedShloka,
-      setShlokaContent,
-      _fieldname: 'Shloka',
-    });
-  }, [selectedShloka, selectedChapter, ShlokaContent, isHindiTranslate]);
+
+    Object.keys(data).length === 0 &&
+      fetchGitasContent({
+        _path,
+        setOptionLength,
+        selectedShloka,
+        setShlokaContent,
+        _fieldname: 'Shloka',
+        setData,
+      });
+  }, [selectedChapter, data, selectedShloka]);
+
+  useEffect(() => {
+    Object.keys(data).length !== 0 &&
+      setShlokaContent(data[`Shloka${selectedShloka}`]);
+  }, [data, selectedShloka]);
 
   return {
     OptionLength,
