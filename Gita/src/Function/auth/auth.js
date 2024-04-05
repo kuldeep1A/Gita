@@ -16,7 +16,7 @@ export const handleSignIn = async (email, passowrd) => {
     console.error('error: ', error);
   });
   if (auth.currentUser) {
-    window.location.href = 'http://localhost:5173/workspace';
+    window.location.href = 'https://gitas.web.app/workspace';
   }
 };
 
@@ -25,7 +25,7 @@ export const handleSignOut = async ({setLogedIn}) => {
     await signOut(auth);
     setLogedIn && setLogedIn(false);
     if (!setLogedIn) {
-      window.location.href = 'http://localhost:5173/login';
+      window.location.href = 'http://gitas.web.app/login';
     }
   }
 };
