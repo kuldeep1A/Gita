@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 import {goTranslate} from '../../../Function/utils';
-import {fetchGitasContent} from '../../../services/services';
+import {fetchGitasContent} from '../../../Function/services/services';
 const SrimadFun = () => {
   useEffect(() => {
     document.title = 'Srimad Bhagavad | Gita';
@@ -17,6 +17,7 @@ const SrimadFun = () => {
   const [isHindiTranslate, setIsHindiTranslate] = useState(true);
   const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
+  const [data, setData] = useState({});
   const shareRef = useRef(null);
   var site = 'srimad';
   var shId = `sh-${site}-${selectedChapter}-${selectedShloka}`;
@@ -61,6 +62,7 @@ const SrimadFun = () => {
     const newChapter = parseInt(event.target.value, 10);
     setSelectedChapter(newChapter);
     setselectedShloka(1);
+    setData({});
   };
   const handleSholkaChange = event => {
     const newSholka = parseInt(event.target.value, 10);
@@ -101,15 +103,26 @@ const SrimadFun = () => {
     } else {
       setTranslateCotent('Wait for Shloka!');
     }
+  }, [ShlokaContent, isHindiTranslate]);
+
+  useEffect(() => {
     let _path = `/gitas/database/bhagavadgita/chapters/Chapter${selectedChapter}/shlokasdoc`;
-    fetchGitasContent({
-      _path,
-      setOptionLength,
-      selectedShloka,
-      setShlokaContent,
-      _fieldname: 'shloka',
-    });
-  }, [selectedChapter, selectedShloka, ShlokaContent, isHindiTranslate]);
+    Object.keys(data).length === 0 &&
+      fetchGitasContent({
+        _path,
+        setOptionLength,
+        selectedShloka,
+        setShlokaContent,
+        _fieldname: 'shloka',
+        setData,
+      });
+  }, [selectedChapter, data, selectedShloka]);
+
+  useEffect(() => {
+    Object.keys(data).length > 0 &&
+      setShlokaContent(data[`shloka${selectedShloka}`]);
+  }, [data, selectedShloka]);
+
   return {
     _changeCodeToEn,
     _changeCodeToHi,

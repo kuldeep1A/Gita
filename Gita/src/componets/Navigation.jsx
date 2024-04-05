@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
 import {gita1ab, gita1aw, searchIcon} from '../DATA/MoreData';
-
 import {Link, Outlet} from 'react-router-dom';
 import DarkButton from './DarkButton';
-const Navigation = () => {
+import {NavPropTypes} from '../Function/PropTypes';
+const Navigation = ({isWorkspace}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [_innerWidth, setInnerWidth] = useState(window.innerWidth);
@@ -21,7 +21,6 @@ const Navigation = () => {
   };
   let _isDark =
     window.sessionStorage.getItem('isDark') === 'true' ? true : false;
-
   useEffect(() => {
     window.addEventListener('resize', () => {
       if (_innerWidth > 820) {
@@ -31,7 +30,7 @@ const Navigation = () => {
       }
       setInnerWidth(window.innerWidth);
     });
-  });
+  }, [_innerWidth, isMenuOpen]);
   return (
     <>
       <div className='_top'>
@@ -244,9 +243,15 @@ const Navigation = () => {
                   <Link to='/contact'>Contact</Link>
                 </li>
                 <li className='last leaf m' onClick={handleToggleMenu}>
-                  <Link to='/login' title='Admin Server'>
-                    Login
-                  </Link>
+                  {isWorkspace ? (
+                    <Link to='/workspace' title='On Admin Server'>
+                      Workspace
+                    </Link>
+                  ) : (
+                    <Link to='/login' title='Admin Server'>
+                      Login
+                    </Link>
+                  )}
                 </li>
                 {_innerWidth > 820 ? (
                   <>
@@ -269,3 +274,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+Navigation.propTypes = NavPropTypes;

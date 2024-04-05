@@ -144,3 +144,38 @@ export const valmikiramayanaPropTypes = {
   shlokaTranslate: PropTypes.string,
   site: PropTypes.string,
 };
+export const LoginPropTypes = {
+  UTN: PropTypes.bool,
+  setEmail: PropTypes.func,
+  setPassword: PropTypes.func,
+  handleAuth: PropTypes.func,
+  displayName: PropTypes.string,
+  userEmail: PropTypes.string,
+  emailVerified: PropTypes.bool,
+  photoURL: PropTypes.string,
+  logedIn: PropTypes.bool,
+};
+export const NavPropTypes = {
+  isWorkspace: PropTypes.bool,
+};
+export const WorkspacePropTypes = {
+  userEmail: PropTypes.string,
+  emailVerified: PropTypes.bool,
+};
+export const OptionPropTypes = {
+  chV: PropTypes.number,
+};
+export const ShlokasOptionPropTypes = {
+  preSel: PropTypes.any,
+  cSel3V: PropTypes.number,
+  type: PropTypes.string,
+  shlokasLen: PropTypes.number,
+  handleChange: PropTypes.func,
+};
+export const ConfrimPropTypes = {
+  handleConfirm: PropTypes.func,
+  confirm: PropTypes.bool,
+  changeData: PropTypes.string,
+  update: PropTypes.func,
+  mode: PropTypes.number,
+};

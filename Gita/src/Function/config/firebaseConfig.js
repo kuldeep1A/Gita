@@ -15,3 +15,5 @@ export const database = initializeFirestore(app, {
   experimentalLongPollingOptions: true,
   useFetchStreams: false,
 });
+export const key = import.meta.env.VITE_APP_ENCRYPTIONIPS;
+export const adNetI = import.meta.env.VITE_APP_DCRNETIP;
