@@ -1,6 +1,6 @@
 import {ConfrimPropTypes} from '../../../../Function/PropTypes';
 
-const ConfirmComponent = ({handleConfirm, confirm, changeData}) => {
+const ConfirmComponent = ({handleConfirm, confirm, changeData, update}) => {
   return (
     <dialog className='confirm-modal' open={confirm}>
       <div className='modal-box '>
@@ -23,7 +23,9 @@ const ConfirmComponent = ({handleConfirm, confirm, changeData}) => {
           </div>
           <div>
             <div className=''>
-              <button className='px-5'>Change</button>
+              <button className='px-5' onClick={() => update()}>
+                Change
+              </button>
             </div>
           </div>
         </div>

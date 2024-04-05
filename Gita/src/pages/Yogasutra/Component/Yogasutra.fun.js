@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef, useCallback} from 'react';
 import {_translate} from '../../../Function/utils';
-import {fetchGitasContent} from '../../../services/services';
+import {fetchGitasContent} from '../../../Function/services/services';
 
 const YogaSutraFun = () => {
   useEffect(() => {

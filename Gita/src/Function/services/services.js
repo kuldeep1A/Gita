@@ -1,5 +1,5 @@
 import {doc, getDoc} from 'firebase/firestore';
-import {database} from '../Function/config/firebaseConfig';
+import {database} from '../../Function/config/firebaseConfig';
 
 export const fetchGitasContent = async ({
   _path,

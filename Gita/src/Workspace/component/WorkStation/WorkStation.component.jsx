@@ -4,6 +4,7 @@ import ConfirmComponent from './Confirm/Confirm.component';
 const WorkStationComponent = () => {
   const {
     cData,
+    ChangedDataUpdate,
     chV,
     confirm,
     cSel1V,
@@ -34,7 +35,7 @@ const WorkStationComponent = () => {
   const _con = cData;
   return (
     <div className='workstation'>
-      <div className='controller'>
+      <div className={`controller ${disappear ? 'empty-editor' : ''}`}>
         <div className='dbAc'>
           <div className='sel-db sel'>
             <label htmlFor=''>Database Collection</label>
@@ -96,56 +97,60 @@ const WorkStationComponent = () => {
           </div>
         </div>
       </div>
-      <div
-        style={{marginTop: '10px'}}
-        className={`editor ${disappear ? 'disappear' : ''}`}>
-        <div className='shlokaInfo'>
-          You are now at Shloka No.
-          {mode == 0
-            ? `${['c-bra', 'c-val'].includes(dbC) ? cSel3V : ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd', 'c-yog'].includes(dbC) ? cSel2V : cSel1V} --- Changing`
-            : `${shlokasLen + 1} --- Addition`}
-        </div>
-        <div className='shlokaEditor'>
-          <div className='ch-con-area'>
-            <textarea
-              name='shlokas editor'
-              className={data ? '' : 'eM'}
-              spellCheck={false}
-              aria-autocomplete={false}
-              aria-expanded={true}
-              value={
-                cData === ''
-                  ? data
-                  : cData === data
+      {!disappear ? (
+        <div style={{marginTop: '10px'}} className={`editor`}>
+          <div className='shlokaInfo'>
+            You are now at Shloka No.
+            {mode == 0
+              ? `${['c-bra', 'c-val'].includes(dbC) ? cSel3V : ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd', 'c-yog'].includes(dbC) ? cSel2V : cSel1V} --- Changing`
+              : `${shlokasLen + 1} --- Addition`}
+          </div>
+          <div className='shlokaEditor'>
+            <div className='ch-con-area'>
+              <textarea
+                name='shlokas editor'
+                className={data ? '' : 'eM'}
+                spellCheck={false}
+                aria-autocomplete={false}
+                aria-expanded={true}
+                value={
+                  cData === ''
                     ? data
-                    : cData != data
-                      ? undefined
-                      : undefined
-              }
-              id=''
-              style={{height: '330px'}}
-              onChange={e => handleChangeData(e.target.value)}
-            />
-            <div className='c-em3-data'>
-              <div className='ch-data'>{cData}</div>
+                    : cData === data
+                      ? data
+                      : cData != data
+                        ? undefined
+                        : undefined
+                }
+                id=''
+                style={{height: '330px'}}
+                onChange={e => handleChangeData(e.target.value)}
+              />
+              <div className='c-em3-data'>
+                <div className='ch-data'>{cData}</div>
+              </div>
+            </div>
+          </div>
+          <div
+            className={`updation ${cData !== '' ? '' : 'is-hidden-desktop'}`}>
+            <div className='confirm'>
+              <button type='button' onClick={handleConfirm}>
+                Confirm
+              </button>
+              {_con && confirm && (
+                <ConfirmComponent
+                  handleConfirm={handleConfirm}
+                  confirm={confirm}
+                  changeData={_con}
+                  update={ChangedDataUpdate}
+                />
+              )}
             </div>
           </div>
         </div>
-        <div className={`updation ${cData !== '' ? '' : 'is-hidden-desktop'}`}>
-          <div className='confirm'>
-            <button type='button' onClick={handleConfirm}>
-              Confirm
-            </button>
-            {_con && confirm && (
-              <ConfirmComponent
-                handleConfirm={handleConfirm}
-                confirm={confirm}
-                changeData={_con}
-              />
-            )}
-          </div>
-        </div>
-      </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

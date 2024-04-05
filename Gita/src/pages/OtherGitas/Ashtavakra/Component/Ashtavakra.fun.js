@@ -1,5 +1,5 @@
 import {useState, useEffect, useRef} from 'react';
-import {fetchGitasContent} from '../../../../services/services';
+import {fetchGitasContent} from '../../../../Function/services/services';
 import {goTranslate} from '../../../../Function/utils';
 const AshtavakraFun = () => {
   useEffect(() => {

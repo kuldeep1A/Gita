@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 import {goTranslate} from '../../../Function/utils';
-import {fetchGitasContent} from '../../../services/services';
+import {fetchGitasContent} from '../../../Function/services/services';
 const SrimadFun = () => {
   useEffect(() => {
     document.title = 'Srimad Bhagavad | Gita';

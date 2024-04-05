@@ -1136,6 +1136,9 @@ span._notice {
   gap: 10px;
   justify-content: space-between;
 }
+.empty-editor {
+  margin-bottom: 300px;
+}
 
 .actiondb {
   display: flex;

@@ -1,5 +1,9 @@
 import {useEffect, useState} from 'react';
-import {getShloka, getShlokasLen} from './services/workstation.service';
+import {
+  getShloka,
+  getShlokasLen,
+  updateShlokaData,
+} from '../../../Function/services/workstation.service';
 
 const WorkStationFun = () => {
   const [chV, setChV] = useState(0);
@@ -22,6 +26,57 @@ const WorkStationFun = () => {
   const [fetchDisable, setFetchDisable] = useState(true);
   const [confirm, setConfirm] = useState(false);
   const dpath = '/gitas/database';
+
+  const ChangedDataUpdate = async () => {
+    if (['c-bra', 'c-yog'].includes(dbC)) {
+      if (updateShlokaData({_path: path, field: field2, changedData: cData})) {
+        setConfirm(false);
+        setDisappear(true);
+        setFetchDisable(true);
+        setSel1V(0);
+        setCData('');
+        setData('');
+        setDbc('');
+      }
+    } else if ('c-val' === dbC) {
+      if (
+        updateShlokaData({
+          _path: path,
+          field: field2,
+          changedData: {content: cData},
+        })
+      ) {
+        setConfirm(false);
+        setDisappear(true);
+        setFetchDisable(true);
+        setSel1V(0);
+        setCData('');
+        setData('');
+        setDbc('');
+      }
+    } else if (
+      [
+        'c-sri',
+        'c-ash',
+        'c-ava',
+        'c-kap',
+        'c-sru',
+        'c-udd',
+        's-sri',
+        's-vib',
+      ].includes(dbC)
+    ) {
+      if (updateShlokaData({_path: path, field: field1, changedData: cData})) {
+        setConfirm(false);
+        setDisappear(true);
+        setFetchDisable(true);
+        setSel1V(0);
+        setCData('');
+        setData('');
+        setDbc('');
+      }
+    }
+  };
 
   const _fetch = () => {
     if (dbC === 'c-bra' && cSel3V > 0) {
@@ -149,7 +204,6 @@ const WorkStationFun = () => {
     setData('');
     setCData('');
     setSutTypes('');
-    setKandaTypes('');
     setData2({});
     const _sdb = [
       'c-sri',
@@ -170,10 +224,16 @@ const WorkStationFun = () => {
   };
 
   useEffect(() => {
-    if (['c-bra', 'c-val'].includes(dbC) && cSel2V > 0) {
+    console.log('path: ', path);
+    if (
+      ['c-bra', 'c-val'].includes(dbC) &&
+      cSel2V > 0 &&
+      path !==
+        `${dpath}/valmikiramayana/kandas/${KandaTypes}/sargas/sarga0/shlokasdoc`
+    ) {
       getShlokasLen({_path: path, setShlokasLen});
     }
-  }, [cSel2V, path, dbC, shlokasLen]);
+  }, [cSel2V, path, dbC, shlokasLen, KandaTypes]);
 
   const handleChange2b = val => {
     setSutTypes(val); // select 2
@@ -281,6 +341,7 @@ const WorkStationFun = () => {
   };
   return {
     cData,
+    ChangedDataUpdate,
     chV,
     confirm,
     cSel1V,
