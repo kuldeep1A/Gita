@@ -26,8 +26,10 @@ const WorkStationComponent = () => {
     handleConfirm,
     handleDbChange,
     handleMode,
+    handleOpenEditor,
     KandaTypes,
     mode,
+    openEdit,
     SargaLen,
     shlokasLen,
     SutTypes,
@@ -91,9 +93,21 @@ const WorkStationComponent = () => {
             </select>
           </div>
           <div className='fetch'>
-            <button onClick={() => _fetch()} disabled={fetchDisable}>
-              Fetch
-            </button>
+            {mode === 0 ? (
+              <button
+                onClick={() => _fetch()}
+                className={fetchDisable ? 'cursor-none' : ''}
+                disabled={fetchDisable}>
+                Fetch
+              </button>
+            ) : (
+              <button
+                onClick={() => handleOpenEditor()}
+                className={!openEdit ? 'cursor-none' : ''}
+                disabled={!openEdit}>
+                Open-Editor
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -109,7 +123,6 @@ const WorkStationComponent = () => {
             <div className='ch-con-area'>
               <textarea
                 name='shlokas editor'
-                className={data ? '' : 'eM'}
                 spellCheck={false}
                 aria-autocomplete={false}
                 aria-expanded={true}
@@ -143,6 +156,7 @@ const WorkStationComponent = () => {
                   confirm={confirm}
                   changeData={_con}
                   update={ChangedDataUpdate}
+                  mode={mode}
                 />
               )}
             </div>

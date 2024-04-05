@@ -177,4 +177,5 @@ export const ConfrimPropTypes = {
   confirm: PropTypes.bool,
   changeData: PropTypes.string,
   update: PropTypes.func,
+  mode: PropTypes.number,
 };

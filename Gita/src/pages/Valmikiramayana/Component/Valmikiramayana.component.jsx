@@ -177,7 +177,9 @@ const ValmikiramayanaComponent = ({
                                               </>
                                             </React.Fragment>
                                           ))
-                                      : 'Shloka not found.'}
+                                      : shlokaContent
+                                        ? shlokaContent
+                                        : 'Shloka not found.'}
                                 </font>
                               </p>
                               <div

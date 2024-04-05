@@ -142,7 +142,7 @@ const OptionComponent = ({
         <></>
       )}
 
-      {whatdb === 's-sri' ? (
+      {whatdb === 's-sri' && mode === 0 ? (
         <ShlokasOptions
           cSelSV={cSel1V}
           type='Sutra'
@@ -207,7 +207,7 @@ const OptionComponent = ({
         <></>
       )}
 
-      {whatdb === 's-vib' ? (
+      {whatdb === 's-vib' && mode === 0 ? (
         <ShlokasOptions
           cSelSV={cSel1V}
           type='Sutra'

@@ -15,6 +15,7 @@ export const fetchGitasContent = async ({
     const snapshot = await getDoc(refC);
     if (snapshot.exists()) {
       const data = snapshot?.data();
+      console.log('data: ', data);
       setOptionLength(data ? Object.keys(data).length : 1);
       const key = `${_fieldname}${selectedShloka}`;
       const shloka = snapshot.get(key);

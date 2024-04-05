@@ -827,6 +827,10 @@ span._notice {
       color: white !important;
       border: 1px solid whitesmoke !important;
     }
+
+    .cursor-none {
+      background-color: rgba(236, 228, 228, 0.779) !important;
+    }
   }
 
   .editor {
@@ -1136,6 +1140,7 @@ span._notice {
   gap: 10px;
   justify-content: space-between;
 }
+
 .empty-editor {
   margin-bottom: 300px;
 }
@@ -1195,6 +1200,7 @@ span._notice {
         font-weight: 600;
         font-size: 18px;
         white-space: pre-wrap;
+        background-color: #cdc8c861;
       }
 
       .c-em3-data {
@@ -1210,6 +1216,7 @@ span._notice {
           word-break: break-word;
           word-wrap: break-word;
           visibility: hidden;
+          display: none !important;
           color: rgba(255, 255, 255, 0.356) !important;
         }
       }
