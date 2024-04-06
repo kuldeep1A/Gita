@@ -342,21 +342,6 @@ const WorkStationFun = () => {
   const handleConfirm = () => {
     setConfirm(!confirm);
   };
-
-  useEffect(() => {
-    console.log(
-      '1',
-      cSel1V,
-      '2',
-      cSel2V,
-      '3',
-      cSel3V,
-      'f',
-      fetchDisable,
-      'l',
-      shlokasLen,
-    );
-  }, [cSel1V, cSel2V, cSel3V, fetchDisable, shlokasLen]);
   return {
     cData,
     ChangedDataUpdate,
