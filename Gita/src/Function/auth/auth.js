@@ -16,7 +16,10 @@ export const handleSignIn = async (email, passowrd) => {
     console.error('error: ', error);
   });
   if (auth.currentUser) {
-    window.location.href = 'https://gitas.web.app/workspace';
+    window.location.href =
+      import.meta.env.MODE === 'production'
+        ? 'https://gitas.web.app/workspace'
+        : 'http://localhost:9999/workspace';
   }
 };
 
@@ -25,7 +28,10 @@ export const handleSignOut = async ({setLogedIn}) => {
     await signOut(auth);
     setLogedIn && setLogedIn(false);
     if (!setLogedIn) {
-      window.location.href = 'http://gitas.web.app/login';
+      window.location.href =
+        import.meta.env.MODE === 'production'
+          ? 'https://gitas.web.app/workspace'
+          : 'http://localhost:9999/workspace';
     }
   }
 };

@@ -98,7 +98,7 @@ const WorkStationComponent = () => {
                 onClick={() => _fetch()}
                 className={fetchDisable ? 'cursor-none' : ''}
                 disabled={fetchDisable}>
-                Fetch
+                Get-Shloka
               </button>
             ) : (
               <button
