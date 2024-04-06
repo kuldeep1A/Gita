@@ -28,16 +28,26 @@ const WorkStationFun = () => {
   const [openEdit, setOpenEdit] = useState(false);
   const dpath = '/gitas/database';
 
+  const handleDbChange = val => {
+    setDbc(val);
+    setSel1V(0);
+    setSel2V(0);
+    setSel3V(0);
+    setShlokasLen(0);
+    setFetchDisable(true);
+    setDisappear(true);
+    setOpenEdit(false);
+    setData('');
+    setCData('');
+    setSutTypes('');
+    setKandaTypes('');
+    setData2({});
+    setConfirm(false);
+  };
   const ChangedDataUpdate = async () => {
     if (['c-bra', 'c-yog'].includes(dbC)) {
       if (updateShlokaData({_path: path, field: field2, changedData: cData})) {
-        setConfirm(false);
-        setDisappear(true);
-        setFetchDisable(true);
-        setSel1V(0);
-        setCData('');
-        setData('');
-        setDbc('');
+        handleDbChange('');
       }
     } else if ('c-val' === dbC) {
       if (
@@ -47,13 +57,7 @@ const WorkStationFun = () => {
           changedData: {content: `'${cData}'`, translate: '', description: ''},
         })
       ) {
-        setConfirm(false);
-        setDisappear(true);
-        setFetchDisable(true);
-        setSel1V(0);
-        setCData('');
-        setData('');
-        setDbc('');
+        handleDbChange('');
       }
     } else if (
       [
@@ -68,13 +72,7 @@ const WorkStationFun = () => {
       ].includes(dbC)
     ) {
       if (updateShlokaData({_path: path, field: field1, changedData: cData})) {
-        setConfirm(false);
-        setDisappear(true);
-        setFetchDisable(true);
-        setSel1V(0);
-        setCData('');
-        setData('');
-        setDbc('');
+        handleDbChange('');
       }
     }
   };
@@ -127,22 +125,6 @@ const WorkStationFun = () => {
     setData2({});
   };
 
-  const handleDbChange = val => {
-    setDbc(val);
-    setSel1V(0);
-    setSel2V(0);
-    setSel3V(0);
-    setShlokasLen(0);
-    setFetchDisable(true);
-    setDisappear(true);
-    setOpenEdit(false);
-    setData('');
-    setCData('');
-    setSutTypes('');
-    setKandaTypes('');
-    setData2({});
-  };
-
   useEffect(() => {
     if (['s-sri', 's-vib'].includes(dbC) && path) {
       getShlokasLen({_path: path, setShlokasLen});
@@ -169,8 +151,7 @@ const WorkStationFun = () => {
       'c-udd',
       'c-yog',
     ];
-    _sdb.includes(dbC) && setFetchDisable(true);
-    _sdb.includes(dbC) && setDisappear(true);
+    !_sdb.includes(dbC) && setShlokasLen(0);
   };
 
   useEffect(() => {
@@ -181,7 +162,10 @@ const WorkStationFun = () => {
     if (mode === 1 && _sdb.includes(dbC)) {
       setOpenEdit(cSel1V > 0);
     }
-  }, [mode, cSel1V, dbC, cSel2V, path]);
+    _sdb.push('c-yog');
+    _sdb.includes(dbC) && setFetchDisable(true);
+    _sdb.includes(dbC) && setDisappear(true);
+  }, [mode, cSel1V, dbC, path]);
 
   const handleChange1a = val => {
     setSel1V(val);
@@ -193,9 +177,12 @@ const WorkStationFun = () => {
     setKandaTypes('');
     const _d = ['s-sri', 's-vib'];
     !_d.includes(dbC) && setShlokasLen(0);
-    _d.includes(dbC) && setFetchDisable(cSel1V > 0);
-    _d.includes(dbC) && setDisappear(true);
   };
+  useEffect(() => {
+    const _d = ['s-sri', 's-vib'];
+    _d.includes(dbC) && setFetchDisable(cSel1V === 0);
+    _d.includes(dbC) && setDisappear(true);
+  }, [dbC, cSel1V]);
 
   const handleChange1b = val => {
     setKandaTypes(val);
@@ -220,25 +207,17 @@ const WorkStationFun = () => {
     setCData('');
     setSutTypes('');
     setData2({});
-    const _sdb = [
-      'c-sri',
-      'c-ash',
-      'c-ava',
-      'c-kap',
-      'c-sru',
-      'c-udd',
-      'c-bra',
-    ];
-
+    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd'];
     !_sdb.includes(dbC) && setShlokasLen(0);
-    _sdb.includes(dbC) && setFetchDisable(cSel2V > 0);
+  };
+
+  useEffect(() => {
+    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd'];
+    _sdb.includes(dbC) && setFetchDisable(cSel2V === 0);
     _sdb.includes(dbC) && setDisappear(true);
 
     'c-val' === dbC && setFetchDisable(true);
     'c-val' === dbC && setDisappear(true);
-  };
-
-  useEffect(() => {
     if (
       ['c-bra', 'c-val'].includes(dbC) &&
       cSel2V > 0 &&
@@ -260,11 +239,10 @@ const WorkStationFun = () => {
     setData('');
     setCData('');
     'c-yog' !== dbC && setShlokasLen(0);
+  };
+  useEffect(() => {
     'c-yog' === dbC && setFetchDisable(true);
     'c-yog' === dbC && setDisappear(true);
-  };
-
-  useEffect(() => {
     if (
       'c-yog' == dbC &&
       SutTypes &&
@@ -280,16 +258,19 @@ const WorkStationFun = () => {
     setDisappear(true);
     setData('');
     setCData('');
-    setFetchDisable(cSel3V > 0);
   };
+
+  useEffect(() => {
+    'c-bra' === dbC && setFetchDisable(cSel3V === 0);
+    ['c-yog', 'c-val'].includes(dbC) && setFetchDisable(cSel3V === 0);
+    ['c-yog', 'c-val'].includes(dbC) && setDisappear(true);
+  }, [cSel3V, dbC]);
 
   const handleChange3b = val => {
     setSel3V(val);
     setData('');
     setCData('');
     !['c-yog', 'c-val'].includes(dbC) && setShlokasLen(0);
-    ['c-yog', 'c-val'].includes(dbC) && setFetchDisable(cSel3V > 0);
-    ['c-yog', 'c-val'].includes(dbC) && setDisappear(true);
   };
 
   useEffect(() => {
@@ -324,31 +305,23 @@ const WorkStationFun = () => {
   }, [SutTypes, dbC, dpath, cSel1V, cSel2V, KandaTypes, path]);
 
   useEffect(() => {
-    if (mode === 0) {
-      const fields = {
-        'c-ash': `Shloka${cSel2V}`,
-        'c-ava': `Shloka${cSel2V}`,
-        'c-kap': `Shloka${cSel2V}`,
-        's-sri': `Shloka${cSel1V}`,
-        'c-sru': `Shloka${cSel2V}`,
-        'c-udd': `Shloka${cSel2V}`,
-        's-vib': `Shloka${cSel1V}`,
-        'c-sri': `shloka${cSel2V}`,
-      };
-      setField1(fields[dbC] || '');
-    } else {
-      const fields = {
-        'c-ash': `Shloka${shlokasLen + 1}`,
-        'c-ava': `Shloka${shlokasLen + 1}`,
-        'c-kap': `Shloka${shlokasLen + 1}`,
-        's-sri': `Shloka${shlokasLen + 1}`,
-        'c-sru': `Shloka${shlokasLen + 1}`,
-        'c-udd': `Shloka${shlokasLen + 1}`,
-        's-vib': `Shloka${shlokasLen + 1}`,
-        'c-sri': `shloka${shlokasLen + 1}`,
-      };
-      setField1(fields[dbC] || '');
-    }
+    const _shlokaNum =
+      mode == 0
+        ? ['c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd', 'c-sri'].includes(dbC)
+          ? cSel2V
+          : cSel1V
+        : shlokasLen + 1;
+    const fields = {
+      'c-ash': `Shloka${_shlokaNum}`,
+      'c-ava': `Shloka${_shlokaNum}`,
+      'c-kap': `Shloka${_shlokaNum}`,
+      's-sri': `Shloka${_shlokaNum}`,
+      'c-sru': `Shloka${_shlokaNum}`,
+      'c-udd': `Shloka${_shlokaNum}`,
+      's-vib': `Shloka${_shlokaNum}`,
+      'c-sri': `shloka${_shlokaNum}`,
+    };
+    setField1(fields[dbC] || '');
   }, [shlokasLen, cSel1V, cSel2V, dbC, mode]);
 
   useEffect(() => {
@@ -369,6 +342,21 @@ const WorkStationFun = () => {
   const handleConfirm = () => {
     setConfirm(!confirm);
   };
+
+  useEffect(() => {
+    console.log(
+      '1',
+      cSel1V,
+      '2',
+      cSel2V,
+      '3',
+      cSel3V,
+      'f',
+      fetchDisable,
+      'l',
+      shlokasLen,
+    );
+  }, [cSel1V, cSel2V, cSel3V, fetchDisable, shlokasLen]);
   return {
     cData,
     ChangedDataUpdate,
