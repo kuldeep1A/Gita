@@ -11,7 +11,6 @@ export const fetchGitasContent = async ({
   _fieldname,
   setData,
 }) => {
-  console.log('sdd');
   try {
     const refC = doc(database, _path);
     const snapshot = await getDoc(refC);
