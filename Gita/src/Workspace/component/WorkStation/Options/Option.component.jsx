@@ -117,7 +117,7 @@ const OptionComponent = ({
             })),
           ])
         : null}
-      {cSel2V && mode == 0
+      {whatdb === 'c-bra' && cSel2V && mode == 0
         ? renderShlokasOptions(cSel2V, cSel3V, 'Sutra', handleChange3a)
         : null}
 
@@ -154,7 +154,7 @@ const OptionComponent = ({
             {value: 'Vritti', label: 'Bhojavrttis'},
           ])
         : null}
-      {mode == 0 && SutTypes
+      {whatdb === 'c-yog' && mode == 0 && SutTypes
         ? renderShlokasOptions(SutTypes, cSel3V, 'Shloka', handleChange3a)
         : null}
 
@@ -179,7 +179,7 @@ const OptionComponent = ({
             },
           ])
         : null}
-      {KandaTypes
+      {whatdb === 'c-val' && KandaTypes
         ? renderSeletedOptions('Select Sargas', cSel2V, handleChange2a, [
             {value: 0, label: 'Select'},
             ...Array.from({length: SargaLen}, (_, index) => ({
@@ -188,7 +188,7 @@ const OptionComponent = ({
             })),
           ])
         : null}
-      {mode == 0 && cSel2V
+      {whatdb === 'c-val' && mode == 0 && cSel2V
         ? renderShlokasOptions(cSel2V, cSel3V, 'Shloka', handleChange3b)
         : null}
     </>
