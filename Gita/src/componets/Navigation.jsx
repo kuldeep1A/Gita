@@ -23,7 +23,7 @@ const Navigation = ({isWorkspace}) => {
     window.sessionStorage.getItem('isDark') === 'true' ? true : false;
   useEffect(() => {
     window.addEventListener('resize', () => {
-      if (_innerWidth > 820) {
+      if (_innerWidth >= 850) {
         if (isMenuOpen) {
           setIsMenuOpen(!isMenuOpen);
         }
@@ -92,7 +92,7 @@ const Navigation = ({isWorkspace}) => {
                       </div>
                     </div>
                   </div>
-                  {_innerWidth < 820 ? (
+                  {_innerWidth <= 850 ? (
                     <>
                       <div style={{marginLeft: '15px', marginTop: '3px'}}>
                         <DarkButton />
@@ -253,7 +253,7 @@ const Navigation = ({isWorkspace}) => {
                     </Link>
                   )}
                 </li>
-                {_innerWidth > 820 ? (
+                {_innerWidth >= 850 ? (
                   <>
                     <div className='_c-sec' style={{display: 'inline'}}>
                       <DarkButton />
