@@ -36,5 +36,3 @@ jobs:
           channelId: live
           projectId: geetas1a
           entryPoint: ./Gita/
-        env:
-          FIREBASE_CLI_EXPERIMENTS: webframeworks
