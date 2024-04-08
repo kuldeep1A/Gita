@@ -1,59 +1,35 @@
-import { collection, doc, getDocs, getDoc } from "firebase/firestore";
-import { database } from "../Function/A_Functions";
+import {doc, getDoc} from 'firebase/firestore';
+import {database} from '../Function/config/firebaseConfig';
 
-export const fetchOtherGitasContent = async ({
-  setidC,
-  idC,
+export const fetchGitasContent = async ({
+  _path,
   setOptionLength,
   selectedShloka,
   setShlokaContent,
-  _pathC,
-  _documentPath,
+  setShlokaTranslate,
+  setShlokaDescription,
+  _fieldname,
 }) => {
   try {
-    const pathC = _pathC;
-    const refC = collection(database, pathC);
-    getDocs(refC).then((sanpshot) => {
-      sanpshot.docs.forEach((doc) => {
-        setidC(`${doc.id}`);
-      });
-    });
-    if (idC) {
-      await fetchOtherGitasDocument({
-        _documentPath,
-        setOptionLength,
-        selectedShloka,
-        setShlokaContent,
-      });
-    }
-  } catch (error) {
-    console.error("Error fetching shloka content: ", error);
-  }
-};
-
-export const fetchOtherGitasDocument = async ({
-  _documentPath,
-  setOptionLength,
-  selectedShloka,
-  setShlokaContent,
-}) => {
-  try {
-    const documentPath = _documentPath;
-    const docRef = doc(database, documentPath);
-    const docSanpshot = await getDoc(docRef);
-    if (docSanpshot.exists) {
-      const ShlokaData = docSanpshot.data();
-      if (ShlokaData !== undefined && ShlokaData !== null) {
-        const ShlokaArray = Object.entries(ShlokaData).map(([shlokaNumber, Shloka]) => ({
-          shlokaNumber,
-          Shloka,
-        }));
-        setOptionLength(ShlokaArray.length);
-        const shloka = ShlokaData[`Shloka${selectedShloka}`];
+    const refC = doc(database, _path);
+    const snapshot = await getDoc(refC);
+    if (snapshot.exists()) {
+      const data = snapshot?.data();
+      setOptionLength(data ? Object.keys(data).length : 1);
+      const key = `${_fieldname}${selectedShloka}`;
+      const shloka = snapshot.get(key);
+      if (typeof shloka === 'string') {
         setShlokaContent(shloka);
+      } else {
+        const keys = ['description', 'content', 'translate'];
+        setShlokaDescription(shloka[keys[0]]);
+        setShlokaContent(shloka[keys[1]]);
+        setShlokaTranslate(shloka[keys[2]]);
       }
+    } else {
+      console.error('Document does not exist.');
     }
   } catch (error) {
-    console.error("Error fetching shloka content: ", error);
+    console.error('Unable to fetch data. Please Reload.', error);
   }
 };
