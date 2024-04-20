@@ -2,7 +2,7 @@ import {LoginComponent} from './component/Login.component';
 import {LoginFunc} from './component/Login.fun';
 
 const Login = () => {
-  const {UTN, setEmail, setPassword, handleAuth, logedIn} = LoginFunc();
+  const {UTN, setEmail, setPassword, handleAuth, logedIn, jkd} = LoginFunc();
   return (
     <LoginComponent
       UTN={UTN}
@@ -10,6 +10,7 @@ const Login = () => {
       setPassword={setPassword}
       handleAuth={handleAuth}
       logedIn={logedIn}
+      jkd={jkd}
     />
   );
 };

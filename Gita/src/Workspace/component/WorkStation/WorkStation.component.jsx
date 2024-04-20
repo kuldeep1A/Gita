@@ -111,7 +111,7 @@ const WorkStationComponent = () => {
           </div>
         </div>
       </div>
-      {!disappear ? (
+      {!disappear && (
         <div style={{marginTop: '10px'}} className={`editor`}>
           <div className='shlokaInfo'>
             You are now at Shloka No.
@@ -162,8 +162,6 @@ const WorkStationComponent = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <></>
       )}
     </div>
   );

@@ -72,9 +72,7 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
                     <span className='grow'>Copy</span>
                   </div>
                 </li>
-                {isLargeLength ? (
-                  <></>
-                ) : (
+                {!isLargeLength && (
                   <>
                     <li className='w-full d-flex'>
                       <a

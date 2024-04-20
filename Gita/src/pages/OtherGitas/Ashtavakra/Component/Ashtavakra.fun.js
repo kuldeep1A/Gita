@@ -70,7 +70,11 @@ const AshtavakraFun = () => {
   };
   const _changeCodeToEn = async () => {
     setIsHindiTranslate(false);
-    await goTranslate({ShlokaContent, isHindiTranslate, setTranslateCotent});
+    await goTranslate({
+      sansContent: ShlokaContent,
+      whatcode: isHindiTranslate,
+      setTranslateCotent,
+    });
   };
   const _changeCodeToHi = async () => {
     setIsHindiTranslate(true);

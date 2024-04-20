@@ -80,15 +80,9 @@ const YogaSutraFun = () => {
           setVTranslateCotent('Wait for Shloka!');
         }
       } else {
-        setSTranslateCotent(
-          'Wait for Shloka! Shloka Length must be less than 1912 character.',
-        );
-        setBTranslateCotent(
-          'Wait for Shloka! Shloka Length must be less than 1912 character.',
-        );
-        setVTranslateCotent(
-          'Wait for Shloka! Shloka Length must be less than 1912 character.',
-        );
+        setSTranslateCotent('Wait!');
+        setBTranslateCotent('Wait!');
+        setVTranslateCotent('Wait!');
       }
     },
     [whichSutra, fillTranslate],

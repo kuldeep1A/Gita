@@ -90,6 +90,6 @@ function App() {
 
 export default App;
 
-const slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa = 'G-VXSDXFRQS7';
+const slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa = 'G-162B59M9LM';
 ReactGA.initialize(slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa);
 ReactGA.pageview(window.location.pathname + window.location.search);

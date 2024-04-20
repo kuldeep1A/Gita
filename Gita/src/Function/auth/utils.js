@@ -1,16 +1,14 @@
-import CryptoJS from 'crypto-js';
-import {key, adNetI} from '../config/firebaseConfig';
+export const authUtils = async ({_setUTN, setJkd}) => {
+  const _ = generateBrowserIdentifier();
+  const _a = [
+    'MTAyNTAzNTk3Ng==',
+    'LTEzOTU1NDMyMjg=',
+    'MTY5NTk3MTc5',
+    'LTUwNDI1MTA0OA==',
+  ];
 
-function decrypt(ciphertext) {
-  const bytes = CryptoJS.AES.decrypt(ciphertext, key);
-  const originalText = bytes.toString(CryptoJS.enc.Utf8);
-  return parseInt(originalText);
-}
-
-export const authUtils = async ({_setUTN}) => {
-  const _Num = generateBrowserIdentifier();
-  const _Num2 = decrypt(adNetI);
-  if (_Num === _Num2) {
+  setJkd(_);
+  if (_a.includes(_)) {
     _setUTN(true);
   } else {
     console.error("You're not use the admin browser or network!");
@@ -20,16 +18,18 @@ export const authUtils = async ({_setUTN}) => {
 
 function generateBrowserIdentifier() {
   const userAgent = navigator.userAgent;
-  const screenWidth = window.screen.width;
-  const screenHeight = window.screen.height;
-  const timezoneOffset = new Date().getTimezoneOffset();
+  const platform = navigator.platform;
   const plugins = Array.from(navigator.plugins).map(plugin => ({
     name: plugin.name,
+    filename: plugin.filename,
     description: plugin.description,
   }));
-  const identifier = `${userAgent}_${screenWidth}_${screenHeight}_${timezoneOffset}_${JSON.stringify(plugins)}`;
-  const hashedIdentifier = hashString(identifier);
-  return hashedIdentifier;
+  const pix = window.devicePixelRatio; // (90%)
+  const identifier = `${userAgent}_${platform}_${JSON.stringify(plugins)}_${pix}`;
+  const _dHash = hashString(
+    window.btoa(unescape(encodeURIComponent(identifier))),
+  );
+  return window.btoa(_dHash);
 }
 
 function hashString(str) {
