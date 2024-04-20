@@ -9,7 +9,7 @@ const Srimad = () => {
     clickEvent,
     handleChapterChange,
     handleClick,
-    handleSholkaChange,
+    handleShlokaChange,
     hideTrans,
     isHindiTranslate,
     isSharePopVisible,
@@ -31,7 +31,7 @@ const Srimad = () => {
       clickEvent={clickEvent}
       handleChapterChange={handleChapterChange}
       handleClick={handleClick}
-      handleSholkaChange={handleSholkaChange}
+      handleShlokaChange={handleShlokaChange}
       hideTrans={hideTrans}
       isHindiTranslate={isHindiTranslate}
       isSharePopVisible={isSharePopVisible}

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Svgs from './Svgs';
 import {_SpeakInEnHi} from '../Function/utils';
 import {useSpeechSynthesis} from 'react-speech-kit';
@@ -47,6 +47,15 @@ export const TranslateView = ({
       return Svgs._svgLoading();
     }
   };
+  useEffect(() => {
+    const d = () => {
+      _SpeakInEnHi(false, false, '', speak, voices, cancel);
+      setAudioStatus('aloud');
+    };
+    window.addEventListener('beforeunload', () => speaking && d());
+    document.addEventListener('dblclick', () => speaking && d());
+    document.addEventListener('change', () => speaking && d());
+  }, [speaking, speak, voices, cancel]);
   return (
     <div className='translate-view'>
       <div className='v-fi_sutra'>
@@ -66,12 +75,10 @@ export const TranslateView = ({
           <p className='text-center h-fonts'>
             <font className='fw-normal size-6'>{translateContent}</font>
           </p>
-          {supported && translateContent !== 'Wait for Shloka!' ? (
+          {supported && translateContent !== 'Wait for Shloka!' && (
             <div className='audio-button'>
               <div onClick={() => handleSpeak()}>{getAudioIcon()}</div>
             </div>
-          ) : (
-            <></>
           )}
         </div>
       </div>

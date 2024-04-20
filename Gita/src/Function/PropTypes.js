@@ -27,7 +27,7 @@ export const ContentPropTypes = {
   clickEvent: PropTypes.object,
   handleChapterChange: PropTypes.func,
   handleClick: PropTypes.func,
-  handleSholkaChange: PropTypes.func,
+  handleShlokaChange: PropTypes.func,
   hideTrans: PropTypes.bool,
   isHindiTranslate: PropTypes.bool,
   isSharePopVisible: PropTypes.bool,

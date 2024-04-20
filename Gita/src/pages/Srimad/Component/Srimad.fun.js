@@ -64,9 +64,9 @@ const SrimadFun = () => {
     setselectedShloka(1);
     setData({});
   };
-  const handleSholkaChange = event => {
-    const newSholka = parseInt(event.target.value, 10);
-    setselectedShloka(newSholka);
+  const handleShlokaChange = event => {
+    const newShloka = parseInt(event.target.value, 10);
+    setselectedShloka(newShloka);
   };
 
   const _changeCodeToEn = async () => {
@@ -130,7 +130,7 @@ const SrimadFun = () => {
     clickEvent,
     handleChapterChange,
     handleClick,
-    handleSholkaChange,
+    handleShlokaChange,
     hideTrans,
     isHindiTranslate,
     isSharePopVisible,

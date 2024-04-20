@@ -30,8 +30,8 @@ export const handleSignOut = async ({setLogedIn}) => {
     if (!setLogedIn) {
       window.location.href =
         import.meta.env.MODE === 'production'
-          ? 'https://gitas.web.app/workspace'
-          : 'http://localhost:9999/workspace';
+          ? 'https://gitas.web.app/login'
+          : 'http://localhost:9999/login';
     }
   }
 };

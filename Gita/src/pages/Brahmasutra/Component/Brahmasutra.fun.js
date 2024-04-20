@@ -19,6 +19,7 @@ const BrahmasutraFun = () => {
   const [isHindiTranslate, setIsHindiTranslate] = useState(true);
   const [hideTrans, setHideTrans] = useState(false);
   const [clickEvent, setClickEvent] = useState(null);
+  const [data, setData] = useState({});
   const shareRef = useRef(null);
   var site = 'brahmasutra';
   var shId = `sh-${site}-${selectedChapter}-${selectedQuarter}-${selectedSutra}`;
@@ -62,11 +63,13 @@ const BrahmasutraFun = () => {
     setSelectedChapter(newChapter);
     setSelectedQuarter(1);
     setSelectedSutra(1);
+    setData({});
   };
   const handleQuarterChange = evnet => {
     const newQuarter = parseInt(evnet.target.value, 10);
     setSelectedQuarter(newQuarter);
     setSelectedSutra(1);
+    setData({});
   };
   const handleSutraChange = evnet => {
     const newSutra = parseInt(evnet.target.value, 10);
@@ -106,14 +109,6 @@ const BrahmasutraFun = () => {
     } else {
       setTranslateCotent('Wait for Shloka!');
     }
-    let _path = `/gitas/database/brahmasutra/chapters/Chapter${selectedChapter}/quarters/Quarter${selectedQuarter}/sutrasdoc`;
-    fetchGitasContent({
-      _path,
-      setOptionLength,
-      selectedShloka: selectedSutra,
-      setShlokaContent: setSutraContent,
-      _fieldname: 'Sutra',
-    });
   }, [
     sutraContent,
     isHindiTranslate,
@@ -121,6 +116,27 @@ const BrahmasutraFun = () => {
     selectedQuarter,
     selectedSutra,
   ]);
+
+  useEffect(() => {
+    let _path = `/gitas/database/brahmasutra/chapters/Chapter${selectedChapter}/quarters/Quarter${selectedQuarter}/sutrasdoc`;
+    Object.keys(data).length === 0 &&
+      selectedChapter &&
+      selectedQuarter &&
+      fetchGitasContent({
+        _path,
+        setOptionLength,
+        selectedShloka: selectedSutra,
+        setShlokaContent: setSutraContent,
+        _fieldname: 'Sutra',
+        setData: setData,
+      });
+  }, [data, sutraContent, selectedChapter, selectedQuarter, selectedSutra]);
+
+  useEffect(() => {
+    Object.keys(data).length > 0 &&
+      setSutraContent(data[`Sutra${selectedSutra}`]);
+  }, [data, selectedSutra]);
+
   return {
     OptionLength,
     _changeCodeToEn,

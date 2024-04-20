@@ -12,20 +12,22 @@ export default function Home() {
     color: '#a52a2a',
   };
   return (
-    <>
+    <div>
       <div className='r-f-welcome'>
         <div className='content'>
           <span style={colorx}>
-            <strong>
-              <span className='_notice'>
-                NOTICE: Users can edit content now. If you want to be an editor,
-                please send your credentials with offical
-                <em style={{color: 'black', fontWeight: 'bold'}}>
-                  GitaSuperSite
-                </em>
-                Website Maintained by IIT Kanpur.
-              </span>
-            </strong>
+            {false && (
+              <strong>
+                <span className='_notice'>
+                  NOTICE: Users can edit content now. If you want to be an
+                  editor, please send your credentials with offical
+                  <em style={{color: 'black', fontWeight: 'bold'}}>
+                    GitaSuperSite
+                  </em>
+                  Website Maintained by IIT Kanpur.
+                </span>
+              </strong>
+            )}
           </span>
         </div>
       </div>
@@ -104,8 +106,9 @@ export default function Home() {
             </h1>
           </div>
         </div>
+
+        <Outlet />
       </div>
-      <Outlet />
-    </>
+    </div>
   );
 }
