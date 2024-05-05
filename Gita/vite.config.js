@@ -7,6 +7,10 @@ export default defineConfig({
       include: '**/*.js',
     }),
   ],
+  server: {
+    port: 9999,
+    host: true,
+  },
 
   // build: {
   //   rollupOptions: {
