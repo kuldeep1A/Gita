@@ -2,12 +2,18 @@ import { useState } from 'react'
 import { LoginPropTypes } from '../../../../Function/PropTypes'
 import Svgs from '../../../../componets/Svgs'
 
-const FormComponent = ({ setEmail, setPassword, handleAuth }) => {
+const FormComponent = ({ handleAuth }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [isHidePass, setIsHidePaass] = useState(false)
+  const handleForm = event => {
+    event.preventDefault()
+    handleAuth(email, password)
+  }
   return (
     <div className='auth'>
       <data>
-        <form onSubmit={handleAuth}>
+        <form onSubmit={handleForm}>
           <div className='auth-email'>
             <label htmlFor='email'>Email</label>
             <input

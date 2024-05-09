@@ -3,13 +3,10 @@ import { authUtils } from '../../../Function/auth/utils'
 import { authStage, handleSignIn } from '../../../Function/auth/auth'
 export const LoginFunc = () => {
   const [UTN, _setUTN] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [logedIn, setLogedIn] = useState(false)
   const [jkd, setJkd] = useState('')
 
-  const handleAuth = async event => {
-    event.preventDefault()
+  const handleAuth = async (email, password) => {
     if (UTN && /^[^@]+@gmail\.com$/i.test(email) && password.length > 14) {
       await handleSignIn(email, password)
     } else {
@@ -34,8 +31,6 @@ export const LoginFunc = () => {
 
   return {
     UTN,
-    setEmail,
-    setPassword,
     handleAuth,
     logedIn,
     jkd,
