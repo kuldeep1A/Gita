@@ -1,5 +1,5 @@
-import _set_session from '../Function/utils';
-import Svgs from './Svgs';
+import _set_session from '../Function/utils'
+import Svgs from './Svgs'
 const DarkButton = () => {
   return (
     <div className='_c-mode'>
@@ -11,7 +11,7 @@ const DarkButton = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DarkButton;
+export default DarkButton

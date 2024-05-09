@@ -1,138 +1,133 @@
-import {useState, useEffect, useRef} from 'react';
-import {fetchGitasContent} from '../../../Function/services/services';
-import {optionData} from '../../../DATA/MoreData';
+import { useState, useEffect, useRef } from 'react'
+import { fetchGitasContent } from '../../../Function/services/services'
+import { optionData } from '../../../DATA/MoreData'
 
 const ValmikiramayanaFun = () => {
   useEffect(() => {
-    document.title = 'Valmiki Ramayana | Gita';
+    document.title = 'Valmiki Ramayana | Gita'
     return () => {
-      document.title = 'Valmiki Ramayana | Gita';
-    };
-  }, []);
-  const [selectedKanda, setSelectedKanda] = useState('BALAKANDA');
-  const [selectedSarga, setSelectedSarga] = useState(1);
-  const [selectedShloka, setSelectedShloka] = useState(1);
-  const [shlokaOptionLen, setShlokaOptionLen] = useState(1);
-  const balakandaLen = Object.keys(optionData.BALAKANDA).length;
-  const ayodhyaLen = Object.keys(optionData.AYODHYAKANDA).length;
-  const aranyadaLen = Object.keys(optionData.ARANYAKANDA).length;
-  const kishkindaLen = Object.keys(optionData.KISHKINDAKANDA).length;
-  const sundaraLen = Object.keys(optionData.SUNDARAKANDA).length;
-  const yuddhadaLen = Object.keys(optionData.YUDDHAKANDA).length;
-  const [shlokaContent, setShlokaContent] = useState('');
-  const [shlokaTranslate, setShlokaTranslate] = useState('');
-  const [shlokaDescription, setShlokaDescription] = useState('');
-  const [isSharePopVisible, setSharePopVisible] = useState(false);
-  const [hideTrans, setHideTrans] = useState(false);
-  const [clickEvent, setClickEvent] = useState(null);
-  const [data, setData] = useState({});
-  const shareRef = useRef(null);
-  var site = 'valmikiramayana';
-  var shId = `sh-${selectedKanda}-${selectedSarga}-${selectedShloka}`;
-  var shareTitle = `Valmiki Ramayana, Kanda: ${selectedKanda}, Sarga: ${selectedSarga}, Shloka: ${selectedShloka}.`;
+      document.title = 'Valmiki Ramayana | Gita'
+    }
+  }, [])
+  const [selectedKanda, setSelectedKanda] = useState('BALAKANDA')
+  const [selectedSarga, setSelectedSarga] = useState(1)
+  const [selectedShloka, setSelectedShloka] = useState(1)
+  const [shlokaOptionLen, setShlokaOptionLen] = useState(1)
+  const balakandaLen = Object.keys(optionData.BALAKANDA).length
+  const ayodhyaLen = Object.keys(optionData.AYODHYAKANDA).length
+  const aranyadaLen = Object.keys(optionData.ARANYAKANDA).length
+  const kishkindaLen = Object.keys(optionData.KISHKINDAKANDA).length
+  const sundaraLen = Object.keys(optionData.SUNDARAKANDA).length
+  const yuddhadaLen = Object.keys(optionData.YUDDHAKANDA).length
+  const [shlokaContent, setShlokaContent] = useState('')
+  const [shlokaTranslate, setShlokaTranslate] = useState('')
+  const [shlokaDescription, setShlokaDescription] = useState('')
+  const [isSharePopVisible, setSharePopVisible] = useState(false)
+  const [hideTrans, setHideTrans] = useState(false)
+  const [clickEvent, setClickEvent] = useState(null)
+  const [data, setData] = useState({})
+  const shareRef = useRef(null)
+  var site = 'valmikiramayana'
+  var shId = `sh-${selectedKanda}-${selectedSarga}-${selectedShloka}`
+  var shareTitle = `Valmiki Ramayana, Kanda: ${selectedKanda}, Sarga: ${selectedSarga}, Shloka: ${selectedShloka}.`
   const handleClick = event => {
     if (!isSharePopVisible) {
-      setClickEvent(event);
-      setSharePopVisible(true);
+      setClickEvent(event)
+      setSharePopVisible(true)
     } else {
-      closeSharePop();
+      closeSharePop()
     }
-  };
+  }
   const closeSharePop = () => {
-    setSharePopVisible(false);
-  };
+    setSharePopVisible(false)
+  }
   useEffect(() => {
     const handleClickOutside = event => {
-      const target = event.target || event.srcElement;
+      const target = event.target || event.srcElement
       if (target && shareRef !== null) {
-        const share_b = !shareRef.current.contains(target);
+        const share_b = !shareRef.current.contains(target)
         if (share_b) {
           setTimeout(() => {
-            closeSharePop();
-          }, 100);
+            closeSharePop()
+          }, 100)
         }
       }
-    };
+    }
 
-    document.body.addEventListener('click', handleClickOutside);
-    window.addEventListener('scroll', () => closeSharePop(), {capture: true});
-    window.addEventListener('resize', () => closeSharePop());
+    document.body.addEventListener('click', handleClickOutside)
+    window.addEventListener('scroll', () => closeSharePop(), { capture: true })
+    window.addEventListener('resize', () => closeSharePop())
 
     return () => {
-      document.body.removeEventListener('click', handleClickOutside);
+      document.body.removeEventListener('click', handleClickOutside)
       window.removeEventListener('scroll', () => closeSharePop(), {
         capture: true,
-      });
-      window.removeEventListener('resize', () => closeSharePop());
-    };
-  }, [shId]);
-  const sanEng = (shloka, c, isSans) => {
-    var engs = [];
-    var all = {};
-    if (shloka && c === 0) {
-      all = shloka
-        .split("'")
-        .filter(line => line.trim() !== ',' && line.trim() !== '');
-      c = c + 1;
+      })
+      window.removeEventListener('resize', () => closeSharePop())
     }
-    var ed = '';
+  }, [shId])
+  const sanEng = (shloka, c, isSans) => {
+    var engs = []
+    var all = {}
+    if (shloka && c === 0) {
+      all = shloka.split("'").filter(line => line.trim() !== ',' && line.trim() !== '')
+      c = c + 1
+    }
+    var ed = ''
     var sd = all.filter(e => {
       if (/[a-zA-Z]/.test(e) && !engs.includes(e)) {
-        ed = `${ed}${e}`;
+        ed = `${ed}${e}`
       }
-      return !/[a-zA-Z]/.test(e);
-    });
-    engs.push(ed);
+      return !/[a-zA-Z]/.test(e)
+    })
+    engs.push(ed)
     if (isSans) {
-      return sd;
+      return sd
     } else {
-      return engs;
+      return engs
     }
-  };
+  }
   const handleKandaChange = event => {
-    setSelectedKanda(event.target.value);
-    setSelectedSarga(1);
-    setSelectedShloka(1);
-    setData({});
-  };
+    setSelectedKanda(event.target.value)
+    setSelectedSarga(1)
+    setSelectedShloka(1)
+    setData({})
+  }
   const handleSargaChange = event => {
-    const newSarga = parseInt(event.target.value, 10);
-    setSelectedSarga(newSarga);
-    setSelectedShloka(1);
-    setData({});
-  };
+    const newSarga = parseInt(event.target.value, 10)
+    setSelectedSarga(newSarga)
+    setSelectedShloka(1)
+    setData({})
+  }
   const handleShlokaChange = event => {
-    const newShloka = parseInt(event.target.value, 10);
-    setSelectedShloka(newShloka);
-  };
+    const newShloka = parseInt(event.target.value, 10)
+    setSelectedShloka(newShloka)
+  }
   const handleSargaLen = () => {
     if (selectedKanda === 'BALAKANDA') {
-      return balakandaLen;
+      return balakandaLen
     } else if (selectedKanda === 'AYODHYAKANDA') {
-      return ayodhyaLen;
+      return ayodhyaLen
     } else if (selectedKanda === 'ARANYAKANDA') {
-      return aranyadaLen;
+      return aranyadaLen
     } else if (selectedKanda === 'KISHKINDAKANDA') {
-      return kishkindaLen;
+      return kishkindaLen
     } else if (selectedKanda === 'SUNDARAKANDA') {
-      return sundaraLen;
+      return sundaraLen
     } else if (selectedKanda === 'YUDDHAKANDA') {
-      return yuddhadaLen;
+      return yuddhadaLen
     }
-  };
+  }
   function _hideTrans() {
     if (hideTrans) {
-      setHideTrans(false);
+      setHideTrans(false)
     } else {
-      setHideTrans(true);
+      setHideTrans(true)
     }
   }
   useEffect(() => {
-    let _path = `/gitas/database/valmikiramayana/kandas/${selectedKanda}/sargas/sarga${selectedSarga}/shlokasdoc`;
-    if (
-      (selectedKanda, selectedSarga, selectedShloka) &&
-      Object.keys(data).length === 0
-    ) {
+    let _path = `/gitas/database/valmikiramayana/kandas/${selectedKanda}/sargas/sarga${selectedSarga}/shlokasdoc`
+    if ((selectedKanda, selectedSarga, selectedShloka) && Object.keys(data).length === 0) {
       fetchGitasContent({
         _path,
         _fieldname: 'Shloka',
@@ -142,7 +137,7 @@ const ValmikiramayanaFun = () => {
         setShlokaTranslate: setShlokaTranslate,
         setOptionLength: setShlokaOptionLen,
         setData: setData,
-      });
+      })
     }
   }, [
     selectedKanda,
@@ -152,17 +147,17 @@ const ValmikiramayanaFun = () => {
     shlokaDescription,
     shlokaTranslate,
     data,
-  ]);
+  ])
 
   useEffect(() => {
     if (Object.keys(data).length > 0) {
-      const keys = ['description', 'content', 'translate'];
-      const shloka = data[`Shloka${selectedShloka}`];
-      setShlokaDescription(shloka[keys[0]]);
-      setShlokaContent(shloka[keys[1]]);
-      setShlokaTranslate(shloka[keys[2]]);
+      const keys = ['description', 'content', 'translate']
+      const shloka = data[`Shloka${selectedShloka}`]
+      setShlokaDescription(shloka[keys[0]])
+      setShlokaContent(shloka[keys[1]])
+      setShlokaTranslate(shloka[keys[2]])
     }
-  }, [data, selectedShloka]);
+  }, [data, selectedShloka])
   return {
     _hideTrans,
     clickEvent,
@@ -185,7 +180,7 @@ const ValmikiramayanaFun = () => {
     shlokaDescription,
     shlokaTranslate,
     site,
-  };
-};
+  }
+}
 
-export default ValmikiramayanaFun;
+export default ValmikiramayanaFun

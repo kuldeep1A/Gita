@@ -1,7 +1,7 @@
-import {WorkspacePropTypes} from '../../../Function/PropTypes';
-import {handleSignOut} from '../../../Function/auth/auth';
+import { WorkspacePropTypes } from '../../../Function/PropTypes'
+import { handleSignOut } from '../../../Function/auth/auth'
 
-const PageTab = ({userEmail, emailVerified}) => {
+const PageTab = ({ userEmail, emailVerified }) => {
   return (
     <div className='page-ws-tab'>
       <div>
@@ -19,7 +19,7 @@ const PageTab = ({userEmail, emailVerified}) => {
         </div>
       </div>
     </div>
-  );
-};
-export default PageTab;
-PageTab.propTypes = WorkspacePropTypes;
+  )
+}
+export default PageTab
+PageTab.propTypes = WorkspacePropTypes

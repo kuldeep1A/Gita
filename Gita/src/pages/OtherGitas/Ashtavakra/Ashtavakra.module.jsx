@@ -1,5 +1,5 @@
-import AshtavakraFun from './Component/Ashtavakra.fun';
-import AshtavakraComponent from './Component/Ashtavakra.component';
+import AshtavakraFun from './Component/Ashtavakra.fun'
+import AshtavakraComponent from './Component/Ashtavakra.component'
 
 const Ashtavakra = () => {
   const {
@@ -22,7 +22,7 @@ const Ashtavakra = () => {
     shId,
     site,
     translateContent,
-  } = AshtavakraFun();
+  } = AshtavakraFun()
 
   return (
     <AshtavakraComponent
@@ -46,7 +46,7 @@ const Ashtavakra = () => {
       site={site}
       translateContent={translateContent}
     />
-  );
-};
+  )
+}
 
-export default Ashtavakra;
+export default Ashtavakra

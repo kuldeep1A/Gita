@@ -1,277 +1,259 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react'
 import {
   getShloka,
   getShlokasLen,
   updateShlokaData,
-} from '../../../Function/services/workstation.service';
+} from '../../../Function/services/workstation.service'
 
 const WorkStationFun = () => {
-  const [chV, setChV] = useState(0);
-  const [cSel1V, setSel1V] = useState(0);
-  const [cSel2V, setSel2V] = useState(0);
-  const [cSel3V, setSel3V] = useState(0);
-  const [shlokasLen, setShlokasLen] = useState(0);
-  const [mode, setMode] = useState(0);
-  const [SargaLen, setSargaLen] = useState(0);
-  const [dbC, setDbc] = useState('');
-  const [KandaTypes, setKandaTypes] = useState('');
-  const [SutTypes, setSutTypes] = useState('');
-  const [data, setData] = useState('');
-  const [cData, setCData] = useState('');
-  const [path, setPath] = useState('');
-  const [field1, setField1] = useState('');
-  const [field2, setField2] = useState('');
-  const [data2, setData2] = useState({});
-  const [disappear, setDisappear] = useState(true);
-  const [fetchDisable, setFetchDisable] = useState(true);
-  const [confirm, setConfirm] = useState(false);
-  const [openEdit, setOpenEdit] = useState(false);
-  const dpath = '/gitas/database';
+  const [chV, setChV] = useState(0)
+  const [cSel1V, setSel1V] = useState(0)
+  const [cSel2V, setSel2V] = useState(0)
+  const [cSel3V, setSel3V] = useState(0)
+  const [shlokasLen, setShlokasLen] = useState(0)
+  const [mode, setMode] = useState(0)
+  const [SargaLen, setSargaLen] = useState(0)
+  const [dbC, setDbc] = useState('')
+  const [KandaTypes, setKandaTypes] = useState('')
+  const [SutTypes, setSutTypes] = useState('')
+  const [data, setData] = useState('')
+  const [cData, setCData] = useState('')
+  const [path, setPath] = useState('')
+  const [field1, setField1] = useState('')
+  const [field2, setField2] = useState('')
+  const [data2, setData2] = useState({})
+  const [disappear, setDisappear] = useState(true)
+  const [fetchDisable, setFetchDisable] = useState(true)
+  const [confirm, setConfirm] = useState(false)
+  const [openEdit, setOpenEdit] = useState(false)
+  const dpath = '/gitas/database'
 
   const handleDbChange = val => {
-    setDbc(val);
-    setSel1V(0);
-    setSel2V(0);
-    setSel3V(0);
-    setShlokasLen(0);
-    setFetchDisable(true);
-    setDisappear(true);
-    setOpenEdit(false);
-    setData('');
-    setCData('');
-    setSutTypes('');
-    setKandaTypes('');
-    setData2({});
-    setConfirm(false);
-  };
+    setDbc(val)
+    setSel1V(0)
+    setSel2V(0)
+    setSel3V(0)
+    setShlokasLen(0)
+    setFetchDisable(true)
+    setDisappear(true)
+    setOpenEdit(false)
+    setData('')
+    setCData('')
+    setSutTypes('')
+    setKandaTypes('')
+    setData2({})
+    setConfirm(false)
+  }
   const ChangedDataUpdate = async () => {
     if (['c-bra', 'c-yog'].includes(dbC)) {
-      if (updateShlokaData({_path: path, field: field2, changedData: cData})) {
-        handleDbChange('');
+      if (updateShlokaData({ _path: path, field: field2, changedData: cData })) {
+        handleDbChange('')
       }
     } else if ('c-val' === dbC) {
       if (
         updateShlokaData({
           _path: path,
           field: field2,
-          changedData: {content: `'${cData}'`, translate: '', description: ''},
+          changedData: {
+            content: `'${cData}'`,
+            translate: '',
+            description: '',
+          },
         })
       ) {
-        handleDbChange('');
+        handleDbChange('')
       }
     } else if (
-      [
-        'c-sri',
-        'c-ash',
-        'c-ava',
-        'c-kap',
-        'c-sru',
-        'c-udd',
-        's-sri',
-        's-vib',
-      ].includes(dbC)
+      ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd', 's-sri', 's-vib'].includes(dbC)
     ) {
-      if (updateShlokaData({_path: path, field: field1, changedData: cData})) {
-        handleDbChange('');
+      if (updateShlokaData({ _path: path, field: field1, changedData: cData })) {
+        handleDbChange('')
       }
     }
-  };
+  }
 
   const _fetch = () => {
     if (dbC === 'c-bra' && cSel3V > 0) {
-      getShloka({field: field2, setData});
-      setDisappear(false);
-    } else if (
-      ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd'].includes(dbC) &&
-      cSel2V > 0
-    ) {
-      getShloka({field: field1, setData});
-      setDisappear(false);
+      getShloka({ field: field2, setData })
+      setDisappear(false)
+    } else if (['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd'].includes(dbC) && cSel2V > 0) {
+      getShloka({ field: field1, setData })
+      setDisappear(false)
     } else if (['s-sri', 's-vib'].includes(dbC)) {
-      getShloka({field: field1, setData});
-      setDisappear(false);
+      getShloka({ field: field1, setData })
+      setDisappear(false)
     } else if (dbC === 'c-yog' && cSel3V > 0) {
-      getShloka({field: field2, setData});
-      setDisappear(false);
+      getShloka({ field: field2, setData })
+      setDisappear(false)
     } else if (dbC === 'c-val' && cSel3V > 0) {
-      getShloka({field: field2, setData: setData2});
-      setDisappear(false);
+      getShloka({ field: field2, setData: setData2 })
+      setDisappear(false)
     }
-  };
+  }
 
   useEffect(() => {
-    const _con = data2['content'];
-    _con && setData(_con);
-  }, [data2]);
+    const _con = data2['content']
+    _con && setData(_con)
+  }, [data2])
 
   const handleOpenEditor = () => {
-    setDisappear(!disappear);
-  };
+    setDisappear(!disappear)
+  }
 
   const handleMode = val => {
-    setMode(val);
-    setSel1V(0);
-    setSel2V(0);
-    setSel3V(0);
-    setShlokasLen(0);
-    setFetchDisable(true);
-    setDisappear(true);
-    setOpenEdit(false);
-    setDbc('');
-    setData('');
-    setCData('');
-    setSutTypes('');
-    setKandaTypes('');
-    setData2({});
-  };
+    setMode(val)
+    setSel1V(0)
+    setSel2V(0)
+    setSel3V(0)
+    setShlokasLen(0)
+    setFetchDisable(true)
+    setDisappear(true)
+    setOpenEdit(false)
+    setDbc('')
+    setData('')
+    setCData('')
+    setSutTypes('')
+    setKandaTypes('')
+    setData2({})
+  }
 
   useEffect(() => {
     if (['s-sri', 's-vib'].includes(dbC) && path) {
-      getShlokasLen({_path: path, setShlokasLen});
+      getShlokasLen({ _path: path, setShlokasLen })
     }
     if (['s-sri', 's-vib'].includes(dbC) && mode === 1) {
-      setOpenEdit(true);
+      setOpenEdit(true)
     }
-  }, [dbC, mode, path]);
+  }, [dbC, mode, path])
 
   const handleChange1 = val => {
-    setSel1V(val);
-    setSel2V(0);
-    setSel3V(0);
-    setData('');
-    setCData('');
-    setSutTypes('');
-    setKandaTypes('');
-    const _sdb = [
-      'c-sri',
-      'c-ash',
-      'c-ava',
-      'c-kap',
-      'c-sru',
-      'c-udd',
-      'c-yog',
-    ];
-    !_sdb.includes(dbC) && setShlokasLen(0);
-  };
+    setSel1V(val)
+    setSel2V(0)
+    setSel3V(0)
+    setData('')
+    setCData('')
+    setSutTypes('')
+    setKandaTypes('')
+    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd', 'c-yog']
+    !_sdb.includes(dbC) && setShlokasLen(0)
+  }
 
   useEffect(() => {
-    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd'];
+    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd']
     if (_sdb.includes(dbC) && cSel1V > 0) {
-      getShlokasLen({_path: path, setShlokasLen});
+      getShlokasLen({ _path: path, setShlokasLen })
     }
     if (mode === 1 && _sdb.includes(dbC)) {
-      setOpenEdit(cSel1V > 0);
+      setOpenEdit(cSel1V > 0)
     }
-    _sdb.push('c-yog');
-    _sdb.includes(dbC) && setFetchDisable(true);
-    _sdb.includes(dbC) && setDisappear(true);
-  }, [mode, cSel1V, dbC, path]);
+    _sdb.push('c-yog')
+    _sdb.includes(dbC) && setFetchDisable(true)
+    _sdb.includes(dbC) && setDisappear(true)
+  }, [mode, cSel1V, dbC, path])
 
   const handleChange1a = val => {
-    setSel1V(val);
-    setSel2V(0);
-    setSel3V(0);
-    setData('');
-    setCData('');
-    setSutTypes('');
-    setKandaTypes('');
-    const _d = ['s-sri', 's-vib'];
-    !_d.includes(dbC) && setShlokasLen(0);
-  };
+    setSel1V(val)
+    setSel2V(0)
+    setSel3V(0)
+    setData('')
+    setCData('')
+    setSutTypes('')
+    setKandaTypes('')
+    const _d = ['s-sri', 's-vib']
+    !_d.includes(dbC) && setShlokasLen(0)
+  }
   useEffect(() => {
-    const _d = ['s-sri', 's-vib'];
-    _d.includes(dbC) && setFetchDisable(cSel1V === 0);
-    _d.includes(dbC) && setDisappear(true);
-  }, [dbC, cSel1V]);
+    const _d = ['s-sri', 's-vib']
+    _d.includes(dbC) && setFetchDisable(cSel1V === 0)
+    _d.includes(dbC) && setDisappear(true)
+  }, [dbC, cSel1V])
 
   const handleChange1b = val => {
-    setKandaTypes(val);
-    setSel2V(0);
-    setSel3V(0);
-    setData('');
-    setCData('');
-    setData2({});
-    setShlokasLen(0);
-    setFetchDisable(true);
-    setDisappear(true);
-  };
+    setKandaTypes(val)
+    setSel2V(0)
+    setSel3V(0)
+    setData('')
+    setCData('')
+    setData2({})
+    setShlokasLen(0)
+    setFetchDisable(true)
+    setDisappear(true)
+  }
   useEffect(() => {
-    const _l = {ARANYAKANDA: 75, AYODHYAKANDA: 119, BALAKANDA: 77};
-    setSargaLen(_l[KandaTypes]);
-  }, [KandaTypes]);
+    const _l = { ARANYAKANDA: 75, AYODHYAKANDA: 119, BALAKANDA: 77 }
+    setSargaLen(_l[KandaTypes])
+  }, [KandaTypes])
 
   const handleChange2a = val => {
-    setSel2V(val);
-    setSel3V(0);
-    setData('');
-    setCData('');
-    setSutTypes('');
-    setData2({});
-    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd'];
-    !_sdb.includes(dbC) && setShlokasLen(0);
-  };
+    setSel2V(val)
+    setSel3V(0)
+    setData('')
+    setCData('')
+    setSutTypes('')
+    setData2({})
+    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd']
+    !_sdb.includes(dbC) && setShlokasLen(0)
+  }
 
   useEffect(() => {
-    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd'];
-    _sdb.includes(dbC) && setFetchDisable(cSel2V === 0);
-    _sdb.includes(dbC) && setDisappear(true);
+    const _sdb = ['c-sri', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd']
+    _sdb.includes(dbC) && setFetchDisable(cSel2V === 0)
+    _sdb.includes(dbC) && setDisappear(true)
 
-    'c-val' === dbC && setFetchDisable(true);
-    'c-val' === dbC && setDisappear(true);
+    'c-val' === dbC && setFetchDisable(true)
+    'c-val' === dbC && setDisappear(true)
     if (
       ['c-bra', 'c-val'].includes(dbC) &&
       cSel2V > 0 &&
-      path !==
-        `${dpath}/valmikiramayana/kandas/${KandaTypes}/sargas/sarga0/shlokasdoc`
+      path !== `${dpath}/valmikiramayana/kandas/${KandaTypes}/sargas/sarga0/shlokasdoc`
     ) {
-      getShlokasLen({_path: path, setShlokasLen});
+      getShlokasLen({ _path: path, setShlokasLen })
     }
     if (mode === 1 && ['c-bra', 'c-val'].includes(dbC)) {
-      setOpenEdit(cSel2V > 0);
+      setOpenEdit(cSel2V > 0)
     } else if ('c-yog' === dbC) {
-      setOpenEdit(SutTypes !== '');
+      setOpenEdit(SutTypes !== '')
     }
-  }, [SutTypes, cSel2V, mode, path, dbC, shlokasLen, KandaTypes]);
+  }, [SutTypes, cSel2V, mode, path, dbC, shlokasLen, KandaTypes])
 
   const handleChange2b = val => {
-    setSutTypes(val); // select 2
-    setSel3V(0);
-    setData('');
-    setCData('');
-    'c-yog' !== dbC && setShlokasLen(0);
-  };
+    setSutTypes(val) // select 2
+    setSel3V(0)
+    setData('')
+    setCData('')
+    'c-yog' !== dbC && setShlokasLen(0)
+  }
   useEffect(() => {
-    'c-yog' === dbC && setFetchDisable(true);
-    'c-yog' === dbC && setDisappear(true);
+    'c-yog' === dbC && setFetchDisable(true)
+    'c-yog' === dbC && setDisappear(true)
     if (
       'c-yog' == dbC &&
       SutTypes &&
-      path !==
-        `${dpath}/yogasutra/chapters/Chapter${cSel1V}/shlokas//shlokasdoc`
+      path !== `${dpath}/yogasutra/chapters/Chapter${cSel1V}/shlokas//shlokasdoc`
     ) {
-      getShlokasLen({_path: path, setShlokasLen});
+      getShlokasLen({ _path: path, setShlokasLen })
     }
-  }, [SutTypes, shlokasLen, cSel1V, dpath, dbC, path]);
+  }, [SutTypes, shlokasLen, cSel1V, dpath, dbC, path])
 
   const handleChange3a = val => {
-    setSel3V(val);
-    setDisappear(true);
-    setData('');
-    setCData('');
-  };
+    setSel3V(val)
+    setDisappear(true)
+    setData('')
+    setCData('')
+  }
 
   useEffect(() => {
-    'c-bra' === dbC && setFetchDisable(cSel3V === 0);
-    ['c-yog', 'c-val'].includes(dbC) && setFetchDisable(cSel3V === 0);
-    ['c-yog', 'c-val'].includes(dbC) && setDisappear(true);
-  }, [cSel3V, dbC]);
+    'c-bra' === dbC && setFetchDisable(cSel3V === 0)
+    ;['c-yog', 'c-val'].includes(dbC) && setFetchDisable(cSel3V === 0)
+    ;['c-yog', 'c-val'].includes(dbC) && setDisappear(true)
+  }, [cSel3V, dbC])
 
   const handleChange3b = val => {
-    setSel3V(val);
-    setData('');
-    setCData('');
-    !['c-yog', 'c-val'].includes(dbC) && setShlokasLen(0);
-  };
+    setSel3V(val)
+    setData('')
+    setCData('')
+    !['c-yog', 'c-val'].includes(dbC) && setShlokasLen(0)
+  }
 
   useEffect(() => {
     const dbCValues = {
@@ -283,9 +265,9 @@ const WorkStationFun = () => {
       'c-udd': 24,
       'c-yog': 4,
       'c-bra': 4,
-    };
-    setChV(dbCValues[dbC] || 0);
-  }, [dbC]);
+    }
+    setChV(dbCValues[dbC] || 0)
+  }, [dbC])
 
   useEffect(() => {
     const paths = {
@@ -300,9 +282,9 @@ const WorkStationFun = () => {
       'c-val': `${dpath}/valmikiramayana/kandas/${KandaTypes}/sargas/sarga${cSel2V}/shlokasdoc`,
       's-vib': `${dpath}/othergitas/collection/vibhishana/shlokasdoc`,
       'c-yog': `${dpath}/yogasutra/chapters/Chapter${cSel1V}/shlokas/${SutTypes}/shlokasdoc`,
-    };
-    setPath(paths[dbC] || '');
-  }, [SutTypes, dbC, dpath, cSel1V, cSel2V, KandaTypes, path]);
+    }
+    setPath(paths[dbC] || '')
+  }, [SutTypes, dbC, dpath, cSel1V, cSel2V, KandaTypes, path])
 
   useEffect(() => {
     const _shlokaNum =
@@ -310,7 +292,7 @@ const WorkStationFun = () => {
         ? ['c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd', 'c-sri'].includes(dbC)
           ? cSel2V
           : cSel1V
-        : shlokasLen + 1;
+        : shlokasLen + 1
     const fields = {
       'c-ash': `Shloka${_shlokaNum}`,
       'c-ava': `Shloka${_shlokaNum}`,
@@ -320,28 +302,28 @@ const WorkStationFun = () => {
       'c-udd': `Shloka${_shlokaNum}`,
       's-vib': `Shloka${_shlokaNum}`,
       'c-sri': `shloka${_shlokaNum}`,
-    };
-    setField1(fields[dbC] || '');
-  }, [shlokasLen, cSel1V, cSel2V, dbC, mode]);
+    }
+    setField1(fields[dbC] || '')
+  }, [shlokasLen, cSel1V, cSel2V, dbC, mode])
 
   useEffect(() => {
-    const _sutraNum = mode === 0 && cSel3V > 0 ? cSel3V : shlokasLen + 1;
+    const _sutraNum = mode === 0 && cSel3V > 0 ? cSel3V : shlokasLen + 1
 
     const fields = {
       'c-bra': `Sutra${_sutraNum}`,
       'c-val': `Shloka${_sutraNum}`,
       'c-yog': `${SutTypes}${_sutraNum}`,
-    };
-    setField2(fields[dbC] || '');
-    setData('');
-  }, [SutTypes, mode, shlokasLen, cSel3V, dbC, field2]);
+    }
+    setField2(fields[dbC] || '')
+    setData('')
+  }, [SutTypes, mode, shlokasLen, cSel3V, dbC, field2])
 
   const handleChangeData = _data => {
-    setCData(_data);
-  };
+    setCData(_data)
+  }
   const handleConfirm = () => {
-    setConfirm(!confirm);
-  };
+    setConfirm(!confirm)
+  }
   return {
     cData,
     ChangedDataUpdate,
@@ -373,6 +355,6 @@ const WorkStationFun = () => {
     SargaLen,
     shlokasLen,
     SutTypes,
-  };
-};
-export default WorkStationFun;
+  }
+}
+export default WorkStationFun

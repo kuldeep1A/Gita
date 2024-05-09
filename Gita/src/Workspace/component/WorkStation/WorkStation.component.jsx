@@ -1,6 +1,6 @@
-import WorkStationFun from './WorkStation.fun';
-import OptionComponent from './Options/Option.component';
-import ConfirmComponent from './Confirm/Confirm.component';
+import WorkStationFun from './WorkStation.fun'
+import OptionComponent from './Options/Option.component'
+import ConfirmComponent from './Confirm/Confirm.component'
 const WorkStationComponent = () => {
   const {
     cData,
@@ -33,8 +33,8 @@ const WorkStationComponent = () => {
     SargaLen,
     shlokasLen,
     SutTypes,
-  } = WorkStationFun();
-  const _con = cData;
+  } = WorkStationFun()
+  const _con = cData
   return (
     <div className='workstation'>
       <div className={`controller ${disappear ? 'empty-editor' : ''}`}>
@@ -112,7 +112,7 @@ const WorkStationComponent = () => {
         </div>
       </div>
       {!disappear && (
-        <div style={{marginTop: '10px'}} className={`editor`}>
+        <div style={{ marginTop: '10px' }} className={`editor`}>
           <div className='shlokaInfo'>
             You are now at Shloka No.
             {mode == 0
@@ -136,7 +136,7 @@ const WorkStationComponent = () => {
                         : undefined
                 }
                 id=''
-                style={{height: '330px'}}
+                style={{ height: '330px' }}
                 onChange={e => handleChangeData(e.target.value)}
               />
               <div className='c-em3-data'>
@@ -144,8 +144,7 @@ const WorkStationComponent = () => {
               </div>
             </div>
           </div>
-          <div
-            className={`updation ${cData !== '' ? '' : 'is-hidden-desktop'}`}>
+          <div className={`updation ${cData !== '' ? '' : 'is-hidden-desktop'}`}>
             <div className='confirm'>
               <button type='button' onClick={handleConfirm}>
                 Confirm
@@ -164,6 +163,6 @@ const WorkStationComponent = () => {
         </div>
       )}
     </div>
-  );
-};
-export default WorkStationComponent;
+  )
+}
+export default WorkStationComponent

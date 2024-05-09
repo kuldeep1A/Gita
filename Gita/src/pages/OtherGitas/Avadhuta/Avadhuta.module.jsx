@@ -1,5 +1,5 @@
-import AvadhutaFun from './Component/Avadhuta.fun';
-import AvadhutaComponent from './Component/Avadhuta.component';
+import AvadhutaFun from './Component/Avadhuta.fun'
+import AvadhutaComponent from './Component/Avadhuta.component'
 
 const Avadhuta = () => {
   const {
@@ -22,7 +22,7 @@ const Avadhuta = () => {
     shId,
     site,
     translateContent,
-  } = AvadhutaFun();
+  } = AvadhutaFun()
   return (
     <AvadhutaComponent
       OptionLength={OptionLength}
@@ -45,7 +45,7 @@ const Avadhuta = () => {
       site={site}
       translateContent={translateContent}
     />
-  );
-};
+  )
+}
 
-export default Avadhuta;
+export default Avadhuta

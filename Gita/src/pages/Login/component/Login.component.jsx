@@ -1,14 +1,7 @@
-import {LoginPropTypes} from '../../../Function/PropTypes';
-import FormComponent from './workspace.component/form.component';
-import PageTitle from './workspace.component/page.title';
-export const LoginComponent = ({
-  UTN,
-  setEmail,
-  setPassword,
-  handleAuth,
-  logedIn,
-  jkd,
-}) => {
+import { LoginPropTypes } from '../../../Function/PropTypes'
+import FormComponent from './workspace.component/form.component'
+import PageTitle from './workspace.component/page.title'
+export const LoginComponent = ({ UTN, setEmail, setPassword, handleAuth, logedIn, jkd }) => {
   return (
     <div className='container'>
       <div className='con-wrap'>
@@ -30,10 +23,7 @@ export const LoginComponent = ({
                   {!jkd && (
                     <div>
                       {navigator.clipboard ? (
-                        <button
-                          onClick={() => navigator.clipboard.writeText(jkd)}>
-                          Copy
-                        </button>
+                        <button onClick={() => navigator.clipboard.writeText(jkd)}>Copy</button>
                       ) : (
                         <span>Press and hold to copy</span>
                       )}
@@ -46,6 +36,6 @@ export const LoginComponent = ({
         </div>
       </div>
     </div>
-  );
-};
-LoginComponent.propTypes = LoginPropTypes;
+  )
+}
+LoginComponent.propTypes = LoginPropTypes

@@ -1,5 +1,5 @@
-import BrahmaSutraComponent from './Component/Brahmasutra.component';
-import BrahmasutraFun from './Component/Brahmasutra.fun';
+import BrahmaSutraComponent from './Component/Brahmasutra.component'
+import BrahmasutraFun from './Component/Brahmasutra.fun'
 const BrahmaSutra = () => {
   const {
     OptionLength,
@@ -23,7 +23,7 @@ const BrahmaSutra = () => {
     site,
     sutraContent,
     translateContent,
-  } = BrahmasutraFun();
+  } = BrahmasutraFun()
 
   return (
     <BrahmaSutraComponent
@@ -49,6 +49,6 @@ const BrahmaSutra = () => {
       sutraContent={sutraContent}
       translateContent={translateContent}
     />
-  );
-};
-export default BrahmaSutra;
+  )
+}
+export default BrahmaSutra

@@ -1,5 +1,5 @@
-import ValmikiramayanaComponent from './Component/Valmikiramayana.component';
-import useValmikiramayanaLogic from './Component/Valmikiramayana.fun';
+import ValmikiramayanaComponent from './Component/Valmikiramayana.component'
+import useValmikiramayanaLogic from './Component/Valmikiramayana.fun'
 
 const Valmikiramayana = () => {
   const {
@@ -24,7 +24,7 @@ const Valmikiramayana = () => {
     shlokaDescription,
     shlokaTranslate,
     site,
-  } = useValmikiramayanaLogic();
+  } = useValmikiramayanaLogic()
 
   return (
     <ValmikiramayanaComponent
@@ -50,7 +50,7 @@ const Valmikiramayana = () => {
       shlokaTranslate={shlokaTranslate}
       site={site}
     />
-  );
-};
+  )
+}
 
-export default Valmikiramayana;
+export default Valmikiramayana

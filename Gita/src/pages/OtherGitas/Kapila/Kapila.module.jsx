@@ -1,5 +1,5 @@
-import KapilaComponent from './Component/Kapila.component';
-import KapilaFun from './Component/Kapila.fun';
+import KapilaComponent from './Component/Kapila.component'
+import KapilaFun from './Component/Kapila.fun'
 const Kapila = () => {
   const {
     OptionLength,
@@ -21,7 +21,7 @@ const Kapila = () => {
     shId,
     site,
     translateContent,
-  } = KapilaFun();
+  } = KapilaFun()
   return (
     <KapilaComponent
       OptionLength={OptionLength}
@@ -44,6 +44,6 @@ const Kapila = () => {
       site={site}
       translateContent={translateContent}
     />
-  );
-};
-export default Kapila;
+  )
+}
+export default Kapila

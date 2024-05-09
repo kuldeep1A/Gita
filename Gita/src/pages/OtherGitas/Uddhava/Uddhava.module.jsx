@@ -1,5 +1,5 @@
-import UddhavaComponent from './Component/Uddhava.component';
-import UddhavaFun from './Component/Uddhava.fun';
+import UddhavaComponent from './Component/Uddhava.component'
+import UddhavaFun from './Component/Uddhava.fun'
 const Uddhava = () => {
   const {
     OptionLength,
@@ -21,7 +21,7 @@ const Uddhava = () => {
     shId,
     site,
     translateContent,
-  } = UddhavaFun();
+  } = UddhavaFun()
   return (
     <UddhavaComponent
       OptionLength={OptionLength}
@@ -44,7 +44,7 @@ const Uddhava = () => {
       site={site}
       translateContent={translateContent}
     />
-  );
-};
+  )
+}
 
-export default Uddhava;
+export default Uddhava

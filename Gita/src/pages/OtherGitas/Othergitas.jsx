@@ -1,13 +1,13 @@
-import {Link, Outlet} from 'react-router-dom';
-import {useEffect} from 'react';
+import { Link, Outlet } from 'react-router-dom'
+import { useEffect } from 'react'
 export default function Othergitas() {
   useEffect(() => {
-    document.title = 'Other Gitas';
+    document.title = 'Other Gitas'
 
     return () => {
-      document.title = 'Other Gitas';
-    };
-  }, []);
+      document.title = 'Other Gitas'
+    }
+  }, [])
   return (
     <div className='container'>
       <div className='con-wrap'>
@@ -46,5 +46,5 @@ export default function Othergitas() {
         </div>
       </div>
     </div>
-  );
+  )
 }

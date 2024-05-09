@@ -1,7 +1,7 @@
-import SharePop from '../../../componets/SharePop';
-import React from 'react';
-import {createPortal} from 'react-dom';
-import {YogaSutraPropTypes} from '../../../Function/PropTypes';
+import SharePop from '../../../componets/SharePop'
+import React from 'react'
+import { createPortal } from 'react-dom'
+import { YogaSutraPropTypes } from '../../../Function/PropTypes'
 
 const YogaSutraComponent = ({
   _changeCodeToEn,
@@ -73,7 +73,7 @@ const YogaSutraComponent = ({
                                 id='sel-chapters'
                                 value={selectedChapter}
                                 onChange={handleChapterChange}>
-                                {Array.from({length: 4}, (_, index) => (
+                                {Array.from({ length: 4 }, (_, index) => (
                                   <option key={index + 1} value={index + 1}>
                                     {index + 1}
                                   </option>
@@ -92,14 +92,11 @@ const YogaSutraComponent = ({
                                 id='sel-sutra'
                                 value={selectedSutra}
                                 onChange={handleSutraChange}>
-                                {Array.from(
-                                  {length: OptionLength},
-                                  (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ),
-                                )}
+                                {Array.from({ length: OptionLength }, (_, index) => (
+                                  <option key={index + 1} value={index + 1}>
+                                    {index + 1}
+                                  </option>
+                                ))}
                               </select>
                             </div>
                           </div>
@@ -147,11 +144,7 @@ const YogaSutraComponent = ({
               <div className='view-content'>
                 <div className='c-dis-sutra'>
                   <div
-                    className={`_sutra ${
-                      isViewSutra
-                        ? 'view_sutra is-hidden-mobile is-hidden-desktop '
-                        : ''
-                    }`}>
+                    className={`_sutra ${isViewSutra ? 'view_sutra is-hidden-mobile is-hidden-desktop ' : ''}`}>
                     <div className='v-fi_sutra'>
                       <p className='text-center'>
                         <font className='color-dark-aubergine fw-normal size-6'>
@@ -161,9 +154,7 @@ const YogaSutraComponent = ({
                       </p>
                       <div className='hov-parent'>
                         <p className='text-center h-fonts'>
-                          <font
-                            id={shsId}
-                            className='fw-normal size-6 line-150'>
+                          <font id={shsId} className='fw-normal size-6 line-150'>
                             {SutraContent
                               ? SutraContent.split('।')
                                   .filter(line => line.trim() !== '')
@@ -213,17 +204,15 @@ const YogaSutraComponent = ({
                               : 'Sutra not found.'}
                           </font>
                         </p>
-                        <div
-                          id='shareTop'
-                          className='hov-child ml-auto mr-1 p-absolute'>
+                        <div id='shareTop' className='hov-child ml-auto mr-1 p-absolute'>
                           <div className='d-flex flex-row'>
                             <div className=''>
                               <button
                                 className='d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer'
                                 aria-expanded='false'
                                 onClick={event => {
-                                  handleClick(event);
-                                  setShareTC('sutra');
+                                  handleClick(event)
+                                  setShareTC('sutra')
                                 }}>
                                 <i
                                   ref={shareRefS}
@@ -239,11 +228,7 @@ const YogaSutraComponent = ({
                     </div>
                   </div>
                   <div
-                    className={`_bhasya ${
-                      isViewBhasya
-                        ? 'view_bhasya is-hidden-mobile is-hidden-desktop'
-                        : ''
-                    }`}>
+                    className={`_bhasya ${isViewBhasya ? 'view_bhasya is-hidden-mobile is-hidden-desktop' : ''}`}>
                     <div className='v-fi_sutra'>
                       <p className='text-center'>
                         <font className='color-dark-aubergine fw-normal size-6'>
@@ -253,9 +238,7 @@ const YogaSutraComponent = ({
                       </p>
                       <div className='hov-parent'>
                         <p className='text-center h-fonts'>
-                          <font
-                            id={shbId}
-                            className='fw-normal size-6 line-150'>
+                          <font id={shbId} className='fw-normal size-6 line-150'>
                             {BhasyaContent
                               ? BhasyaContent.split('।')
                                   .filter(line => line.trim() !== '')
@@ -305,17 +288,15 @@ const YogaSutraComponent = ({
                               : 'Bhasya not found.'}
                           </font>
                         </p>
-                        <div
-                          id='shareTop'
-                          className='hov-child ml-auto mr-1 p-absolute'>
+                        <div id='shareTop' className='hov-child ml-auto mr-1 p-absolute'>
                           <div className='d-flex flex-row'>
                             <div className=''>
                               <button
                                 className='d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer'
                                 aria-expanded='false'
                                 onClick={event => {
-                                  handleClick(event);
-                                  setShareTC('bhasya');
+                                  handleClick(event)
+                                  setShareTC('bhasya')
                                 }}>
                                 <i
                                   ref={shareRefB}
@@ -331,11 +312,7 @@ const YogaSutraComponent = ({
                     </div>
                   </div>
                   <div
-                    className={`_vritti ${
-                      isViewVritti
-                        ? 'view_vritti is-hidden-mobile is-hidden-desktop'
-                        : ''
-                    }`}>
+                    className={`_vritti ${isViewVritti ? 'view_vritti is-hidden-mobile is-hidden-desktop' : ''}`}>
                     <div className='v-fi_sutra'>
                       <p className='text-center'>
                         <font className='color-dark-aubergine fw-normal size-6'>
@@ -345,9 +322,7 @@ const YogaSutraComponent = ({
                       </p>
                       <div className='hov-parent'>
                         <p className='text-center h-fonts'>
-                          <font
-                            id={shvId}
-                            className='fw-normal size-6 line-150'>
+                          <font id={shvId} className='fw-normal size-6 line-150'>
                             {VrittiContent
                               ? VrittiContent.split('।')
                                   .filter(line => line.trim() !== '')
@@ -397,17 +372,15 @@ const YogaSutraComponent = ({
                               : 'Vritti not found.'}
                           </font>
                         </p>
-                        <div
-                          id='shareTop'
-                          className='hov-child ml-auto mr-1 p-absolute'>
+                        <div id='shareTop' className='hov-child ml-auto mr-1 p-absolute'>
                           <div className='d-flex flex-row'>
                             <div className=''>
                               <button
                                 className='d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer'
                                 aria-expanded='false'
                                 onClick={event => {
-                                  handleClick(event);
-                                  setShareTC('vritti');
+                                  handleClick(event)
+                                  setShareTC('vritti')
                                 }}>
                                 <i
                                   ref={shareRefV}
@@ -425,9 +398,7 @@ const YogaSutraComponent = ({
                   {!isViewBhasya && !isViewSutra && !isViewVritti && (
                     <>
                       <div className='l-t-action'>
-                        <div onClick={_hideTrans}>
-                          {hideTrans ? 'Hide' : 'Show'}
-                        </div>
+                        <div onClick={_hideTrans}>{hideTrans ? 'Hide' : 'Show'}</div>
                       </div>
                       {hideTrans && (
                         <div className='translate-view'>
@@ -475,9 +446,7 @@ const YogaSutraComponent = ({
                             </div>
                             <div className='hov-parent'>
                               <p className='text-center h-fonts'>
-                                <font className='fw-normal size-6'>
-                                  {translateContent}
-                                </font>
+                                <font className='fw-normal size-6'>{translateContent}</font>
                               </p>
                             </div>
                           </div>
@@ -487,9 +456,7 @@ const YogaSutraComponent = ({
                   )}
                 </div>
               </div>
-              {areAnyCheckboxesChecked && (
-                <p>At least one Sutra&apos;s is checked.</p>
-              )}
+              {areAnyCheckboxesChecked && <p>At least one Sutra&apos;s is checked.</p>}
             </section>
           </div>
         </div>
@@ -503,10 +470,10 @@ const YogaSutraComponent = ({
             title={shareTitle}
             isLargeLength={false}
           />,
-          document.body,
+          document.body
         )}
     </div>
-  );
-};
-export default YogaSutraComponent;
-YogaSutraComponent.propTypes = YogaSutraPropTypes;
+  )
+}
+export default YogaSutraComponent
+YogaSutraComponent.propTypes = YogaSutraPropTypes

@@ -1,8 +1,8 @@
-import React from 'react';
-import {createPortal} from 'react-dom';
-import SharePop from '../../../componets/SharePop';
-import {ContentPropTypes} from '../../../Function/PropTypes';
-import {TranslateView} from '../../../componets/TranslateView';
+import React from 'react'
+import { createPortal } from 'react-dom'
+import SharePop from '../../../componets/SharePop'
+import { ContentPropTypes } from '../../../Function/PropTypes'
+import { TranslateView } from '../../../componets/TranslateView'
 const BrahmaSutraComponent = ({
   OptionLength,
   _changeCodeToEn,
@@ -60,7 +60,7 @@ const BrahmaSutraComponent = ({
                                 id='sel-chapters'
                                 value={selectedChapter}
                                 onChange={handleChapterChange}>
-                                {Array.from({length: 4}, (_, index) => (
+                                {Array.from({ length: 4 }, (_, index) => (
                                   <option key={index + 1} value={index + 1}>
                                     {index + 1}
                                   </option>
@@ -79,7 +79,7 @@ const BrahmaSutraComponent = ({
                                 id='sel-quarter'
                                 value={selectedQuarter}
                                 onChange={handleQuarterChange}>
-                                {Array.from({length: 4}, (_, index) => (
+                                {Array.from({ length: 4 }, (_, index) => (
                                   <option key={index + 1} value={index + 1}>
                                     {index + 1}
                                   </option>
@@ -98,14 +98,11 @@ const BrahmaSutraComponent = ({
                                 id='sel-sutra'
                                 value={selectedSutra}
                                 onChange={handleSutraChange}>
-                                {Array.from(
-                                  {length: OptionLength},
-                                  (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ),
-                                )}
+                                {Array.from({ length: OptionLength }, (_, index) => (
+                                  <option key={index + 1} value={index + 1}>
+                                    {index + 1}
+                                  </option>
+                                ))}
                               </select>
                             </div>
                           </div>
@@ -123,20 +120,16 @@ const BrahmaSutraComponent = ({
                               </font>
                             </p>
                             <div className='hov-parent'>
-                              <div
-                                id='shareTop'
-                                className='hov-child ml-auto mr-1 p-absolute'>
+                              <div id='shareTop' className='hov-child ml-auto mr-1 p-absolute'>
                                 <div className='d-flex flex-row'>
                                   <div className=''>
                                     <button
                                       className='d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer'
                                       aria-expanded='false'
                                       onClick={event => {
-                                        handleClick(event);
+                                        handleClick(event)
                                       }}>
-                                      <i
-                                        ref={shareRef}
-                                        className='sdf material-symbols-outlined'>
+                                      <i ref={shareRef} className='sdf material-symbols-outlined'>
                                         share
                                       </i>
                                     </button>
@@ -144,16 +137,12 @@ const BrahmaSutraComponent = ({
                                 </div>
                               </div>
                               <p className='h-fonts'>
-                                <font
-                                  id={shId}
-                                  className='text-center fw-normal size-6 line-150'>
+                                <font id={shId} className='text-center fw-normal size-6 line-150'>
                                   {sutraContent
                                     ? sutraContent
                                         .split(' ')
                                         .map((line, index) => (
-                                          <React.Fragment key={index}>
-                                            {line + ' '}
-                                          </React.Fragment>
+                                          <React.Fragment key={index}>{line + ' '}</React.Fragment>
                                         ))
                                     : `Sutra not found.`}
                                 </font>
@@ -162,9 +151,7 @@ const BrahmaSutraComponent = ({
                           </div>
                         </div>
                         <div className='l-t-action'>
-                          <div onClick={_hideTrans}>
-                            {hideTrans ? 'Hide' : 'Show'}
-                          </div>
+                          <div onClick={_hideTrans}>{hideTrans ? 'Hide' : 'Show'}</div>
                         </div>
                         {hideTrans && (
                           <TranslateView
@@ -192,11 +179,11 @@ const BrahmaSutraComponent = ({
             title={shareTitle}
             isLargeLength={true}
           />,
-          document.body,
+          document.body
         )}
     </div>
-  );
-};
-export default BrahmaSutraComponent;
+  )
+}
+export default BrahmaSutraComponent
 
-BrahmaSutraComponent.propTypes = ContentPropTypes;
+BrahmaSutraComponent.propTypes = ContentPropTypes

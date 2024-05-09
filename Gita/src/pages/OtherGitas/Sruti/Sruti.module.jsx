@@ -1,5 +1,5 @@
-import SrutiFun from './Component/Sruti.fun';
-import SrutiComponent from './Component/Sruti.component';
+import SrutiFun from './Component/Sruti.fun'
+import SrutiComponent from './Component/Sruti.component'
 const Sruti = () => {
   const {
     OptionLength,
@@ -21,7 +21,7 @@ const Sruti = () => {
     shId,
     site,
     translateContent,
-  } = SrutiFun();
+  } = SrutiFun()
   return (
     <SrutiComponent
       OptionLength={OptionLength}
@@ -44,7 +44,7 @@ const Sruti = () => {
       site={site}
       translateContent={translateContent}
     />
-  );
-};
+  )
+}
 
-export default Sruti;
+export default Sruti

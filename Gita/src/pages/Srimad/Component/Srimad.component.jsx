@@ -1,8 +1,8 @@
-import {createPortal} from 'react-dom';
-import React from 'react';
-import SharePop from '../../../componets/SharePop';
-import {TranslateView} from '../../../componets/TranslateView';
-import {ContentPropTypes} from '../../../Function/PropTypes';
+import { createPortal } from 'react-dom'
+import React from 'react'
+import SharePop from '../../../componets/SharePop'
+import { TranslateView } from '../../../componets/TranslateView'
+import { ContentPropTypes } from '../../../Function/PropTypes'
 const SrimadComponent = ({
   _changeCodeToEn,
   _changeCodeToHi,
@@ -58,7 +58,7 @@ const SrimadComponent = ({
                                 id='sel-chapters'
                                 value={selectedChapter}
                                 onChange={handleChapterChange}>
-                                {Array.from({length: 18}, (_, index) => (
+                                {Array.from({ length: 18 }, (_, index) => (
                                   <option key={index + 1} value={index + 1}>
                                     {index + 1}
                                   </option>
@@ -77,14 +77,11 @@ const SrimadComponent = ({
                                 id='sel-shloka'
                                 value={selectedShloka}
                                 onChange={handleShlokaChange}>
-                                {Array.from(
-                                  {length: OptionLength},
-                                  (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ),
-                                )}
+                                {Array.from({ length: OptionLength }, (_, index) => (
+                                  <option key={index + 1} value={index + 1}>
+                                    {index + 1}
+                                  </option>
+                                ))}
                               </select>
                             </div>
                           </div>
@@ -111,36 +108,24 @@ const SrimadComponent = ({
                                           <React.Fragment key={index}>
                                             {line.trim()}
                                             {index === 0 ? '।' : ''}
-                                            {index === 1 &&
-                                            selectedChapter <= 18
-                                              ? '।।'
-                                              : ''}
+                                            {index === 1 && selectedChapter <= 18 ? '।।' : ''}
                                             {<br />}
-                                            {
-                                              (index < array.length - 1 && (
-                                                <br />
-                                              ),
-                                              (<br />))
-                                            }
+                                            {(index < array.length - 1 && <br />, (<br />))}
                                           </React.Fragment>
                                         ))
                                     : 'Shloka not found.'}
                                 </font>
                               </p>
-                              <div
-                                id='shareBottom'
-                                className='hov-child ml-auto mr-1 p-absolute'>
+                              <div id='shareBottom' className='hov-child ml-auto mr-1 p-absolute'>
                                 <div className='d-flex flex-row'>
                                   <div className=''>
                                     <button
                                       className='d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer'
                                       aria-expanded='false'
                                       onClick={event => {
-                                        handleClick(event);
+                                        handleClick(event)
                                       }}>
-                                      <i
-                                        ref={shareRef}
-                                        className='sdf material-symbols-outlined'>
+                                      <i ref={shareRef} className='sdf material-symbols-outlined'>
                                         share
                                       </i>
                                     </button>
@@ -151,9 +136,7 @@ const SrimadComponent = ({
                           </div>
                         </div>
                         <div className='l-t-action'>
-                          <div onClick={_hideTrans}>
-                            {hideTrans ? 'Hide' : 'Show'}
-                          </div>
+                          <div onClick={_hideTrans}>{hideTrans ? 'Hide' : 'Show'}</div>
                         </div>
                         {hideTrans && (
                           <TranslateView
@@ -181,12 +164,12 @@ const SrimadComponent = ({
             title={shareTitle}
             isLargeLength={false}
           />,
-          document.body,
+          document.body
         )}
     </div>
-  );
-};
+  )
+}
 
-export default SrimadComponent;
+export default SrimadComponent
 
-SrimadComponent.propTypes = ContentPropTypes;
+SrimadComponent.propTypes = ContentPropTypes

@@ -1,8 +1,8 @@
-import React from 'react';
-import {createPortal} from 'react-dom';
-import SharePop from '../../../componets/SharePop';
-import {kandaNo} from '../../../DATA/MoreData';
-import {valmikiramayanaPropTypes} from '../../../Function/PropTypes';
+import React from 'react'
+import { createPortal } from 'react-dom'
+import SharePop from '../../../componets/SharePop'
+import { kandaNo } from '../../../DATA/MoreData'
+import { valmikiramayanaPropTypes } from '../../../Function/PropTypes'
 const ValmikiramayanaComponent = ({
   _hideTrans,
   clickEvent,
@@ -61,12 +61,8 @@ const ValmikiramayanaComponent = ({
                                 defaultValue={'BALAKANDA'}
                                 onChange={handleKandaChange}>
                                 <option value={'BALAKANDA'}>BALAKANDA</option>
-                                <option value={'AYODHYAKANDA'}>
-                                  AYODHYAKANDA
-                                </option>
-                                <option value={'ARANYAKANDA'}>
-                                  ARANYAKANDA
-                                </option>
+                                <option value={'AYODHYAKANDA'}>AYODHYAKANDA</option>
+                                <option value={'ARANYAKANDA'}>ARANYAKANDA</option>
                               </select>
                             </div>
                           </div>
@@ -81,14 +77,11 @@ const ValmikiramayanaComponent = ({
                                 id='sel-sarga'
                                 value={selectedSarga}
                                 onChange={handleSargaChange}>
-                                {Array.from(
-                                  {length: handleSargaLen()},
-                                  (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ),
-                                )}
+                                {Array.from({ length: handleSargaLen() }, (_, index) => (
+                                  <option key={index + 1} value={index + 1}>
+                                    {index + 1}
+                                  </option>
+                                ))}
                               </select>
                             </div>
                           </div>
@@ -103,14 +96,11 @@ const ValmikiramayanaComponent = ({
                                 id='sel-shloka'
                                 value={selectedShloka}
                                 onChange={handleShlokaChange}>
-                                {Array.from(
-                                  {length: shlokaOptionLen},
-                                  (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ),
-                                )}
+                                {Array.from({ length: shlokaOptionLen }, (_, index) => (
+                                  <option key={index + 1} value={index + 1}>
+                                    {index + 1}
+                                  </option>
+                                ))}
                               </select>
                             </div>
                           </div>
@@ -128,9 +118,7 @@ const ValmikiramayanaComponent = ({
                           </p>
                           <div className='hov-parent'>
                             <p className='text-center h-fonts'>
-                              <font
-                                id={shId}
-                                className='fw-normal size-6 line-100'>
+                              <font id={shId} className='fw-normal size-6 line-100'>
                                 {selectedShloka === 1 && shlokaContent ? (
                                   <>
                                     <span className='d-block'>
@@ -138,22 +126,20 @@ const ValmikiramayanaComponent = ({
                                         {`[${sanEng(shlokaContent, 0, false)[0]}]`}
                                       </span>
                                     </span>
-                                    {sanEng(shlokaContent, 0, true).map(
-                                      (line, index) => (
-                                        <React.Fragment key={index}>
-                                          {line.split("'")}
-                                          <br />
-                                          <br />
-                                        </React.Fragment>
-                                      ),
-                                    )}
+                                    {sanEng(shlokaContent, 0, true).map((line, index) => (
+                                      <React.Fragment key={index}>
+                                        {line.split("'")}
+                                        <br />
+                                        <br />
+                                      </React.Fragment>
+                                    ))}
                                   </>
                                 ) : selectedShloka >= 2 &&
                                   shlokaContent &&
                                   shlokaContent
                                     .trim()
                                     .includes(
-                                      `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`,
+                                      `${kandaNo[selectedKanda]}.${selectedSarga}.${selectedShloka}`
                                     ) ? (
                                   shlokaContent
                                     .split(',')
@@ -172,20 +158,16 @@ const ValmikiramayanaComponent = ({
                                 )}
                               </font>
                             </p>
-                            <div
-                              id='shareBottom'
-                              className='hov-child ml-auto mr-1 p-absolute'>
+                            <div id='shareBottom' className='hov-child ml-auto mr-1 p-absolute'>
                               <div className='d-flex flex-row'>
                                 <div className=''>
                                   <button
                                     className='d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer'
                                     aria-expanded='false'
                                     onClick={event => {
-                                      handleClick(event);
+                                      handleClick(event)
                                     }}>
-                                    <i
-                                      ref={shareRef}
-                                      className='sdf material-symbols-outlined'>
+                                    <i ref={shareRef} className='sdf material-symbols-outlined'>
                                       share
                                     </i>
                                   </button>
@@ -196,9 +178,7 @@ const ValmikiramayanaComponent = ({
                         </div>
                       </div>
                       <div className='l-t-action'>
-                        <div onClick={_hideTrans}>
-                          {hideTrans ? 'Hide' : 'Show'}
-                        </div>
+                        <div onClick={_hideTrans}>{hideTrans ? 'Hide' : 'Show'}</div>
                       </div>
                       {hideTrans && (
                         <div className='translate-view'>
@@ -210,15 +190,11 @@ const ValmikiramayanaComponent = ({
                               </font>
                             </p>
                             <p className='h-fonts'>
-                              <font className='fw-normal size-6 line-150'>
-                                {shlokaTranslate}
-                              </font>
+                              <font className='fw-normal size-6 line-150'>{shlokaTranslate}</font>
                             </p>
                             <br />
                             <p className='h-fonts'>
-                              <font className='fw-normal size-6 line-150'>
-                                {shlokaDescription}
-                              </font>
+                              <font className='fw-normal size-6 line-150'>{shlokaDescription}</font>
                             </p>
                           </div>
                         </div>
@@ -229,15 +205,15 @@ const ValmikiramayanaComponent = ({
               </div>
               <div className='_is-database-available-on-kuldeep1a-dataset'>
                 <div>
-                  <span style={{marginRight: '10px'}}>KISHKINDAKANDA,</span>
-                  <span style={{marginRight: '10px'}}>SUNDARAKANDA,</span>
-                  <span style={{marginRight: '10px'}}>YUDDHAKANDA</span>
+                  <span style={{ marginRight: '10px' }}>KISHKINDAKANDA,</span>
+                  <span style={{ marginRight: '10px' }}>SUNDARAKANDA,</span>
+                  <span style={{ marginRight: '10px' }}>YUDDHAKANDA</span>
                 </div>
                 <div>
                   <span>
-                    <em style={{color: 'red'}}>Not</em> available, it will be{' '}
-                    <em style={{color: 'green'}}>updated</em> in our database{' '}
-                    <em style={{color: 'green'}}>soon</em>.
+                    <em style={{ color: 'red' }}>Not</em> available, it will be{' '}
+                    <em style={{ color: 'green' }}>updated</em> in our database{' '}
+                    <em style={{ color: 'green' }}>soon</em>.
                   </span>
                 </div>
               </div>
@@ -254,12 +230,12 @@ const ValmikiramayanaComponent = ({
             title={shareTitle}
             isLargeLength={false}
           />,
-          document.body,
+          document.body
         )}
     </div>
-  );
-};
+  )
+}
 
-export default ValmikiramayanaComponent;
+export default ValmikiramayanaComponent
 
-ValmikiramayanaComponent.propTypes = valmikiramayanaPropTypes;
+ValmikiramayanaComponent.propTypes = valmikiramayanaPropTypes

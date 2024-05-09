@@ -1,5 +1,5 @@
-import SrimadComponent from './Component/Srimad.component';
-import SrimadFun from './Component/Srimad.fun';
+import SrimadComponent from './Component/Srimad.component'
+import SrimadFun from './Component/Srimad.fun'
 
 const Srimad = () => {
   const {
@@ -22,7 +22,7 @@ const Srimad = () => {
     ShlokaContent,
     site,
     translateContent,
-  } = SrimadFun();
+  } = SrimadFun()
   return (
     <SrimadComponent
       _changeCodeToEn={_changeCodeToEn}
@@ -45,7 +45,7 @@ const Srimad = () => {
       site={site}
       translateContent={translateContent}
     />
-  );
-};
+  )
+}
 
-export default Srimad;
+export default Srimad

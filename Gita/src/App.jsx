@@ -1,7 +1,7 @@
-import {useEffect, useState} from 'react';
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import ReactGA from 'react-ga';
-import ScrollRestoration from './componets/ScrollRestoration';
+import { useEffect, useState } from 'react'
+import { Route, BrowserRouter, Routes } from 'react-router-dom'
+import ReactGA from 'react-ga'
+import ScrollRestoration from './componets/ScrollRestoration'
 import {
   About,
   Brahmasutra,
@@ -28,20 +28,20 @@ import {
   Valmikiramayana,
   Yogasutra,
   Workspace,
-} from './pages/Pages';
-import Navigation from './componets/Navigation';
-import Footer from './componets/Footer';
-import {_isDark} from './Function/utils';
-import './App.css';
-import {_getAuth} from './Function/auth/auth';
+} from './pages/Pages'
+import Navigation from './componets/Navigation'
+import Footer from './componets/Footer'
+import { _isDark } from './Function/utils'
+import './App.css'
+import { _getAuth } from './Function/auth/auth'
 function App() {
-  const [isWorkspace, setWorkspace] = useState(false);
+  const [isWorkspace, setWorkspace] = useState(false)
   useEffect(() => {
-    _getAuth().then(d => setWorkspace(d));
+    _getAuth().then(d => setWorkspace(d))
     if (_isDark) {
-      document.body.classList.add('_d-mode');
+      document.body.classList.add('_d-mode')
     }
-  }, []);
+  }, [])
   return (
     <>
       <BrowserRouter>
@@ -64,10 +64,7 @@ function App() {
             <Route path='/srimadIntro' element={<SriIntro />} />
             <Route path='/srimad' element={<Srimad />} />
             <Route path='/srimadTextdetails' element={<TextDetails />} />
-            <Route
-              path='/brahmasutraWelcome'
-              element={<BrahmasutraWelcome />}
-            />
+            <Route path='/brahmasutraWelcome' element={<BrahmasutraWelcome />} />
             <Route path='/valmikiramayana' element={<Valmikiramayana />} />
             <Route path='/brahmasutraAbout' element={<BrahmasutraAbout />} />
             <Route path='/brahmasutra' element={<Brahmasutra />} />
@@ -85,11 +82,11 @@ function App() {
       </BrowserRouter>
       <Footer />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
 
-const slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa = 'G-162B59M9LM';
-ReactGA.initialize(slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa);
-ReactGA.pageview(window.location.pathname + window.location.search);
+const slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa = 'G-162B59M9LM'
+ReactGA.initialize(slfkjlsdfjlajdflafiewfTRACKING_IDdlfkjaojefiwjdfa)
+ReactGA.pageview(window.location.pathname + window.location.search)

@@ -1,36 +1,35 @@
-import {useEffect, useState} from 'react';
-import {gita1ab, gita1aw} from '../DATA/MoreData';
-import {Link, Outlet} from 'react-router-dom';
-import DarkButton from './DarkButton';
-import {NavPropTypes} from '../Function/PropTypes';
-const Navigation = ({isWorkspace}) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const [_innerWidth, setInnerWidth] = useState(window.innerWidth);
+import { useEffect, useState } from 'react'
+import { gita1ab, gita1aw } from '../DATA/MoreData'
+import { Link, Outlet } from 'react-router-dom'
+import DarkButton from './DarkButton'
+import { NavPropTypes } from '../Function/PropTypes'
+const Navigation = ({ isWorkspace }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
+  const [_innerWidth, setInnerWidth] = useState(window.innerWidth)
   const handleToggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    setIsMenuOpen(!isMenuOpen)
+  }
   const valuesMatching = () => {
-    const link = `https://gitas.web.app/${searchValue.toLocaleLowerCase().replace(/\s/g, '')}`;
-    return link;
-  };
+    const link = `https://gitas.web.app/${searchValue.toLocaleLowerCase().replace(/\s/g, '')}`
+    return link
+  }
   const redirectSearchPage = () => {
-    const link = valuesMatching();
-    setSearchValue('');
-    window.open(link, '_self');
-  };
-  let _isDark =
-    window.sessionStorage.getItem('isDark') === 'true' ? true : false;
+    const link = valuesMatching()
+    setSearchValue('')
+    window.open(link, '_self')
+  }
+  let _isDark = window.sessionStorage.getItem('isDark') === 'true' ? true : false
   useEffect(() => {
     window.addEventListener('resize', () => {
       if (_innerWidth >= 850) {
         if (isMenuOpen) {
-          setIsMenuOpen(!isMenuOpen);
+          setIsMenuOpen(!isMenuOpen)
         }
       }
-      setInnerWidth(window.innerWidth);
-    });
-  }, [_innerWidth, isMenuOpen]);
+      setInnerWidth(window.innerWidth)
+    })
+  }, [_innerWidth, isMenuOpen])
   return (
     <div className='_top'>
       <div className='in_he_wrap'>
@@ -61,8 +60,8 @@ const Navigation = ({isWorkspace}) => {
                     <div>
                       <form
                         onSubmit={e => {
-                          e.preventDefault();
-                          redirectSearchPage();
+                          e.preventDefault()
+                          redirectSearchPage()
                         }}>
                         <div>
                           <input
@@ -72,26 +71,22 @@ const Navigation = ({isWorkspace}) => {
                             onChange={e => setSearchValue(e.target.value)}
                             onKeyUp={event => {
                               if (event.key === 'Enter') {
-                                event.preventDefault();
-                                redirectSearchPage();
+                                event.preventDefault()
+                                redirectSearchPage()
                               }
                             }}
                             placeholder='Search'
                           />
                         </div>
                         <div>
-                          <button
-                            type='submit'
-                            name='Search Button'
-                            className='f-submit'
-                          />
+                          <button type='submit' name='Search Button' className='f-submit' />
                         </div>
                       </form>
                     </div>
                   </div>
                 </div>
                 {_innerWidth <= 850 && (
-                  <div style={{marginLeft: '15px', marginTop: '3px'}}>
+                  <div style={{ marginLeft: '15px', marginTop: '3px' }}>
                     <DarkButton />
                   </div>
                 )}
@@ -110,11 +105,7 @@ const Navigation = ({isWorkspace}) => {
           <div className='menu-navigation-container'>
             <ul className={`menu text-center  ${isMenuOpen ? 'open' : ''}`}>
               <li className='first leaf m'>
-                <Link
-                  to='/'
-                  title=''
-                  className='active'
-                  onClick={handleToggleMenu}>
+                <Link to='/' title='' className='active' onClick={handleToggleMenu}>
                   Home
                 </Link>
               </li>
@@ -133,11 +124,7 @@ const Navigation = ({isWorkspace}) => {
                 <Link to='/team'>Our Team</Link>
               </li>
               <li className='expanded'>
-                <Link
-                  to='/QuickLinks'
-                  title=''
-                  className='active'
-                  onClick={handleToggleMenu}>
+                <Link to='/QuickLinks' title='' className='active' onClick={handleToggleMenu}>
                   Quick Links
                 </Link>
                 <ul className='menu text-left'>
@@ -248,7 +235,7 @@ const Navigation = ({isWorkspace}) => {
                 )}
               </li>
               {_innerWidth >= 850 && (
-                <div className='_c-sec' style={{display: 'inline'}}>
+                <div className='_c-sec' style={{ display: 'inline' }}>
                   <DarkButton />
                 </div>
               )}
@@ -259,8 +246,8 @@ const Navigation = ({isWorkspace}) => {
       </div>
       <Outlet />
     </div>
-  );
-};
+  )
+}
 
-export default Navigation;
-Navigation.propTypes = NavPropTypes;
+export default Navigation
+Navigation.propTypes = NavPropTypes

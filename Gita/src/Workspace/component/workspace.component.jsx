@@ -1,8 +1,8 @@
-import {WorkspacePropTypes} from '../../Function/PropTypes';
-import WorkStationComponent from './WorkStation/WorkStation.component';
-import PageTab from './pagetab/tab.component';
+import { WorkspacePropTypes } from '../../Function/PropTypes'
+import WorkStationComponent from './WorkStation/WorkStation.component'
+import PageTab from './pagetab/tab.component'
 
-const WorkspaceComponent = ({userEmail, emailVerified}) => {
+const WorkspaceComponent = ({ userEmail, emailVerified }) => {
   return (
     <div className='container'>
       <div className='con-wrap'>
@@ -20,7 +20,7 @@ const WorkspaceComponent = ({userEmail, emailVerified}) => {
         </div>
       </div>
     </div>
-  );
-};
-export default WorkspaceComponent;
-WorkspaceComponent.propTypes = WorkspacePropTypes;
+  )
+}
+export default WorkspaceComponent
+WorkspaceComponent.propTypes = WorkspacePropTypes

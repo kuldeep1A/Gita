@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 export const SharePopTypes = {
   e: PropTypes.any,
@@ -6,19 +6,19 @@ export const SharePopTypes = {
   site: PropTypes.string,
   title: PropTypes.string,
   isLargeLength: PropTypes.bool,
-};
+}
 
 export const TranslateViewTypes = {
   _changeCodeToEn: PropTypes.func,
   _changeCodeToHi: PropTypes.func,
   isHindiTranslate: PropTypes.bool,
   translateContent: PropTypes.string,
-};
+}
 
 export const EmailLinkPropTypes = {
   email: PropTypes.string,
   subject: PropTypes.string,
-};
+}
 
 export const ContentPropTypes = {
   _changeCodeToEn: PropTypes.func,
@@ -40,7 +40,7 @@ export const ContentPropTypes = {
   ShlokaContent: PropTypes.string,
   site: PropTypes.string,
   translateContent: PropTypes.string,
-};
+}
 
 export const OtherGitasPropTypesv1 = {
   OptionLength: PropTypes.number,
@@ -62,7 +62,7 @@ export const OtherGitasPropTypesv1 = {
   shId: PropTypes.string,
   site: PropTypes.string,
   translateContent: PropTypes.string,
-};
+}
 
 export const OtherGitasPropTypesv2 = {
   OptionLength: PropTypes.number,
@@ -82,7 +82,7 @@ export const OtherGitasPropTypesv2 = {
   shId: PropTypes.string,
   site: PropTypes.string,
   translateContent: PropTypes.string,
-};
+}
 
 export const YogaSutraPropTypes = {
   _changeCodeToEn: PropTypes.func,
@@ -119,7 +119,7 @@ export const YogaSutraPropTypes = {
   translateContent: PropTypes.string,
   VrittiContent: PropTypes.string,
   whichSutra: PropTypes.number,
-};
+}
 
 export const valmikiramayanaPropTypes = {
   _hideTrans: PropTypes.func,
@@ -143,7 +143,7 @@ export const valmikiramayanaPropTypes = {
   shlokaDescription: PropTypes.string,
   shlokaTranslate: PropTypes.string,
   site: PropTypes.string,
-};
+}
 export const LoginPropTypes = {
   UTN: PropTypes.bool,
   setEmail: PropTypes.func,
@@ -154,28 +154,28 @@ export const LoginPropTypes = {
   emailVerified: PropTypes.bool,
   photoURL: PropTypes.string,
   logedIn: PropTypes.bool,
-};
+}
 export const NavPropTypes = {
   isWorkspace: PropTypes.bool,
-};
+}
 export const WorkspacePropTypes = {
   userEmail: PropTypes.string,
   emailVerified: PropTypes.bool,
-};
+}
 export const OptionPropTypes = {
   chV: PropTypes.number,
-};
+}
 export const ShlokasOptionPropTypes = {
   preSel: PropTypes.any,
   cSel3V: PropTypes.number,
   type: PropTypes.string,
   shlokasLen: PropTypes.number,
   handleChange: PropTypes.func,
-};
+}
 export const ConfrimPropTypes = {
   handleConfirm: PropTypes.func,
   confirm: PropTypes.bool,
   changeData: PropTypes.string,
   update: PropTypes.func,
   mode: PropTypes.number,
-};
+}

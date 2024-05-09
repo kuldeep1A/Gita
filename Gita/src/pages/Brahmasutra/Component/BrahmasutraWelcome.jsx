@@ -1,14 +1,14 @@
-import {useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import {welcomeblack, welcomewhite} from '../../../DATA/MoreData';
-import {_isDark} from '../../../Function/utils';
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { welcomeblack, welcomewhite } from '../../../DATA/MoreData'
+import { _isDark } from '../../../Function/utils'
 export default function BrahmasutraWelcome() {
   useEffect(() => {
-    document.title = 'Brahmasutra Welcome | Gita';
+    document.title = 'Brahmasutra Welcome | Gita'
     return () => {
-      document.title = 'Brahmasutra Welcome | Gita';
-    };
-  }, []);
+      document.title = 'Brahmasutra Welcome | Gita'
+    }
+  }, [])
   return (
     <div className='container'>
       <div className='con-wrap'>
@@ -21,11 +21,10 @@ export default function BrahmasutraWelcome() {
               </h1>
               <div className='fi-items'>
                 <p className='size-7'>
-                  Read Badrayana’s Brahma Sutra, the authoritative text that
-                  systematically expounds Vedanta philosophy. Also read Adi
-                  Sankara’s monumental commentary on this work. These Sanskrit
-                  texts can be viewed on this website in any of 11 Indian
-                  language scripts, including Roman.
+                  Read Badrayana’s Brahma Sutra, the authoritative text that systematically expounds
+                  Vedanta philosophy. Also read Adi Sankara’s monumental commentary on this work.
+                  These Sanskrit texts can be viewed on this website in any of 11 Indian language
+                  scripts, including Roman.
                 </p>
                 <div className='welcome-img'>
                   <img
@@ -40,5 +39,5 @@ export default function BrahmasutraWelcome() {
         </div>
       </div>
     </div>
-  );
+  )
 }

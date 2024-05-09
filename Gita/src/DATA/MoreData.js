@@ -1,19 +1,11 @@
-import gita1ab from '../assets/images/gita1ab.jpg';
-import gita1aw from '../assets/images/gita1aw.jpg';
-import searchIcon from '../assets/images/search-icon.png';
-import profile from '../assets/images/img/profile.jpg';
-import welcome from '../assets/images/img/welcome.png';
-import welcomeblack from '../assets/images/img/welcome-black.png';
-import welcomewhite from '../assets/images/img/welcome-white.png';
-export {
-  gita1ab,
-  gita1aw,
-  searchIcon,
-  profile,
-  welcome,
-  welcomeblack,
-  welcomewhite,
-};
+import gita1ab from '../assets/images/gita1ab.jpg'
+import gita1aw from '../assets/images/gita1aw.jpg'
+import searchIcon from '../assets/images/search-icon.png'
+import profile from '../assets/images/img/profile.jpg'
+import welcome from '../assets/images/img/welcome.png'
+import welcomeblack from '../assets/images/img/welcome-black.png'
+import welcomewhite from '../assets/images/img/welcome-white.png'
+export { gita1ab, gita1aw, searchIcon, profile, welcome, welcomeblack, welcomewhite }
 
 export const optionData = {
   BALAKANDA: {
@@ -565,7 +557,7 @@ export const optionData = {
     130: 61,
     131: 124,
   },
-};
+}
 export const kandaNo = {
   BALAKANDA: 1,
   AYODHYAKANDA: 2,
@@ -573,4 +565,4 @@ export const kandaNo = {
   KISHKINDAKANDA: 4,
   SUNDARAKANDA: 5,
   YUDDHAKANDA: 6,
-};
+}

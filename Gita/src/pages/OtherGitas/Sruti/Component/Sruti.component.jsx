@@ -1,8 +1,8 @@
-import {OtherGitasPropTypesv1} from '../../../../Function/PropTypes';
-import {createPortal} from 'react-dom';
-import SharePop from '../../../../componets/SharePop';
-import {TranslateView} from '../../../../componets/TranslateView';
-import React from 'react';
+import { OtherGitasPropTypesv1 } from '../../../../Function/PropTypes'
+import { createPortal } from 'react-dom'
+import SharePop from '../../../../componets/SharePop'
+import { TranslateView } from '../../../../componets/TranslateView'
+import React from 'react'
 const SrutiComponent = ({
   OptionLength,
   ShlokaContent,
@@ -58,7 +58,7 @@ const SrutiComponent = ({
                                 id='sel-chapters'
                                 value={selectedChapter}
                                 onChange={handleChapterChange}>
-                                {Array.from({length: 2}, (_, index) => (
+                                {Array.from({ length: 2 }, (_, index) => (
                                   <option key={index + 1} value={index + 1}>
                                     {index + 1}
                                   </option>
@@ -77,14 +77,11 @@ const SrutiComponent = ({
                                 id='sel-sutra'
                                 value={selectedShloka}
                                 onChange={handleShlokaChange}>
-                                {Array.from(
-                                  {length: OptionLength},
-                                  (_, index) => (
-                                    <option key={index + 1} value={index + 1}>
-                                      {index + 1}
-                                    </option>
-                                  ),
-                                )}
+                                {Array.from({ length: OptionLength }, (_, index) => (
+                                  <option key={index + 1} value={index + 1}>
+                                    {index + 1}
+                                  </option>
+                                ))}
                               </select>
                             </div>
                           </div>
@@ -156,20 +153,16 @@ const SrutiComponent = ({
                               : 'Shloka not found.'}
                           </font>
                         </p>
-                        <div
-                          id='shareBottom'
-                          className='hov-child ml-auto mr-1 p-absolute'>
+                        <div id='shareBottom' className='hov-child ml-auto mr-1 p-absolute'>
                           <div className='d-flex flex-row'>
                             <div className=''>
                               <button
                                 className='d-flex vertical-center-children horizontal-center bg-transparent border-0 text-typo rounded-full h-8 w-8 bg-transparent border-0 text-typo cursor-pointer'
                                 aria-expanded='false'
                                 onClick={event => {
-                                  handleClick(event);
+                                  handleClick(event)
                                 }}>
-                                <i
-                                  ref={shareRef}
-                                  className='sdf material-symbols-outlined'>
+                                <i ref={shareRef} className='sdf material-symbols-outlined'>
                                   share
                                 </i>
                               </button>
@@ -180,9 +173,7 @@ const SrutiComponent = ({
                     </div>
                   </div>
                   <div className='l-t-action'>
-                    <div onClick={_hideTrans}>
-                      {hideTrans ? 'Hide' : 'Show'}
-                    </div>
+                    <div onClick={_hideTrans}>{hideTrans ? 'Hide' : 'Show'}</div>
                   </div>
                   {hideTrans && (
                     <TranslateView
@@ -207,11 +198,11 @@ const SrutiComponent = ({
             title={shareTitle}
             isLargeLength={false}
           />,
-          document.body,
+          document.body
         )}
     </div>
-  );
-};
-export default SrutiComponent;
+  )
+}
+export default SrutiComponent
 
-SrutiComponent.propTypes = OtherGitasPropTypesv1;
+SrutiComponent.propTypes = OtherGitasPropTypesv1

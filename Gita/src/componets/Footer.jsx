@@ -1,13 +1,13 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react'
 
 const Footer = () => {
-  const [currentYear, setCurrentYear] = useState('');
+  const [currentYear, setCurrentYear] = useState('')
   useEffect(() => {
-    const _y = new Date().getFullYear();
-    const _sY = `${_y}`.split('');
-    const _Y = `${_sY[2]}${_sY[3]}`;
-    setCurrentYear(_Y);
-  }, []);
+    const _y = new Date().getFullYear()
+    const _sY = `${_y}`.split('')
+    const _Y = `${_sY[2]}${_sY[3]}`
+    setCurrentYear(_Y)
+  }, [])
   return (
     <div id='footer'>
       <h1 className='is-hidden-desktop size-6 text-center color-white'>
@@ -16,11 +16,7 @@ const Footer = () => {
       <div className='d-flex horizontal-between'>
         <span>
           <h1 className='size-9 color-white'>
-            <a
-              className='color-white'
-              href='/history'
-              target='_blank'
-              rel='noreferrer'>
+            <a className='color-white' href='/history' target='_blank' rel='noreferrer'>
               Copyright-©
             </a>
             {` 2022-${currentYear}`}
@@ -39,7 +35,7 @@ const Footer = () => {
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

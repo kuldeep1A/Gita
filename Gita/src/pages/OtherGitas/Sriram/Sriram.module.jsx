@@ -1,5 +1,5 @@
-import SriramComponent from './Component/Sriram.component';
-import SriramFun from './Component/Sriram.fun';
+import SriramComponent from './Component/Sriram.component'
+import SriramFun from './Component/Sriram.fun'
 const Sriram = () => {
   const {
     OptionLength,
@@ -19,7 +19,7 @@ const Sriram = () => {
     shId,
     site,
     translateContent,
-  } = SriramFun();
+  } = SriramFun()
   return (
     <SriramComponent
       OptionLength={OptionLength}
@@ -40,6 +40,6 @@ const Sriram = () => {
       site={site}
       translateContent={translateContent}
     />
-  );
-};
-export default Sriram;
+  )
+}
+export default Sriram

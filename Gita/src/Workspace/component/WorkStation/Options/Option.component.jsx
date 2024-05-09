@@ -1,5 +1,5 @@
-import {OptionPropTypes} from '../../../../Function/PropTypes';
-import {ShlokasOptions} from './Shlokas.Options.component';
+import { OptionPropTypes } from '../../../../Function/PropTypes'
+import { ShlokasOptions } from './Shlokas.Options.component'
 
 const OptionComponent = ({
   cSel1V,
@@ -29,18 +29,14 @@ const OptionComponent = ({
         shlokasLen={shlokasLen}
         handleChange={handleChange}
       />
-    );
-  };
+    )
+  }
 
   const renderSeletedOptions = (label, value, handleChange, options) => {
     return (
       <div className='sel-ch sel'>
         <label htmlFor=''>{label}</label>
-        <select
-          name=''
-          id=''
-          value={value}
-          onChange={e => handleChange(parseInt(e.target.value))}>
+        <select name='' id='' value={value} onChange={e => handleChange(parseInt(e.target.value))}>
           {options.map((option, index) => (
             <option key={index} value={option.value}>
               {option.label}
@@ -48,18 +44,14 @@ const OptionComponent = ({
           ))}
         </select>
       </div>
-    );
-  };
+    )
+  }
 
   const renderTypesOptions = (label, value, handleChange, options) => {
     return (
       <div className='sel-ch sel'>
         <label htmlFor=''>{label}</label>
-        <select
-          name=''
-          id=''
-          value={value}
-          onChange={e => handleChange(e.target.value)}>
+        <select name='' id='' value={value} onChange={e => handleChange(e.target.value)}>
           {options.map((option, index) => (
             <option key={index} value={option.value}>
               {option.label}
@@ -67,34 +59,25 @@ const OptionComponent = ({
           ))}
         </select>
       </div>
-    );
-  };
+    )
+  }
 
   const renderChapterOptions = () => {
     if (
       !chV &&
-      ![
-        'c-bra',
-        'c-ash',
-        'c-ava',
-        'c-kap',
-        'c-sru',
-        'c-udd',
-        'c-sri',
-        'c-yog',
-      ].includes(whatdb)
+      !['c-bra', 'c-ash', 'c-ava', 'c-kap', 'c-sru', 'c-udd', 'c-sri', 'c-yog'].includes(whatdb)
     ) {
-      return null;
+      return null
     }
 
     return renderSeletedOptions('Select Chapters', cSel1V, handleChange1, [
-      {value: 0, label: 'Select'},
-      ...Array.from({length: chV}, (_, index) => ({
+      { value: 0, label: 'Select' },
+      ...Array.from({ length: chV }, (_, index) => ({
         value: index + 1,
         label: `${index + 1} Chapter`,
       })),
-    ]);
-  };
+    ])
+  }
   return (
     <>
       {renderChapterOptions()}
@@ -110,8 +93,8 @@ const OptionComponent = ({
       {/* For Bhamasutra */}
       {whatdb === 'c-bra' && cSel1V
         ? renderSeletedOptions('Select Quarters', cSel2V, handleChange2a, [
-            {value: 0, label: 'Select'},
-            ...Array.from({length: 4}, (_, index) => ({
+            { value: 0, label: 'Select' },
+            ...Array.from({ length: 4 }, (_, index) => ({
               value: index + 1,
               label: `${index + 1} - Quarter`,
             })),
@@ -148,10 +131,10 @@ const OptionComponent = ({
       {/* For Yogasutar */}
       {whatdb === 'c-yog' && cSel1V
         ? renderTypesOptions('Select Types', SutTypes, handleChange2b, [
-            {value: '', label: 'Select'},
-            {value: 'Bhashya', label: 'Bhashyas'},
-            {value: 'Sutra', label: 'Sutras'},
-            {value: 'Vritti', label: 'Bhojavrttis'},
+            { value: '', label: 'Select' },
+            { value: 'Bhashya', label: 'Bhashyas' },
+            { value: 'Sutra', label: 'Sutras' },
+            { value: 'Vritti', label: 'Bhojavrttis' },
           ])
         : null}
       {whatdb === 'c-yog' && mode == 0 && SutTypes
@@ -181,8 +164,8 @@ const OptionComponent = ({
         : null}
       {whatdb === 'c-val' && KandaTypes
         ? renderSeletedOptions('Select Sargas', cSel2V, handleChange2a, [
-            {value: 0, label: 'Select'},
-            ...Array.from({length: SargaLen}, (_, index) => ({
+            { value: 0, label: 'Select' },
+            ...Array.from({ length: SargaLen }, (_, index) => ({
               value: index + 1,
               label: `${index + 1}  - Sarga`,
             })),
@@ -192,7 +175,7 @@ const OptionComponent = ({
         ? renderShlokasOptions(cSel2V, cSel3V, 'Shloka', handleChange3b)
         : null}
     </>
-  );
-};
-export default OptionComponent;
-OptionComponent.propTypes = OptionPropTypes;
+  )
+}
+export default OptionComponent
+OptionComponent.propTypes = OptionPropTypes

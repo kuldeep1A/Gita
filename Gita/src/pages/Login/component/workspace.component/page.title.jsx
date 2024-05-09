@@ -1,5 +1,5 @@
-import {LoginPropTypes} from '../../../../Function/PropTypes';
-const PageTitle = ({UTN}) => {
+import { LoginPropTypes } from '../../../../Function/PropTypes'
+const PageTitle = ({ UTN }) => {
   return (
     <div className='page-tab'>
       Admin Account
@@ -14,8 +14,8 @@ const PageTitle = ({UTN}) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PageTitle;
-PageTitle.propTypes = LoginPropTypes;
+export default PageTitle
+PageTitle.propTypes = LoginPropTypes

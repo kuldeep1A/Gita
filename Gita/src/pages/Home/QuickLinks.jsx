@@ -1,14 +1,14 @@
-import {useEffect} from 'react';
-import {Link, Outlet} from 'react-router-dom';
+import { useEffect } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 
 export default function QuickLinks() {
   useEffect(() => {
-    document.title = 'Quick Links | Gita';
+    document.title = 'Quick Links | Gita'
 
     return () => {
-      document.title = 'Quick Links | Gita';
-    };
-  }, []);
+      document.title = 'Quick Links | Gita'
+    }
+  }, [])
   return (
     <div className='container'>
       <div className='con-wrap'>
@@ -86,5 +86,5 @@ export default function QuickLinks() {
       </div>
       <Outlet />
     </div>
-  );
+  )
 }

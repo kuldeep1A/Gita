@@ -1,9 +1,9 @@
-import {useState} from 'react';
-import {LoginPropTypes} from '../../../../Function/PropTypes';
-import Svgs from '../../../../componets/Svgs';
+import { useState } from 'react'
+import { LoginPropTypes } from '../../../../Function/PropTypes'
+import Svgs from '../../../../componets/Svgs'
 
-const FormComponent = ({setEmail, setPassword, handleAuth}) => {
-  const [isHidePass, setIsHidePaass] = useState(false);
+const FormComponent = ({ setEmail, setPassword, handleAuth }) => {
+  const [isHidePass, setIsHidePaass] = useState(false)
   return (
     <div className='auth'>
       <data>
@@ -28,9 +28,7 @@ const FormComponent = ({setEmail, setPassword, handleAuth}) => {
                 id='password'
                 autoComplete='current-password'
               />
-              <div
-                className='clear-button'
-                onClick={() => setIsHidePaass(!isHidePass)}>
+              <div className='clear-button' onClick={() => setIsHidePaass(!isHidePass)}>
                 {!isHidePass ? Svgs._svgShow() : Svgs._svgHide()}
               </div>
             </div>
@@ -41,8 +39,8 @@ const FormComponent = ({setEmail, setPassword, handleAuth}) => {
         </form>
       </data>
     </div>
-  );
-};
+  )
+}
 
-export default FormComponent;
-FormComponent.propTypes = LoginPropTypes;
+export default FormComponent
+FormComponent.propTypes = LoginPropTypes

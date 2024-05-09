@@ -1,5 +1,5 @@
-import VibhishanaComponent from './Component/Vibhishana.component';
-import VibhishanaFun from './Component/Vibhishana.fun';
+import VibhishanaComponent from './Component/Vibhishana.component'
+import VibhishanaFun from './Component/Vibhishana.fun'
 const Vibhishana = () => {
   const {
     OptionLength,
@@ -19,7 +19,7 @@ const Vibhishana = () => {
     shId,
     site,
     translateContent,
-  } = VibhishanaFun();
+  } = VibhishanaFun()
   return (
     <VibhishanaComponent
       OptionLength={OptionLength}
@@ -40,6 +40,6 @@ const Vibhishana = () => {
       site={site}
       translateContent={translateContent}
     />
-  );
-};
-export default Vibhishana;
+  )
+}
+export default Vibhishana

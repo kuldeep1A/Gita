@@ -1,24 +1,24 @@
-import {SharePopTypes} from '../Function/PropTypes';
-export default function SharePop({e, Idx, site, title, isLargeLength}) {
-  var useX = 0;
-  var useY = 0;
-  var content = '';
+import { SharePopTypes } from '../Function/PropTypes'
+export default function SharePop({ e, Idx, site, title, isLargeLength }) {
+  var useX = 0
+  var useY = 0
+  var content = ''
   if (e && Idx) {
-    const clientX = e.clientX;
-    const clientY = e.clientY;
+    const clientX = e.clientX
+    const clientY = e.clientY
 
     if (clientY < 690) {
-      useX = clientX - 200;
-      useY = clientY + 20;
+      useX = clientX - 200
+      useY = clientY + 20
     } else {
-      useX = clientX - 210;
-      useY = clientY - 70;
+      useX = clientX - 210
+      useY = clientY - 70
     }
-    const hoverParent = e.target.closest('.hov-parent');
+    const hoverParent = e.target.closest('.hov-parent')
     if (hoverParent) {
-      const fontEl = hoverParent.querySelector(`#${Idx}`);
+      const fontEl = hoverParent.querySelector(`#${Idx}`)
       if (fontEl) {
-        content = fontEl.innerText;
+        content = fontEl.innerText
       }
     }
   }
@@ -28,10 +28,10 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
       navigator.clipboard
         .writeText(title + '\t\n\n' + content + '\nYour Opinion: \n\n\n')
         .catch(err => {
-          console.error('Unable to copy to clipboard', err);
-        });
+          console.error('Unable to copy to clipboard', err)
+        })
     }
-  };
+  }
 
   return (
     <div
@@ -51,12 +51,9 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
         tabIndex='-1'
         data-animation='fade'
         role='tooltip'
-        style={{maxWidth: '800px', transitionDuration: '300ms'}}
+        style={{ maxWidth: '800px', transitionDuration: '300ms' }}
         data-placement='bottom-start'>
-        <div
-          className='tippy-content'
-          data-state='visible'
-          style={{transitionDuration: '300ms'}}>
+        <div className='tippy-content' data-state='visible' style={{ transitionDuration: '300ms' }}>
           <div>
             <div className='shadow-elevated bg-fill-content-prime rounded-20 rounded-15-mobile pb-mobile-xxxs pt-mobile-xxxs pb-xxxs pt-xxxs'>
               <ul className='d-flex flex-col min-w-[220px]'>
@@ -67,7 +64,7 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
                     <span className='pr-2 d-flex place-content-center'>
                       <i
                         className='icon-content_copy-outlined text-icon'
-                        style={{fontSize: '24px'}}></i>
+                        style={{ fontSize: '24px' }}></i>
                     </span>
                     <span className='grow'>Copy</span>
                   </div>
@@ -77,7 +74,7 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
                     <li className='w-full d-flex'>
                       <a
                         href={`https://twitter.com/intent/tweet?lang=en&url=https%3A%2F%2Fgitas.web.app%2F${site}&text=${encodeURIComponent(
-                          title + '\t\n\n' + content + '\nYour Opinion: \n\n\n',
+                          title + '\t\n\n' + content + '\nYour Opinion: \n\n\n'
                         )}`}
                         target='_blank'
                         rel='noopener noreferrer'
@@ -85,7 +82,7 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
                         <span className='pr-2 d-flex place-content-center'>
                           <i
                             className='icon-brand_logos-twitter-x text-icon'
-                            style={{fontSize: '24px'}}></i>
+                            style={{ fontSize: '24px' }}></i>
                         </span>
                         <span className='grow'>Twitter</span>
                       </a>
@@ -95,10 +92,10 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
                         href={
                           window.innerWidth > 690
                             ? `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(
-                                title,
+                                title
                               )}&body=${encodeURIComponent(content + `\nYour Opinion:\n\n\n`)}`
                             : `mailto:?subject=${encodeURIComponent(
-                                title,
+                                title
                               )}&body=${encodeURIComponent(content + `\nYour Opinion:\n\n\n`)}`
                         }
                         target='_blank'
@@ -107,7 +104,7 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
                         <span className='pr-2 d-flex place-content-center'>
                           <i
                             className='icon-email-outlined text-icon'
-                            style={{fontSize: '24px'}}></i>
+                            style={{ fontSize: '24px' }}></i>
                         </span>
                         <span className='grow'>Email</span>
                       </a>
@@ -120,6 +117,6 @@ export default function SharePop({e, Idx, site, title, isLargeLength}) {
         </div>
       </div>
     </div>
-  );
+  )
 }
-SharePop.propTypes = SharePopTypes;
+SharePop.propTypes = SharePopTypes

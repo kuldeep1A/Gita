@@ -1,14 +1,14 @@
-import {useEffect} from 'react';
-import {EmailLinkD, EmailLinkM} from '../../componets/EmailLinks.jsx';
+import { useEffect } from 'react'
+import { EmailLinkD, EmailLinkM } from '../../componets/EmailLinks.jsx'
 
 export default function Contact() {
   useEffect(() => {
-    document.title = 'Contact | Gita';
+    document.title = 'Contact | Gita'
 
     return () => {
-      document.title = 'Contact | Gita';
-    };
-  }, []);
+      document.title = 'Contact | Gita'
+    }
+  }, [])
   return (
     <div className='container'>
       <div className='con-wrap'>
@@ -19,15 +19,11 @@ export default function Contact() {
               <div className='fi-items _d-p-size'>
                 <p className='size-5'>
                   {window.innerWidth < 680 ? (
-                    <EmailLinkM
-                      email='kuldeepdhangarkd@gmail.com'
-                      subject='Hello, Kuldeep'>
+                    <EmailLinkM email='kuldeepdhangarkd@gmail.com' subject='Hello, Kuldeep'>
                       Kuldeepdhagnarkd@gmail.com
                     </EmailLinkM>
                   ) : (
-                    <EmailLinkD
-                      email='kuldeepdhangarkd@gmail.com'
-                      subject='Hello, Kuldeep'>
+                    <EmailLinkD email='kuldeepdhangarkd@gmail.com' subject='Hello, Kuldeep'>
                       Kuldeepdhagnarkd@gmail.com
                     </EmailLinkD>
                   )}
@@ -39,5 +35,5 @@ export default function Contact() {
         </div>
       </div>
     </div>
-  );
+  )
 }

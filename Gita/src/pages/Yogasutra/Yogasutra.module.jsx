@@ -1,5 +1,5 @@
-import YogaSutraComponent from './Component/Yogasutra.component';
-import YogaSutraFun from './Component/Yogasutra.fun';
+import YogaSutraComponent from './Component/Yogasutra.component'
+import YogaSutraFun from './Component/Yogasutra.fun'
 const YogaSutra = () => {
   const {
     _changeCodeToEn,
@@ -36,7 +36,7 @@ const YogaSutra = () => {
     translateContent,
     VrittiContent,
     whichSutra,
-  } = YogaSutraFun();
+  } = YogaSutraFun()
 
   return (
     <YogaSutraComponent
@@ -75,6 +75,6 @@ const YogaSutra = () => {
       VrittiContent={VrittiContent}
       whichSutra={whichSutra}
     />
-  );
-};
-export default YogaSutra;
+  )
+}
+export default YogaSutra
